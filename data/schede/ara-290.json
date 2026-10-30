@@ -1,0 +1,60 @@
+{
+  "name": "ARA-290 (cibinetide)",
+  "slug": "ara-290",
+  "category": "Recupero",
+  "status": "sperimentale",
+  "service": "Peptidi",
+  "aliases": [
+    "cibinetide",
+    "ARA 290"
+  ],
+  "focus": "Dolore neuropatico e infiammazione",
+  "tagline": "Un frammento dell’EPO che protegge i tessuti senza produrre globuli rossi.",
+  "evidence_summary": "Piccoli RCT di fase 2",
+  "what": "ARA-290 (cibinetide) è un peptide di 11 aminoacidi derivato dall’eritropoietina. Attiva un recettore coinvolto nella protezione dei tessuti senza stimolare la produzione di globuli rossi.",
+  "unknown": "Piccoli studi di fase 2 in persone con sarcoidosi o diabete hanno suggerito miglioramenti dei sintomi di neuropatia delle piccole fibre. I risultati non sono stati confermati da studi più grandi e non ci sono dati sul recupero sportivo o articolare.",
+  "risk": "Ben tollerato negli studi brevi; sicurezza a lungo termine non nota.",
+  "reg": "Non è un medicinale autorizzato.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Meccanismo caratterizzato."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Modelli animali di neuropatia e danno tissutale."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato osservazionale."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Piccoli RCT di fase 2 sulla neuropatia."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — cibinetide, studi clinici",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=cibinetide+ARA+290+small+fiber+neuropathy",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "extra_categories": [],
+  "dosing": {
+    "basis": "studi",
+    "route": "Negli studi: iniezione sottocutanea quotidiana.",
+    "text": "Negli studi di fase 2 è stato somministrato ogni giorno per alcune settimane, sotto controllo medico. Non esiste una dose approvata."
+  },
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

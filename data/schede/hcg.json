@@ -1,0 +1,69 @@
+{
+  "name": "Gonadotropina corionica (hCG)",
+  "slug": "hcg",
+  "kind": "sostanza",
+  "category": "Sessualità e fertilità",
+  "extra_categories": [
+    "Ormoni"
+  ],
+  "status": "ue",
+  "service": "TRT",
+  "aliases": [
+    "hCG",
+    "gonasi",
+    "Pregnyl",
+    "Ovitrelle"
+  ],
+  "focus": "Fertilità e asse ormonale",
+  "tagline": "Un ormone della gravidanza usato per proteggere la fertilità maschile.",
+  "evidence_summary": "Consolidate per indicazioni specifiche",
+  "what": "La gonadotropina corionica umana (hCG) è un ormone che imita l’LH e stimola i testicoli a produrre testosterone e spermatozoi. È autorizzata nella procreazione assistita e nell’uomo con ipogonadismo di origine ipofisaria.",
+  "unknown": "Viene usata talvolta, fuori indicazione, insieme alla terapia con testosterone per preservare la fertilità: le prove sono limitate a studi piccoli. Non ha alcun effetto dimostrato sul dimagrimento (“dieta hCG”) né sulla libido in sé.",
+  "risk": "Ginecomastia, ritenzione di liquidi, sbalzi d’umore; nella donna rischio di sindrome da iperstimolazione ovarica. Vietata nello sport per gli uomini.",
+  "reg": "Autorizzata in UE in medicinali per l’infertilità e per l’ipogonadismo ipogonadotropo maschile.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Biologia ampiamente caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Ampia letteratura animale."
+    },
+    "osservazionale": {
+      "level": "si",
+      "note": "Lunga esperienza clinica."
+    },
+    "rct": {
+      "level": "si",
+      "note": "RCT nella procreazione assistita; piccoli studi nell’uso con il testosterone."
+    },
+    "autorizzato": {
+      "level": "si",
+      "note": "Autorizzata in UE per indicazioni specifiche."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — hCG e preservazione della fertilità in TRT",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=hCG+testosterone+therapy+spermatogenesis",
+      "type": "studio"
+    },
+    {
+      "label": "WADA — lista delle sostanze proibite",
+      "url": "https://www.wada-ama.org/en/prohibited-list",
+      "type": "regolatorio"
+    }
+  ],
+  "dosing": {
+    "basis": "rcp",
+    "route": "Iniezione sottocutanea o intramuscolare.",
+    "text": "Nell’ipogonadismo ipogonadotropo maschile gli schemi autorizzati prevedono in genere 1.000–2.000 UI due o tre volte a settimana, regolate sugli esami. Nella procreazione assistita si usa una singola dose per indurre l’ovulazione, secondo il protocollo dello specialista."
+  },
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

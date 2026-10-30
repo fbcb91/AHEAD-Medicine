@@ -1,0 +1,67 @@
+{
+  "name": "Eritropoietina (EPO)",
+  "slug": "epo",
+  "kind": "sostanza",
+  "category": "Ormoni",
+  "status": "ue",
+  "service": null,
+  "aliases": [
+    "EPO",
+    "epoetina",
+    "darbepoetina",
+    "ematocrito"
+  ],
+  "focus": "Produzione di globuli rossi",
+  "tagline": "Un farmaco salvavita per l’anemia, pericoloso come “booster”.",
+  "evidence_summary": "Consolidate per l’anemia; rischi noti",
+  "what": "L’eritropoietina è l’ormone che stimola la produzione di globuli rossi. Le epoetine ricombinanti sono autorizzate per l’anemia da malattia renale cronica e da chemioterapia, e in alcune altre situazioni.",
+  "unknown": "Non ha alcuna indicazione per aumentare energia o prestazioni in persone sane. Anche nei pazienti, puntare a valori di emoglobina troppo alti peggiora gli esiti.",
+  "risk": "Aumento della viscosità del sangue, trombosi, ictus, ipertensione; nei pazienti oncologici possibile progressione del tumore con emoglobina elevata. È una delle principali sostanze dopanti e il suo uso non medico può essere mortale.",
+  "reg": "Autorizzata in UE in diversi medicinali con indicazioni specifiche e prescrizione specialistica. Proibita nello sport.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Biologia ampiamente caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Ampia letteratura animale."
+    },
+    "osservazionale": {
+      "level": "si",
+      "note": "Grandi registri e dati di farmacovigilanza."
+    },
+    "rct": {
+      "level": "si",
+      "note": "Numerosi RCT, inclusi studi che hanno mostrato danni con obiettivi di emoglobina elevati."
+    },
+    "autorizzato": {
+      "level": "si",
+      "note": "Autorizzata in UE per indicazioni specifiche."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — RCT su obiettivi di emoglobina con epoetina",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=epoetin+hemoglobin+target+randomized+chronic+kidney+disease",
+      "type": "studio"
+    },
+    {
+      "label": "WADA — lista delle sostanze proibite",
+      "url": "https://www.wada-ama.org/en/prohibited-list",
+      "type": "regolatorio"
+    }
+  ],
+  "extra_categories": [],
+  "dosing": {
+    "basis": "rcp",
+    "route": "Iniezione sottocutanea o endovenosa.",
+    "text": "La dose è calcolata sul peso e regolata in base all’emoglobina, che non deve superare i valori obiettivo indicati nel foglietto (in genere 12 g/dL). Si usa solo su prescrizione specialistica, con esami frequenti."
+  },
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

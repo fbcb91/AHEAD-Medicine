@@ -1,0 +1,60 @@
+{
+  "name": "SLU-PP-332",
+  "slug": "slu-pp-332",
+  "kind": "sostanza",
+  "category": "Metabolismo",
+  "status": "sperimentale",
+  "service": "GLP-1",
+  "aliases": [
+    "exercise mimetic",
+    "agonista ERR"
+  ],
+  "focus": "Resistenza e metabolismo",
+  "tagline": "L’“esercizio in pillola” esiste, ma per ora solo nei topi.",
+  "evidence_summary": "Precliniche",
+  "what": "SLU-PP-332 è una piccola molecola sperimentale che attiva i recettori ERR, coinvolti nella risposta del muscolo all’esercizio. Per questo viene chiamata “mimetico dell’esercizio”.",
+  "unknown": "Nei topi ha aumentato la resistenza alla corsa e ridotto la massa grassa. Non esiste alcuno studio nell’uomo.",
+  "risk": "Effetti nell’uomo e sicurezza completamente sconosciuti; qualità dei prodotti venduti online non verificabile.",
+  "reg": "Non è un medicinale autorizzato.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Studi su cellule muscolari."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Pochi studi su topi."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato nell’uomo."
+    },
+    "rct": {
+      "level": "no",
+      "note": "Nessun RCT."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — SLU-PP-332",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=SLU-PP-332",
+      "type": "studio"
+    }
+  ],
+  "extra_categories": [],
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: capsule.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

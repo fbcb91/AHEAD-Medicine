@@ -38,3 +38,27 @@
 .steps-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:1050px){.steps-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:540px){.steps-grid{grid-template-columns:1fr}}
+/* Pagine consulenze */
+.service-actions{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:auto}
+.service-card h3 a:hover{text-decoration:underline;text-underline-offset:4px}
+.service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,7vw,120px)}
+.service-grid h2{font-size:clamp(30px,3.2vw,48px);margin-bottom:26px}
+.check-list,.numbered-list{margin:0;padding:0;list-style:none;border-top:1px solid #d3dede}
+.check-list li,.numbered-list li{padding:16px 0 16px 34px;border-bottom:1px solid #d3dede;position:relative;color:#3d5257;line-height:1.6}
+.check-list li::before{content:'✳';position:absolute;left:4px;top:15px;color:#89b9d1}
+.numbered-list{counter-reset:step}
+.numbered-list li::before{counter-increment:step;content:'0' counter(step);position:absolute;left:0;top:18px;font-size:11px;font-weight:800;color:#8aa3a7;letter-spacing:.08em}
+.exams-box{margin-top:26px;padding:24px}
+.exams-box p{margin:0;color:#3d5257;font-size:15px}
+.limits-text{font-size:17px;color:#50656a;line-height:1.75;padding:22px 24px;background:#f6f1df;border-left:3px solid #bba16f}
+.faq{border-top:1px solid #d3dede}
+.faq-item{border-bottom:1px solid #d3dede}
+.faq-item summary{cursor:pointer;padding:18px 30px 18px 0;font-weight:700;color:#24363b;list-style:none;position:relative}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';position:absolute;right:4px;top:14px;font-size:22px;color:#6d8b93}
+.faq-item[open] summary::after{content:'−'}
+.faq-item p{margin:0 0 18px;color:#50656a}
+.other-services{display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid #d3dede}
+.other-services .mini-label{margin:0;width:100%}
+.other-service{font-weight:700;color:#3e6675}
+@media(max-width:800px){.service-grid{grid-template-columns:1fr}}

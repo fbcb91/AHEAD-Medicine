@@ -1,0 +1,60 @@
+{
+  "name": "Adipotide",
+  "slug": "adipotide",
+  "category": "Metabolismo",
+  "status": "sperimentale",
+  "service": "GLP-1",
+  "aliases": [
+    "FTPP",
+    "prohibitin-TP01"
+  ],
+  "focus": "Tessuto adiposo",
+  "tagline": "Fa dimagrire le scimmie, ma danneggia i reni.",
+  "evidence_summary": "Precliniche, con segnali di tossicità",
+  "what": "L’adipotide è un peptide sperimentale progettato per colpire i vasi sanguigni che nutrono il tessuto adiposo, causandone la riduzione.",
+  "unknown": "In scimmie obese ha prodotto una perdita di peso significativa. Gli studi nell’uomo, avviati in ambito oncologico, non hanno prodotto risultati pubblicati utili.",
+  "risk": "Negli studi sugli animali ha causato danni renali dose-dipendenti. È tra le sostanze del mercato non regolato con il profilo di rischio più preoccupante.",
+  "reg": "Non è un medicinale autorizzato.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Meccanismo caratterizzato."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Studi su roditori e scimmie, con tossicità renale."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato nell’uomo."
+    },
+    "rct": {
+      "level": "no",
+      "note": "Nessun RCT."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — adipotide nei primati",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=adipotide+obese+monkeys",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "extra_categories": [],
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: iniezioni.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

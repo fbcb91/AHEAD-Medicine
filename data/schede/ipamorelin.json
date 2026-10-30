@@ -55,5 +55,8 @@
     "medical_reviewer": null,
     "checked": "2026-10-30",
     "next_check": "2027-04-30"
-  }
+  },
+  "extra_categories": [
+    "Massa muscolare"
+  ]
 }

@@ -1,0 +1,61 @@
+{
+  "name": "Glutatione",
+  "slug": "glutatione",
+  "category": "Longevità",
+  "status": "integratore",
+  "service": "Longevity & Performance",
+  "aliases": [
+    "glutathione",
+    "GSH",
+    "antiossidante"
+  ],
+  "focus": "Difese antiossidanti",
+  "tagline": "L’antiossidante più famoso: per bocca, in vena o sulla pelle?",
+  "evidence_summary": "Limitate per l’uso come integratore",
+  "what": "Il glutatione è un tripeptide prodotto naturalmente dall’organismo, tra i principali antiossidanti delle cellule. Si trova come integratore e, in Italia, anche in medicinali iniettabili per indicazioni specifiche.",
+  "unknown": "Un RCT di sei mesi ha mostrato che l’assunzione orale può aumentare le riserve di glutatione, ma non è dimostrato un beneficio clinico per invecchiamento, energia o “detox”. L’uso endovenoso per schiarire la pelle non ha prove solide di efficacia.",
+  "risk": "Per bocca è generalmente ben tollerato. Le infusioni endovenose fuori indicazione espongono ai rischi delle iniezioni e di prodotti non controllati; alcune autorità sanitarie hanno messo in guardia dall’uso per schiarire la pelle.",
+  "reg": "Come integratore è un alimento. In Italia esistono medicinali iniettabili a base di glutatione autorizzati per indicazioni specifiche.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Biochimica ampiamente caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Ampia letteratura animale."
+    },
+    "osservazionale": {
+      "level": "limitato",
+      "note": "Studi su livelli naturali in varie malattie."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Pochi RCT sull’integrazione, con esiti su marcatori."
+    },
+    "autorizzato": {
+      "level": "limitato",
+      "note": "Medicinali iniettabili autorizzati in Italia per altre indicazioni."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — RCT su glutatione orale",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=oral+glutathione+randomized+body+stores",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "extra_categories": [],
+  "dosing": {
+    "basis": "studi",
+    "route": "Per bocca come integratore; per iniezione solo come medicinale.",
+    "text": "Negli RCT sull’integrazione orale si sono usati 250–1000 mg al giorno. L’uso iniettabile riguarda medicinali con indicazioni specifiche e va deciso dal medico."
+  },
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

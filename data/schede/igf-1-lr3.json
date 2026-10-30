@@ -1,0 +1,66 @@
+{
+  "name": "IGF-1 LR3",
+  "slug": "igf-1-lr3",
+  "category": "Massa muscolare",
+  "status": "sperimentale",
+  "service": "Longevity & Performance",
+  "aliases": [
+    "Long R3 IGF-1",
+    "IGF-1",
+    "mecasermina"
+  ],
+  "focus": "Fattori di crescita",
+  "tagline": "Un reagente da laboratorio venduto come anabolizzante.",
+  "evidence_summary": "Nessuna nell’uomo",
+  "what": "IGF-1 LR3 è una versione modificata del fattore di crescita insulino-simile 1 (IGF-1), progettata per durare più a lungo. È nata come reagente per colture cellulari.",
+  "unknown": "Non è mai stato studiato nell’uomo. L’unico IGF-1 usato in clinica è la mecasermina, un farmaco diverso riservato ai bambini con grave deficit primario di IGF-1.",
+  "risk": "L’IGF-1 abbassa la glicemia: un eccesso può causare ipoglicemie anche gravi. Livelli elevati e prolungati di IGF-1 sono associati in studi osservazionali a un aumento del rischio di alcuni tumori. È vietato nello sport.",
+  "reg": "IGF-1 LR3 non è autorizzato. La mecasermina (Increlex) è autorizzata in UE solo per il deficit primario grave di IGF-1 in età pediatrica.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Ampiamente usato in colture cellulari."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Pochi studi su animali."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato nell’uomo."
+    },
+    "rct": {
+      "level": "no",
+      "note": "Nessun RCT."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato (la mecasermina è un farmaco diverso)."
+    }
+  },
+  "sources": [
+    {
+      "label": "EMA — Increlex (mecasermina) (EPAR)",
+      "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/increlex",
+      "type": "regolatorio"
+    },
+    {
+      "label": "WADA — lista delle sostanze proibite",
+      "url": "https://www.wada-ama.org/en/prohibited-list",
+      "type": "regolatorio"
+    }
+  ],
+  "kind": "peptide",
+  "extra_categories": [],
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: iniezioni.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

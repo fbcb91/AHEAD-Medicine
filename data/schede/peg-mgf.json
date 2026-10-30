@@ -1,0 +1,66 @@
+{
+  "name": "PEG-MGF",
+  "slug": "peg-mgf",
+  "category": "Massa muscolare",
+  "status": "sperimentale",
+  "service": "Longevity & Performance",
+  "aliases": [
+    "mechano growth factor",
+    "MGF",
+    "IGF-1Ec"
+  ],
+  "focus": "Riparazione muscolare",
+  "tagline": "Un frammento legato all’IGF-1, studiato solo in laboratorio.",
+  "evidence_summary": "Precliniche",
+  "what": "Il “mechano growth factor” (MGF) è una variante dell’IGF-1 prodotta dal muscolo dopo uno sforzo meccanico. PEG-MGF è una versione sintetica modificata con polietilenglicole per durare più a lungo.",
+  "unknown": "Le prove riguardano cellule e animali, con risultati non sempre replicati. Non esistono studi nell’uomo.",
+  "risk": "Sicurezza nell’uomo sconosciuta; possibili effetti simili a quelli dell’IGF-1. Vietato nello sport.",
+  "reg": "Non è un medicinale autorizzato.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Studi su cellule muscolari."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Pochi studi animali, risultati contrastanti."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato nell’uomo."
+    },
+    "rct": {
+      "level": "no",
+      "note": "Nessun RCT."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — mechano growth factor",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=mechano+growth+factor+muscle",
+      "type": "studio"
+    },
+    {
+      "label": "WADA — lista delle sostanze proibite",
+      "url": "https://www.wada-ama.org/en/prohibited-list",
+      "type": "regolatorio"
+    }
+  ],
+  "kind": "peptide",
+  "extra_categories": [],
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: iniezioni.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}
