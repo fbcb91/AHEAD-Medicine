@@ -51,6 +51,18 @@
     }));
   }
 
+  // Article list: filter by type (Guida / News).
+  const typeFilters = [...document.querySelectorAll('.article-filters .filter')];
+  typeFilters.forEach(f => f.addEventListener('click', () => {
+    typeFilters.forEach(el => {
+      el.classList.toggle('active', el === f);
+      el.setAttribute('aria-pressed', String(el === f));
+    });
+    document.querySelectorAll('.article-list .article-card').forEach(card => {
+      card.hidden = f.dataset.type !== 'Tutti' && card.dataset.type !== f.dataset.type;
+    });
+  }));
+
   const modal = document.querySelector('#interest-modal');
   const form = document.querySelector('#interest-form');
   const message = document.querySelector('#form-message');

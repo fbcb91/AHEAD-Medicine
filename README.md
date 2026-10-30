@@ -8,8 +8,9 @@
 - 46 schede separate: peptidi in `/peptidi/<slug>/`, altre sostanze (testosterone, rapamicina, metformina…) in `/sostanze/<slug>/`
 - Per ogni scheda: griglia delle prove (in vitro, animali, osservazionali, RCT, autorizzazione), stato regolatorio, fonti tipizzate, data di verifica e stato della revisione medica
 - Sezione "Come si assume": via di somministrazione e dosi con la loro fonte (RCP UE, foglietto extra-UE, studi clinici, oppure nessuna dose validata)
+- Sezione Articoli `/articoli/` (guide e news) generata da `data/articoli/*.md`
 - Pagina `/metodo/` con il metodo editoriale e pagina 404
-- 4 consulenze **senza prezzi**, ognuna con la sua pagina in `/consulenze/<slug>/` (per chi è, cosa fa il medico, esami, limiti, FAQ, schede correlate): Peptidi, TRT, GLP-1 e Longevity & Performance
+- 8 consulenze **senza prezzi** (Peptidi, TRT, GLP-1, Longevity & Performance, Capelli, Salute sessuale, Menopausa, Recupero e sport), ognuna con la sua pagina in `/consulenze/<slug>/` (per chi è, cosa fa il medico, esami, limiti, FAQ, schede correlate)
 - Modale raccolta email via funzione Vercel + MailerLite; disattivata finché non configurata
 - Privacy provvisoria da sostituire prima di raccogliere dati
 
@@ -39,6 +40,22 @@ API MailerLite: https://developers.mailerlite.com/api/subscribers
 Le CTA lanciano un evento aggregato `Consulenza: interesse` con proprietà `servizio`, **senza l'email**. L'evento viene registrato solo se è stato collegato uno strumento compatibile con la funzione `window.plausible` e solo nel rispetto delle regole privacy e cookie. Collega la piattaforma analytics configurandone la libreria di tracciamento: non è inclusa nella demo.
 
 La mail del visitatore non viene associata alla consulenza selezionata. Questo evita inferenze su informazioni sanitarie nella lista marketing.
+
+## Aggiungere articoli
+Ogni articolo è un file Markdown in `data/articoli/<slug>.md` con un front-matter:
+
+```
+---
+title: Titolo dell'articolo
+type: Guida            # oppure News
+date: 2026-10-30
+description: Una o due frasi, usate anche come meta description.
+related: bpc-157, tb-500   # slug di schede della Library (facoltativo)
+service: Peptidi           # consulenza collegata (facoltativo)
+---
+```
+
+Il corpo supporta titoli `##` e `###`, elenchi con `- `, **grassetto** e [link](/library/). Poi lancia `python3 build.py`.
 
 ## Aggiornare o aggiungere schede
 Ogni scheda è un file in `data/schede/<slug>.json`. Per aggiungerne una copia un file esistente, modifica i campi e lancia `python3 build.py`: il build si ferma con un errore se mancano campi, se lo stato o i livelli di evidenza non sono validi o se non c'è almeno una fonte specifica.
