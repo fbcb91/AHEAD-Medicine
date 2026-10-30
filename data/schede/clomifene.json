@@ -1,0 +1,60 @@
+{
+  "name": "Clomifene ed enclomifene",
+  "slug": "clomifene",
+  "kind": "sostanza",
+  "category": "Ormoni",
+  "status": "ue",
+  "service": "TRT",
+  "aliases": [
+    "clomiphene",
+    "enclomiphene",
+    "SERM"
+  ],
+  "focus": "Asse ormonale maschile",
+  "tagline": "Stimolare il testosterone senza sopprimere la fertilità: cosa dicono i dati.",
+  "evidence_summary": "Limitate per l’uso maschile",
+  "what": "Il clomifene è un modulatore selettivo dei recettori degli estrogeni autorizzato per indurre l’ovulazione nella donna. Negli uomini viene talvolta usato fuori indicazione per aumentare la produzione naturale di testosterone. L’enclomifene è uno dei suoi due isomeri.",
+  "unknown": "Nell’uomo gli studi mostrano aumento di testosterone e mantenimento della produzione di spermatozoi, ma sono di piccole dimensioni e di breve durata. Mancano dati su esiti clinici e sicurezza a lungo termine.",
+  "risk": "Sono descritti disturbi visivi, sbalzi d’umore e alterazioni ormonali. L’uso maschile è fuori indicazione e richiede valutazione specialistica.",
+  "reg": "Il clomifene è autorizzato in Italia e in UE per l’infertilità femminile; l’uso maschile è off-label. L’enclomifene non è autorizzato come medicinale né in UE né negli USA.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Farmacologia caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Studi preclinici regolatori."
+    },
+    "osservazionale": {
+      "level": "limitato",
+      "note": "Serie di casi e studi retrospettivi negli uomini."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Piccoli RCT negli uomini, su marcatori ormonali."
+    },
+    "autorizzato": {
+      "level": "limitato",
+      "note": "Autorizzato solo per un’altra indicazione (infertilità femminile)."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — clomifene nell’ipogonadismo maschile",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=clomiphene+male+hypogonadism",
+      "type": "studio"
+    },
+    {
+      "label": "PubMed — enclomifene, studi clinici",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=enclomiphene+randomized",
+      "type": "studio"
+    }
+  ],
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

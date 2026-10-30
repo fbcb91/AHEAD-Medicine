@@ -1,0 +1,70 @@
+{
+  "name": "Liraglutide",
+  "slug": "liraglutide",
+  "category": "Metabolismo",
+  "status": "ue",
+  "service": "GLP-1",
+  "aliases": [
+    "Victoza",
+    "Saxenda",
+    "GLP-1"
+  ],
+  "focus": "Diabete e controllo del peso",
+  "tagline": "Il GLP-1 giornaliero che ha aperto la strada alla classe.",
+  "evidence_summary": "Cliniche consolidate per indicazioni specifiche",
+  "what": "Liraglutide è un agonista del recettore GLP-1 a somministrazione giornaliera, autorizzato da oltre un decennio per il diabete di tipo 2 e, a dose diversa, per la gestione del peso. Sono disponibili anche medicinali equivalenti.",
+  "unknown": "Rispetto ai GLP-1 più recenti produce in media una perdita di peso minore. Come per gli altri farmaci della classe, il peso tende a risalire dopo la sospensione.",
+  "risk": "Effetti gastrointestinali frequenti; rischi più rari includono pancreatite e calcoli biliari. Uso solo su prescrizione e con indicazione appropriata.",
+  "reg": "Autorizzato in UE (Victoza per il diabete, Saxenda per la gestione del peso) con indicazioni specifiche.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Farmacologia caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Studi preclinici regolatori completi."
+    },
+    "osservazionale": {
+      "level": "si",
+      "note": "Lunga esperienza post-marketing."
+    },
+    "rct": {
+      "level": "si",
+      "note": "RCT di fase 3 (LEAD, SCALE) e di esito cardiovascolare (LEADER)."
+    },
+    "autorizzato": {
+      "level": "si",
+      "note": "Autorizzato in UE per indicazioni specifiche."
+    }
+  },
+  "sources": [
+    {
+      "label": "EMA — Saxenda (EPAR)",
+      "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/saxenda",
+      "type": "regolatorio"
+    },
+    {
+      "label": "EMA — Victoza (EPAR)",
+      "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/victoza",
+      "type": "regolatorio"
+    },
+    {
+      "label": "NEJM 2015 — studio SCALE",
+      "url": "https://doi.org/10.1056/NEJMoa1411892",
+      "type": "studio"
+    },
+    {
+      "label": "NEJM 2016 — studio LEADER",
+      "url": "https://doi.org/10.1056/NEJMoa1603827",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

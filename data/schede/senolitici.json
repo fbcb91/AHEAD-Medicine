@@ -1,0 +1,57 @@
+{
+  "name": "Senolitici (dasatinib + quercetina)",
+  "slug": "senolitici",
+  "kind": "sostanza",
+  "category": "Longevità",
+  "status": "sperimentale",
+  "service": "Longevity & Performance",
+  "aliases": [
+    "dasatinib",
+    "quercetina",
+    "fisetina",
+    "senolytics",
+    "D+Q"
+  ],
+  "focus": "Cellule senescenti",
+  "tagline": "Eliminare le cellule “invecchiate”: un’idea promettente, ancora in laboratorio.",
+  "evidence_summary": "Solide negli animali, pilota nell’uomo",
+  "what": "I senolitici sono sostanze studiate per eliminare selettivamente le cellule senescenti, che si accumulano con l’età. La combinazione più studiata è dasatinib (un farmaco antitumorale) con quercetina (un flavonoide).",
+  "unknown": "Nei topi i senolitici hanno migliorato diverse funzioni legate all’età. Nell’uomo esistono solo studi pilota, piccoli e spesso non controllati, in malattie specifiche.",
+  "risk": "Dasatinib è un farmaco oncologico con effetti indesiderati significativi (per esempio sul sangue e versamenti pleurici). L’uso fai-da-te non è giustificato.",
+  "reg": "Dasatinib è autorizzato in UE solo per alcune leucemie. L’uso senolitico è sperimentale.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Ampia ricerca su cellule senescenti."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Numerosi studi su topi."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato osservazionale."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Solo studi pilota su piccoli gruppi."
+    },
+    "autorizzato": {
+      "level": "limitato",
+      "note": "Dasatinib autorizzato per altre indicazioni."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — studi clinici sui senolitici",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=dasatinib+quercetin+senolytic+clinical",
+      "type": "studio"
+    }
+  ],
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

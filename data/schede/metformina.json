@@ -1,0 +1,59 @@
+{
+  "name": "Metformina",
+  "slug": "metformina",
+  "kind": "sostanza",
+  "category": "Longevità",
+  "status": "ue",
+  "service": "Longevity & Performance",
+  "aliases": [
+    "metformin",
+    "TAME"
+  ],
+  "focus": "Diabete e invecchiamento",
+  "tagline": "Il farmaco per il diabete diventato simbolo della longevità.",
+  "evidence_summary": "Consolidate per il diabete; ipotesi per la longevità",
+  "what": "La metformina è il farmaco di prima linea per il diabete di tipo 2, in uso da decenni. È stata proposta come possibile farmaco “anti-invecchiamento” sulla base di studi animali e osservazionali.",
+  "unknown": "Gli studi osservazionali che suggeriscono minore mortalità nei diabetici trattati sono soggetti a distorsioni. Lo studio TAME, pensato per verificare l’ipotesi in persone senza diabete, non ha ancora prodotto risultati. In alcuni studi la metformina ha attenuato gli adattamenti all’esercizio fisico.",
+  "risk": "Disturbi gastrointestinali, carenza di vitamina B12 con l’uso prolungato, raramente acidosi lattica in presenza di insufficienza renale.",
+  "reg": "Autorizzata in UE per il diabete di tipo 2; non per la longevità.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Meccanismi ampiamente studiati."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Risultati misti sulla durata della vita negli animali."
+    },
+    "osservazionale": {
+      "level": "limitato",
+      "note": "Studi osservazionali con possibili distorsioni."
+    },
+    "rct": {
+      "level": "no",
+      "note": "Nessun RCT completato sull’invecchiamento in persone sane."
+    },
+    "autorizzato": {
+      "level": "si",
+      "note": "Autorizzata in UE per il diabete."
+    }
+  },
+  "sources": [
+    {
+      "label": "AFAR — lo studio TAME",
+      "url": "https://www.afar.org/tame-trial",
+      "type": "notizia"
+    },
+    {
+      "label": "PubMed — metformina ed esercizio fisico",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=metformin+exercise+training+adaptations",
+      "type": "studio"
+    }
+  ],
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

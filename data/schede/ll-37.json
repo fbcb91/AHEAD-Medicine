@@ -1,0 +1,54 @@
+{
+  "name": "LL-37",
+  "slug": "ll-37",
+  "category": "Immunità",
+  "status": "sperimentale",
+  "service": "Peptidi",
+  "aliases": [
+    "catelicidina",
+    "cathelicidin"
+  ],
+  "focus": "Difese antimicrobiche",
+  "tagline": "Un peptide antimicrobico naturale, studiato per le ferite croniche.",
+  "evidence_summary": "Preliminari",
+  "what": "LL-37 è l’unica catelicidina umana, un peptide antimicrobico prodotto naturalmente da cellule immunitarie ed epiteliali.",
+  "unknown": "Esistono solo piccoli studi clinici di fase iniziale, per esempio sulle ulcere venose degli arti inferiori. Non ci sono prove per un uso sistemico o “immunitario” generico.",
+  "risk": "LL-37 ha effetti sia antinfiammatori sia pro-infiammatori a seconda del contesto ed è coinvolto in alcune malattie autoimmuni della pelle. La somministrazione non controllata è sconsigliabile.",
+  "reg": "Non è un medicinale autorizzato.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Ampia caratterizzazione biologica."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Modelli animali di infezione e ferite."
+    },
+    "osservazionale": {
+      "level": "limitato",
+      "note": "Studi su livelli naturali in varie malattie."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Piccoli studi di fase 1–2 su ulcere croniche."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — LL-37 e ulcere venose",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=LL-37+venous+leg+ulcers",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

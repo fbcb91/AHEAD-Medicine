@@ -1,0 +1,64 @@
+{
+  "name": "Semax",
+  "slug": "semax",
+  "category": "Neuro",
+  "status": "extra_ue",
+  "service": "Peptidi",
+  "aliases": [
+    "ACTH 4-10",
+    "nootropo"
+  ],
+  "focus": "Funzione cerebrale",
+  "tagline": "Un peptide registrato in Russia, poco studiato altrove.",
+  "evidence_summary": "Limitate, poco replicate",
+  "what": "Semax è un peptide sintetico derivato da un frammento dell’ormone ACTH. In Russia è registrato come farmaco per alcune condizioni neurologiche; altrove è venduto come “nootropo”.",
+  "unknown": "Le prove derivano soprattutto da studi russi di piccole dimensioni, con limiti metodologici e scarsa replicazione indipendente. Non ci sono prove di miglioramento cognitivo in persone sane.",
+  "risk": "Profilo di sicurezza poco documentato secondo gli standard europei; qualità dei prodotti non regolati incerta.",
+  "reg": "Non autorizzato in UE né negli USA. Nel luglio 2026 un comitato consultivo della FDA ha votato a favore del suo inserimento nell’elenco delle sostanze utilizzabili in galenica negli Stati Uniti. Il voto non è vincolante, non equivale all’approvazione di un farmaco e non ha effetti in Europa.",
+  "evidence": {
+    "in_vitro": {
+      "level": "limitato",
+      "note": "Studi su espressione di fattori neurotrofici."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Modelli animali di ischemia cerebrale."
+    },
+    "osservazionale": {
+      "level": "limitato",
+      "note": "Studi clinici russi non controllati."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Pochi studi controllati, di piccole dimensioni."
+    },
+    "autorizzato": {
+      "level": "limitato",
+      "note": "Registrato solo fuori UE (Russia)."
+    }
+  },
+  "sources": [
+    {
+      "label": "FDA — comitato consultivo sulla galenica, 23–24 luglio 2026",
+      "url": "https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026",
+      "type": "regolatorio"
+    },
+    {
+      "label": "McDermott Will & Emery — sintesi dei voti PCAC (luglio 2026)",
+      "url": "https://www.mcdermottlaw.com/insights/bulk-list-bound-pcac-backs-majority-of-peptides-in-two-day-public-meeting/",
+      "type": "notizia"
+    },
+    {
+      "label": "PubMed — Semax",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Semax+peptide",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

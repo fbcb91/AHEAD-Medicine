@@ -1,0 +1,59 @@
+{
+  "name": "Orforglipron",
+  "slug": "orforglipron",
+  "kind": "sostanza",
+  "category": "Metabolismo",
+  "status": "extra_ue",
+  "service": "GLP-1",
+  "aliases": [
+    "Foundayo",
+    "GLP-1 orale"
+  ],
+  "focus": "Controllo del peso",
+  "tagline": "Il primo GLP-1 in compressa non peptidico.",
+  "evidence_summary": "RCT di fase 3",
+  "what": "Orforglipron è un agonista del recettore GLP-1 a piccola molecola (non un peptide), assunto per bocca una volta al giorno. Negli USA è approvato (Foundayo) per la gestione cronica del peso.",
+  "unknown": "In media la perdita di peso negli studi è inferiore a quella dei GLP-1 iniettabili più potenti. I dati a lungo termine e sugli esiti cardiovascolari sono ancora in arrivo.",
+  "risk": "Effetti gastrointestinali simili agli altri GLP-1; l’etichetta USA include un’avvertenza sul rischio di tumori delle cellule C tiroidee osservato negli animali.",
+  "reg": "Approvato dalla FDA ad aprile 2026. Alla data di verifica non è autorizzato in UE.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Farmacologia caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Studi preclinici regolatori."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Dati di pratica clinica non ancora disponibili."
+    },
+    "rct": {
+      "level": "si",
+      "note": "RCT di fase 3 (programma ATTAIN)."
+    },
+    "autorizzato": {
+      "level": "limitato",
+      "note": "Approvato solo fuori UE (USA)."
+    }
+  },
+  "sources": [
+    {
+      "label": "Pharmacy Times — approvazione FDA (aprile 2026)",
+      "url": "https://www.pharmacytimes.com/view/fda-approves-orforglipron-first-glp-1-pill-without-time-food-or-water-restrictions",
+      "type": "notizia"
+    },
+    {
+      "label": "PubMed — studi ATTAIN",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=orforglipron+ATTAIN",
+      "type": "studio"
+    }
+  ],
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

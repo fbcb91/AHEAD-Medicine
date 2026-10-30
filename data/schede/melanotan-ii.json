@@ -1,0 +1,60 @@
+{
+  "name": "Melanotan II",
+  "slug": "melanotan-ii",
+  "category": "Pelle",
+  "status": "sperimentale",
+  "service": "Peptidi",
+  "aliases": [
+    "MT-2",
+    "peptide abbronzante",
+    "afamelanotide"
+  ],
+  "focus": "Pigmentazione cutanea",
+  "tagline": "L’“iniezione abbronzante” che le autorità sconsigliano.",
+  "evidence_summary": "Molto limitate; segnalazioni di rischi",
+  "what": "Melanotan II è un analogo sintetico dell’ormone alfa-MSH che stimola la produzione di melanina. Viene venduto illegalmente online come abbronzante. Da non confondere con afamelanotide, una molecola diversa autorizzata per una rara malattia della pelle.",
+  "unknown": "Non ci sono studi clinici adeguati sulla sicurezza dell’uso per abbronzarsi. Gli effetti sui nei e sul rischio di melanoma non sono stati studiati in modo sistematico.",
+  "risk": "Sono descritti nausea, vampate, erezioni prolungate e scurimento o cambiamento dei nei; in letteratura esistono segnalazioni di melanoma in utilizzatori, senza un nesso causale stabilito. Diverse autorità sanitarie europee hanno emesso avvisi contro questi prodotti.",
+  "reg": "Melanotan II non è autorizzato. Afamelanotide (Scenesse) è autorizzato in UE solo per la protoporfiria eritropoietica.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Farmacologia dei recettori della melanocortina."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Studi animali."
+    },
+    "osservazionale": {
+      "level": "limitato",
+      "note": "Segnalazioni di casi in utilizzatori."
+    },
+    "rct": {
+      "level": "no",
+      "note": "Nessun RCT sull’uso cosmetico."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato (afamelanotide è una molecola diversa)."
+    }
+  },
+  "sources": [
+    {
+      "label": "EMA — Scenesse (afamelanotide) (EPAR)",
+      "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/scenesse",
+      "type": "regolatorio"
+    },
+    {
+      "label": "PubMed — melanotan e nei / melanoma",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=melanotan+melanoma",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

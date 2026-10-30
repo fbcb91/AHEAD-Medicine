@@ -1,0 +1,59 @@
+{
+  "name": "CJC-1295",
+  "slug": "cjc-1295",
+  "category": "Ormoni",
+  "status": "sperimentale",
+  "service": "Peptidi",
+  "aliases": [
+    "DAC:GRF",
+    "analogo GHRH"
+  ],
+  "focus": "Asse dell’ormone della crescita",
+  "tagline": "Un peptide studiato per il rilascio dell’ormone della crescita.",
+  "evidence_summary": "Limitate: effetti ormonali, non clinici",
+  "what": "CJC-1295 è un analogo a lunga durata del GHRH, l’ormone che stimola l’ipofisi a rilasciare ormone della crescita (GH). È stato sviluppato per aumentare GH e IGF-1 in modo prolungato.",
+  "unknown": "Piccoli studi su volontari sani hanno misurato aumenti di GH e IGF-1, ma modificare livelli ormonali non equivale a dimostrare benefici su longevità, performance o salute. Lo sviluppo come farmaco non è proseguito.",
+  "risk": "La FDA segnala dati clinici limitati e segnalazioni di eventi avversi, tra cui aumento della frequenza cardiaca e reazioni vasodilatatorie. Un aumento cronico di IGF-1 ha effetti a lungo termine non noti.",
+  "reg": "Non è autorizzato dall’EMA né dalla FDA.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Farmacologia caratterizzata in laboratorio."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Studi animali sulla secrezione di GH."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessuno studio osservazionale."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Piccoli studi di fase 1–2 su marcatori ormonali, senza esiti clinici."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "FDA — sostanze per galenica con possibili rischi",
+      "url": "https://www.fda.gov/drugs/human-drug-compounding/certain-bulk-drug-substances-use-compounding-may-present-significant-safety-risks",
+      "type": "regolatorio"
+    },
+    {
+      "label": "PubMed — studi clinici su CJC-1295",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=CJC-1295+healthy+adults+growth+hormone",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

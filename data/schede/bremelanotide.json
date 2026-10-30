@@ -1,0 +1,59 @@
+{
+  "name": "Bremelanotide (PT-141)",
+  "slug": "bremelanotide",
+  "category": "Sessualità e fertilità",
+  "status": "extra_ue",
+  "service": "Peptidi",
+  "aliases": [
+    "PT-141",
+    "Vyleesi"
+  ],
+  "focus": "Desiderio sessuale",
+  "tagline": "Approvato negli USA per un disturbo specifico, non per migliorare la libido.",
+  "evidence_summary": "RCT per un’indicazione specifica",
+  "what": "Bremelanotide è un agonista dei recettori della melanocortina. Negli USA è approvato (Vyleesi) per il disturbo da desiderio sessuale ipoattivo nelle donne in premenopausa.",
+  "unknown": "I benefici negli studi sono stati modesti. Non ci sono prove di efficacia per l’uso “ricreativo” o negli uomini al di fuori di studi clinici.",
+  "risk": "Nausea frequente, vampate, aumento transitorio della pressione arteriosa; con uso ripetuto è descritta iperpigmentazione di viso e gengive.",
+  "reg": "Approvato dalla FDA nel 2019 per l’indicazione specifica. Non è autorizzato in UE.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Farmacologia caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Studi preclinici regolatori."
+    },
+    "osservazionale": {
+      "level": "limitato",
+      "note": "Dati post-marketing negli USA."
+    },
+    "rct": {
+      "level": "si",
+      "note": "RCT di fase 3 nell’indicazione approvata."
+    },
+    "autorizzato": {
+      "level": "limitato",
+      "note": "Approvato solo fuori UE (USA)."
+    }
+  },
+  "sources": [
+    {
+      "label": "FDA — approvazione di Vyleesi (2019)",
+      "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-new-treatment-hypoactive-sexual-desire-disorder-premenopausal-women",
+      "type": "regolatorio"
+    },
+    {
+      "label": "PubMed — studi RECONNECT",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=bremelanotide+RECONNECT",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

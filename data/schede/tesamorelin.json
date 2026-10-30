@@ -1,0 +1,59 @@
+{
+  "name": "Tesamorelin",
+  "slug": "tesamorelin",
+  "category": "Ormoni",
+  "status": "extra_ue",
+  "service": "Peptidi",
+  "aliases": [
+    "Egrifta",
+    "analogo GHRH"
+  ],
+  "focus": "Grasso viscerale nell’HIV",
+  "tagline": "Un analogo del GHRH approvato negli USA per un’indicazione molto specifica.",
+  "evidence_summary": "RCT per un’indicazione specifica",
+  "what": "Tesamorelin è un analogo sintetico del GHRH. Negli Stati Uniti è approvato (Egrifta) per ridurre l’eccesso di grasso addominale in persone con HIV e lipodistrofia.",
+  "unknown": "L’efficacia è dimostrata solo nell’indicazione approvata. Non ci sono prove che sia utile per dimagrimento, anti-aging o performance in persone sane.",
+  "risk": "Può aumentare IGF-1 e alterare la tolleranza al glucosio; sono descritte reazioni nel sito di iniezione, ritenzione di liquidi e dolori articolari. Richiede monitoraggio medico.",
+  "reg": "Approvato dalla FDA (2010) per l’indicazione specifica. In UE la domanda di autorizzazione è stata ritirata nel 2012 dopo che il comitato EMA aveva ritenuto non dimostrato un rapporto beneficio-rischio positivo.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Farmacologia caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Studi preclinici regolatori."
+    },
+    "osservazionale": {
+      "level": "limitato",
+      "note": "Dati post-marketing nell’indicazione approvata."
+    },
+    "rct": {
+      "level": "si",
+      "note": "RCT di fase 3 in persone con HIV e lipodistrofia."
+    },
+    "autorizzato": {
+      "level": "limitato",
+      "note": "Approvato solo fuori UE (USA)."
+    }
+  },
+  "sources": [
+    {
+      "label": "EMA — ritiro della domanda per Egrifta (tesamorelin)",
+      "url": "https://www.ema.europa.eu/en/news/ferrer-internacional-sa-withdraws-its-marketing-authorisation-application-egrifta-tesamorelin",
+      "type": "regolatorio"
+    },
+    {
+      "label": "PubMed — RCT su tesamorelin",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=tesamorelin+randomized+HIV+visceral+fat",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

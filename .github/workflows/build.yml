@@ -1,0 +1,13 @@
+name: Build check
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rigenera il sito dai dati
+        run: python3 build.py
+      - name: Verifica che l'HTML committato sia aggiornato
+        run: git status --porcelain && test -z "$(git status --porcelain)"
+      - name: Controllo sintassi JavaScript
+        run: node --check app.js && node --check --input-type=module < api/interest.js

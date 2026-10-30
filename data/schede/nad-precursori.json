@@ -1,0 +1,62 @@
+{
+  "name": "Precursori del NAD+ (NMN e NR)",
+  "slug": "nad-precursori",
+  "kind": "sostanza",
+  "category": "Longevità",
+  "status": "integratore",
+  "service": "Longevity & Performance",
+  "aliases": [
+    "NMN",
+    "NR",
+    "nicotinamide riboside",
+    "nicotinamide mononucleotide",
+    "NAD"
+  ],
+  "focus": "Metabolismo cellulare",
+  "tagline": "Alzano il NAD+ nel sangue. Ma migliorano la salute?",
+  "evidence_summary": "Effetti sui marcatori, non su esiti clinici",
+  "what": "NMN (nicotinamide mononucleotide) e NR (nicotinamide riboside) sono precursori del NAD+, una molecola coinvolta nel metabolismo energetico che diminuisce con l’età in alcuni tessuti.",
+  "unknown": "Diversi piccoli RCT mostrano che aumentano i livelli di NAD+ nel sangue, ma i benefici su funzione fisica, metabolismo o invecchiamento sono incoerenti o assenti. Mancano studi lunghi su esiti clinici.",
+  "risk": "Ben tollerati negli studi brevi. La qualità degli integratori varia; l’uso di NAD+ per via endovenosa non è supportato da prove.",
+  "reg": "Non sono medicinali. Il nicotinamide riboside cloruro è autorizzato in UE come nuovo alimento. Per l’NMN l’EFSA ha espresso nel 2026 un parere positivo sulla sicurezza di un prodotto; alla data di verifica l’autorizzazione europea non risultava completata.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Ampia ricerca su cellule."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Effetti metabolici in modelli murini."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato osservazionale significativo."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Piccoli RCT con effetti sui marcatori e risultati clinici incoerenti."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non sono medicinali."
+    }
+  },
+  "sources": [
+    {
+      "label": "NutraIngredients — parere EFSA sull’NMN (maggio 2026)",
+      "url": "https://www.nutraingredients.com/Article/2026/05/13/efsa-gives-positive-safety-opinion-on-nmn/",
+      "type": "notizia"
+    },
+    {
+      "label": "PubMed — RCT su NMN e NR",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=nicotinamide+mononucleotide+OR+nicotinamide+riboside+randomized",
+      "type": "studio"
+    }
+  ],
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "name": "Elamipretide",
+  "slug": "elamipretide",
+  "category": "Longevità",
+  "status": "extra_ue",
+  "service": "Longevity & Performance",
+  "aliases": [
+    "SS-31",
+    "Forzinity"
+  ],
+  "focus": "Funzione mitocondriale",
+  "tagline": "Il primo farmaco mirato ai mitocondri, per una malattia rara.",
+  "evidence_summary": "RCT in malattie rare, risultati misti",
+  "what": "Elamipretide (SS-31) è un peptide che si lega alla cardiolipina della membrana mitocondriale interna. Negli USA ha ricevuto un’approvazione accelerata per la sindrome di Barth, una rara malattia genetica.",
+  "unknown": "L’approvazione si basa su un miglioramento della forza muscolare e richiede uno studio di conferma. In altre malattie mitocondriali gli studi di fase 3 non hanno raggiunto l’obiettivo principale. Non ci sono dati su invecchiamento o performance in persone sane.",
+  "risk": "Le reazioni nel sito di iniezione sono l’effetto indesiderato più comune negli studi.",
+  "reg": "Approvazione accelerata FDA (settembre 2025) per la sindrome di Barth. Non è autorizzato in UE.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Studi su mitocondri isolati e cellule."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Numerosi modelli animali."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato osservazionale."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "RCT in malattie rare, con risultati misti."
+    },
+    "autorizzato": {
+      "level": "limitato",
+      "note": "Approvato solo fuori UE (USA), per un’indicazione rara."
+    }
+  },
+  "sources": [
+    {
+      "label": "FDA — approvazione accelerata per la sindrome di Barth",
+      "url": "https://www.fda.gov/news-events/press-announcements/fda-grants-accelerated-approval-first-treatment-barth-syndrome",
+      "type": "regolatorio"
+    },
+    {
+      "label": "PubMed — elamipretide, studi clinici",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=elamipretide+randomized",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

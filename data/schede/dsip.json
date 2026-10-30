@@ -1,0 +1,60 @@
+{
+  "name": "Emideltide (DSIP)",
+  "slug": "dsip",
+  "category": "Neuro",
+  "status": "sperimentale",
+  "service": "Peptidi",
+  "aliases": [
+    "DSIP",
+    "delta sleep-inducing peptide",
+    "emideltide"
+  ],
+  "focus": "Sonno",
+  "tagline": "Il “peptide del sonno” che non ha convinto nemmeno i consulenti FDA.",
+  "evidence_summary": "Datate e incoerenti",
+  "what": "Il DSIP (emideltide) è un peptide isolato negli anni ’70 e studiato per un possibile ruolo nella regolazione del sonno.",
+  "unknown": "Gli studi nell’uomo sono vecchi, piccoli e con risultati incoerenti. Il meccanismo d’azione e un eventuale recettore specifico non sono stati identificati con certezza.",
+  "risk": "Dati di sicurezza insufficienti.",
+  "reg": "Non autorizzato in UE né negli USA. Nel luglio 2026 il comitato consultivo FDA ha votato contro il suo inserimento tra le sostanze per galenica.",
+  "evidence": {
+    "in_vitro": {
+      "level": "limitato",
+      "note": "Pochi studi di laboratorio."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Studi animali datati."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessuno studio osservazionale."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Piccoli studi datati con risultati incoerenti."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "FDA — comitato consultivo sulla galenica, 23–24 luglio 2026",
+      "url": "https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026",
+      "type": "regolatorio"
+    },
+    {
+      "label": "McDermott Will & Emery — sintesi dei voti PCAC (luglio 2026)",
+      "url": "https://www.mcdermottlaw.com/insights/bulk-list-bound-pcac-backs-majority-of-peptides-in-two-day-public-meeting/",
+      "type": "notizia"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

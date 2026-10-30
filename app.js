@@ -18,14 +18,20 @@
   if (query) {
     const cards = [...document.querySelectorAll('.library-results .peptide-card')];
     const filters = [...document.querySelectorAll('.filter')];
+    const kindFilter = document.querySelector('#kind-filter');
+    const statusFilter = document.querySelector('#status-filter');
     let selectedFilter = 'Tutti';
     const update = () => {
       let count = 0;
       const search = query.value.trim().toLocaleLowerCase('it');
+      const kind = kindFilter?.value || '';
+      const status = statusFilter?.value || '';
       cards.forEach(card => {
-        const title = card.querySelector('h3')?.textContent?.toLocaleLowerCase('it') || '';
-        const category = card.querySelector('.pc-tag')?.textContent?.trim() || '';
-        const show = title.includes(search) && (selectedFilter === 'Tutti' || category === selectedFilter);
+        const d = card.dataset;
+        const show = (d.search || '').includes(search)
+          && (selectedFilter === 'Tutti' || d.category === selectedFilter)
+          && (!kind || d.kind === kind)
+          && (!status || d.status === status);
         card.hidden = !show;
         if (show) count++;
       });
@@ -33,9 +39,14 @@
       document.querySelector('#no-results').hidden = count > 0;
     };
     query.addEventListener('input', update);
+    kindFilter?.addEventListener('change', update);
+    statusFilter?.addEventListener('change', update);
     filters.forEach(f => f.addEventListener('click', () => {
       selectedFilter = f.dataset.filter;
-      filters.forEach(el => el.classList.toggle('active', el === f));
+      filters.forEach(el => {
+        el.classList.toggle('active', el === f);
+        el.setAttribute('aria-pressed', String(el === f));
+      });
       update();
     }));
   }
@@ -70,7 +81,17 @@
   document.querySelectorAll('.interest-trigger').forEach(button => button.addEventListener('click', () => openModal(button.dataset.service || 'generale')));
   modal?.querySelector('[data-close-modal]')?.addEventListener('click', closeModal);
   modal?.addEventListener('click', event => { if (event.target === modal) closeModal(); });
-  document.addEventListener('keydown', event => { if (event.key === 'Escape' && modal && !modal.hidden) closeModal(); });
+  document.addEventListener('keydown', event => {
+    if (!modal || modal.hidden) return;
+    if (event.key === 'Escape') { closeModal(); return; }
+    // Keep keyboard focus inside the dialog while it is open.
+    if (event.key === 'Tab') {
+      const focusable = [...modal.querySelectorAll('a[href], button:not([disabled]), input:not([tabindex="-1"])')].filter(el => el.offsetParent !== null);
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    }
+  });
   // Do not silently pretend signups worked. The API returns 503 until MailerLite is configured.
   form?.addEventListener('submit', async event => {
     event.preventDefault();
@@ -81,7 +102,11 @@
     try {
       const res = await fetch('/api/interest', {
         method: 'POST', headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({ email: document.querySelector('#interest-email').value.trim(), consent: document.querySelector('#interest-consent').checked })
+        body: JSON.stringify({
+          email: document.querySelector('#interest-email').value.trim(),
+          consent: document.querySelector('#interest-consent').checked,
+          website: document.querySelector('#interest-website')?.value || ''
+        })
       });
       let data = {};
       try { data = await res.json(); } catch (_) {}

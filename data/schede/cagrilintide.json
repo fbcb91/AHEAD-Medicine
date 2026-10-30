@@ -1,0 +1,59 @@
+{
+  "name": "Cagrilintide",
+  "slug": "cagrilintide",
+  "category": "Metabolismo",
+  "status": "trial",
+  "service": "GLP-1",
+  "aliases": [
+    "CagriSema",
+    "analogo amilina"
+  ],
+  "focus": "Obesità e metabolismo",
+  "tagline": "Un analogo dell’amilina, studiato in combinazione con semaglutide.",
+  "evidence_summary": "RCT di fase 3 (in combinazione)",
+  "what": "Cagrilintide è un analogo a lunga durata dell’amilina, un ormone che contribuisce al senso di sazietà. È studiato soprattutto in combinazione con semaglutide (CagriSema) per l’obesità.",
+  "unknown": "La maggior parte dei dati riguarda la combinazione, non cagrilintide da sola. Il confronto con altre terapie e la sicurezza a lungo termine sono ancora in valutazione.",
+  "risk": "Negli studi prevalgono effetti gastrointestinali simili a quelli dei GLP-1. Non esistono canali legittimi di accesso fuori dagli studi clinici.",
+  "reg": "Non è autorizzato in UE. La combinazione CagriSema è stata sottoposta alla FDA a dicembre 2025; alla data di verifica la decisione non risultava pubblicata.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Farmacologia caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Studi preclinici."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato di pratica clinica."
+    },
+    "rct": {
+      "level": "si",
+      "note": "RCT di fase 2 e 3 (programma REDEFINE), soprattutto in combinazione."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "PharmExec — domanda FDA per CagriSema (dicembre 2025)",
+      "url": "https://www.pharmexec.com/view/novo-nordisk-submits-nda-fda-cagrisema",
+      "type": "notizia"
+    },
+    {
+      "label": "PubMed — studi REDEFINE",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=cagrilintide+semaglutide+REDEFINE",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

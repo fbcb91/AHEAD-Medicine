@@ -1,0 +1,60 @@
+{
+  "name": "Ormone della crescita (somatropina)",
+  "slug": "somatropina",
+  "kind": "sostanza",
+  "category": "Ormoni",
+  "status": "ue",
+  "service": "Longevity & Performance",
+  "aliases": [
+    "GH",
+    "HGH",
+    "somatropin"
+  ],
+  "focus": "Deficit di ormone della crescita",
+  "tagline": "Un farmaco essenziale per chi ne è carente, non un elisir di giovinezza.",
+  "evidence_summary": "Consolidate per il deficit; sfavorevoli per l’anti-aging",
+  "what": "La somatropina è l’ormone della crescita prodotto con tecnologia ricombinante. È autorizzata per il deficit di GH nei bambini e negli adulti e per alcune condizioni specifiche.",
+  "unknown": "Negli anziani sani, una revisione sistematica ha trovato piccoli cambiamenti nella composizione corporea senza benefici funzionali chiari, con più effetti indesiderati.",
+  "risk": "Ritenzione di liquidi, dolori articolari, sindrome del tunnel carpale, alterazioni della glicemia. È una sostanza vietata nello sport.",
+  "reg": "Autorizzata in UE per indicazioni specifiche (prescrizione specialistica). Non è autorizzata per anti-aging o performance; è inclusa nella lista WADA delle sostanze proibite.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Biologia ampiamente caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Ampia letteratura animale."
+    },
+    "osservazionale": {
+      "level": "si",
+      "note": "Registri e studi osservazionali nell’uso autorizzato."
+    },
+    "rct": {
+      "level": "si",
+      "note": "RCT nelle indicazioni autorizzate; RCT negli anziani sani senza beneficio chiaro."
+    },
+    "autorizzato": {
+      "level": "si",
+      "note": "Autorizzata in UE per indicazioni specifiche."
+    }
+  },
+  "sources": [
+    {
+      "label": "Annals of Internal Medicine 2007 — GH negli anziani sani (revisione sistematica)",
+      "url": "https://doi.org/10.7326/0003-4819-146-2-200701160-00010",
+      "type": "studio"
+    },
+    {
+      "label": "WADA — lista delle sostanze proibite",
+      "url": "https://www.wada-ama.org/en/prohibited-list",
+      "type": "regolatorio"
+    }
+  ],
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

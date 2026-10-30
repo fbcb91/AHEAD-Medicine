@@ -4,8 +4,10 @@
 
 ## Cosa contiene
 - Homepage premium e responsive
-- Peptide Library: `/library/` con ricerca e filtri
-- 10 schede SEO separate: `/peptidi/bpc-157/`, ecc.
+- Library: `/library/` con ricerca (nome, area, sinonimi) e filtri per area, tipo e stato regolatorio
+- 33 schede separate: peptidi in `/peptidi/<slug>/`, altre sostanze (testosterone, rapamicina, metformina…) in `/sostanze/<slug>/`
+- Per ogni scheda: griglia delle prove (in vitro, animali, osservazionali, RCT, autorizzazione), stato regolatorio, fonti tipizzate, data di verifica e stato della revisione medica
+- Pagina `/metodo/` con il metodo editoriale e pagina 404
 - 4 consulenze future **senza prezzi**: Peptidi, TRT, GLP-1 e Longevity & Performance
 - Modale raccolta email via funzione Vercel + MailerLite; disattivata finché non configurata
 - Privacy provvisoria da sostituire prima di raccogliere dati
@@ -38,7 +40,16 @@ Le CTA lanciano un evento aggregato `Consulenza: interesse` con proprietà `serv
 La mail del visitatore non viene associata alla consulenza selezionata. Questo evita inferenze su informazioni sanitarie nella lista marketing.
 
 ## Aggiornare o aggiungere schede
-Al momento i dati sono nel blocco `DATA` di `build.py`: modificane i campi e lancia `python3 build.py`. Quando si superano 10–20 schede, conviene separare dati e template, mantenendo URLs indicizzabili.
+Ogni scheda è un file in `data/schede/<slug>.json`. Per aggiungerne una copia un file esistente, modifica i campi e lancia `python3 build.py`: il build si ferma con un errore se mancano campi, se lo stato o i livelli di evidenza non sono validi o se non c'è almeno una fonte specifica.
+
+Campi principali:
+- `kind`: `peptide` o `sostanza` (determina l'URL)
+- `status`: `ue`, `extra_ue`, `trial`, `ritirato`, `sperimentale`, `integratore`
+- `evidence`: per `in_vitro`, `animale`, `osservazionale`, `rct`, `autorizzato` un `level` (`si`, `limitato`, `no`) e una `note`
+- `sources`: elenco di `{label, url, type}` con `type` tra `regolatorio`, `studio`, `revisione`, `azienda`, `notizia`
+- `review`: `checked` (data ultima verifica fonti), `next_check`, `medical_reviewer` (resta `null` finché la revisione medica non è fatta)
+
+Una GitHub Action rilancia il build a ogni push e fallisce se l'HTML committato non corrisponde ai dati.
 
 ## Prima di rendere pubblico
 - Nome e brand definitivi, dominio e logo

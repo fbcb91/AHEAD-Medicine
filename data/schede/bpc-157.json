@@ -1,0 +1,64 @@
+{
+  "name": "BPC-157",
+  "slug": "bpc-157",
+  "category": "Recupero",
+  "status": "sperimentale",
+  "service": "Peptidi",
+  "aliases": [
+    "Body Protection Compound",
+    "pentadecapeptide"
+  ],
+  "focus": "Riparazione dei tessuti",
+  "tagline": "Cosa sappiamo davvero sul peptide più discusso nel mondo del recupero?",
+  "evidence_summary": "Molto preliminari: quasi solo studi animali",
+  "what": "Il BPC-157 è una sequenza sintetica di 15 aminoacidi derivata da una proteina del succo gastrico. È stato studiato soprattutto in modelli animali per i processi di riparazione dei tessuti e di infiammazione.",
+  "unknown": "Non esistono prove cliniche solide che dimostrino un beneficio per la guarigione di tendini, muscoli o lesioni nell’essere umano. Gran parte della letteratura proviene da pochi gruppi di ricerca e mancano dati adeguati su efficacia, qualità e sicurezza a lungo termine.",
+  "risk": "La FDA segnala incertezze su immunogenicità, impurità e caratterizzazione del principio attivo nelle preparazioni contenenti BPC-157. I prodotti venduti online come “uso di ricerca” non hanno controlli di qualità farmaceutici.",
+  "reg": "Non è un medicinale autorizzato dall’EMA né dalla FDA. Nel luglio 2026 un comitato consultivo della FDA ha votato a favore del suo inserimento nell’elenco delle sostanze utilizzabili in galenica negli Stati Uniti. Il voto non è vincolante, non equivale all’approvazione di un farmaco e non ha effetti in Europa.",
+  "evidence": {
+    "in_vitro": {
+      "level": "limitato",
+      "note": "Studi cellulari su migrazione cellulare e formazione di vasi."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Numerosi studi su roditori, in gran parte di pochi gruppi di ricerca."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Solo resoconti aneddotici e piccole serie di casi non controllate."
+    },
+    "rct": {
+      "level": "no",
+      "note": "Nessun RCT pubblicato con esiti clinici rilevanti."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato in UE né negli USA."
+    }
+  },
+  "sources": [
+    {
+      "label": "FDA — sostanze per galenica con possibili rischi",
+      "url": "https://www.fda.gov/drugs/human-drug-compounding/certain-bulk-drug-substances-use-compounding-may-present-significant-safety-risks",
+      "type": "regolatorio"
+    },
+    {
+      "label": "FDA — comitato consultivo sulla galenica, 23–24 luglio 2026",
+      "url": "https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026",
+      "type": "regolatorio"
+    },
+    {
+      "label": "McDermott Will & Emery — sintesi dei voti PCAC (luglio 2026)",
+      "url": "https://www.mcdermottlaw.com/insights/bulk-list-bound-pcac-backs-majority-of-peptides-in-two-day-public-meeting/",
+      "type": "notizia"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}
