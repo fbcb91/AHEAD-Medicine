@@ -62,3 +62,27 @@
 .other-services .mini-label{margin:0;width:100%}
 .other-service{font-weight:700;color:#3e6675}
 @media(max-width:800px){.service-grid{grid-template-columns:1fr}}
+/* Articoli */
+.article-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.article-card{display:flex;flex-direction:column;gap:12px;background:#fff;border:1px solid #d7ddda;padding:26px;min-height:260px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.article-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px #182b2b0c;border-color:#9eb7bb}
+.article-card[hidden]{display:none}
+.article-meta{font-size:10px;font-weight:800;letter-spacing:.14em;color:#7a9196}
+.article-card h3{font-size:clamp(21px,1.7vw,26px);margin:0;line-height:1.2}
+.article-card p{font-size:14px;color:#5d7075;margin:0;flex:1}
+.article-more{font-size:13px;font-weight:700;color:#3e6675}
+.article-filters{margin-bottom:26px}
+.article-title{font-size:clamp(38px,5vw,72px)!important;max-width:1100px}
+.article-body{max-width:760px}
+.article-body h2{font-size:clamp(26px,2.6vw,36px);margin:44px 0 16px}
+.article-body h3{font-size:22px;margin:30px 0 12px}
+.article-body p,.article-body li{font-size:17px;color:#3d5257;line-height:1.75}
+.article-body ul{padding-left:22px;margin:0 0 20px}
+.article-body li{margin-bottom:8px}
+.article-body a{color:#2f6a80;text-decoration:underline;text-underline-offset:3px}
+.article-body .dosing-warning{margin-top:40px}
+.articles-home{background:#eef2ef}
+/* Consulenze: griglia più compatta con 8 servizi */
+@media(min-width:1101px){.services-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.service-card{padding:28px}.service-card h3{font-size:clamp(24px,2vw,30px)}}
+@media(max-width:1100px){.article-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.article-grid{grid-template-columns:1fr}}

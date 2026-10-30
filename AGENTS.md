@@ -4,7 +4,7 @@
 Sito italiano di validazione del mercato per un futuro servizio medico sulle terapie emergenti. Il brand AHEAD è provvisorio. Il primo MVP include homepage, quattro consulenze come **servizi futuri senza prezzi**, directory di dieci peptidi, ricerca/filtri e raccolta di email attivabile via MailerLite.
 
 ## Vincoli importanti
-- Il team di medici è stato ingaggiato: il sito può dirlo. Il servizio previsto sono videoconsulenze con un medico che segue la persona nel tempo e, se lo ritiene appropriato, prescrive. Finché il servizio non è prenotabile non presentarlo come già attivo.
+- Il servizio è una rete di medici esperti: la persona racconta il suo obiettivo, le vengono proposti uno o più medici adatti, sceglie e prenota una videoconsulenza; il medico la segue nel tempo e, se lo ritiene appropriato, prescrive. Fase attuale: validazione dell'interesse. Finché il servizio non è prenotabile non presentarlo come già attivo.
 - La prescrizione è sempre una decisione del medico e riguarda solo medicinali autorizzati. Non promettere prescrizioni, accesso a farmaci sperimentali o reperibilità di peptidi non autorizzati; non indicare fornitori.
 - Sezione dosi delle schede (`dosing`): riportare solo dosi da foglietto/RCP approvato (UE o extra-UE) o da studi clinici pubblicati, sempre con la fonte (`basis`). Se non esiste una dose studiata nell'uomo (`basis: nessuna`) non riportare le quantità che circolano online. Mai protocolli, cicli o "stack" fai-da-te.
 - Ogni nuova scheda medico-scientifica deve distinguere **studi in vitro, animali, osservazionali, RCT, e medicinali autorizzati**. Richiedere controllo medico indipendente prima della pubblicazione.
@@ -13,6 +13,7 @@ Sito italiano di validazione del mercato per un futuro servizio medico sulle ter
 - Prima della pubblicazione rimuovere meta noindex **soltanto** dopo revisione scientifica e validazione privacy/legale.
 
 ## Files
+- `data/articoli/<slug>.md` articoli (guide e news) in Markdown con front-matter, validati da `build.py`.
 - `data/schede/<slug>.json` è la sorgente unica delle schede della Library (una per sostanza). Lo schema (stato regolatorio, griglia delle prove, fonti, revisione) è validato da `build.py`.
 - `build.py` genera tutte le pagine HTML dai JSON. Modificare questo per pagine/struttura; dopo ogni modifica rilanciare `python3 build.py` e committare anche l'HTML generato (la CI lo verifica).
 - `styles.css` per estetica responsive.
