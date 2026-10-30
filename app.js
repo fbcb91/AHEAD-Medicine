@@ -67,7 +67,7 @@
     message.textContent = '';
     document.querySelector('#modal-description').textContent = service === 'generale'
       ? 'Lascia la tua email per ricevere aggiornamenti sul progetto.'
-      : 'Hai selezionato «Consulenza ' + service + '». Il servizio è in progettazione. Lascia la tua email per ricevere aggiornamenti generali sul progetto.';
+      : 'Hai selezionato «Consulenza ' + service + '». Le videoconsulenze sono in fase di avvio. Lascia la tua email per ricevere aggiornamenti generali sul lancio.';
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
     modal.querySelector('#interest-email').focus();

@@ -61,6 +61,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "rcp",
+    "route": "Iniezione sottocutanea quotidiana.",
+    "text": "Saxenda (gestione del peso): si parte da 0,6 mg al giorno e si aumenta di 0,6 mg ogni settimana fino a 3 mg. Victoza (diabete): si parte da 0,6 mg, poi 1,2 mg dopo almeno una settimana, fino a un massimo di 1,8 mg."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

@@ -55,6 +55,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Iniezione sottocutanea settimanale.",
+    "text": "Negli studi viene somministrato una volta a settimana con aumento graduale della dose; la dose più alta studiata è 12 mg a settimana. Non esiste una dose approvata."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

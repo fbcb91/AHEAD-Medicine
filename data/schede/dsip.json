@@ -51,6 +51,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Negli studi datati: infusione endovenosa.",
+    "text": "Non esiste una dose validata: gli studi sono pochi, vecchi e con risultati incoerenti."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

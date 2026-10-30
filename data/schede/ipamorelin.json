@@ -45,6 +45,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Negli studi clinici: infusione endovenosa.",
+    "text": "Negli studi sull’ileo post-operatorio è stato somministrato in vena in ospedale. Non esiste una dose approvata; le dosi sottocutanee che circolano online non derivano da studi clinici."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

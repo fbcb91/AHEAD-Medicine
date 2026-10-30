@@ -45,6 +45,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Iniezione sottocutanea.",
+    "text": "Il medicinale, oggi ritirato, era somministrato con un’iniezione sottocutanea serale nei bambini con deficit di ormone della crescita, con dose calcolata sul peso. Non esistono dosi validate negli adulti."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

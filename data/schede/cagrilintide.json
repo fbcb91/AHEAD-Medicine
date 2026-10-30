@@ -50,6 +50,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Iniezione sottocutanea settimanale.",
+    "text": "Negli studi CagriSema si usa un’iniezione settimanale che combina cagrilintide 2,4 mg e semaglutide 2,4 mg, raggiunta con aumento graduale. Non esiste una dose approvata."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

@@ -45,6 +45,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Negli studi clinici: applicazione locale sulla ferita.",
+    "text": "Negli studi sulle ulcere venose è stato applicato direttamente sulla lesione. Non esiste alcuna dose studiata per uso sistemico."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

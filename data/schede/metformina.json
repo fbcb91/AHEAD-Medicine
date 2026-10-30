@@ -50,6 +50,11 @@
       "type": "studio"
     }
   ],
+  "dosing": {
+    "basis": "rcp",
+    "route": "Compresse per bocca, durante o dopo i pasti.",
+    "text": "Di solito si parte da 500 mg una o due volte al giorno e si aumenta gradualmente; la dose massima è 3 g al giorno, divisa in più somministrazioni. Esistono formulazioni a rilascio prolungato da assumere una volta al giorno."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

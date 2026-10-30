@@ -53,6 +53,11 @@
       "type": "studio"
     }
   ],
+  "dosing": {
+    "basis": "studi",
+    "route": "Per bocca, come integratori.",
+    "text": "Negli RCT si sono usati in genere 250–1000 mg al giorno. In UE il nicotinamide riboside cloruro è ammesso negli integratori fino a 300 mg al giorno; il parere EFSA del 2026 sull’NMN considera sicuri 300 mg al giorno. Le infusioni endovenose di NAD+ non hanno prove di efficacia."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

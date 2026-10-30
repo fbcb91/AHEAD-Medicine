@@ -45,6 +45,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Uso cosmetico: applicazione sulla pelle.",
+    "text": "Nei cosmetici è contenuto in creme e sieri, a concentrazioni regolate dalla normativa cosmetica. Per le iniezioni non esiste alcuna dose studiata."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

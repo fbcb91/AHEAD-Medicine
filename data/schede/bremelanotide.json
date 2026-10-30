@@ -50,6 +50,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "extra_ue",
+    "route": "Autoiniettore sottocutaneo, al bisogno.",
+    "text": "Negli USA (Vyleesi): 1,75 mg almeno 45 minuti prima dell’attività sessuale prevista; non più di una dose in 24 ore e non più di 8 dosi al mese."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

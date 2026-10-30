@@ -7,6 +7,7 @@
 - Library: `/library/` con ricerca (nome, area, sinonimi) e filtri per area, tipo e stato regolatorio
 - 33 schede separate: peptidi in `/peptidi/<slug>/`, altre sostanze (testosterone, rapamicina, metformina…) in `/sostanze/<slug>/`
 - Per ogni scheda: griglia delle prove (in vitro, animali, osservazionali, RCT, autorizzazione), stato regolatorio, fonti tipizzate, data di verifica e stato della revisione medica
+- Sezione "Come si assume": via di somministrazione e dosi con la loro fonte (RCP UE, foglietto extra-UE, studi clinici, oppure nessuna dose validata)
 - Pagina `/metodo/` con il metodo editoriale e pagina 404
 - 4 consulenze future **senza prezzi**: Peptidi, TRT, GLP-1 e Longevity & Performance
 - Modale raccolta email via funzione Vercel + MailerLite; disattivata finché non configurata
@@ -45,6 +46,7 @@ Ogni scheda è un file in `data/schede/<slug>.json`. Per aggiungerne una copia u
 Campi principali:
 - `kind`: `peptide` o `sostanza` (determina l'URL)
 - `status`: `ue`, `extra_ue`, `trial`, `ritirato`, `sperimentale`, `integratore`
+- `dosing`: `basis` (`rcp`, `extra_ue`, `studi`, `nessuna`), `route` e `text`. `rcp` è ammesso solo per medicinali autorizzati
 - `evidence`: per `in_vitro`, `animale`, `osservazionale`, `rct`, `autorizzato` un `level` (`si`, `limitato`, `no`) e una `note`
 - `sources`: elenco di `{label, url, type}` con `type` tra `regolatorio`, `studio`, `revisione`, `azienda`, `notizia`
 - `review`: `checked` (data ultima verifica fonti), `next_check`, `medical_reviewer` (resta `null` finché la revisione medica non è fatta)
