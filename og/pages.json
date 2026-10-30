@@ -1,0 +1,392 @@
+[
+ {
+  "file": "og/home.jpg",
+  "title": "La medicina di domani. Le risposte di oggi.",
+  "kicker": "AHEAD MEDICINE"
+ },
+ {
+  "file": "og/library.jpg",
+  "title": "46 schede su peptidi e terapie emergenti",
+  "kicker": "LIBRARY"
+ },
+ {
+  "file": "og/cat-recupero.jpg",
+  "title": "Peptidi per il recupero e gli infortuni",
+  "kicker": "LIBRARY / RECUPERO"
+ },
+ {
+  "file": "og/cat-ormoni.jpg",
+  "title": "Ormoni e secretagoghi del GH",
+  "kicker": "LIBRARY / ORMONI"
+ },
+ {
+  "file": "og/cat-massa-muscolare.jpg",
+  "title": "Peptidi e sostanze per la massa muscolare",
+  "kicker": "LIBRARY / MASSA MUSCOLARE"
+ },
+ {
+  "file": "og/cat-metabolismo.jpg",
+  "title": "GLP-1, peptidi e farmaci per peso e metabolismo",
+  "kicker": "LIBRARY / METABOLISMO"
+ },
+ {
+  "file": "og/cat-longevita.jpg",
+  "title": "Longevità: peptidi, farmaci e integratori anti-aging",
+  "kicker": "LIBRARY / LONGEVITÀ"
+ },
+ {
+  "file": "og/cat-pelle.jpg",
+  "title": "Peptidi per pelle e capelli",
+  "kicker": "LIBRARY / PELLE"
+ },
+ {
+  "file": "og/cat-neuro.jpg",
+  "title": "Peptidi per cervello, sonno e ansia",
+  "kicker": "LIBRARY / NEURO"
+ },
+ {
+  "file": "og/cat-immunita.jpg",
+  "title": "Peptidi per il sistema immunitario",
+  "kicker": "LIBRARY / IMMUNITÀ"
+ },
+ {
+  "file": "og/cat-sessualita-e-fertilita.jpg",
+  "title": "Peptidi e ormoni per sessualità e fertilità",
+  "kicker": "LIBRARY / SESSUALITÀ E FERTILITÀ"
+ },
+ {
+  "file": "og/peptidi.jpg",
+  "title": "Peptidi: elenco completo e schede scientifiche",
+  "kicker": "LIBRARY / PEPTIDI"
+ },
+ {
+  "file": "og/sostanze.jpg",
+  "title": "Farmaci, ormoni e altre sostanze",
+  "kicker": "LIBRARY / FARMACI E SOSTANZE"
+ },
+ {
+  "file": "og/scheda-ara-290.jpg",
+  "title": "ARA-290 (cibinetide)",
+  "kicker": "PEPTIDE / RECUPERO"
+ },
+ {
+  "file": "og/scheda-bpc-157.jpg",
+  "title": "BPC-157",
+  "kicker": "PEPTIDE / RECUPERO"
+ },
+ {
+  "file": "og/scheda-kpv.jpg",
+  "title": "KPV",
+  "kicker": "PEPTIDE / RECUPERO"
+ },
+ {
+  "file": "og/scheda-tb-500.jpg",
+  "title": "TB-500",
+  "kicker": "PEPTIDE / RECUPERO"
+ },
+ {
+  "file": "og/scheda-cjc-1295.jpg",
+  "title": "CJC-1295",
+  "kicker": "PEPTIDE / ORMONI"
+ },
+ {
+  "file": "og/scheda-clomifene.jpg",
+  "title": "Clomifene ed enclomifene",
+  "kicker": "ALTRA SOSTANZA / ORMONI"
+ },
+ {
+  "file": "og/scheda-epo.jpg",
+  "title": "Eritropoietina (EPO)",
+  "kicker": "ALTRA SOSTANZA / ORMONI"
+ },
+ {
+  "file": "og/scheda-ghrp-6.jpg",
+  "title": "GHRP-6",
+  "kicker": "PEPTIDE / ORMONI"
+ },
+ {
+  "file": "og/scheda-ipamorelin.jpg",
+  "title": "Ipamorelin",
+  "kicker": "PEPTIDE / ORMONI"
+ },
+ {
+  "file": "og/scheda-somatropina.jpg",
+  "title": "Ormone della crescita (somatropina)",
+  "kicker": "ALTRA SOSTANZA / ORMONI"
+ },
+ {
+  "file": "og/scheda-sermorelin.jpg",
+  "title": "Sermorelin",
+  "kicker": "PEPTIDE / ORMONI"
+ },
+ {
+  "file": "og/scheda-tesamorelin.jpg",
+  "title": "Tesamorelin",
+  "kicker": "PEPTIDE / ORMONI"
+ },
+ {
+  "file": "og/scheda-testosterone.jpg",
+  "title": "Testosterone",
+  "kicker": "ALTRA SOSTANZA / ORMONI"
+ },
+ {
+  "file": "og/scheda-follistatina.jpg",
+  "title": "Follistatina",
+  "kicker": "PEPTIDE / MASSA MUSCOLARE"
+ },
+ {
+  "file": "og/scheda-igf-1-lr3.jpg",
+  "title": "IGF-1 LR3",
+  "kicker": "PEPTIDE / MASSA MUSCOLARE"
+ },
+ {
+  "file": "og/scheda-peg-mgf.jpg",
+  "title": "PEG-MGF",
+  "kicker": "PEPTIDE / MASSA MUSCOLARE"
+ },
+ {
+  "file": "og/scheda-5-amino-1mq.jpg",
+  "title": "5-Amino-1MQ",
+  "kicker": "ALTRA SOSTANZA / METABOLISMO"
+ },
+ {
+  "file": "og/scheda-adipotide.jpg",
+  "title": "Adipotide",
+  "kicker": "PEPTIDE / METABOLISMO"
+ },
+ {
+  "file": "og/scheda-aod-9604.jpg",
+  "title": "AOD-9604",
+  "kicker": "PEPTIDE / METABOLISMO"
+ },
+ {
+  "file": "og/scheda-cagrilintide.jpg",
+  "title": "Cagrilintide",
+  "kicker": "PEPTIDE / METABOLISMO"
+ },
+ {
+  "file": "og/scheda-liraglutide.jpg",
+  "title": "Liraglutide",
+  "kicker": "PEPTIDE / METABOLISMO"
+ },
+ {
+  "file": "og/scheda-orforglipron.jpg",
+  "title": "Orforglipron",
+  "kicker": "ALTRA SOSTANZA / METABOLISMO"
+ },
+ {
+  "file": "og/scheda-retatrutide.jpg",
+  "title": "Retatrutide",
+  "kicker": "PEPTIDE / METABOLISMO"
+ },
+ {
+  "file": "og/scheda-semaglutide.jpg",
+  "title": "Semaglutide",
+  "kicker": "PEPTIDE / METABOLISMO"
+ },
+ {
+  "file": "og/scheda-slu-pp-332.jpg",
+  "title": "SLU-PP-332",
+  "kicker": "ALTRA SOSTANZA / METABOLISMO"
+ },
+ {
+  "file": "og/scheda-tirzepatide.jpg",
+  "title": "Tirzepatide",
+  "kicker": "PEPTIDE / METABOLISMO"
+ },
+ {
+  "file": "og/scheda-elamipretide.jpg",
+  "title": "Elamipretide",
+  "kicker": "PEPTIDE / LONGEVITÀ"
+ },
+ {
+  "file": "og/scheda-epitalon.jpg",
+  "title": "Epitalon",
+  "kicker": "PEPTIDE / LONGEVITÀ"
+ },
+ {
+  "file": "og/scheda-glutatione.jpg",
+  "title": "Glutatione",
+  "kicker": "PEPTIDE / LONGEVITÀ"
+ },
+ {
+  "file": "og/scheda-metformina.jpg",
+  "title": "Metformina",
+  "kicker": "ALTRA SOSTANZA / LONGEVITÀ"
+ },
+ {
+  "file": "og/scheda-mots-c.jpg",
+  "title": "MOTS-c",
+  "kicker": "PEPTIDE / LONGEVITÀ"
+ },
+ {
+  "file": "og/scheda-nad-precursori.jpg",
+  "title": "Precursori del NAD+ (NMN e NR)",
+  "kicker": "ALTRA SOSTANZA / LONGEVITÀ"
+ },
+ {
+  "file": "og/scheda-rapamicina.jpg",
+  "title": "Rapamicina (sirolimus)",
+  "kicker": "ALTRA SOSTANZA / LONGEVITÀ"
+ },
+ {
+  "file": "og/scheda-senolitici.jpg",
+  "title": "Senolitici (dasatinib + quercetina)",
+  "kicker": "ALTRA SOSTANZA / LONGEVITÀ"
+ },
+ {
+  "file": "og/scheda-ahk-cu.jpg",
+  "title": "AHK-Cu",
+  "kicker": "PEPTIDE / PELLE"
+ },
+ {
+  "file": "og/scheda-ghk-cu.jpg",
+  "title": "GHK-Cu",
+  "kicker": "PEPTIDE / PELLE"
+ },
+ {
+  "file": "og/scheda-melanotan-ii.jpg",
+  "title": "Melanotan II",
+  "kicker": "PEPTIDE / PELLE"
+ },
+ {
+  "file": "og/scheda-dsip.jpg",
+  "title": "Emideltide (DSIP)",
+  "kicker": "PEPTIDE / NEURO"
+ },
+ {
+  "file": "og/scheda-selank.jpg",
+  "title": "Selank",
+  "kicker": "PEPTIDE / NEURO"
+ },
+ {
+  "file": "og/scheda-semax.jpg",
+  "title": "Semax",
+  "kicker": "PEPTIDE / NEURO"
+ },
+ {
+  "file": "og/scheda-ll-37.jpg",
+  "title": "LL-37",
+  "kicker": "PEPTIDE / IMMUNITÀ"
+ },
+ {
+  "file": "og/scheda-timalina.jpg",
+  "title": "Timalina",
+  "kicker": "PEPTIDE / IMMUNITÀ"
+ },
+ {
+  "file": "og/scheda-timosina-alfa-1.jpg",
+  "title": "Timosina alfa-1",
+  "kicker": "PEPTIDE / IMMUNITÀ"
+ },
+ {
+  "file": "og/scheda-bremelanotide.jpg",
+  "title": "Bremelanotide (PT-141)",
+  "kicker": "PEPTIDE / SESSUALITÀ E FERTILITÀ"
+ },
+ {
+  "file": "og/scheda-hcg.jpg",
+  "title": "Gonadotropina corionica (hCG)",
+  "kicker": "ALTRA SOSTANZA / SESSUALITÀ E FERTILITÀ"
+ },
+ {
+  "file": "og/scheda-kisspeptina.jpg",
+  "title": "Kisspeptina",
+  "kicker": "PEPTIDE / SESSUALITÀ E FERTILITÀ"
+ },
+ {
+  "file": "og/consulenza-peptidi.jpg",
+  "title": "Consulenza Peptidi",
+  "kicker": "VIDEOCONSULENZA"
+ },
+ {
+  "file": "og/consulenza-trt.jpg",
+  "title": "Consulenza TRT",
+  "kicker": "VIDEOCONSULENZA"
+ },
+ {
+  "file": "og/consulenza-glp-1.jpg",
+  "title": "Consulenza GLP-1",
+  "kicker": "VIDEOCONSULENZA"
+ },
+ {
+  "file": "og/consulenza-longevity-performance.jpg",
+  "title": "Consulenza Longevity & Performance",
+  "kicker": "VIDEOCONSULENZA"
+ },
+ {
+  "file": "og/consulenza-capelli.jpg",
+  "title": "Consulenza Capelli",
+  "kicker": "VIDEOCONSULENZA"
+ },
+ {
+  "file": "og/consulenza-salute-sessuale.jpg",
+  "title": "Consulenza Salute sessuale",
+  "kicker": "VIDEOCONSULENZA"
+ },
+ {
+  "file": "og/consulenza-menopausa.jpg",
+  "title": "Consulenza Menopausa",
+  "kicker": "VIDEOCONSULENZA"
+ },
+ {
+  "file": "og/consulenza-recupero-sport.jpg",
+  "title": "Consulenza Recupero e sport",
+  "kicker": "VIDEOCONSULENZA"
+ },
+ {
+  "file": "og/consulenze.jpg",
+  "title": "Consulenze online con medici esperti",
+  "kicker": "CONSULENZE"
+ },
+ {
+  "file": "og/articoli.jpg",
+  "title": "Articoli e news",
+  "kicker": "GUIDE E NEWS"
+ },
+ {
+  "file": "og/articolo-testosterone-basso-sintomi-esami.jpg",
+  "title": "Testosterone basso: sintomi, esami e quando curarlo",
+  "kicker": "GUIDA"
+ },
+ {
+  "file": "og/articolo-glp-1-differenze-semaglutide-tirzepatide-retatrutide.jpg",
+  "title": "Semaglutide, tirzepatide, retatrutide: le differenze spiegate",
+  "kicker": "GUIDA"
+ },
+ {
+  "file": "og/articolo-rapamicina-longevita.jpg",
+  "title": "Rapamicina e longevità: a che punto siamo",
+  "kicker": "GUIDA"
+ },
+ {
+  "file": "og/articolo-voto-fda-peptidi-luglio-2026.jpg",
+  "title": "Peptidi, il voto della FDA di luglio 2026: cosa cambia (e cosa no)",
+  "kicker": "NEWS"
+ },
+ {
+  "file": "og/articolo-peptidi-da-ricerca-cosa-sono.jpg",
+  "title": "Peptidi “da ricerca”: cosa sono e perché non sono farmaci",
+  "kicker": "GUIDA"
+ },
+ {
+  "file": "og/articolo-ozempic-per-dimagrire.jpg",
+  "title": "Ozempic per dimagrire: cosa dice davvero l’indicazione",
+  "kicker": "GUIDA"
+ },
+ {
+  "file": "og/articolo-minoxidil-orale.jpg",
+  "title": "Minoxidil orale per i capelli: come funziona e per chi è",
+  "kicker": "GUIDA"
+ },
+ {
+  "file": "og/articolo-caduta-capelli-cosa-funziona.jpg",
+  "title": "Caduta dei capelli: cosa funziona davvero",
+  "kicker": "GUIDA"
+ },
+ {
+  "file": "og/articolo-bpc-157-cosa-sappiamo.jpg",
+  "title": "BPC-157: cosa sappiamo davvero (e cosa no)",
+  "kicker": "GUIDA"
+ }
+]

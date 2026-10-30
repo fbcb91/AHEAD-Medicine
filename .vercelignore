@@ -1,0 +1,8 @@
+# File di lavoro che non devono essere pubblicati come pagine del sito
+build.py
+data/
+scripts/
+og/pages.json
+README.md
+AGENTS.md
+.github/
