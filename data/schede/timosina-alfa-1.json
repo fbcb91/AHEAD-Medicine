@@ -46,6 +46,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "extra_ue",
+    "route": "Iniezione sottocutanea.",
+    "text": "Nei Paesi in cui è approvata, per l’epatite B cronica lo schema tipico è 1,6 mg due volte a settimana per 6 mesi."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

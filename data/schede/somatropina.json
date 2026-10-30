@@ -51,6 +51,11 @@
       "type": "regolatorio"
     }
   ],
+  "dosing": {
+    "basis": "rcp",
+    "route": "Iniezione sottocutanea, di solito la sera.",
+    "text": "Negli adulti con deficit si parte da dosi basse (0,15–0,3 mg al giorno), aumentate gradualmente in base a IGF-1 e risposta clinica; nei bambini la dose si calcola sul peso o sulla superficie corporea. Esistono anche formulazioni settimanali."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

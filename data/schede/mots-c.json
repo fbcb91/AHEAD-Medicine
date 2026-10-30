@@ -49,6 +49,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: iniezioni sottocutanee.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

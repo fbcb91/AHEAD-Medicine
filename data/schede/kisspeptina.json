@@ -46,6 +46,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Negli studi clinici: iniezione sottocutanea o infusione endovenosa.",
+    "text": "Viene usata solo in protocolli di ricerca, in ambiente specialistico: per esempio una singola iniezione per indurre la maturazione degli ovociti nella procreazione assistita. Non esiste una dose approvata."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

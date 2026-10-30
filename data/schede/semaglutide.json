@@ -72,6 +72,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "rcp",
+    "route": "Iniezione sottocutanea settimanale oppure compressa giornaliera.",
+    "text": "Wegovy (iniezione, gestione del peso): si parte da 0,25 mg una volta a settimana e si aumenta ogni 4 settimane (0,5 – 1 – 1,7 mg) fino al mantenimento di 2,4 mg; in UE è autorizzata anche una dose da 7,2 mg. Ozempic (diabete): 0,25 mg a settimana per 4 settimane, poi 0,5 mg, con possibili aumenti fino a 1 o 2 mg. Le compresse (Rybelsus, Wegovy compresse) si assumono una volta al giorno a stomaco vuoto, con poca acqua, almeno 30 minuti prima di mangiare, con aumento graduale. L’aumento lento serve a limitare gli effetti gastrointestinali."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

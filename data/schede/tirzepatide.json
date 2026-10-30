@@ -55,6 +55,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "rcp",
+    "route": "Iniezione sottocutanea settimanale.",
+    "text": "Si parte da 2,5 mg una volta a settimana per 4 settimane, poi 5 mg; la dose può essere aumentata di 2,5 mg dopo almeno 4 settimane, fino a un massimo di 15 mg. Nella gestione del peso le dosi di mantenimento sono 5, 10 o 15 mg."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

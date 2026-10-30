@@ -4,8 +4,9 @@
 Sito italiano di validazione del mercato per un futuro servizio medico sulle terapie emergenti. Il brand AHEAD è provvisorio. Il primo MVP include homepage, quattro consulenze come **servizi futuri senza prezzi**, directory di dieci peptidi, ricerca/filtri e raccolta di email attivabile via MailerLite.
 
 ## Vincoli importanti
-- Non rappresentare l'attività come una clinica operativa. Non affermare che esista un team medico finché non è stato effettivamente ingaggiato.
-- Non promettere prescrizioni, accesso a farmaci sperimentali, protocolli di somministrazione, dosaggi o reperibilità di peptidi non autorizzati.
+- Il team di medici è stato ingaggiato: il sito può dirlo. Il servizio previsto sono videoconsulenze con un medico che segue la persona nel tempo e, se lo ritiene appropriato, prescrive. Finché il servizio non è prenotabile non presentarlo come già attivo.
+- La prescrizione è sempre una decisione del medico e riguarda solo medicinali autorizzati. Non promettere prescrizioni, accesso a farmaci sperimentali o reperibilità di peptidi non autorizzati; non indicare fornitori.
+- Sezione dosi delle schede (`dosing`): riportare solo dosi da foglietto/RCP approvato (UE o extra-UE) o da studi clinici pubblicati, sempre con la fonte (`basis`). Se non esiste una dose studiata nell'uomo (`basis: nessuna`) non riportare le quantità che circolano online. Mai protocolli, cicli o "stack" fai-da-te.
 - Ogni nuova scheda medico-scientifica deve distinguere **studi in vitro, animali, osservazionali, RCT, e medicinali autorizzati**. Richiedere controllo medico indipendente prima della pubblicazione.
 - Non associare indirizzi email a categorie di interesse per patologie o sostanze. Misurare click di interesse in aggregato, non per persona. Mai raccogliere anamnesi in un form marketing.
 - Preferire modifiche semplici e mantenere la struttura statica veloce, indicizzabile e accessibile.

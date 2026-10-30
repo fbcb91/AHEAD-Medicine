@@ -50,6 +50,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Negli studi clinici: per bocca.",
+    "text": "Nei trial sull’obesità è stato assunto per bocca una volta al giorno. Nessuna dose ha dimostrato efficacia e non esiste una dose approvata."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

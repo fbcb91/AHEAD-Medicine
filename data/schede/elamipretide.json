@@ -50,6 +50,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "extra_ue",
+    "route": "Iniezione sottocutanea quotidiana.",
+    "text": "Negli USA (Forzinity) la dose approvata per la sindrome di Barth, nei pazienti di almeno 30 kg, è 40 mg una volta al giorno."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

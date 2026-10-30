@@ -50,6 +50,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Iniezione sottocutanea.",
+    "text": "Negli studi di fase 1–2 su volontari sani è stato somministrato con iniezioni sottocutanee singole o settimanali, a dosi calcolate sul peso corporeo, per misurarne l’effetto su GH e IGF-1. Non esiste una dose approvata per alcun uso."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

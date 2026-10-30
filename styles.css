@@ -29,3 +29,12 @@
 .method-status .status{font-size:12px}
 @media(max-width:800px){.selects{width:100%}.select-label{flex:1}.select-label select{width:100%;min-width:0}}
 @media(max-width:540px){.ev-row{grid-template-columns:1fr}.ev-level{justify-self:start}}
+/* Sezione dosi e "come funziona" */
+.dosing-box{border:1px solid #d1dcd9;background:#fff;padding:24px 26px;max-width:760px}
+.dosing-box p{font-size:16px!important;margin-bottom:0}
+.dosing-box .dosing-route{margin-bottom:10px}
+.dosing-basis{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#4f6f78;background:#e4eced;padding:6px 10px;margin-bottom:14px}
+.dosing-warning{margin-top:14px;max-width:760px;padding:16px 20px;background:#f6f1df;border-left:3px solid #bba16f;color:#5b5236;font-size:13px;line-height:1.7}
+.steps-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1050px){.steps-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.steps-grid{grid-template-columns:1fr}}

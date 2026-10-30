@@ -50,6 +50,11 @@
       "type": "studio"
     }
   ],
+  "dosing": {
+    "basis": "extra_ue",
+    "route": "Compressa una volta al giorno.",
+    "text": "Negli USA (Foundayo) si assume una volta al giorno, senza vincoli rispetto a cibo o acqua, con aumento graduale della dose per limitare gli effetti gastrointestinali."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

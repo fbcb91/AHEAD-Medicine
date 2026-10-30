@@ -51,6 +51,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato illegale: iniezioni sottocutanee o spray nasale.",
+    "text": "Non esiste una dose sicura studiata per l’abbronzatura. Afamelanotide (Scenesse), la molecola autorizzata, è invece un impianto sottocutaneo inserito da un medico ogni 2 mesi, solo per una specifica malattia rara."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

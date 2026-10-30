@@ -51,6 +51,11 @@
       "type": "studio"
     }
   ],
+  "dosing": {
+    "basis": "rcp",
+    "route": "Gel cutaneo quotidiano o iniezioni intramuscolari.",
+    "text": "Esistono gel o soluzioni da applicare sulla pelle ogni giorno, iniezioni intramuscolari a lunga durata (testosterone undecanoato, ogni 10–14 settimane) ed esteri a durata più breve (per esempio enantato, ogni 2–3 settimane). La dose viene regolata in base ai livelli di testosterone, all’ematocrito e alla risposta clinica, con controlli periodici."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

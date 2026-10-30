@@ -50,6 +50,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "extra_ue",
+    "route": "Iniezione sottocutanea quotidiana.",
+    "text": "Negli USA (Egrifta) la dose approvata è 2 mg una volta al giorno sotto la pelle dell’addome. Il foglietto suggerisce di valutare la sospensione se dopo circa 6 mesi il grasso viscerale non si è ridotto."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

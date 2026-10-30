@@ -56,6 +56,11 @@
       "type": "studio"
     }
   ],
+  "dosing": {
+    "basis": "rcp",
+    "route": "Compresse o soluzione orale.",
+    "text": "Nel trapianto di rene (indicazione autorizzata) si assume una volta al giorno, con dose regolata sui livelli nel sangue. Negli studi sull’invecchiamento si sono usati invece schemi a basso dosaggio e intermittenti (per esempio settimanali), molto inferiori: nessuno è validato."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

@@ -55,6 +55,11 @@
     }
   ],
   "kind": "peptide",
+  "dosing": {
+    "basis": "extra_ue",
+    "route": "Spray o gocce nasali.",
+    "text": "In Russia si usa per via nasale, con dosi e durate che dipendono dall’indicazione neurologica. Non esiste una dose validata secondo gli standard europei."
+  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,
