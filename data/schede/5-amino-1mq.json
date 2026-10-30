@@ -1,0 +1,60 @@
+{
+  "name": "5-Amino-1MQ",
+  "slug": "5-amino-1mq",
+  "kind": "sostanza",
+  "category": "Metabolismo",
+  "status": "sperimentale",
+  "service": "GLP-1",
+  "aliases": [
+    "inibitore NNMT",
+    "5-amino-1-metilchinolinio"
+  ],
+  "focus": "Metabolismo dei grassi",
+  "tagline": "Una piccola molecola che ha fatto dimagrire i topi. Solo i topi.",
+  "evidence_summary": "Precliniche",
+  "what": "5-Amino-1MQ è una piccola molecola (non un peptide) che inibisce l’enzima NNMT, coinvolto nel metabolismo energetico delle cellule adipose.",
+  "unknown": "In topi obesi ha ridotto la massa grassa senza cambiare l’alimentazione. Non è mai stata studiata nell’uomo.",
+  "risk": "Profilo di sicurezza sconosciuto. L’enzima NNMT interviene anche nel metabolismo di vitamine e farmaci.",
+  "reg": "Non è un medicinale autorizzato.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Studi su adipociti."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Pochi studi su topi obesi."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato nell’uomo."
+    },
+    "rct": {
+      "level": "no",
+      "note": "Nessun RCT."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — inibitori NNMT e obesità",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=NNMT+inhibitor+5-amino-1MQ+obesity",
+      "type": "studio"
+    }
+  ],
+  "extra_categories": [],
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: capsule.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

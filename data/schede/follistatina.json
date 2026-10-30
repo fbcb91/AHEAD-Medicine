@@ -1,0 +1,66 @@
+{
+  "name": "Follistatina",
+  "slug": "follistatina",
+  "category": "Massa muscolare",
+  "status": "sperimentale",
+  "service": "Longevity & Performance",
+  "aliases": [
+    "follistatin",
+    "FST-344",
+    "inibitore miostatina"
+  ],
+  "focus": "Crescita muscolare",
+  "tagline": "Bloccare la miostatina: un’idea studiata con la terapia genica, non con le fiale.",
+  "evidence_summary": "Precliniche; terapia genica sperimentale",
+  "what": "La follistatina è una proteina naturale che lega e inattiva la miostatina e altre molecole che frenano la crescita del muscolo. Nei topi l’aumento di follistatina produce un forte incremento della massa muscolare.",
+  "unknown": "Nell’uomo esistono solo piccoli studi di terapia genica in malattie muscolari rare, con un vettore virale che fa produrre la proteina direttamente al muscolo. Non ci sono dati sull’iniezione di follistatina come peptide, né sull’uso in persone sane.",
+  "risk": "La follistatina agisce anche su ormoni riproduttivi (FSH) e altri fattori di crescita: gli effetti sistemici non sono noti. I prodotti venduti come “follistatina 344” non hanno garanzie di identità, purezza o attività.",
+  "reg": "Non è un medicinale autorizzato. È inclusa tra le sostanze proibite nello sport (modulatori della miostatina).",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Meccanismo ben caratterizzato."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Forte aumento muscolare nei modelli animali."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato osservazionale."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Piccoli studi di terapia genica in distrofie muscolari, non RCT su iniezioni."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzata."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — terapia genica con follistatina",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=follistatin+gene+therapy+Becker",
+      "type": "studio"
+    },
+    {
+      "label": "WADA — lista delle sostanze proibite",
+      "url": "https://www.wada-ama.org/en/prohibited-list",
+      "type": "regolatorio"
+    }
+  ],
+  "kind": "peptide",
+  "extra_categories": [],
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: iniezioni.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

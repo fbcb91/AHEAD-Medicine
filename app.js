@@ -29,7 +29,7 @@
       cards.forEach(card => {
         const d = card.dataset;
         const show = (d.search || '').includes(search)
-          && (selectedFilter === 'Tutti' || d.category === selectedFilter)
+          && (selectedFilter === 'Tutti' || (d.categories || '').split('|').includes(selectedFilter))
           && (!kind || d.kind === kind)
           && (!status || d.status === status);
         card.hidden = !show;

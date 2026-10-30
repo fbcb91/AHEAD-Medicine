@@ -1,0 +1,67 @@
+{
+  "name": "GHRP-6",
+  "slug": "ghrp-6",
+  "category": "Ormoni",
+  "extra_categories": [
+    "Massa muscolare"
+  ],
+  "status": "sperimentale",
+  "service": "Peptidi",
+  "aliases": [
+    "growth hormone releasing peptide 6",
+    "secretagogo GH"
+  ],
+  "focus": "Secrezione di GH e appetito",
+  "tagline": "Uno dei primi secretagoghi del GH, noto anche per la fame che provoca.",
+  "evidence_summary": "Studi fisiologici datati",
+  "what": "GHRP-6 è un esapeptide sintetico che stimola il rilascio dell’ormone della crescita agendo sul recettore della grelina, l’ormone della fame. È stato studiato negli anni ’90 soprattutto come strumento di ricerca e diagnostico.",
+  "unknown": "Gli studi nell’uomo misurano la risposta ormonale acuta, non effetti su massa muscolare, recupero o salute. Non è mai stato sviluppato come farmaco.",
+  "risk": "Aumento marcato dell’appetito, possibili alterazioni della glicemia e aumento di cortisolo e prolattina. Uso a lungo termine non studiato. Vietato nello sport.",
+  "reg": "Non è un medicinale autorizzato.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Farmacologia caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Studi animali."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato osservazionale."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Piccoli studi fisiologici sulla risposta ormonale."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — GHRP-6 nell’uomo",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=GHRP-6+humans+growth+hormone",
+      "type": "studio"
+    },
+    {
+      "label": "WADA — lista delle sostanze proibite",
+      "url": "https://www.wada-ama.org/en/prohibited-list",
+      "type": "regolatorio"
+    }
+  ],
+  "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Negli studi: iniezione endovenosa o sottocutanea.",
+    "text": "Negli studi fisiologici è stato somministrato in dosi singole, in ospedale, per misurare la risposta del GH. Non esiste una dose approvata per alcun uso."
+  },
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

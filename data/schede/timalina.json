@@ -1,0 +1,60 @@
+{
+  "name": "Timalina",
+  "slug": "timalina",
+  "category": "Immunità",
+  "status": "extra_ue",
+  "service": "Peptidi",
+  "aliases": [
+    "thymalin",
+    "estratto timico"
+  ],
+  "focus": "Modulazione immunitaria",
+  "tagline": "Un estratto di timo registrato in Russia.",
+  "evidence_summary": "Limitate, quasi solo russe",
+  "what": "La timalina è un complesso di peptidi estratti dal timo di vitello, registrato in Russia come immunomodulante.",
+  "unknown": "Le prove provengono quasi esclusivamente da studi russi, spesso dello stesso gruppo di ricerca, con limiti metodologici. Non ci sono studi controllati internazionali.",
+  "risk": "Essendo un estratto animale, composizione e purezza possono variare. Sicurezza non documentata secondo gli standard europei.",
+  "reg": "Non autorizzata in UE né negli USA; registrata in Russia.",
+  "evidence": {
+    "in_vitro": {
+      "level": "limitato",
+      "note": "Studi su cellule immunitarie."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Studi animali, poco replicati."
+    },
+    "osservazionale": {
+      "level": "limitato",
+      "note": "Studi clinici russi non controllati."
+    },
+    "rct": {
+      "level": "no",
+      "note": "Nessun RCT di qualità adeguata pubblicato a livello internazionale."
+    },
+    "autorizzato": {
+      "level": "limitato",
+      "note": "Registrata solo fuori UE (Russia)."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — timalina",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=thymalin",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "extra_categories": [],
+  "dosing": {
+    "basis": "extra_ue",
+    "route": "Iniezioni intramuscolari.",
+    "text": "In Russia si usa con iniezioni intramuscolari in cicli brevi, secondo le indicazioni locali. Non esiste una dose validata secondo gli standard europei."
+  },
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

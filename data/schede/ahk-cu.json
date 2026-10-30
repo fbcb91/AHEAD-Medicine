@@ -1,0 +1,61 @@
+{
+  "name": "AHK-Cu",
+  "slug": "ahk-cu",
+  "category": "Pelle",
+  "status": "integratore",
+  "service": "Peptidi",
+  "aliases": [
+    "peptide di rame",
+    "copper peptide",
+    "capelli"
+  ],
+  "focus": "Capelli e cuoio capelluto",
+  "tagline": "Il “cugino” del GHK-Cu proposto per i capelli.",
+  "evidence_summary": "Solo in vitro",
+  "what": "AHK-Cu è un tripeptide (alanina-istidina-lisina) legato al rame, usato in alcuni prodotti cosmetici per il cuoio capelluto.",
+  "unknown": "Uno studio di laboratorio su follicoli isolati ha mostrato un effetto sulla crescita del pelo. Non esistono studi clinici controllati sulla caduta dei capelli.",
+  "risk": "La sicurezza dipende dalla via d’uso: un cosmetico topico non va equiparato a un’iniezione.",
+  "reg": "È un ingrediente cosmetico, non un medicinale. Per la caduta dei capelli esistono medicinali autorizzati da valutare con un medico.",
+  "evidence": {
+    "in_vitro": {
+      "level": "limitato",
+      "note": "Studi su follicoli piliferi isolati."
+    },
+    "animale": {
+      "level": "no",
+      "note": "Nessuno studio animale rilevante."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato osservazionale."
+    },
+    "rct": {
+      "level": "no",
+      "note": "Nessun RCT."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non è un medicinale."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — AHK-Cu e follicoli",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=AHK-Cu+hair+follicle",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "extra_categories": [],
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Uso cosmetico: lozioni per il cuoio capelluto.",
+    "text": "Non esistono studi clinici con dosi definite. Per le iniezioni non esiste alcuna dose studiata."
+  },
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}
