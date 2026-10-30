@@ -1,0 +1,64 @@
+{
+  "name": "Retatrutide",
+  "slug": "retatrutide",
+  "category": "Metabolismo",
+  "status": "trial",
+  "service": "GLP-1",
+  "aliases": [
+    "triplo agonista",
+    "GIP/GLP-1/glucagone"
+  ],
+  "focus": "Obesità e metabolismo",
+  "tagline": "Il triplo agonista metabolico in studio clinico.",
+  "evidence_summary": "RCT di fase 3 in corso di pubblicazione",
+  "what": "Retatrutide è una molecola sperimentale che agisce sui recettori GIP, GLP-1 e glucagone, studiata soprattutto per l’obesità e altre condizioni metaboliche.",
+  "unknown": "Nel luglio 2026 il produttore ha annunciato che due studi di fase 3 (TRIUMPH-2 e TRIUMPH-3) hanno raggiunto l’obiettivo principale sul peso. I dati completi non sono ancora stati pubblicati e la valutazione delle autorità non è iniziata.",
+  "risk": "Negli studi sono descritti effetti gastrointestinali e interruzioni per eventi avversi più frequenti rispetto al placebo. Il profilo di sicurezza completo sarà chiaro solo dopo la pubblicazione e la revisione regolatoria. Il prodotto venduto online come “retatrutide” non proviene da canali autorizzati.",
+  "reg": "Non è autorizzato in nessun Paese. Il produttore dichiara di voler presentare domanda negli USA nel primo trimestre 2027.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Farmacologia caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Studi preclinici."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato di pratica clinica."
+    },
+    "rct": {
+      "level": "si",
+      "note": "RCT di fase 2 (NEJM 2023) e risultati preliminari di fase 3."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "NEJM 2023 — studio di fase 2",
+      "url": "https://doi.org/10.1056/NEJMoa2301972",
+      "type": "studio"
+    },
+    {
+      "label": "Lilly — risultati TRIUMPH-2 e TRIUMPH-3 (luglio 2026)",
+      "url": "https://www.biospace.com/press-releases/lillys-triple-agonist-retatrutide-successful-in-two-additional-phase-3-obesity-trials-delivering-significant-improvements-in-weight-and-a1c",
+      "type": "azienda"
+    },
+    {
+      "label": "Registro europeo dei trial clinici",
+      "url": "https://euclinicaltrials.eu/ctis-public/view/2024-511450-49-00",
+      "type": "regolatorio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "name": "GHK-Cu",
+  "slug": "ghk-cu",
+  "category": "Pelle",
+  "status": "integratore",
+  "service": "Peptidi",
+  "aliases": [
+    "peptide di rame",
+    "copper peptide"
+  ],
+  "focus": "Pelle e biologia tissutale",
+  "tagline": "Dalla cosmetica alla ricerca: perché la via d’uso cambia tutto.",
+  "evidence_summary": "Variabili per applicazione",
+  "what": "GHK-Cu è un complesso tra un tripeptide naturale e il rame, studiato per proprietà biologiche sulla pelle e utilizzato in alcuni prodotti cosmetici.",
+  "unknown": "Le evidenze relative ai cosmetici, spesso piccole e sponsorizzate, non dimostrano efficacia o sicurezza delle formulazioni iniettabili o per altre vie sistemiche.",
+  "risk": "La sicurezza dipende da formulazione e via di somministrazione: uso cosmetico e iniezione non vanno equiparati.",
+  "reg": "È un ingrediente cosmetico, non un medicinale autorizzato.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Studi su fibroblasti e collagene."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Modelli animali di guarigione delle ferite."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessuno studio osservazionale."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Piccoli studi cosmetici topici con esiti estetici."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non è un medicinale."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — GHK-Cu e pelle",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=GHK-Cu+skin",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

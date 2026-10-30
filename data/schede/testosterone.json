@@ -1,0 +1,60 @@
+{
+  "name": "Testosterone",
+  "slug": "testosterone",
+  "kind": "sostanza",
+  "category": "Ormoni",
+  "status": "ue",
+  "service": "TRT",
+  "aliases": [
+    "TRT",
+    "terapia sostitutiva",
+    "ipogonadismo"
+  ],
+  "focus": "Ipogonadismo maschile",
+  "tagline": "Una terapia consolidata, quando la diagnosi è corretta.",
+  "evidence_summary": "Cliniche consolidate per l’ipogonadismo",
+  "what": "Il testosterone è l’ormone sessuale maschile principale. I medicinali a base di testosterone sono autorizzati per trattare l’ipogonadismo maschile, cioè una carenza confermata da sintomi e da esami ripetuti.",
+  "unknown": "Negli uomini con livelli normali non ci sono prove di benefici rilevanti su energia, longevità o salute generale. Il calo legato all’età senza una diagnosi di ipogonadismo non è un’indicazione di per sé.",
+  "risk": "Può ridurre o sopprimere la fertilità, aumentare l’ematocrito e richiede controlli periodici. In un ampio RCT (TRAVERSE) non è aumentato il rischio di eventi cardiovascolari maggiori in uomini con ipogonadismo, ma sono stati osservati più casi di fibrillazione atriale ed embolia polmonare.",
+  "reg": "Autorizzato in UE in diversi medicinali con indicazione per l’ipogonadismo maschile confermato.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Biologia ampiamente caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Ampia letteratura animale."
+    },
+    "osservazionale": {
+      "level": "si",
+      "note": "Numerosi studi osservazionali."
+    },
+    "rct": {
+      "level": "si",
+      "note": "RCT, incluso lo studio di sicurezza TRAVERSE (NEJM 2023)."
+    },
+    "autorizzato": {
+      "level": "si",
+      "note": "Autorizzato in UE per l’ipogonadismo."
+    }
+  },
+  "sources": [
+    {
+      "label": "NEJM 2023 — studio TRAVERSE",
+      "url": "https://doi.org/10.1056/NEJMoa2215025",
+      "type": "studio"
+    },
+    {
+      "label": "Endocrine Society — linee guida sull’ipogonadismo (2018)",
+      "url": "https://doi.org/10.1210/jc.2018-00229",
+      "type": "studio"
+    }
+  ],
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

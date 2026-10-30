@@ -1,0 +1,54 @@
+{
+  "name": "Selank",
+  "slug": "selank",
+  "category": "Neuro",
+  "status": "extra_ue",
+  "service": "Peptidi",
+  "aliases": [
+    "tuftsina analogo",
+    "ansiolitico"
+  ],
+  "focus": "Ansia e stress",
+  "tagline": "Un ansiolitico peptidico con evidenze quasi solo russe.",
+  "evidence_summary": "Limitate",
+  "what": "Selank è un analogo sintetico della tuftsina, un piccolo peptide immunitario. In Russia è registrato come ansiolitico.",
+  "unknown": "Gli studi sono pochi, piccoli e quasi tutti condotti in Russia. Mancano confronti robusti con i trattamenti standard per l’ansia.",
+  "risk": "Sicurezza a lungo termine non documentata secondo gli standard europei. Chi soffre di ansia dovrebbe rivolgersi a un medico invece di ricorrere a prodotti non regolati.",
+  "reg": "Non autorizzato in UE né negli USA.",
+  "evidence": {
+    "in_vitro": {
+      "level": "limitato",
+      "note": "Studi su sistemi neurotrasmettitoriali."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Modelli animali di ansia."
+    },
+    "osservazionale": {
+      "level": "limitato",
+      "note": "Piccoli studi clinici russi."
+    },
+    "rct": {
+      "level": "no",
+      "note": "Nessun RCT di qualità adeguata pubblicato a livello internazionale."
+    },
+    "autorizzato": {
+      "level": "limitato",
+      "note": "Registrato solo fuori UE (Russia)."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — Selank",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Selank+anxiety",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

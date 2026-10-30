@@ -1,0 +1,55 @@
+{
+  "name": "Kisspeptina",
+  "slug": "kisspeptina",
+  "category": "Sessualità e fertilità",
+  "status": "sperimentale",
+  "service": "Peptidi",
+  "aliases": [
+    "kisspeptin",
+    "kisspeptin-10",
+    "kisspeptin-54"
+  ],
+  "focus": "Asse riproduttivo",
+  "tagline": "L’interruttore della pubertà, studiato oggi nella medicina della fertilità.",
+  "evidence_summary": "Studi clinici di ricerca",
+  "what": "La kisspeptina è un ormone peptidico naturale che regola il rilascio di GnRH e quindi l’intero asse riproduttivo. È usata in studi clinici di endocrinologia della riproduzione, per esempio nella procreazione assistita.",
+  "unknown": "Gli studi nell’uomo sono piccoli e condotti in centri di ricerca specializzati. Non ci sono prove di benefici su libido, testosterone o “ottimizzazione” al di fuori di questi contesti.",
+  "risk": "Profilo di sicurezza descritto solo in studi brevi e controllati. L’uso non supervisionato può alterare l’equilibrio ormonale.",
+  "reg": "Non è un medicinale autorizzato in UE né negli USA.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Ampia caratterizzazione biologica."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Numerosi studi su modelli animali."
+    },
+    "osservazionale": {
+      "level": "limitato",
+      "note": "Studi fisiologici su piccoli gruppi."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Piccoli studi clinici, per esempio nella maturazione degli ovociti in FIVET."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — kisspeptina negli studi clinici",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=kisspeptin+clinical+trial+IVF",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "name": "AOD-9604",
+  "slug": "aod-9604",
+  "category": "Metabolismo",
+  "status": "sperimentale",
+  "service": "Peptidi",
+  "aliases": [
+    "frammento GH 177-191",
+    "HGH fragment"
+  ],
+  "focus": "Metabolismo dei grassi",
+  "tagline": "Il “frammento brucia-grassi” che non ha superato gli studi clinici.",
+  "evidence_summary": "Studi clinici negativi",
+  "what": "AOD-9604 è un frammento modificato della parte terminale dell’ormone della crescita, sviluppato negli anni 2000 come possibile farmaco contro l’obesità.",
+  "unknown": "Gli studi clinici sull’obesità non hanno mostrato una perdita di peso significativa rispetto al placebo e lo sviluppo come farmaco è stato abbandonato. Le affermazioni su articolazioni e cartilagine si basano su dati preclinici.",
+  "risk": "Studi brevi non hanno evidenziato problemi gravi, ma i dati sono limitati. Qualità e identità dei prodotti in commercio non sono garantite.",
+  "reg": "Non è un medicinale autorizzato in UE né negli USA.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Studi sul metabolismo degli adipociti."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Studi su animali obesi."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessuno studio osservazionale."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "RCT di fase 2 sull’obesità senza beneficio significativo."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "FDA — sostanze per galenica con possibili rischi",
+      "url": "https://www.fda.gov/drugs/human-drug-compounding/certain-bulk-drug-substances-use-compounding-may-present-significant-safety-risks",
+      "type": "regolatorio"
+    },
+    {
+      "label": "PubMed — AOD-9604, studi clinici",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=AOD9604+obesity+trial",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

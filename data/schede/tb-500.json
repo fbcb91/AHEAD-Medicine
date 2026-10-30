@@ -1,0 +1,64 @@
+{
+  "name": "TB-500",
+  "slug": "tb-500",
+  "category": "Recupero",
+  "status": "sperimentale",
+  "service": "Peptidi",
+  "aliases": [
+    "timosina beta-4",
+    "thymosin beta-4"
+  ],
+  "focus": "Riparazione dei tessuti",
+  "tagline": "Una molecola spesso citata per il recupero: quante prove abbiamo?",
+  "evidence_summary": "Molto preliminari",
+  "what": "Il nome TB-500 indica un frammento sintetico correlato alla timosina beta-4, una proteina naturale coinvolta nell’organizzazione del citoscheletro e studiata in ambito preclinico per i processi di riparazione.",
+  "unknown": "I dati disponibili non consentono di concludere che TB-500 favorisca il recupero da infortuni nell’essere umano. I pochi studi clinici riguardano la timosina beta-4 in formulazioni specifiche (per esempio colliri), non il frammento venduto nel mercato non regolato.",
+  "risk": "La FDA segnala la mancanza di informazioni affidabili sulla sicurezza nell’uomo per il frammento noto come TB-500 e possibili problemi di impurità.",
+  "reg": "Non è un medicinale autorizzato dall’EMA né dalla FDA. Nel luglio 2026 un comitato consultivo della FDA ha votato a favore del suo inserimento nell’elenco delle sostanze utilizzabili in galenica negli Stati Uniti. Il voto non è vincolante, non equivale all’approvazione di un farmaco e non ha effetti in Europa.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Studi cellulari sulla timosina beta-4."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Studi animali soprattutto sulla proteina intera; pochi sul frammento."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessuno studio osservazionale significativo."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Piccoli trial di fase 2 sulla timosina beta-4 (non su TB-500) in ambito oculare e cutaneo."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato in UE né negli USA."
+    }
+  },
+  "sources": [
+    {
+      "label": "FDA — sostanze per galenica con possibili rischi",
+      "url": "https://www.fda.gov/drugs/human-drug-compounding/certain-bulk-drug-substances-use-compounding-may-present-significant-safety-risks",
+      "type": "regolatorio"
+    },
+    {
+      "label": "FDA — comitato consultivo sulla galenica, 23–24 luglio 2026",
+      "url": "https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026",
+      "type": "regolatorio"
+    },
+    {
+      "label": "McDermott Will & Emery — sintesi dei voti PCAC (luglio 2026)",
+      "url": "https://www.mcdermottlaw.com/insights/bulk-list-bound-pcac-backs-majority-of-peptides-in-two-day-public-meeting/",
+      "type": "notizia"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "name": "KPV",
+  "slug": "kpv",
+  "category": "Recupero",
+  "status": "sperimentale",
+  "service": "Peptidi",
+  "aliases": [
+    "Lys-Pro-Val",
+    "alfa-MSH frammento"
+  ],
+  "focus": "Infiammazione",
+  "tagline": "Un tripeptide antinfiammatorio ancora fermo al laboratorio.",
+  "evidence_summary": "Precliniche",
+  "what": "KPV è un tripeptide (lisina-prolina-valina) che corrisponde alla parte terminale dell’ormone alfa-MSH. È studiato in laboratorio e su animali per possibili effetti antinfiammatori, in particolare a livello intestinale e cutaneo.",
+  "unknown": "Non ci sono studi clinici controllati nell’uomo. I risultati su modelli animali di colite non sono stati confermati in pazienti.",
+  "risk": "Profilo di sicurezza nell’uomo non caratterizzato. Qualità e purezza dei prodotti non regolati sono incerte.",
+  "reg": "Non è un medicinale autorizzato dall’EMA né dalla FDA. Nel luglio 2026 un comitato consultivo della FDA ha votato a favore del suo inserimento nell’elenco delle sostanze utilizzabili in galenica negli Stati Uniti. Il voto non è vincolante, non equivale all’approvazione di un farmaco e non ha effetti in Europa.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Studi su cellule epiteliali e immunitarie."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Modelli murini di colite e infiammazione cutanea."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato osservazionale."
+    },
+    "rct": {
+      "level": "no",
+      "note": "Nessun RCT pubblicato."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "FDA — comitato consultivo sulla galenica, 23–24 luglio 2026",
+      "url": "https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026",
+      "type": "regolatorio"
+    },
+    {
+      "label": "McDermott Will & Emery — sintesi dei voti PCAC (luglio 2026)",
+      "url": "https://www.mcdermottlaw.com/insights/bulk-list-bound-pcac-backs-majority-of-peptides-in-two-day-public-meeting/",
+      "type": "notizia"
+    },
+    {
+      "label": "PubMed — KPV e infiammazione intestinale",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=KPV+tripeptide+colitis",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

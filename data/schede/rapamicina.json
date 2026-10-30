@@ -1,0 +1,65 @@
+{
+  "name": "Rapamicina (sirolimus)",
+  "slug": "rapamicina",
+  "kind": "sostanza",
+  "category": "Longevità",
+  "status": "ue",
+  "service": "Longevity & Performance",
+  "aliases": [
+    "sirolimus",
+    "rapamycin",
+    "mTOR"
+  ],
+  "focus": "Invecchiamento e via mTOR",
+  "tagline": "Allunga la vita dei topi. E negli esseri umani?",
+  "evidence_summary": "Solide negli animali, preliminari nell’uomo",
+  "what": "La rapamicina è un immunosoppressore che inibisce la via mTOR. È autorizzata per prevenire il rigetto nel trapianto di rene e per una rara malattia polmonare. Nei topi ha prolungato la durata della vita in studi indipendenti.",
+  "unknown": "Negli esseri umani non ci sono prove che rallenti l’invecchiamento o prolunghi la vita. I piccoli studi su dosi basse misurano marcatori intermedi, non esiti clinici.",
+  "risk": "Immunosoppressione con aumento del rischio di infezioni, ulcere della bocca, alterazioni di glicemia e lipidi, ritardo nella guarigione delle ferite. L’uso off-label richiede supervisione specialistica.",
+  "reg": "Autorizzata in UE (Rapamune) per indicazioni specifiche; non per la longevità.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Meccanismo ampiamente caratterizzato."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Estensione della vita in topi in studi multicentrici."
+    },
+    "osservazionale": {
+      "level": "limitato",
+      "note": "Dati da pazienti trapiantati, non trasferibili a persone sane."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Piccoli RCT su marcatori intermedi (per esempio risposta ai vaccini)."
+    },
+    "autorizzato": {
+      "level": "si",
+      "note": "Autorizzata in UE per altre indicazioni."
+    }
+  },
+  "sources": [
+    {
+      "label": "EMA — Rapamune (sirolimus) (EPAR)",
+      "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/rapamune",
+      "type": "regolatorio"
+    },
+    {
+      "label": "Nature 2009 — rapamicina e longevità nei topi",
+      "url": "https://doi.org/10.1038/nature08221",
+      "type": "studio"
+    },
+    {
+      "label": "PubMed — rapamicina e invecchiamento nell’uomo",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=rapamycin+aging+randomized+humans",
+      "type": "studio"
+    }
+  ],
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

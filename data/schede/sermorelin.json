@@ -1,0 +1,54 @@
+{
+  "name": "Sermorelin",
+  "slug": "sermorelin",
+  "category": "Ormoni",
+  "status": "ritirato",
+  "service": "Peptidi",
+  "aliases": [
+    "GRF 1-29",
+    "Geref"
+  ],
+  "focus": "Asse dell’ormone della crescita",
+  "tagline": "Un ex farmaco pediatrico riscoperto dal mercato anti-aging.",
+  "evidence_summary": "Datate e limitate all’uso pediatrico",
+  "what": "Sermorelin corrisponde ai primi 29 aminoacidi del GHRH umano. Negli Stati Uniti è stato commercializzato (Geref) per la diagnosi e il trattamento di alcuni deficit di ormone della crescita nei bambini, poi ritirato dal mercato.",
+  "unknown": "Non ci sono studi solidi che dimostrino benefici anti-aging, sulla composizione corporea o sulla performance in adulti sani.",
+  "risk": "Effetti indesiderati descritti includono reazioni nel sito di iniezione, cefalea e vampate. L’uso prolungato fuori indicazione non è studiato.",
+  "reg": "Non è autorizzato in UE. Negli USA il medicinale è stato ritirato dal commercio (2008) per motivi non legati alla sicurezza secondo quanto dichiarato dal produttore.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Farmacologia caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Studi preclinici regolatori."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessun dato rilevante negli adulti sani."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Studi clinici datati in età pediatrica."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non più autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — sermorelin, studi clinici",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=sermorelin+clinical+trial",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

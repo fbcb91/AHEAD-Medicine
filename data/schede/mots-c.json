@@ -1,0 +1,58 @@
+{
+  "name": "MOTS-c",
+  "slug": "mots-c",
+  "category": "Longevità",
+  "status": "sperimentale",
+  "service": "Longevity & Performance",
+  "aliases": [
+    "peptide mitocondriale"
+  ],
+  "focus": "Metabolismo energetico",
+  "tagline": "Un peptide mitocondriale al centro della ricerca metabolica.",
+  "evidence_summary": "Precliniche",
+  "what": "MOTS-c è un peptide codificato dal DNA mitocondriale, studiato per il suo possibile ruolo nella regolazione del metabolismo e nella fisiologia muscolare.",
+  "unknown": "Non esistono evidenze cliniche solide di benefici su longevità, peso o performance nell’uomo. Gli studi umani misurano i livelli naturali del peptide, non gli effetti di una somministrazione.",
+  "risk": "I dati sulla sicurezza della somministrazione nell’uomo sono insufficienti; la FDA ha segnalato un possibile rischio di immunogenicità.",
+  "reg": "Non è un medicinale autorizzato dall’EMA né dalla FDA. Nel luglio 2026 un comitato consultivo della FDA ha votato a favore del suo inserimento nell’elenco delle sostanze utilizzabili in galenica negli Stati Uniti. Il voto non è vincolante, non equivale all’approvazione di un farmaco e non ha effetti in Europa.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Studi cellulari sul metabolismo."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Studi su topi su resistenza insulinica e invecchiamento."
+    },
+    "osservazionale": {
+      "level": "limitato",
+      "note": "Correlazioni tra livelli circolanti e condizioni cliniche."
+    },
+    "rct": {
+      "level": "no",
+      "note": "Nessun RCT pubblicato."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "FDA — comitato consultivo sulla galenica, 23–24 luglio 2026",
+      "url": "https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026",
+      "type": "regolatorio"
+    },
+    {
+      "label": "McDermott Will & Emery — sintesi dei voti PCAC (luglio 2026)",
+      "url": "https://www.mcdermottlaw.com/insights/bulk-list-bound-pcac-backs-majority-of-peptides-in-two-day-public-meeting/",
+      "type": "notizia"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

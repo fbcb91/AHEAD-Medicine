@@ -1,0 +1,81 @@
+{
+  "name": "Semaglutide",
+  "slug": "semaglutide",
+  "category": "Metabolismo",
+  "status": "ue",
+  "service": "GLP-1",
+  "aliases": [
+    "Ozempic",
+    "Wegovy",
+    "Rybelsus",
+    "GLP-1"
+  ],
+  "focus": "Diabete e controllo del peso",
+  "tagline": "Dove finisce l’hype e iniziano le indicazioni cliniche autorizzate.",
+  "evidence_summary": "Cliniche consolidate per indicazioni specifiche",
+  "what": "Semaglutide è un agonista del recettore GLP-1 presente in medicinali autorizzati per il diabete di tipo 2 e, in specifiche formulazioni, per la gestione del peso in pazienti idonei. Esiste in forma iniettabile settimanale e in compresse.",
+  "unknown": "Non è un farmaco indicato per migliorare la performance fisica o dimagrire per fini estetici. Restano da chiarire gli effetti a lunghissimo termine e cosa accade al peso dopo la sospensione.",
+  "risk": "Effetti gastrointestinali frequenti; rischi più rari includono pancreatite e problemi alla colecisti. Richiede prescrizione appropriata e supervisione medica. Le versioni “contraffatte” o non autorizzate vendute online sono un rischio specifico.",
+  "reg": "Autorizzato in UE in medicinali con indicazioni specifiche: Ozempic e Rybelsus (diabete), Wegovy (gestione del peso, anche in compresse dal luglio 2026). Lo studio SELECT ha mostrato una riduzione degli eventi cardiovascolari in persone con malattia cardiovascolare e sovrappeso.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Farmacologia ampiamente caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Studi preclinici regolatori completi."
+    },
+    "osservazionale": {
+      "level": "si",
+      "note": "Ampi dati di farmacovigilanza e di pratica clinica."
+    },
+    "rct": {
+      "level": "si",
+      "note": "Programmi di fase 3 (SUSTAIN, STEP, SELECT, OASIS)."
+    },
+    "autorizzato": {
+      "level": "si",
+      "note": "Autorizzato in UE per indicazioni specifiche."
+    }
+  },
+  "sources": [
+    {
+      "label": "EMA — Wegovy (EPAR)",
+      "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/wegovy",
+      "type": "regolatorio"
+    },
+    {
+      "label": "EMA — Ozempic (EPAR)",
+      "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/ozempic",
+      "type": "regolatorio"
+    },
+    {
+      "label": "EMA — Rybelsus (EPAR)",
+      "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/rybelsus",
+      "type": "regolatorio"
+    },
+    {
+      "label": "NEJM 2021 — studio STEP 1",
+      "url": "https://doi.org/10.1056/NEJMoa2032183",
+      "type": "studio"
+    },
+    {
+      "label": "NEJM 2023 — studio SELECT",
+      "url": "https://doi.org/10.1056/NEJMoa2307563",
+      "type": "studio"
+    },
+    {
+      "label": "Pharmaphorum — Wegovy in compresse autorizzato in UE (2026)",
+      "url": "https://pharmaphorum.com/news/novos-wegovy-pill-cleared-weight-loss-eu",
+      "type": "notizia"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

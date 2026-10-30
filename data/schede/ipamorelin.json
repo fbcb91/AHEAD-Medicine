@@ -1,0 +1,54 @@
+{
+  "name": "Ipamorelin",
+  "slug": "ipamorelin",
+  "category": "Ormoni",
+  "status": "sperimentale",
+  "service": "Peptidi",
+  "aliases": [
+    "secretagogo GH",
+    "GHRP"
+  ],
+  "focus": "Secrezione ormonale",
+  "tagline": "Un secretagogo dell’ormone della crescita sotto osservazione.",
+  "evidence_summary": "Limitate",
+  "what": "Ipamorelin è un peptide che agisce sul recettore della grelina e stimola il rilascio dell’ormone della crescita. È stato sviluppato in passato come possibile farmaco per l’ileo post-operatorio.",
+  "unknown": "Gli studi clinici sull’ileo post-operatorio non hanno mostrato un beneficio chiaro. Non è dimostrato che l’uso per anti-aging o performance in persone sane produca benefici superiori ai rischi.",
+  "risk": "La sicurezza a lungo termine e gli effetti dell’impiego al di fuori di contesti di ricerca rimangono incerti.",
+  "reg": "Non è un medicinale autorizzato dall’EMA né dalla FDA.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Farmacologia recettoriale caratterizzata."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Studi animali su secrezione di GH e motilità intestinale."
+    },
+    "osservazionale": {
+      "level": "no",
+      "note": "Nessuno studio osservazionale."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "Trial di fase 2 sull’ileo post-operatorio senza beneficio significativo."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — ipamorelin e ileo post-operatorio",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=ipamorelin+postoperative+ileus",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "name": "Timosina alfa-1",
+  "slug": "timosina-alfa-1",
+  "category": "Immunità",
+  "status": "extra_ue",
+  "service": "Peptidi",
+  "aliases": [
+    "thymalfasin",
+    "Zadaxin",
+    "thymosin alpha-1"
+  ],
+  "focus": "Modulazione immunitaria",
+  "tagline": "Un immunomodulante usato in alcuni Paesi, con risultati clinici misti.",
+  "evidence_summary": "RCT con risultati misti",
+  "what": "La timosina alfa-1 (thymalfasin) è un peptide di origine timica che modula la risposta immunitaria. È commercializzata in alcuni Paesi extra-UE, soprattutto in Asia, come trattamento aggiuntivo in epatiti virali e altre condizioni.",
+  "unknown": "Gli studi clinici hanno dato risultati misti: un ampio RCT nella sepsi non ha mostrato una riduzione significativa della mortalità. Non ci sono prove di benefici in persone sane per “potenziare” il sistema immunitario.",
+  "risk": "Generalmente ben tollerata negli studi, ma l’uso fuori indicazione e non supervisionato non è giustificato dalle prove.",
+  "reg": "Non autorizzata con procedura centralizzata EMA; approvata in alcuni Paesi extra-UE.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Studi su cellule immunitarie."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Modelli animali di infezione."
+    },
+    "osservazionale": {
+      "level": "limitato",
+      "note": "Dati osservazionali da Paesi in cui è in uso."
+    },
+    "rct": {
+      "level": "limitato",
+      "note": "RCT in epatiti e sepsi, con risultati misti."
+    },
+    "autorizzato": {
+      "level": "limitato",
+      "note": "Approvata solo fuori UE."
+    }
+  },
+  "sources": [
+    {
+      "label": "PubMed — timosina alfa-1, RCT",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=thymosin+alpha+1+randomized",
+      "type": "studio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

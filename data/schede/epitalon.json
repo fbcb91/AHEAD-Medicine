@@ -1,0 +1,59 @@
+{
+  "name": "Epitalon",
+  "slug": "epitalon",
+  "category": "Longevità",
+  "status": "sperimentale",
+  "service": "Longevity & Performance",
+  "aliases": [
+    "epithalon",
+    "epitalone"
+  ],
+  "focus": "Biologia dell’invecchiamento",
+  "tagline": "Cosa suggerisce la ricerca su telomeri e invecchiamento?",
+  "evidence_summary": "Preliminari, da un singolo gruppo di ricerca",
+  "what": "Epitalon è un tetrapeptide sintetico discusso in alcune ricerche sperimentali sui meccanismi dell’invecchiamento, in particolare su telomeri e ritmi circadiani.",
+  "unknown": "La maggior parte degli studi proviene da un unico gruppo di ricerca, con limiti metodologici e scarsa replicazione indipendente. Non è dimostrato che prolunghi la vita o migliori la salute nell’uomo.",
+  "risk": "Mancano studi clinici controllati sulla sicurezza dell’uso sistemico.",
+  "reg": "Non è un medicinale autorizzato dall’EMA né dalla FDA. Nel luglio 2026 un comitato consultivo FDA si è espresso a favore del suo uso in galenica negli USA per l’insonnia; il voto non è vincolante e non ha effetti in Europa.",
+  "evidence": {
+    "in_vitro": {
+      "level": "limitato",
+      "note": "Studi cellulari su telomerasi."
+    },
+    "animale": {
+      "level": "limitato",
+      "note": "Studi su roditori, poco replicati."
+    },
+    "osservazionale": {
+      "level": "limitato",
+      "note": "Piccole coorti di un solo gruppo di ricerca."
+    },
+    "rct": {
+      "level": "no",
+      "note": "Nessun RCT di qualità adeguata."
+    },
+    "autorizzato": {
+      "level": "no",
+      "note": "Non autorizzato."
+    }
+  },
+  "sources": [
+    {
+      "label": "FDA — comitato consultivo sulla galenica, 23–24 luglio 2026",
+      "url": "https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026",
+      "type": "regolatorio"
+    },
+    {
+      "label": "McDermott Will & Emery — sintesi dei voti PCAC (luglio 2026)",
+      "url": "https://www.mcdermottlaw.com/insights/bulk-list-bound-pcac-backs-majority-of-peptides-in-two-day-public-meeting/",
+      "type": "notizia"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}

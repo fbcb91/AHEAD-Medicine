@@ -12,11 +12,12 @@ Sito italiano di validazione del mercato per un futuro servizio medico sulle ter
 - Prima della pubblicazione rimuovere meta noindex **soltanto** dopo revisione scientifica e validazione privacy/legale.
 
 ## Files
-- `build.py` genera le pagine HTML da dati e template. Modificare questo per pagine/struttura.
-- `peptides.json` è snapshot dati per letture e audit; la sorgente usata dal generatore è ancora in `build.py`. Non mantenerli incoerenti.
+- `data/schede/<slug>.json` è la sorgente unica delle schede della Library (una per sostanza). Lo schema (stato regolatorio, griglia delle prove, fonti, revisione) è validato da `build.py`.
+- `build.py` genera tutte le pagine HTML dai JSON. Modificare questo per pagine/struttura; dopo ogni modifica rilanciare `python3 build.py` e committare anche l'HTML generato (la CI lo verifica).
 - `styles.css` per estetica responsive.
 - `app.js` ricerca / filtri / CTA / modulo.
-- `api/interest.js` endpoint Vercel da attivare via variabili d'ambiente.
+- `api/interest.js` endpoint Vercel da attivare via variabili d'ambiente (honeypot e rate limit di base inclusi).
+- `vercel.json` header di sicurezza, inclusa la CSP: aggiornarla se si aggiungono script o domini esterni (es. analytics).
 
 ## Prossime funzioni desiderate
 - Sostituire build.py con template modulari o Astro se il catalogo cresce molto.

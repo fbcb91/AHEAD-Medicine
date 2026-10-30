@@ -1,0 +1,64 @@
+{
+  "name": "Tirzepatide",
+  "slug": "tirzepatide",
+  "category": "Metabolismo",
+  "status": "ue",
+  "service": "GLP-1",
+  "aliases": [
+    "Mounjaro",
+    "GIP/GLP-1"
+  ],
+  "focus": "Diabete e controllo del peso",
+  "tagline": "Un agonista GIP/GLP-1 con applicazioni cliniche consolidate.",
+  "evidence_summary": "Cliniche consolidate per indicazioni specifiche",
+  "what": "Tirzepatide agisce sui recettori GIP e GLP-1 ed è presente in medicinali autorizzati per il diabete di tipo 2 e la gestione del peso in determinate condizioni.",
+  "unknown": "L’esistenza di benefici metabolici dimostrati non implica che sia indicato per biohacking o ottimizzazione fisica in persone sane. Gli effetti a lunghissimo termine sono ancora in studio.",
+  "risk": "Richiede valutazione clinica e può avere effetti indesiderati, soprattutto gastrointestinali; rischi più rari includono pancreatite e problemi alla colecisti.",
+  "reg": "Autorizzato nell’Unione europea (Mounjaro) con indicazioni specifiche.",
+  "evidence": {
+    "in_vitro": {
+      "level": "si",
+      "note": "Farmacologia caratterizzata."
+    },
+    "animale": {
+      "level": "si",
+      "note": "Studi preclinici regolatori completi."
+    },
+    "osservazionale": {
+      "level": "si",
+      "note": "Dati crescenti di pratica clinica."
+    },
+    "rct": {
+      "level": "si",
+      "note": "Programmi di fase 3 (SURPASS, SURMOUNT)."
+    },
+    "autorizzato": {
+      "level": "si",
+      "note": "Autorizzato in UE per indicazioni specifiche."
+    }
+  },
+  "sources": [
+    {
+      "label": "EMA — Mounjaro (EPAR)",
+      "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/mounjaro",
+      "type": "regolatorio"
+    },
+    {
+      "label": "NEJM 2022 — studio SURMOUNT-1",
+      "url": "https://doi.org/10.1056/NEJMoa2206038",
+      "type": "studio"
+    },
+    {
+      "label": "EMA — uso appropriato dei farmaci GLP-1",
+      "url": "https://www.ema.europa.eu/en/news/eu-actions-tackle-shortages-glp-1-receptor-agonists",
+      "type": "regolatorio"
+    }
+  ],
+  "kind": "peptide",
+  "review": {
+    "status": "bozza",
+    "medical_reviewer": null,
+    "checked": "2026-10-30",
+    "next_check": "2027-04-30"
+  }
+}
