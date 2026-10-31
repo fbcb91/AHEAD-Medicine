@@ -93,3 +93,28 @@
 .area-nav a{color:#3e6675;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .area-links{margin-bottom:8px}
 .area-links a[aria-current="page"]{background:#17252a;color:#fff;border-color:#17252a}
+/* Questionario /inizia/ */
+.survey-wrap{max-width:880px}
+.survey-progress{height:4px;background:#dfe6e3;margin-bottom:40px}
+.survey-progress span{display:block;height:100%;width:0;background:#17252a;transition:width .3s}
+.step-kicker{display:block;font-size:11px;font-weight:800;letter-spacing:.16em;color:#7a9196;margin-bottom:12px}
+.survey-step h2,.survey-done h2{font-size:clamp(30px,3.6vw,48px);margin-bottom:28px;outline:none}
+.q-block{border:0;padding:0;margin:0 0 30px}
+.q-label{display:block;font-weight:700;font-size:16px;color:#24363b;margin-bottom:12px;padding:0}
+.q-optional,.q-hint{font-weight:500;font-size:12px;color:#7a9196;margin-left:8px}
+.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.choice{display:flex;align-items:center;gap:12px;border:1px solid #cbd6d4;background:#fff;padding:14px 16px;cursor:pointer;font-size:15px;color:#2f4449;transition:border-color .15s,background .15s}
+.choice:hover{border-color:#8fb0b6}
+.choice input{width:18px;height:18px;accent-color:#17252a;flex-shrink:0}
+.choice:has(input:checked){border-color:#17252a;background:#eef3f2}
+.choice:has(input:disabled){opacity:.5;cursor:not-allowed}
+.survey-form textarea{width:100%;border:1px solid #cbd6d4;padding:14px 16px;font:inherit;font-size:15px;resize:vertical;background:#fff}
+.q-warning{font-size:12px;color:#8a6d3b;margin:8px 0 0}
+.survey-error{color:#a3412f;font-weight:700;min-height:1.6em;margin:0 0 12px}
+.survey-nav{display:flex;gap:12px;justify-content:space-between;align-items:center;border-top:1px solid #d3dede;padding-top:24px}
+.survey-nav #survey-next,.survey-nav #survey-submit{margin-left:auto}
+.btn-ghost{background:transparent;border:1px solid #cbd6d4;color:#3d5257}
+.survey-done{padding:30px 0;outline:none}
+.survey-done p{font-size:17px;color:#3d5257;max-width:640px}
+.survey-done .btn{margin:10px 0 24px}
+@media(max-width:600px){.choices{grid-template-columns:1fr}}

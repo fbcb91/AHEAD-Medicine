@@ -66,6 +66,101 @@
     });
   }));
 
+  // Questionario anonimo (/inizia/): un passo alla volta, invio a /api/survey.
+  const survey = document.querySelector('#survey-form');
+  if (survey) {
+    const steps = [...survey.querySelectorAll('.survey-step')];
+    const back = document.querySelector('#survey-back');
+    const next = document.querySelector('#survey-next');
+    const send = document.querySelector('#survey-submit');
+    const error = document.querySelector('#survey-error');
+    const bar = document.querySelector('#survey-bar');
+    let current = 0;
+
+    // Precompila l'area se si arriva da una consulenza: /inizia/?area=trt
+    const area = new URLSearchParams(location.search).get('area');
+    const preset = area && survey.querySelector(`input[name="aree"][data-slug="${CSS.escape(area)}"]`);
+    if (preset) preset.checked = true;
+
+    const show = (i, initial = false) => {
+      steps.forEach((s, n) => { s.hidden = n !== i; });
+      current = i;
+      back.hidden = i === 0;
+      next.hidden = i === steps.length - 1;
+      send.hidden = i !== steps.length - 1;
+      bar.style.width = ((i + 1) / steps.length * 100) + '%';
+      error.textContent = '';
+      if (initial) return;
+      steps[i].querySelector('h2').focus({ preventScroll: true });
+      survey.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    };
+    const checkStep = i => {
+      for (const block of steps[i].querySelectorAll('fieldset[data-q]')) {
+        const chosen = block.querySelectorAll('input:checked').length;
+        const max = Number(block.dataset.max || 0);
+        if (block.dataset.required === 'true' && !chosen) {
+          block.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          return 'Seleziona almeno una risposta per continuare: «' + block.querySelector('legend').firstChild.textContent.trim() + '».';
+        }
+        if (max && chosen > max) return 'Puoi scegliere al massimo ' + max + ' opzioni.';
+      }
+      return '';
+    };
+    // Limite di scelte: disattiva le altre opzioni quando si raggiunge il massimo.
+    survey.querySelectorAll('fieldset[data-max]').forEach(block => block.addEventListener('change', () => {
+      const max = Number(block.dataset.max);
+      const boxes = [...block.querySelectorAll('input')];
+      const full = boxes.filter(b => b.checked).length >= max;
+      boxes.forEach(b => { if (!b.checked) b.disabled = full; });
+    }));
+    survey.addEventListener('change', () => { error.textContent = ''; });
+    next.addEventListener('click', () => {
+      const problem = checkStep(current);
+      if (problem) { error.textContent = problem; return; }
+      show(current + 1);
+    });
+    back.addEventListener('click', () => show(current - 1));
+    survey.addEventListener('submit', async event => {
+      event.preventDefault();
+      const problem = checkStep(current);
+      if (problem) { error.textContent = problem; return; }
+      const data = {};
+      new FormData(survey).forEach((value, key) => {
+        const multi = survey.querySelector(`input[type="checkbox"][name="${key}"]`);
+        if (multi) (data[key] = data[key] || []).push(value);
+        else data[key] = value;
+      });
+      send.disabled = true;
+      error.textContent = '';
+      try {
+        const res = await fetch('/api/survey', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        let body = {};
+        try { body = await res.json(); } catch (_) {}
+        if (!res.ok) throw new Error(body.error || 'Impossibile inviare le risposte, riprova più tardi.');
+        if (typeof window.plausible === 'function') {
+          (data.aree || []).forEach(a => window.plausible('Questionario completato', { props: { area: a } }));
+        }
+        survey.hidden = true;
+        document.querySelector('.survey-progress').hidden = true;
+        const done = document.querySelector('#survey-done');
+        done.hidden = false;
+        done.focus();
+      } catch (err) {
+        error.textContent = err.message;
+      } finally {
+        send.disabled = false;
+      }
+    });
+    show(0, true);
+  }
+
+  // Click sui pulsanti che portano al questionario: conteggio aggregato per area.
+  document.querySelectorAll('.start-link').forEach(link => link.addEventListener('click', () => {
+    if (typeof window.plausible === 'function') {
+      window.plausible('Consulenza: interesse', { props: { servizio: link.dataset.service || 'generale' } });
+    }
+  }));
+
   const modal = document.querySelector('#interest-modal');
   const form = document.querySelector('#interest-form');
   const message = document.querySelector('#form-message');
