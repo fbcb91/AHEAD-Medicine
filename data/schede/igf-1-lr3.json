@@ -38,6 +38,30 @@
       "note": "Non autorizzato (la mecasermina è un farmaco diverso)."
     }
   },
+  "kind": "peptide",
+  "extra_categories": [],
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: iniezioni.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "key_points": [
+    "Versione modificata dell’IGF-1, nata come reagente per colture cellulari.",
+    "Mai studiata nell’uomo.",
+    "Rischio di ipoglicemie anche gravi.",
+    "Non è autorizzata ed è vietata nello sport."
+  ],
+  "mechanism": "L’IGF-1 media molti effetti dell’ormone della crescita su muscoli e ossa e abbassa la glicemia, come l’insulina. La versione LR3 è modificata per non essere “catturata” dalle proteine che normalmente ne regolano l’attività: per questo è molto più potente e duratura, con effetti difficili da prevedere.",
+  "faq": [
+    [
+      "IGF-1 LR3 e mecasermina sono la stessa cosa?",
+      "No. La mecasermina è IGF-1 umano autorizzato per una rara malattia pediatrica; IGF-1 LR3 è una versione modificata mai approvata."
+    ],
+    [
+      "Perché è pericoloso?",
+      "Perché può abbassare molto la glicemia e perché livelli elevati di IGF-1 sono associati, in studi osservazionali, a un rischio maggiore di alcuni tumori."
+    ]
+  ],
   "sources": [
     {
       "label": "EMA — Increlex (mecasermina) (EPAR)",
@@ -50,13 +74,6 @@
       "type": "regolatorio"
     }
   ],
-  "kind": "peptide",
-  "extra_categories": [],
-  "dosing": {
-    "basis": "nessuna",
-    "route": "Nel mercato non regolato: iniezioni.",
-    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

@@ -43,6 +43,32 @@
       "note": "Autorizzata in UE per indicazioni specifiche."
     }
   },
+  "dosing": {
+    "basis": "rcp",
+    "route": "Iniezione sottocutanea o intramuscolare.",
+    "text": "Nell’ipogonadismo ipogonadotropo maschile gli schemi autorizzati prevedono in genere 1.000–2.000 UI due o tre volte a settimana, regolate sugli esami. Nella procreazione assistita si usa una singola dose per indurre l’ovulazione, secondo il protocollo dello specialista."
+  },
+  "key_points": [
+    "Ormone che imita l’LH e stimola i testicoli e le ovaie.",
+    "Autorizzata in UE per infertilità e ipogonadismo ipogonadotropo maschile.",
+    "Usata talvolta insieme al testosterone per preservare la fertilità (off-label).",
+    "Nessun effetto dimostrato sul dimagrimento."
+  ],
+  "mechanism": "L’hCG si lega allo stesso recettore dell’LH, l’ormone con cui l’ipofisi stimola le gonadi. Nell’uomo spinge i testicoli a produrre testosterone e mantiene la produzione di spermatozoi, anche quando la terapia con testosterone ha “spento” l’LH naturale.",
+  "faq": [
+    [
+      "L’hCG fa dimagrire?",
+      "No. La cosiddetta “dieta hCG” non ha prove di efficacia: la perdita di peso è dovuta alla restrizione calorica."
+    ],
+    [
+      "Si può usare con il testosterone?",
+      "Talvolta lo specialista la associa per preservare la fertilità. È un uso fuori indicazione da valutare caso per caso."
+    ],
+    [
+      "È doping?",
+      "Sì, per gli uomini è vietata nello sport."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — hCG e preservazione della fertilità in TRT",
@@ -55,11 +81,6 @@
       "type": "regolatorio"
     }
   ],
-  "dosing": {
-    "basis": "rcp",
-    "route": "Iniezione sottocutanea o intramuscolare.",
-    "text": "Nell’ipogonadismo ipogonadotropo maschile gli schemi autorizzati prevedono in genere 1.000–2.000 UI due o tre volte a settimana, regolate sugli esami. Nella procreazione assistita si usa una singola dose per indurre l’ovulazione, secondo il protocollo dello specialista."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

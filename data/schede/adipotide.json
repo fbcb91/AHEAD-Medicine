@@ -37,13 +37,6 @@
       "note": "Non autorizzato."
     }
   },
-  "sources": [
-    {
-      "label": "PubMed — adipotide nei primati",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=adipotide+obese+monkeys",
-      "type": "studio"
-    }
-  ],
   "kind": "peptide",
   "extra_categories": [],
   "dosing": {
@@ -51,6 +44,36 @@
     "route": "Nel mercato non regolato: iniezioni.",
     "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
   },
+  "key_points": [
+    "Peptide sperimentale che colpisce i vasi sanguigni del tessuto adiposo.",
+    "Ha fatto perdere peso a scimmie obese.",
+    "Negli animali ha causato danni ai reni.",
+    "Non è un medicinale autorizzato: tra le sostanze del mercato non regolato con il profilo più preoccupante."
+  ],
+  "mechanism": "L’adipotide combina due parti: una riconosce una proteina presente sui vasi sanguigni che nutrono il grasso, l’altra provoca la morte delle cellule a cui si lega. Togliendo nutrimento al tessuto adiposo, ne causa la riduzione. Lo stesso meccanismo, però, può colpire altri tessuti, come quello renale.",
+  "timeline": [
+    [
+      "2011",
+      "Uno studio su scimmie obese mostra perdita di peso, ma anche effetti tossici sui reni."
+    ]
+  ],
+  "faq": [
+    [
+      "L’adipotide funziona?",
+      "Nelle scimmie obese ha ridotto il peso. Nell’uomo non esistono dati utili."
+    ],
+    [
+      "Perché è considerato pericoloso?",
+      "Negli studi sugli animali ha provocato danni renali in relazione alla dose. Nessuno ha stabilito se e a quali condizioni possa essere sicuro nell’uomo."
+    ]
+  ],
+  "sources": [
+    {
+      "label": "PubMed — adipotide nei primati",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=adipotide+obese+monkeys",
+      "type": "studio"
+    }
+  ],
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

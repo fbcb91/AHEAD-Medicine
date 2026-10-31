@@ -37,6 +37,35 @@
       "note": "Registrato solo fuori UE (Russia)."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "extra_ue",
+    "route": "Spray o gocce nasali.",
+    "text": "In Russia si usa per via nasale, con dosi e durate che dipendono dall’indicazione neurologica. Non esiste una dose validata secondo gli standard europei."
+  },
+  "key_points": [
+    "Peptide derivato da un frammento dell’ormone ACTH.",
+    "Registrato in Russia per alcune condizioni neurologiche.",
+    "Prove soprattutto da piccoli studi russi.",
+    "Non autorizzato in UE né negli USA."
+  ],
+  "mechanism": "Semax riproduce una parte dell’ACTH senza gli effetti sugli ormoni dello stress. Negli studi di laboratorio aumenta fattori di crescita dei neuroni, come il BDNF, e influenza alcuni neurotrasmettitori. È questo il motivo per cui viene proposto per memoria e concentrazione.",
+  "timeline": [
+    [
+      "2026",
+      "Un comitato consultivo FDA vota (8–5) a favore del suo uso in galenica negli USA; il voto non è vincolante."
+    ]
+  ],
+  "faq": [
+    [
+      "Semax migliora la memoria?",
+      "Non ci sono prove di miglioramento cognitivo in persone sane secondo gli standard di ricerca internazionali."
+    ],
+    [
+      "Si usa per via nasale?",
+      "In Russia sì, come gocce o spray nasale. In Europa non è un medicinale autorizzato."
+    ]
+  ],
   "sources": [
     {
       "label": "FDA — comitato consultivo sulla galenica, 23–24 luglio 2026",
@@ -54,12 +83,6 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "extra_ue",
-    "route": "Spray o gocce nasali.",
-    "text": "In Russia si usa per via nasale, con dosi e durate che dipendono dall’indicazione neurologica. Non esiste una dose validata secondo gli standard europei."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

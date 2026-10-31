@@ -38,6 +38,47 @@
       "note": "Autorizzato in UE per indicazioni specifiche."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "rcp",
+    "route": "Iniezione sottocutanea quotidiana.",
+    "text": "Saxenda (gestione del peso): si parte da 0,6 mg al giorno e si aumenta di 0,6 mg ogni settimana fino a 3 mg. Victoza (diabete): si parte da 0,6 mg, poi 1,2 mg dopo almeno una settimana, fino a un massimo di 1,8 mg."
+  },
+  "key_points": [
+    "Agonista del GLP-1 a somministrazione giornaliera, in uso da oltre quindici anni.",
+    "Autorizzato in UE per diabete di tipo 2 (Victoza) e gestione del peso (Saxenda).",
+    "Lo studio LEADER ha mostrato meno eventi cardiovascolari nelle persone con diabete ad alto rischio.",
+    "Oggi esistono anche medicinali equivalenti."
+  ],
+  "mechanism": "La liraglutide imita il GLP-1, l’ormone intestinale che stimola l’insulina dopo i pasti, riduce il glucagone, rallenta lo svuotamento dello stomaco e aumenta il senso di sazietà. Rispetto al GLP-1 naturale, che dura pochi minuti, si lega all’albumina del sangue e resta attiva circa un giorno: per questo si inietta una volta al giorno.",
+  "timeline": [
+    [
+      "2009",
+      "Autorizzata in UE come Victoza per il diabete di tipo 2."
+    ],
+    [
+      "2015",
+      "Autorizzata in UE come Saxenda per la gestione del peso."
+    ],
+    [
+      "2016",
+      "Lo studio LEADER mostra una riduzione degli eventi cardiovascolari nelle persone con diabete."
+    ]
+  ],
+  "faq": [
+    [
+      "Liraglutide o semaglutide?",
+      "In media la semaglutide produce una perdita di peso maggiore e si somministra una volta a settimana. La liraglutide resta un’opzione valida, anche per la disponibilità di medicinali equivalenti: la scelta va fatta con il medico."
+    ],
+    [
+      "Serve la ricetta?",
+      "Sì, è un medicinale soggetto a prescrizione."
+    ],
+    [
+      "Si può usare negli adolescenti?",
+      "Per la gestione del peso esistono indicazioni anche in età adolescenziale, con criteri precisi valutati dallo specialista."
+    ]
+  ],
   "sources": [
     {
       "label": "EMA — Saxenda (EPAR)",
@@ -60,12 +101,6 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "rcp",
-    "route": "Iniezione sottocutanea quotidiana.",
-    "text": "Saxenda (gestione del peso): si parte da 0,6 mg al giorno e si aumenta di 0,6 mg ogni settimana fino a 3 mg. Victoza (diabete): si parte da 0,6 mg, poi 1,2 mg dopo almeno una settimana, fino a un massimo di 1,8 mg."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

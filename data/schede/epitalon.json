@@ -37,6 +37,35 @@
       "note": "Non autorizzato."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Negli studi russi: iniezioni in cicli brevi.",
+    "text": "Nessuna dose è stata validata con studi controllati. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "key_points": [
+    "Tetrapeptide sintetico studiato per telomeri e ritmi circadiani.",
+    "La maggior parte degli studi viene da un unico gruppo di ricerca russo.",
+    "Nessuna prova che prolunghi la vita nell’uomo.",
+    "Non è un medicinale autorizzato."
+  ],
+  "mechanism": "Secondo gli studi del gruppo che lo ha sviluppato, l’epitalon attiverebbe la telomerasi, l’enzima che allunga i telomeri, cioè le estremità dei cromosomi che si accorciano con l’età, e regolerebbe la produzione di melatonina. Questi meccanismi non sono stati confermati da ricerche indipendenti.",
+  "timeline": [
+    [
+      "2026",
+      "Un comitato consultivo FDA si esprime a favore del suo uso in galenica negli USA per l’insonnia; il voto non è vincolante."
+    ]
+  ],
+  "faq": [
+    [
+      "L’epitalon allunga i telomeri?",
+      "È stato osservato in studi di laboratorio di un singolo gruppo di ricerca, senza conferme indipendenti nell’uomo."
+    ],
+    [
+      "Serve per dormire meglio?",
+      "Il voto FDA riguardava l’insonnia, ma le prove cliniche restano molto limitate."
+    ]
+  ],
   "sources": [
     {
       "label": "FDA — comitato consultivo sulla galenica, 23–24 luglio 2026",
@@ -49,12 +78,6 @@
       "type": "notizia"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "nessuna",
-    "route": "Negli studi russi: iniezioni in cicli brevi.",
-    "text": "Nessuna dose è stata validata con studi controllati. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

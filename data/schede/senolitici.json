@@ -41,6 +41,28 @@
       "note": "Dasatinib autorizzato per altre indicazioni."
     }
   },
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Per bocca, in cicli brevi e intermittenti.",
+    "text": "Negli studi pilota sono stati usati cicli di pochi giorni, sotto stretto controllo medico. Dasatinib è un farmaco oncologico con effetti indesiderati importanti: non esiste una dose senolitica validata."
+  },
+  "key_points": [
+    "Sostanze studiate per eliminare le cellule senescenti, che si accumulano con l’età.",
+    "Nei topi migliorano diverse funzioni legate all’età.",
+    "Nell’uomo solo studi pilota in malattie specifiche.",
+    "Dasatinib è un farmaco oncologico con effetti indesiderati importanti."
+  ],
+  "mechanism": "Le cellule senescenti smettono di dividersi ma non muoiono, e rilasciano molecole infiammatorie che danneggiano i tessuti vicini. I senolitici sfruttano i “punti deboli” di queste cellule per spingerle a morire. Si usano a cicli brevi perché l’effetto dura finché le cellule non si riaccumulano.",
+  "faq": [
+    [
+      "Fisetina e quercetina da sole funzionano?",
+      "Sono studiate come senolitici più leggeri, ma nell’uomo le prove sono ancora preliminari."
+    ],
+    [
+      "Perché non usarli già oggi?",
+      "Perché i benefici nell’uomo non sono dimostrati e il dasatinib ha effetti collaterali seri."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — studi clinici sui senolitici",
@@ -48,11 +70,6 @@
       "type": "studio"
     }
   ],
-  "dosing": {
-    "basis": "nessuna",
-    "route": "Per bocca, in cicli brevi e intermittenti.",
-    "text": "Negli studi pilota sono stati usati cicli di pochi giorni, sotto stretto controllo medico. Dasatinib è un farmaco oncologico con effetti indesiderati importanti: non esiste una dose senolitica validata."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

@@ -38,6 +38,35 @@
       "note": "Non autorizzato."
     }
   },
+  "extra_categories": [],
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: capsule.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "key_points": [
+    "Piccola molecola sperimentale che attiva i recettori ERR del muscolo.",
+    "Chiamata “esercizio in pillola” per gli effetti osservati nei topi.",
+    "Nessuno studio nell’uomo.",
+    "Non è un medicinale autorizzato."
+  ],
+  "mechanism": "I recettori ERR regolano i geni che il muscolo attiva con l’allenamento di resistenza, per esempio quelli per produrre nuovi mitocondri e bruciare grassi. Nei topi SLU-PP-332 ha attivato questo programma anche senza esercizio, aumentando la resistenza alla corsa.",
+  "timeline": [
+    [
+      "2023–2024",
+      "Pubblicati i primi studi su topi che ne descrivono gli effetti simili all’esercizio."
+    ]
+  ],
+  "faq": [
+    [
+      "Può sostituire l’allenamento?",
+      "No. Anche nei topi riproduce solo una parte degli effetti dell’esercizio, e nell’uomo non è mai stato studiato."
+    ],
+    [
+      "Si trova in vendita?",
+      "Circola online come prodotto “da ricerca”, senza controlli di qualità e senza dati sulla sicurezza nell’uomo."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — SLU-PP-332",
@@ -45,12 +74,6 @@
       "type": "studio"
     }
   ],
-  "extra_categories": [],
-  "dosing": {
-    "basis": "nessuna",
-    "route": "Nel mercato non regolato: capsule.",
-    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

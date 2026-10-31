@@ -42,6 +42,38 @@
       "note": "Non sono medicinali."
     }
   },
+  "dosing": {
+    "basis": "studi",
+    "route": "Per bocca, come integratori.",
+    "text": "Negli RCT si sono usati in genere 250–1000 mg al giorno. In UE il nicotinamide riboside cloruro è ammesso negli integratori fino a 300 mg al giorno; il parere EFSA del 2026 sull’NMN considera sicuri 300 mg al giorno. Le infusioni endovenose di NAD+ non hanno prove di efficacia."
+  },
+  "key_points": [
+    "NMN e NR sono precursori del NAD+, una molecola chiave per il metabolismo energetico.",
+    "Aumentano i livelli di NAD+ nel sangue nei piccoli studi clinici.",
+    "Benefici su salute e invecchiamento incoerenti o non dimostrati.",
+    "Sono integratori; le infusioni di NAD+ non hanno prove di efficacia."
+  ],
+  "mechanism": "Il NAD+ serve ai mitocondri per produrre energia e ad alcuni enzimi, come le sirtuine, che riparano il DNA. In alcuni tessuti i suoi livelli calano con l’età. NMN e NR vengono trasformati in NAD+ dall’organismo: l’ipotesi è che ripristinarne i livelli rallenti alcuni processi dell’invecchiamento.",
+  "timeline": [
+    [
+      "2026",
+      "L’EFSA esprime un parere positivo sulla sicurezza di un prodotto a base di NMN."
+    ]
+  ],
+  "faq": [
+    [
+      "Meglio NMN o NR?",
+      "Entrambi aumentano il NAD+ nel sangue; non ci sono prove che uno dei due migliori la salute più dell’altro."
+    ],
+    [
+      "Le flebo di NAD+ funzionano?",
+      "Non ci sono studi che ne dimostrino benefici, e comportano i rischi di qualsiasi infusione."
+    ],
+    [
+      "Sono legali in Italia?",
+      "Il nicotinamide riboside è autorizzato come nuovo alimento in UE; per l’NMN l’autorizzazione europea non risultava completata alla data di verifica."
+    ]
+  ],
   "sources": [
     {
       "label": "NutraIngredients — parere EFSA sull’NMN (maggio 2026)",
@@ -54,11 +86,6 @@
       "type": "studio"
     }
   ],
-  "dosing": {
-    "basis": "studi",
-    "route": "Per bocca, come integratori.",
-    "text": "Negli RCT si sono usati in genere 250–1000 mg al giorno. In UE il nicotinamide riboside cloruro è ammesso negli integratori fino a 300 mg al giorno; il parere EFSA del 2026 sull’NMN considera sicuri 300 mg al giorno. Le infusioni endovenose di NAD+ non hanno prove di efficacia."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

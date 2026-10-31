@@ -39,6 +39,32 @@
       "note": "Autorizzato solo per un’altra indicazione (infertilità femminile)."
     }
   },
+  "dosing": {
+    "basis": "rcp",
+    "route": "Compresse per bocca.",
+    "text": "Nell’indicazione autorizzata (infertilità femminile): 50 mg al giorno per 5 giorni del ciclo, per un numero limitato di cicli. Nell’uomo l’uso è off-label: gli studi hanno usato dosi basse giornaliere o a giorni alterni per alcuni mesi, con controllo degli esami."
+  },
+  "key_points": [
+    "Modulatore dei recettori degli estrogeni, autorizzato per indurre l’ovulazione.",
+    "Negli uomini aumenta il testosterone prodotto dai testicoli: uso off-label.",
+    "A differenza del testosterone, tende a preservare la fertilità.",
+    "Gli studi maschili sono piccoli e di breve durata."
+  ],
+  "mechanism": "Il clomifene blocca i recettori degli estrogeni nell’ipotalamo. Il cervello “crede” che gli estrogeni siano bassi e aumenta la produzione di GnRH, LH e FSH. Nella donna questo stimola l’ovulazione; nell’uomo spinge i testicoli a produrre più testosterone e spermatozoi.",
+  "faq": [
+    [
+      "Il clomifene può sostituire il testosterone?",
+      "In alcuni uomini con ipogonadismo di origine ipofisaria che desiderano figli può essere un’alternativa da valutare con lo specialista. Non è adatto a tutti."
+    ],
+    [
+      "Cos’è l’enclomifene?",
+      "È uno dei due isomeri del clomifene, quello responsabile dell’aumento del testosterone. Non è autorizzato come medicinale."
+    ],
+    [
+      "Ha effetti collaterali?",
+      "Sono descritti disturbi visivi, sbalzi d’umore e alterazioni ormonali: va usato con controlli."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — clomifene nell’ipogonadismo maschile",
@@ -51,11 +77,6 @@
       "type": "studio"
     }
   ],
-  "dosing": {
-    "basis": "rcp",
-    "route": "Compresse per bocca.",
-    "text": "Nell’indicazione autorizzata (infertilità femminile): 50 mg al giorno per 5 giorni del ciclo, per un numero limitato di cicli. Nell’uomo l’uso è off-label: gli studi hanno usato dosi basse giornaliere o a giorni alterni per alcuni mesi, con controllo degli esami."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

@@ -37,6 +37,39 @@
       "note": "Non più autorizzato."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Iniezione sottocutanea.",
+    "text": "Il medicinale, oggi ritirato, era somministrato con un’iniezione sottocutanea serale nei bambini con deficit di ormone della crescita, con dose calcolata sul peso. Non esistono dosi validate negli adulti."
+  },
+  "key_points": [
+    "Corrisponde ai primi 29 aminoacidi del GHRH umano.",
+    "È stato un medicinale negli USA per alcuni deficit di GH nei bambini, poi ritirato.",
+    "Nessuna prova solida di benefici anti-aging negli adulti.",
+    "Non è autorizzato in UE."
+  ],
+  "mechanism": "Sermorelin stimola l’ipofisi a rilasciare ormone della crescita seguendo il ritmo naturale, con picchi e pause. Per questo è stato proposto come alternativa “più fisiologica” al GH, ma negli adulti sani non ci sono studi che ne dimostrino i benefici.",
+  "timeline": [
+    [
+      "Anni ’90",
+      "Commercializzato negli USA (Geref) per la diagnosi e il trattamento di alcuni deficit di GH in età pediatrica."
+    ],
+    [
+      "2008",
+      "Ritirato dal commercio negli USA, per motivi non legati alla sicurezza secondo il produttore."
+    ]
+  ],
+  "faq": [
+    [
+      "Sermorelin è più sicuro del GH?",
+      "Non ci sono studi di confronto negli adulti. “Più fisiologico” non significa provato o privo di rischi."
+    ],
+    [
+      "Si trova in farmacia?",
+      "No: non è autorizzato in UE e negli USA il medicinale è stato ritirato."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — sermorelin, studi clinici",
@@ -44,12 +77,6 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "studi",
-    "route": "Iniezione sottocutanea.",
-    "text": "Il medicinale, oggi ritirato, era somministrato con un’iniezione sottocutanea serale nei bambini con deficit di ormone della crescita, con dose calcolata sul peso. Non esistono dosi validate negli adulti."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

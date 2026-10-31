@@ -37,6 +37,36 @@
       "note": "Non autorizzato."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Iniezione sottocutanea.",
+    "text": "Negli studi di fase 1–2 su volontari sani è stato somministrato con iniezioni sottocutanee singole o settimanali, a dosi calcolate sul peso corporeo, per misurarne l’effetto su GH e IGF-1. Non esiste una dose approvata per alcun uso."
+  },
+  "extra_categories": [
+    "Massa muscolare"
+  ],
+  "key_points": [
+    "Analogo a lunga durata del GHRH, l’ormone che stimola il rilascio di GH.",
+    "Aumenta GH e IGF-1 in volontari sani, ma senza dati su esiti clinici.",
+    "Lo sviluppo come farmaco non è proseguito.",
+    "Non è autorizzato ed è vietato nello sport."
+  ],
+  "mechanism": "Il GHRH prodotto dall’ipotalamo dice all’ipofisi di rilasciare l’ormone della crescita. CJC-1295 ne riproduce l’azione e, nella versione “con DAC”, si lega all’albumina del sangue e resta attivo per giorni. Il risultato è un aumento prolungato di GH e IGF-1, con effetti a lungo termine non studiati.",
+  "faq": [
+    [
+      "Differenza tra CJC-1295 con e senza DAC?",
+      "Il DAC lega il peptide all’albumina e ne prolunga la durata da minuti a giorni. Nessuna delle due versioni è un medicinale autorizzato."
+    ],
+    [
+      "Aumenta la massa muscolare?",
+      "Non ci sono studi controllati che lo dimostrino: gli studi esistenti misurano solo i livelli ormonali."
+    ],
+    [
+      "È doping?",
+      "Sì, i fattori che stimolano il rilascio di GH sono vietati nello sport."
+    ]
+  ],
   "sources": [
     {
       "label": "FDA — sostanze per galenica con possibili rischi",
@@ -49,19 +79,10 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "studi",
-    "route": "Iniezione sottocutanea.",
-    "text": "Negli studi di fase 1–2 su volontari sani è stato somministrato con iniezioni sottocutanee singole o settimanali, a dosi calcolate sul peso corporeo, per misurarne l’effetto su GH e IGF-1. Non esiste una dose approvata per alcun uso."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,
     "checked": "2026-10-30",
     "next_check": "2027-04-30"
-  },
-  "extra_categories": [
-    "Massa muscolare"
-  ]
+  }
 }

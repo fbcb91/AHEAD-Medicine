@@ -37,6 +37,29 @@
       "note": "Registrato solo fuori UE (Russia)."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "extra_ue",
+    "route": "Gocce nasali.",
+    "text": "In Russia si usa per via nasale, in cicli di alcune settimane. Non esiste una dose validata secondo gli standard europei."
+  },
+  "key_points": [
+    "Analogo sintetico della tuftsina, un piccolo peptide immunitario.",
+    "Registrato in Russia come ansiolitico.",
+    "Pochi studi, quasi tutti russi.",
+    "Non autorizzato in UE né negli USA."
+  ],
+  "mechanism": "Secondo gli studi disponibili, Selank modulerebbe il sistema del GABA, lo stesso su cui agiscono molti ansiolitici, e influenzerebbe alcuni messaggeri dell’infiammazione. I meccanismi sono poco caratterizzati secondo gli standard internazionali.",
+  "faq": [
+    [
+      "Selank è un’alternativa agli ansiolitici?",
+      "Non ci sono confronti solidi con i trattamenti standard. Chi soffre di ansia dovrebbe rivolgersi a un medico."
+    ],
+    [
+      "Dà dipendenza?",
+      "Gli studi russi non la riportano, ma i dati sulla sicurezza a lungo termine sono insufficienti."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — Selank",
@@ -44,12 +67,6 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "extra_ue",
-    "route": "Gocce nasali.",
-    "text": "In Russia si usa per via nasale, in cicli di alcune settimane. Non esiste una dose validata secondo gli standard europei."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

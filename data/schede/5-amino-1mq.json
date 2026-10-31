@@ -38,6 +38,29 @@
       "note": "Non autorizzato."
     }
   },
+  "extra_categories": [],
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: capsule.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "key_points": [
+    "Piccola molecola che inibisce l’enzima NNMT, coinvolto nel metabolismo delle cellule adipose.",
+    "Ha ridotto la massa grassa in topi obesi.",
+    "Non è mai stata studiata nell’uomo.",
+    "Non è un medicinale autorizzato."
+  ],
+  "mechanism": "L’enzima NNMT è molto attivo nel tessuto adiposo delle persone con obesità e consuma molecole coinvolte nel metabolismo energetico, compresi i precursori del NAD+. Bloccandolo, negli animali le cellule adipose sembrano consumare più energia e accumulare meno grasso.",
+  "faq": [
+    [
+      "5-Amino-1MQ fa dimagrire?",
+      "Nei topi obesi ha ridotto la massa grassa. Nell’uomo non esistono studi."
+    ],
+    [
+      "È sicuro?",
+      "Non si sa: non esistono dati sulla sicurezza nell’uomo."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — inibitori NNMT e obesità",
@@ -45,12 +68,6 @@
       "type": "studio"
     }
   ],
-  "extra_categories": [],
-  "dosing": {
-    "basis": "nessuna",
-    "route": "Nel mercato non regolato: capsule.",
-    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

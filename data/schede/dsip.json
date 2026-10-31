@@ -38,6 +38,39 @@
       "note": "Non autorizzato."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Negli studi datati: infusione endovenosa.",
+    "text": "Non esiste una dose validata: gli studi sono pochi, vecchi e con risultati incoerenti."
+  },
+  "key_points": [
+    "Peptide isolato negli anni ’70, studiato per la regolazione del sonno.",
+    "Studi nell’uomo vecchi, piccoli e con risultati incoerenti.",
+    "Meccanismo e recettore non identificati con certezza.",
+    "Nel 2026 il comitato consultivo FDA ha votato contro il suo uso in galenica."
+  ],
+  "mechanism": "Il DSIP fu isolato nel sangue di animali durante il sonno profondo, da cui il nome. Nonostante decenni di ricerca non è stato identificato un recettore specifico e non è chiaro se e come regoli davvero il sonno.",
+  "timeline": [
+    [
+      "Anni ’70",
+      "Isolato e descritto per la prima volta."
+    ],
+    [
+      "2026",
+      "Unico peptide su sette per cui il comitato consultivo FDA ha votato contro l’uso in galenica."
+    ]
+  ],
+  "faq": [
+    [
+      "Il DSIP aiuta a dormire?",
+      "Gli studi sono pochi e contraddittori. Per l’insonnia esistono approcci con prove solide, a partire dalla terapia cognitivo-comportamentale."
+    ],
+    [
+      "Perché la FDA ha votato contro?",
+      "Il comitato ha ritenuto insufficienti le prove su efficacia e sicurezza."
+    ]
+  ],
   "sources": [
     {
       "label": "FDA — comitato consultivo sulla galenica, 23–24 luglio 2026",
@@ -50,12 +83,6 @@
       "type": "notizia"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "nessuna",
-    "route": "Negli studi datati: infusione endovenosa.",
-    "text": "Non esiste una dose validata: gli studi sono pochi, vecchi e con risultati incoerenti."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

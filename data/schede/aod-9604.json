@@ -38,6 +38,29 @@
       "note": "Non autorizzato."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Negli studi clinici: per bocca.",
+    "text": "Nei trial sull’obesità è stato assunto per bocca una volta al giorno. Nessuna dose ha dimostrato efficacia e non esiste una dose approvata."
+  },
+  "key_points": [
+    "Frammento modificato dell’ormone della crescita, sviluppato come farmaco contro l’obesità.",
+    "Gli studi clinici non hanno mostrato una perdita di peso significativa.",
+    "Lo sviluppo come farmaco è stato abbandonato.",
+    "Non è un medicinale autorizzato."
+  ],
+  "mechanism": "AOD-9604 riproduce la parte finale dell’ormone della crescita, che negli studi di laboratorio sembrava favorire la degradazione dei grassi senza gli altri effetti del GH, per esempio su glicemia e crescita. Negli studi sull’uomo questo effetto non si è tradotto in una perdita di peso rilevante.",
+  "faq": [
+    [
+      "AOD-9604 brucia i grassi?",
+      "Negli studi clinici sull’obesità non ha prodotto una perdita di peso significativa rispetto al placebo."
+    ],
+    [
+      "È uguale all’“HGH Fragment 176-191”?",
+      "Sono nomi usati per lo stesso tipo di frammento dell’ormone della crescita. Le prove non cambiano."
+    ]
+  ],
   "sources": [
     {
       "label": "FDA — sostanze per galenica con possibili rischi",
@@ -50,12 +73,6 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "studi",
-    "route": "Negli studi clinici: per bocca.",
-    "text": "Nei trial sull’obesità è stato assunto per bocca una volta al giorno. Nessuna dose ha dimostrato efficacia e non esiste una dose approvata."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,
