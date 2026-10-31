@@ -38,13 +38,6 @@
       "note": "Non è un medicinale."
     }
   },
-  "sources": [
-    {
-      "label": "PubMed — AHK-Cu e follicoli",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=AHK-Cu+hair+follicle",
-      "type": "studio"
-    }
-  ],
   "kind": "peptide",
   "extra_categories": [],
   "dosing": {
@@ -52,6 +45,30 @@
     "route": "Uso cosmetico: lozioni per il cuoio capelluto.",
     "text": "Non esistono studi clinici con dosi definite. Per le iniezioni non esiste alcuna dose studiata."
   },
+  "key_points": [
+    "Tripeptide legato al rame, usato in cosmetici per il cuoio capelluto.",
+    "Le prove vengono da uno studio su follicoli isolati in laboratorio.",
+    "Nessuno studio clinico controllato sulla caduta dei capelli.",
+    "Non è un medicinale."
+  ],
+  "mechanism": "In laboratorio AHK-Cu ha stimolato l’allungamento di follicoli piliferi isolati e ridotto la morte di alcune cellule del follicolo. Come per il GHK-Cu, il rame sembra avere un ruolo. Non è dimostrato che una lozione applicata sul cuoio capelluto produca lo stesso effetto.",
+  "faq": [
+    [
+      "AHK-Cu fa ricrescere i capelli?",
+      "Non ci sono studi clinici che lo dimostrino. Per la calvizie esistono trattamenti autorizzati con prove molto più solide."
+    ],
+    [
+      "Differenza con GHK-Cu?",
+      "Sono tripeptidi simili legati al rame: GHK-Cu è più studiato per la pelle, AHK-Cu è proposto soprattutto per i capelli."
+    ]
+  ],
+  "sources": [
+    {
+      "label": "PubMed — AHK-Cu e follicoli",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=AHK-Cu+hair+follicle",
+      "type": "studio"
+    }
+  ],
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

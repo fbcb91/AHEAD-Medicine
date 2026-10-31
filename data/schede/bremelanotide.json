@@ -37,6 +37,39 @@
       "note": "Approvato solo fuori UE (USA)."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "extra_ue",
+    "route": "Autoiniettore sottocutaneo, al bisogno.",
+    "text": "Negli USA (Vyleesi): 1,75 mg almeno 45 minuti prima dell’attività sessuale prevista; non più di una dose in 24 ore e non più di 8 dosi al mese."
+  },
+  "key_points": [
+    "Agonista dei recettori della melanocortina, attivo sul cervello.",
+    "Approvato negli USA (Vyleesi) per il disturbo del desiderio ipoattivo nelle donne in premenopausa.",
+    "Benefici modesti negli studi; nausea frequente.",
+    "Non è autorizzato in UE."
+  ],
+  "mechanism": "Bremelanotide attiva i recettori della melanocortina nel cervello coinvolti nella risposta sessuale. A differenza dei farmaci per la disfunzione erettile non agisce sui vasi sanguigni dei genitali, ma sui circuiti cerebrali del desiderio. Si usa al bisogno, prima dell’attività sessuale.",
+  "timeline": [
+    [
+      "2019",
+      "Approvato dalla FDA per il disturbo del desiderio sessuale ipoattivo nelle donne in premenopausa."
+    ]
+  ],
+  "faq": [
+    [
+      "PT-141 funziona anche negli uomini?",
+      "Non è approvato per gli uomini e le prove in questo ambito sono limitate."
+    ],
+    [
+      "È come il Viagra?",
+      "No: il sildenafil agisce sui vasi sanguigni, il bremelanotide sui circuiti cerebrali del desiderio."
+    ],
+    [
+      "Si trova in Italia?",
+      "Non è autorizzato in UE."
+    ]
+  ],
   "sources": [
     {
       "label": "FDA — approvazione di Vyleesi (2019)",
@@ -49,12 +82,6 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "extra_ue",
-    "route": "Autoiniettore sottocutaneo, al bisogno.",
-    "text": "Negli USA (Vyleesi): 1,75 mg almeno 45 minuti prima dell’attività sessuale prevista; non più di una dose in 24 ore e non più di 8 dosi al mese."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

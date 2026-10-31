@@ -38,6 +38,35 @@
       "note": "Approvata solo fuori UE."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "extra_ue",
+    "route": "Iniezione sottocutanea.",
+    "text": "Nei Paesi in cui è approvata, per l’epatite B cronica lo schema tipico è 1,6 mg due volte a settimana per 6 mesi."
+  },
+  "key_points": [
+    "Peptide di origine timica che modula la risposta immunitaria.",
+    "Commercializzata in alcuni Paesi extra-UE, soprattutto in Asia.",
+    "Risultati clinici misti, anche in un ampio studio sulla sepsi.",
+    "Non autorizzata con procedura centralizzata in UE."
+  ],
+  "mechanism": "La timosina alfa-1 agisce sui linfociti T e sulle cellule dendritiche, che coordinano la risposta immunitaria: favorisce la maturazione dei linfociti e la produzione di alcune molecole di segnale. Per questo è stata studiata come aiuto nelle infezioni croniche e nelle situazioni di immunità ridotta.",
+  "timeline": [
+    [
+      "Anni ’70",
+      "Isolata da estratti di timo."
+    ]
+  ],
+  "faq": [
+    [
+      "Serve per “potenziare” il sistema immunitario?",
+      "Non ci sono prove di benefici nelle persone sane."
+    ],
+    [
+      "È usata in Italia?",
+      "Non è autorizzata con procedura centralizzata europea; viene usata soprattutto in alcuni Paesi asiatici."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — timosina alfa-1, RCT",
@@ -45,12 +74,6 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "extra_ue",
-    "route": "Iniezione sottocutanea.",
-    "text": "Nei Paesi in cui è approvata, per l’epatite B cronica lo schema tipico è 1,6 mg due volte a settimana per 6 mesi."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

@@ -37,6 +37,39 @@
       "note": "Approvato solo fuori UE (USA)."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "extra_ue",
+    "route": "Iniezione sottocutanea quotidiana.",
+    "text": "Negli USA (Egrifta) la dose approvata è 2 mg una volta al giorno sotto la pelle dell’addome. Il foglietto suggerisce di valutare la sospensione se dopo circa 6 mesi il grasso viscerale non si è ridotto."
+  },
+  "key_points": [
+    "Analogo del GHRH approvato negli USA per il grasso addominale nell’HIV.",
+    "In UE la domanda è stata ritirata nel 2012.",
+    "Efficacia dimostrata solo nell’indicazione approvata.",
+    "Può alterare glicemia e IGF-1: richiede monitoraggio."
+  ],
+  "mechanism": "Tesamorelin stimola l’ipofisi a produrre ormone della crescita, che a sua volta favorisce la mobilizzazione del grasso viscerale, quello intorno agli organi addominali. Nelle persone con HIV e lipodistrofia questo si traduce in una riduzione misurabile della circonferenza addominale.",
+  "timeline": [
+    [
+      "2010",
+      "Approvato dalla FDA (Egrifta) per l’eccesso di grasso addominale nelle persone con HIV e lipodistrofia."
+    ],
+    [
+      "2012",
+      "Ritirata la domanda di autorizzazione in UE."
+    ]
+  ],
+  "faq": [
+    [
+      "Tesamorelin fa dimagrire?",
+      "Riduce il grasso viscerale nelle persone con HIV e lipodistrofia. Non è studiato né approvato per il dimagrimento in generale."
+    ],
+    [
+      "È disponibile in Italia?",
+      "No, non è autorizzato in UE."
+    ]
+  ],
   "sources": [
     {
       "label": "EMA — ritiro della domanda per Egrifta (tesamorelin)",
@@ -49,12 +82,6 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "extra_ue",
-    "route": "Iniezione sottocutanea quotidiana.",
-    "text": "Negli USA (Egrifta) la dose approvata è 2 mg una volta al giorno sotto la pelle dell’addome. Il foglietto suggerisce di valutare la sospensione se dopo circa 6 mesi il grasso viscerale non si è ridotto."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

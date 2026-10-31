@@ -37,6 +37,29 @@
       "note": "Non autorizzato."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Negli studi clinici: applicazione locale sulla ferita.",
+    "text": "Negli studi sulle ulcere venose è stato applicato direttamente sulla lesione. Non esiste alcuna dose studiata per uso sistemico."
+  },
+  "key_points": [
+    "Unica catelicidina umana: un peptide antimicrobico prodotto naturalmente.",
+    "Piccoli studi clinici sulle ulcere venose degli arti inferiori.",
+    "Ha effetti sia antinfiammatori sia pro-infiammatori a seconda del contesto.",
+    "Non è un medicinale autorizzato."
+  ],
+  "mechanism": "LL-37 danneggia la membrana di batteri, funghi e alcuni virus e richiama le cellule immunitarie nella sede dell’infezione. Favorisce anche la formazione di nuovi vasi e la chiusura delle ferite. In alcune malattie della pelle, come psoriasi e rosacea, livelli elevati di LL-37 contribuiscono invece all’infiammazione.",
+  "faq": [
+    [
+      "LL-37 rafforza il sistema immunitario?",
+      "Non ci sono prove che assumerlo dall’esterno migliori le difese immunitarie nelle persone sane."
+    ],
+    [
+      "Perché può essere rischioso?",
+      "Perché in alcune condizioni favorisce l’infiammazione ed è coinvolto in malattie autoimmuni della pelle."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — LL-37 e ulcere venose",
@@ -44,12 +67,6 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "studi",
-    "route": "Negli studi clinici: applicazione locale sulla ferita.",
-    "text": "Negli studi sulle ulcere venose è stato applicato direttamente sulla lesione. Non esiste alcuna dose studiata per uso sistemico."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

@@ -37,6 +37,35 @@
       "note": "Approvato solo fuori UE (USA), per un’indicazione rara."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "extra_ue",
+    "route": "Iniezione sottocutanea quotidiana.",
+    "text": "Negli USA (Forzinity) la dose approvata per la sindrome di Barth, nei pazienti di almeno 30 kg, è 40 mg una volta al giorno."
+  },
+  "key_points": [
+    "Peptide che protegge la membrana interna dei mitocondri.",
+    "Primo farmaco mirato ai mitocondri approvato negli USA, per la sindrome di Barth.",
+    "Risultati negativi in altre malattie mitocondriali.",
+    "Nessun dato su invecchiamento o performance; non autorizzato in UE."
+  ],
+  "mechanism": "Elamipretide si lega alla cardiolipina, un grasso della membrana interna dei mitocondri indispensabile per produrre energia. Stabilizzando la cardiolipina, migliora l’efficienza della “catena respiratoria” e riduce la produzione di radicali liberi. Nella sindrome di Barth la cardiolipina è difettosa per una causa genetica.",
+  "timeline": [
+    [
+      "2025",
+      "A maggio la FDA chiede ulteriori dati; a settembre concede l’approvazione accelerata per la sindrome di Barth."
+    ]
+  ],
+  "faq": [
+    [
+      "Elamipretide (SS-31) serve contro l’invecchiamento?",
+      "Non ci sono studi sull’uomo che lo dimostrino. È approvato solo per una rara malattia genetica."
+    ],
+    [
+      "È disponibile in Italia?",
+      "No, non è autorizzato in UE."
+    ]
+  ],
   "sources": [
     {
       "label": "FDA — approvazione accelerata per la sindrome di Barth",
@@ -49,12 +78,6 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "extra_ue",
-    "route": "Iniezione sottocutanea quotidiana.",
-    "text": "Negli USA (Forzinity) la dose approvata per la sindrome di Barth, nei pazienti di almeno 30 kg, è 40 mg una volta al giorno."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

@@ -38,13 +38,6 @@
       "note": "Medicinali iniettabili autorizzati in Italia per altre indicazioni."
     }
   },
-  "sources": [
-    {
-      "label": "PubMed — RCT su glutatione orale",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=oral+glutathione+randomized+body+stores",
-      "type": "studio"
-    }
-  ],
   "kind": "peptide",
   "extra_categories": [],
   "dosing": {
@@ -52,6 +45,30 @@
     "route": "Per bocca come integratore; per iniezione solo come medicinale.",
     "text": "Negli RCT sull’integrazione orale si sono usati 250–1000 mg al giorno. L’uso iniettabile riguarda medicinali con indicazioni specifiche e va deciso dal medico."
   },
+  "key_points": [
+    "Tripeptide antiossidante prodotto naturalmente dall’organismo.",
+    "L’assunzione orale può aumentare le riserve, ma senza benefici clinici dimostrati.",
+    "L’uso endovenoso per schiarire la pelle non ha prove solide.",
+    "In Italia esistono medicinali iniettabili per indicazioni specifiche."
+  ],
+  "mechanism": "Il glutatione neutralizza i radicali liberi, contribuisce alla detossificazione di farmaci e sostanze nel fegato e mantiene in forma attiva altri antiossidanti, come le vitamine C ed E. Quando viene assunto per bocca è in parte scomposto nell’intestino: per questo si è a lungo dubitato della sua efficacia orale.",
+  "faq": [
+    [
+      "Il glutatione schiarisce la pelle?",
+      "Non ci sono prove solide, e le infusioni a questo scopo comportano rischi. Alcune autorità sanitarie hanno messo in guardia contro questo uso."
+    ],
+    [
+      "Serve per il “detox”?",
+      "L’organismo produce già il glutatione necessario: non ci sono prove che integrarlo migliori la detossificazione in persone sane."
+    ]
+  ],
+  "sources": [
+    {
+      "label": "PubMed — RCT su glutatione orale",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=oral+glutathione+randomized+body+stores",
+      "type": "studio"
+    }
+  ],
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

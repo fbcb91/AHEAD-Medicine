@@ -40,6 +40,35 @@
       "note": "Non autorizzato."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Negli studi: iniezione endovenosa o sottocutanea.",
+    "text": "Negli studi fisiologici è stato somministrato in dosi singole, in ospedale, per misurare la risposta del GH. Non esiste una dose approvata per alcun uso."
+  },
+  "key_points": [
+    "Uno dei primi secretagoghi sintetici del GH.",
+    "Agisce sul recettore della grelina e aumenta molto l’appetito.",
+    "Studiato nell’uomo solo per la risposta ormonale acuta.",
+    "Non è autorizzato ed è vietato nello sport."
+  ],
+  "mechanism": "GHRP-6 attiva il recettore della grelina, l’ormone della fame. Nell’ipofisi provoca il rilascio di ormone della crescita; nel cervello aumenta l’appetito. Può far salire anche cortisolo e prolattina, con effetti che dipendono dalla dose e dalla persona.",
+  "timeline": [
+    [
+      "Anni ’80",
+      "Sviluppato come uno dei primi peptidi sintetici capaci di stimolare il rilascio di GH."
+    ]
+  ],
+  "faq": [
+    [
+      "GHRP-6 aumenta la massa muscolare?",
+      "Non ci sono studi controllati sulla massa muscolare: le ricerche misurano solo la risposta ormonale."
+    ],
+    [
+      "Perché fa venire fame?",
+      "Perché agisce sullo stesso recettore della grelina, l’ormone che segnala la fame al cervello."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — GHRP-6 nell’uomo",
@@ -52,12 +81,6 @@
       "type": "regolatorio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "studi",
-    "route": "Negli studi: iniezione endovenosa o sottocutanea.",
-    "text": "Negli studi fisiologici è stato somministrato in dosi singole, in ospedale, per misurare la risposta del GH. Non esiste una dose approvata per alcun uso."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

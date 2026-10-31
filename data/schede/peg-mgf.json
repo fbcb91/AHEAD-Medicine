@@ -38,6 +38,30 @@
       "note": "Non autorizzato."
     }
   },
+  "kind": "peptide",
+  "extra_categories": [],
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: iniezioni.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "key_points": [
+    "Versione sintetica di una variante dell’IGF-1 prodotta dal muscolo dopo lo sforzo.",
+    "Prove solo su cellule e animali, con risultati non sempre replicati.",
+    "Nessuno studio nell’uomo.",
+    "Non è autorizzato ed è vietato nello sport."
+  ],
+  "mechanism": "Dopo uno sforzo il muscolo produce varianti diverse dell’IGF-1; una di queste, chiamata MGF, sembra attivare le cellule staminali muscolari. PEG-MGF è un frammento sintetico legato al polietilenglicole per durare più a lungo. Il suo reale ruolo biologico è ancora discusso.",
+  "faq": [
+    [
+      "PEG-MGF aiuta il recupero muscolare?",
+      "Non ci sono studi sull’uomo che lo dimostrino."
+    ],
+    [
+      "Cosa significa “PEG”?",
+      "Che il peptide è legato al polietilenglicole, una catena che ne rallenta l’eliminazione dall’organismo."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — mechano growth factor",
@@ -50,13 +74,6 @@
       "type": "regolatorio"
     }
   ],
-  "kind": "peptide",
-  "extra_categories": [],
-  "dosing": {
-    "basis": "nessuna",
-    "route": "Nel mercato non regolato: iniezioni.",
-    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

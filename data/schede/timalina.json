@@ -37,13 +37,6 @@
       "note": "Registrata solo fuori UE (Russia)."
     }
   },
-  "sources": [
-    {
-      "label": "PubMed — timalina",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=thymalin",
-      "type": "studio"
-    }
-  ],
   "kind": "peptide",
   "extra_categories": [],
   "dosing": {
@@ -51,6 +44,30 @@
     "route": "Iniezioni intramuscolari.",
     "text": "In Russia si usa con iniezioni intramuscolari in cicli brevi, secondo le indicazioni locali. Non esiste una dose validata secondo gli standard europei."
   },
+  "key_points": [
+    "Estratto di peptidi del timo di vitello, registrato in Russia.",
+    "Prove quasi solo da studi russi, con limiti metodologici.",
+    "Composizione variabile perché di origine animale.",
+    "Non autorizzata in UE né negli USA."
+  ],
+  "mechanism": "Secondo gli studi russi, i peptidi del timo contenuti nella timalina favorirebbero la maturazione dei linfociti T e il riequilibrio della risposta immunitaria. Trattandosi di un estratto e non di una singola molecola, è difficile stabilire quale componente sia responsabile degli effetti.",
+  "faq": [
+    [
+      "Timalina e timosina alfa-1 sono la stessa cosa?",
+      "No: la timosina alfa-1 è un singolo peptide definito, la timalina un estratto con più componenti."
+    ],
+    [
+      "È sicura?",
+      "Non è stata valutata secondo gli standard europei; come estratto animale, purezza e composizione possono variare."
+    ]
+  ],
+  "sources": [
+    {
+      "label": "PubMed — timalina",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=thymalin",
+      "type": "studio"
+    }
+  ],
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

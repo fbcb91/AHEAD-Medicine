@@ -38,6 +38,36 @@
       "note": "Non autorizzata."
     }
   },
+  "kind": "peptide",
+  "extra_categories": [],
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: iniezioni.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "key_points": [
+    "Proteina naturale che blocca la miostatina, il “freno” della crescita muscolare.",
+    "Nei topi produce un forte aumento della massa muscolare.",
+    "Nell’uomo solo piccoli studi di terapia genica in malattie muscolari rare.",
+    "Non è autorizzata ed è vietata nello sport."
+  ],
+  "mechanism": "La miostatina limita la crescita dei muscoli. La follistatina la lega e la neutralizza, togliendo il freno: negli animali i muscoli crescono molto. La follistatina però blocca anche altre molecole, come l’activina coinvolta nel controllo dell’FSH, con possibili effetti su ormoni e fertilità.",
+  "timeline": [
+    [
+      "Anni 2010",
+      "Primi piccoli studi di terapia genica con follistatina nella distrofia muscolare di Becker."
+    ]
+  ],
+  "faq": [
+    [
+      "La follistatina fa crescere i muscoli?",
+      "Nei topi sì. Nell’uomo non ci sono studi su iniezioni di follistatina come peptide."
+    ],
+    [
+      "I prodotti “follistatina 344” sono attivi?",
+      "Non si sa: proteine così grandi sono difficili da produrre e conservare, e i prodotti in vendita non hanno controlli."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — terapia genica con follistatina",
@@ -50,13 +80,6 @@
       "type": "regolatorio"
     }
   ],
-  "kind": "peptide",
-  "extra_categories": [],
-  "dosing": {
-    "basis": "nessuna",
-    "route": "Nel mercato non regolato: iniezioni.",
-    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

@@ -37,6 +37,35 @@
       "note": "Non autorizzato."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: per bocca, sulla pelle o per iniezione.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "key_points": [
+    "Tripeptide che corrisponde alla parte finale dell’ormone alfa-MSH.",
+    "Studiato in laboratorio e su animali per effetti antinfiammatori, soprattutto intestinali.",
+    "Nessuno studio clinico controllato nell’uomo.",
+    "Non è un medicinale autorizzato in UE né negli USA."
+  ],
+  "mechanism": "KPV riduce in laboratorio l’attivazione di NF-kB, un interruttore centrale dell’infiammazione, nelle cellule dell’intestino e della pelle. Al contrario dell’alfa-MSH intero non sembra agire sulla pigmentazione. Nei modelli animali di colite ha ridotto l’infiammazione.",
+  "timeline": [
+    [
+      "2026",
+      "Un comitato consultivo FDA vota (8–6) a favore del suo uso in galenica negli USA; il voto non è vincolante."
+    ]
+  ],
+  "faq": [
+    [
+      "KPV serve per la colite o il colon irritabile?",
+      "Ci sono solo dati su animali. Chi ha una malattia infiammatoria intestinale ha terapie con prove solide da valutare con lo specialista."
+    ],
+    [
+      "È lo stesso del melanotan?",
+      "No. Derivano entrambi dall’alfa-MSH, ma KPV è un piccolo frammento senza effetti noti sull’abbronzatura."
+    ]
+  ],
   "sources": [
     {
       "label": "FDA — comitato consultivo sulla galenica, 23–24 luglio 2026",
@@ -54,12 +83,6 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "nessuna",
-    "route": "Nel mercato non regolato: per bocca, sulla pelle o per iniezione.",
-    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

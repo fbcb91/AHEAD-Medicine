@@ -38,6 +38,46 @@
       "note": "Autorizzata in UE per il diabete."
     }
   },
+  "dosing": {
+    "basis": "rcp",
+    "route": "Compresse per bocca, durante o dopo i pasti.",
+    "text": "Di solito si parte da 500 mg una o due volte al giorno e si aumenta gradualmente; la dose massima è 3 g al giorno, divisa in più somministrazioni. Esistono formulazioni a rilascio prolungato da assumere una volta al giorno."
+  },
+  "key_points": [
+    "Farmaco di prima linea per il diabete di tipo 2, in uso da decenni.",
+    "Proposto come “anti-aging” sulla base di studi animali e osservazionali.",
+    "Nessuno studio controllato completato sull’invecchiamento in persone sane.",
+    "Può attenuare alcuni adattamenti all’esercizio fisico."
+  ],
+  "mechanism": "La metformina riduce la produzione di glucosio da parte del fegato e migliora la sensibilità all’insulina. Agisce in parte sui mitocondri e attiva AMPK, un sensore dell’energia cellulare: è questo legame con i meccanismi dell’invecchiamento ad averla resa interessante per la longevità.",
+  "timeline": [
+    [
+      "1958",
+      "Introdotta nel Regno Unito per il diabete."
+    ],
+    [
+      "1995",
+      "Approvata negli USA."
+    ],
+    [
+      "2015",
+      "Viene proposto lo studio TAME per verificare se rallenta le malattie legate all’età."
+    ]
+  ],
+  "faq": [
+    [
+      "La metformina allunga la vita?",
+      "Non è dimostrato. Gli studi osservazionali sono contrastanti e lo studio controllato TAME non ha ancora prodotto risultati."
+    ],
+    [
+      "Posso prenderla senza diabete?",
+      "Fuori dalle indicazioni è una decisione del medico: ha effetti collaterali e può ridurre i benefici dell’allenamento."
+    ],
+    [
+      "Fa dimagrire?",
+      "Può causare una lieve perdita di peso, ma non è un farmaco per dimagrire."
+    ]
+  ],
   "sources": [
     {
       "label": "AFAR — lo studio TAME",
@@ -50,11 +90,6 @@
       "type": "studio"
     }
   ],
-  "dosing": {
-    "basis": "rcp",
-    "route": "Compresse per bocca, durante o dopo i pasti.",
-    "text": "Di solito si parte da 500 mg una o due volte al giorno e si aumenta gradualmente; la dose massima è 3 g al giorno, divisa in più somministrazioni. Esistono formulazioni a rilascio prolungato da assumere una volta al giorno."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

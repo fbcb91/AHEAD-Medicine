@@ -37,6 +37,36 @@
       "note": "Non autorizzato."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Negli studi clinici: infusione endovenosa.",
+    "text": "Negli studi sull’ileo post-operatorio è stato somministrato in vena in ospedale. Non esiste una dose approvata; le dosi sottocutanee che circolano online non derivano da studi clinici."
+  },
+  "extra_categories": [
+    "Massa muscolare"
+  ],
+  "key_points": [
+    "Secretagogo del GH: agisce sul recettore della grelina.",
+    "Studiato come farmaco per l’ileo post-operatorio, senza beneficio significativo.",
+    "Nessuna prova di benefici per anti-aging o performance.",
+    "Non è autorizzato ed è vietato nello sport."
+  ],
+  "mechanism": "Ipamorelin attiva il recettore della grelina nell’ipofisi e provoca un picco di ormone della crescita. Rispetto ad altri secretagoghi, come GHRP-6, negli studi ha influenzato meno cortisolo, prolattina e appetito. Gli effetti a lungo termine non sono noti.",
+  "faq": [
+    [
+      "Ipamorelin e CJC-1295 vanno usati insieme?",
+      "Questa combinazione circola online, ma non è mai stata studiata come tale nell’uomo."
+    ],
+    [
+      "Ipamorelin fa venire fame?",
+      "Meno di GHRP-6, ma agendo sul recettore della grelina un effetto sull’appetito è possibile."
+    ],
+    [
+      "È doping?",
+      "Sì, i secretagoghi del GH sono vietati nello sport."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — ipamorelin e ileo post-operatorio",
@@ -44,19 +74,10 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "studi",
-    "route": "Negli studi clinici: infusione endovenosa.",
-    "text": "Negli studi sull’ileo post-operatorio è stato somministrato in vena in ospedale. Non esiste una dose approvata; le dosi sottocutanee che circolano online non derivano da studi clinici."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,
     "checked": "2026-10-30",
     "next_check": "2027-04-30"
-  },
-  "extra_categories": [
-    "Massa muscolare"
-  ]
+  }
 }

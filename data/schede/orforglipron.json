@@ -38,6 +38,38 @@
       "note": "Approvato solo fuori UE (USA)."
     }
   },
+  "dosing": {
+    "basis": "extra_ue",
+    "route": "Compressa una volta al giorno.",
+    "text": "Negli USA (Foundayo) si assume una volta al giorno, senza vincoli rispetto a cibo o acqua, con aumento graduale della dose per limitare gli effetti gastrointestinali."
+  },
+  "key_points": [
+    "Agonista del GLP-1 in compresse, a piccola molecola (non un peptide).",
+    "Si assume una volta al giorno senza vincoli rispetto a cibo e acqua.",
+    "Approvato negli USA nel 2026 (Foundayo); non ancora autorizzato in UE.",
+    "In media meno potente dei GLP-1 iniettabili più recenti."
+  ],
+  "mechanism": "Pur non essendo un peptide, l’orforglipron attiva lo stesso recettore del GLP-1 dei farmaci iniettabili. Essendo una piccola molecola viene assorbito bene dall’intestino: per questo non richiede le precauzioni della semaglutide orale, che va presa a digiuno con poca acqua.",
+  "timeline": [
+    [
+      "2025",
+      "Pubblicati i primi risultati di fase 3 del programma ATTAIN."
+    ],
+    [
+      "2026",
+      "Approvato dalla FDA ad aprile per la gestione cronica del peso."
+    ]
+  ],
+  "faq": [
+    [
+      "L’orforglipron è disponibile in Italia?",
+      "Alla data di verifica no: non è autorizzato in UE. L’azienda prevede l’arrivo in Europa più avanti."
+    ],
+    [
+      "È meglio delle iniezioni?",
+      "È più comodo, ma negli studi la perdita di peso media è inferiore a quella dei farmaci iniettabili più potenti. Dipende dalla persona e dagli obiettivi."
+    ]
+  ],
   "sources": [
     {
       "label": "Pharmacy Times — approvazione FDA (aprile 2026)",
@@ -50,11 +82,6 @@
       "type": "studio"
     }
   ],
-  "dosing": {
-    "basis": "extra_ue",
-    "route": "Compressa una volta al giorno.",
-    "text": "Negli USA (Foundayo) si assume una volta al giorno, senza vincoli rispetto a cibo o acqua, con aumento graduale della dose per limitare gli effetti gastrointestinali."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

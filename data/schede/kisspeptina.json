@@ -38,6 +38,29 @@
       "note": "Non autorizzato."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Negli studi clinici: iniezione sottocutanea o infusione endovenosa.",
+    "text": "Viene usata solo in protocolli di ricerca, in ambiente specialistico: per esempio una singola iniezione per indurre la maturazione degli ovociti nella procreazione assistita. Non esiste una dose approvata."
+  },
+  "key_points": [
+    "Ormone naturale che regola l’intero asse riproduttivo.",
+    "Usata in studi clinici di ricerca, per esempio nella procreazione assistita.",
+    "Nessuna prova di benefici su libido o testosterone fuori da questi contesti.",
+    "Non è un medicinale autorizzato."
+  ],
+  "mechanism": "La kisspeptina attiva i neuroni dell’ipotalamo che producono GnRH, il segnale che avvia la produzione di LH e FSH e quindi di ormoni sessuali. Per questo è considerata “l’interruttore” della pubertà. Negli studi viene usata per stimolare in modo controllato questo asse.",
+  "faq": [
+    [
+      "La kisspeptina aumenta il desiderio?",
+      "Alcuni piccoli studi di ricerca hanno osservato effetti su aree cerebrali legate all’attrazione, ma non ci sono prove di un beneficio clinico."
+    ],
+    [
+      "È disponibile come farmaco?",
+      "No, è usata solo in studi clinici."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — kisspeptina negli studi clinici",
@@ -45,12 +68,6 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "studi",
-    "route": "Negli studi clinici: iniezione sottocutanea o infusione endovenosa.",
-    "text": "Viene usata solo in protocolli di ricerca, in ambiente specialistico: per esempio una singola iniezione per indurre la maturazione degli ovociti nella procreazione assistita. Non esiste una dose approvata."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

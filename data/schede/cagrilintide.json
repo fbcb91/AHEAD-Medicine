@@ -37,6 +37,39 @@
       "note": "Non autorizzato."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Iniezione sottocutanea settimanale.",
+    "text": "Negli studi CagriSema si usa un’iniezione settimanale che combina cagrilintide 2,4 mg e semaglutide 2,4 mg, raggiunta con aumento graduale. Non esiste una dose approvata."
+  },
+  "key_points": [
+    "Analogo dell’amilina, un ormone della sazietà prodotto dal pancreas.",
+    "Studiato soprattutto in combinazione con semaglutide (CagriSema).",
+    "Non è autorizzato in UE; la combinazione è in valutazione negli USA.",
+    "Non esistono canali legittimi di accesso fuori dagli studi clinici."
+  ],
+  "mechanism": "L’amilina viene rilasciata dal pancreas insieme all’insulina dopo i pasti: rallenta lo svuotamento dello stomaco, riduce il glucagone e segnala sazietà al cervello attraverso vie diverse da quelle del GLP-1. Combinare un analogo dell’amilina con un agonista del GLP-1 punta a sommare i due effetti sull’appetito.",
+  "timeline": [
+    [
+      "2025",
+      "Pubblicati i risultati dello studio di fase 3 REDEFINE 1 sulla combinazione CagriSema."
+    ],
+    [
+      "2025",
+      "A dicembre la combinazione viene sottoposta alla FDA."
+    ]
+  ],
+  "faq": [
+    [
+      "CagriSema è già disponibile?",
+      "No. Alla data di verifica non è autorizzata in UE; negli USA la domanda è in valutazione."
+    ],
+    [
+      "Cagrilintide da sola funziona?",
+      "Gli studi di fase 2 hanno mostrato una perdita di peso con cagrilintide da sola, ma lo sviluppo principale riguarda la combinazione con semaglutide."
+    ]
+  ],
   "sources": [
     {
       "label": "PharmExec — domanda FDA per CagriSema (dicembre 2025)",
@@ -49,12 +82,6 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "studi",
-    "route": "Iniezione sottocutanea settimanale.",
-    "text": "Negli studi CagriSema si usa un’iniezione settimanale che combina cagrilintide 2,4 mg e semaglutide 2,4 mg, raggiunta con aumento graduale. Non esiste una dose approvata."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

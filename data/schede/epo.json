@@ -40,6 +40,39 @@
       "note": "Autorizzata in UE per indicazioni specifiche."
     }
   },
+  "extra_categories": [],
+  "dosing": {
+    "basis": "rcp",
+    "route": "Iniezione sottocutanea o endovenosa.",
+    "text": "La dose è calcolata sul peso e regolata in base all’emoglobina, che non deve superare i valori obiettivo indicati nel foglietto (in genere 12 g/dL). Si usa solo su prescrizione specialistica, con esami frequenti."
+  },
+  "key_points": [
+    "Ormone che stimola la produzione di globuli rossi.",
+    "Autorizzata in UE per l’anemia da malattia renale cronica e da chemioterapia.",
+    "Valori di emoglobina troppo alti aumentano trombosi e ictus.",
+    "Uso dopante pericoloso e vietato."
+  ],
+  "mechanism": "L’eritropoietina è prodotta dai reni quando l’ossigeno nel sangue scarseggia e stimola il midollo osseo a produrre globuli rossi. Le epoetine ricombinanti fanno lo stesso: aumentano emoglobina ed ematocrito. Oltre una certa soglia il sangue diventa più denso e aumenta il rischio di trombosi.",
+  "timeline": [
+    [
+      "1989",
+      "Approvata negli USA la prima epoetina ricombinante per l’anemia da malattia renale."
+    ],
+    [
+      "2006",
+      "Grandi studi mostrano più eventi cardiovascolari quando si punta a valori di emoglobina troppo alti."
+    ]
+  ],
+  "faq": [
+    [
+      "L’EPO aumenta la resistenza?",
+      "Sì, ed è per questo che è usata come doping, con rischi seri come trombosi e ictus. In persone sane non c’è alcuna indicazione medica."
+    ],
+    [
+      "L’EPO si può prescrivere per stanchezza?",
+      "No: è indicata solo per specifiche forme di anemia, su prescrizione specialistica e con controlli frequenti."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — RCT su obiettivi di emoglobina con epoetina",
@@ -52,12 +85,6 @@
       "type": "regolatorio"
     }
   ],
-  "extra_categories": [],
-  "dosing": {
-    "basis": "rcp",
-    "route": "Iniezione sottocutanea o endovenosa.",
-    "text": "La dose è calcolata sul peso e regolata in base all’emoglobina, che non deve superare i valori obiettivo indicati nel foglietto (in genere 12 g/dL). Si usa solo su prescrizione specialistica, con esami frequenti."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

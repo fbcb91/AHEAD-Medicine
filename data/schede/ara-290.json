@@ -37,13 +37,6 @@
       "note": "Non autorizzato."
     }
   },
-  "sources": [
-    {
-      "label": "PubMed — cibinetide, studi clinici",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=cibinetide+ARA+290+small+fiber+neuropathy",
-      "type": "studio"
-    }
-  ],
   "kind": "peptide",
   "extra_categories": [],
   "dosing": {
@@ -51,6 +44,30 @@
     "route": "Negli studi: iniezione sottocutanea quotidiana.",
     "text": "Negli studi di fase 2 è stato somministrato ogni giorno per alcune settimane, sotto controllo medico. Non esiste una dose approvata."
   },
+  "key_points": [
+    "Peptide di 11 aminoacidi derivato dall’eritropoietina (EPO).",
+    "Protegge i tessuti senza aumentare i globuli rossi.",
+    "Piccoli studi di fase 2 sulla neuropatia delle piccole fibre.",
+    "Non è un medicinale autorizzato."
+  ],
+  "mechanism": "L’eritropoietina, oltre a stimolare i globuli rossi, protegge alcuni tessuti attraverso un recettore diverso, chiamato “recettore della riparazione innata”. ARA-290 attiva solo questo recettore: in teoria conserva l’effetto protettivo senza il rischio di aumentare troppo l’ematocrito.",
+  "faq": [
+    [
+      "ARA-290 è come l’EPO?",
+      "No: non stimola la produzione di globuli rossi. Agisce solo sul recettore legato alla protezione dei tessuti."
+    ],
+    [
+      "Serve per il recupero sportivo?",
+      "Non esistono studi su infortuni o recupero sportivo. I dati riguardano la neuropatia in malattie specifiche."
+    ]
+  ],
+  "sources": [
+    {
+      "label": "PubMed — cibinetide, studi clinici",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=cibinetide+ARA+290+small+fiber+neuropathy",
+      "type": "studio"
+    }
+  ],
   "review": {
     "status": "bozza",
     "medical_reviewer": null,
