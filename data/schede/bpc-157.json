@@ -37,6 +37,55 @@
       "note": "Non autorizzato in UE né negli USA."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: iniezioni sottocutanee o capsule.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "key_points": [
+    "È un peptide sintetico di 15 aminoacidi, studiato quasi solo su animali.",
+    "Non esistono studi clinici controllati che dimostrino benefici nell’uomo.",
+    "Non è un medicinale autorizzato in Italia né in Europa ed è vietato nello sport.",
+    "I prodotti venduti online non hanno controlli di qualità farmaceutici."
+  ],
+  "mechanism": "Negli studi su animali il BPC-157 sembra favorire la formazione di nuovi vasi sanguigni (angiogenesi), la migrazione delle cellule che riparano tendini e legamenti e la regolazione dell’ossido nitrico. Sono meccanismi ipotizzati sulla base di esperimenti di laboratorio: non è stato dimostrato che avvengano allo stesso modo nell’uomo, né con quali effetti.",
+  "timeline": [
+    [
+      "Anni ’90",
+      "Primi studi su animali di un gruppo di ricerca di Zagabria."
+    ],
+    [
+      "2022",
+      "L’Agenzia mondiale antidoping lo cita esplicitamente tra le sostanze non approvate vietate nello sport."
+    ],
+    [
+      "2023",
+      "La FDA lo inserisce tra le sostanze per galenica che possono presentare rischi significativi per la sicurezza."
+    ],
+    [
+      "2026",
+      "Un comitato consultivo FDA vota (8–6) a favore del suo uso in galenica negli USA; il voto non è vincolante."
+    ]
+  ],
+  "faq": [
+    [
+      "BPC-157 si può comprare in farmacia?",
+      "No. In Italia non esistono medicinali a base di BPC-157: i prodotti venduti online come “uso di ricerca” non sono autorizzati e non hanno controlli di qualità."
+    ],
+    [
+      "Meglio BPC-157 orale o iniettabile?",
+      "Non esistono studi sull’uomo che confrontino le due vie, né che dimostrino l’efficacia di una delle due. Le differenze che si leggono online derivano da studi su animali."
+    ],
+    [
+      "BPC-157 è doping?",
+      "Sì: è incluso tra le sostanze proibite dall’Agenzia mondiale antidoping (sostanze non approvate)."
+    ],
+    [
+      "BPC-157 e TB-500 insieme funzionano meglio?",
+      "La combinazione non è mai stata studiata nell’uomo: non ci sono dati né sull’efficacia né sulla sicurezza."
+    ]
+  ],
   "sources": [
     {
       "label": "FDA — sostanze per galenica con possibili rischi",
@@ -54,12 +103,6 @@
       "type": "notizia"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "nessuna",
-    "route": "Nel mercato non regolato: iniezioni sottocutanee o capsule.",
-    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

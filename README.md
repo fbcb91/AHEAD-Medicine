@@ -94,6 +94,7 @@ Campi principali:
 - `dosing`: `basis` (`rcp`, `extra_ue`, `studi`, `nessuna`), `route` e `text`. `rcp` è ammesso solo per medicinali autorizzati
 - `evidence`: per `in_vitro`, `animale`, `osservazionale`, `rct`, `autorizzato` un `level` (`si`, `limitato`, `no`) e una `note`
 - `sources`: elenco di `{label, url, type}` con `type` tra `regolatorio`, `studio`, `revisione`, `azienda`, `notizia`
+- Facoltativi, per schede più ricche: `key_points` (frasi del box "In sintesi"), `mechanism` (sezione "Come funziona"), `timeline` (coppie `[anno, evento]`), `faq` (coppie `[domanda, risposta]`, incluse anche nei dati strutturati FAQPage)
 - `review`: `checked` (data ultima verifica fonti), `next_check`, `medical_reviewer` (resta `null` finché la revisione medica non è fatta)
 
 Una GitHub Action rilancia il build a ogni push e fallisce se l'HTML committato non corrisponde ai dati.

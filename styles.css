@@ -118,3 +118,51 @@
 .survey-done p{font-size:17px;color:#3d5257;max-width:640px}
 .survey-done .btn{margin:10px 0 24px}
 @media(max-width:600px){.choices{grid-template-columns:1fr}}
+/* Fase 1 — identità visiva e schede ricche */
+.peptide-card{position:relative;overflow:hidden}
+.pc-art{position:absolute;right:-14px;top:38px;width:120px;height:120px;opacity:.85;pointer-events:none;transition:transform .4s}
+.peptide-card:hover .pc-art{transform:rotate(12deg) scale(1.05)}
+.pc-main,.pc-head,.pc-bottom{position:relative;z-index:1}
+.hero-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,380px);gap:40px;align-items:center}
+.hero-art{width:100%;max-width:380px;height:auto;filter:drop-shadow(0 0 60px rgba(137,185,209,.25));animation:float 9s ease-in-out infinite}
+.inner-hero .wrap{position:relative}
+.article-art{position:absolute;right:var(--gutter);top:50%;transform:translateY(-50%);width:300px;opacity:.55;pointer-events:none;animation:none}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(3deg)}}
+@media(prefers-reduced-motion:reduce){.hero-art,.pc-art{animation:none;transition:none}}
+.key-points{background:#fff;border:1px solid #d1dcd9;border-left:4px solid var(--accent,#89b9d1);padding:24px 28px;margin:-20px 0 50px;max-width:760px}
+.key-points ul{margin:10px 0 0;padding-left:20px}
+.key-points li{font-size:16px;color:#2f4449;line-height:1.6;margin-bottom:8px}
+.profile-section-block{scroll-margin-top:24px;padding-top:38px}
+.profile-section-block:first-of-type{padding-top:0}
+.timeline{list-style:none;margin:0;padding:0;border-left:2px solid #d3dede;max-width:760px}
+.timeline li{position:relative;padding:0 0 22px 28px}
+.timeline li::before{content:'';position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:#89b9d1;border:2px solid #f7f7f2}
+.tl-year{display:block;font-size:12px;font-weight:800;letter-spacing:.1em;color:#5f8794;margin-bottom:4px}
+.timeline p{margin:0;font-size:16px!important}
+.profile-main .faq{max-width:760px}
+.toc{border:1px solid #d1dcd9;background:#fff;padding:22px 24px;display:flex;flex-direction:column;gap:2px}
+.toc a{font-size:14px;color:#3e6675;padding:6px 0;border-bottom:1px solid #eef2f0}
+.toc a:last-child{border-bottom:0}
+.toc a:hover{color:#10191d}
+.profile-aside{display:flex;flex-direction:column;gap:14px;align-self:start;position:sticky;top:20px}
+.area-icon{width:40px;height:40px;color:#89b9d1;margin-bottom:18px}
+.hero-icon{width:26px;height:26px;color:#89b9d1;vertical-align:-8px;margin-right:12px}
+.first-visit{background:#eef2ef}
+.first-visit h2{margin-bottom:36px}
+.visit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.visit-grid>div{background:#fff;border:1px solid #d7ddda;padding:28px}
+.visit-grid h3{font-size:24px;margin:8px 0 10px}
+.visit-grid p{color:#50656a;margin:0}
+.pyramid-figure{margin:30px 0 40px;max-width:680px}
+.pyramid{width:100%;height:auto}
+.pyramid-figure figcaption{font-size:13px;color:#7a9196;margin-top:10px}
+@media(max-width:1050px){.article-art{display:none}}
+@media(max-width:800px){.hero-split{grid-template-columns:1fr}.hero-art{max-width:200px;justify-self:start;order:-1}.visit-grid{grid-template-columns:1fr}.profile-aside{position:static}}
+@media(max-width:540px){.pc-art{width:90px;height:90px}}
+.pc-art{width:96px;height:96px;top:44px;right:-8px;opacity:.75}
+.pc-main{padding-right:62px}
+.article-title,.article-title+p{max-width:880px}
+.consult-art{position:absolute;right:var(--gutter);top:50%;transform:translateY(-50%);width:260px;height:260px;color:#89b9d1;opacity:.35;stroke-width:1;pointer-events:none}
+@media(max-width:1050px){.consult-art{display:none}}
+.consult-art~h1{max-width:calc(100% - 300px)}
+@media(max-width:1050px){.consult-art~h1{max-width:none}}

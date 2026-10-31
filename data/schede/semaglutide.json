@@ -39,6 +39,63 @@
       "note": "Autorizzato in UE per indicazioni specifiche."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "rcp",
+    "route": "Iniezione sottocutanea settimanale oppure compressa giornaliera.",
+    "text": "Wegovy (iniezione, gestione del peso): si parte da 0,25 mg una volta a settimana e si aumenta ogni 4 settimane (0,5 – 1 – 1,7 mg) fino al mantenimento di 2,4 mg; in UE è autorizzata anche una dose da 7,2 mg. Ozempic (diabete): 0,25 mg a settimana per 4 settimane, poi 0,5 mg, con possibili aumenti fino a 1 o 2 mg. Le compresse (Rybelsus, Wegovy compresse) si assumono una volta al giorno a stomaco vuoto, con poca acqua, almeno 30 minuti prima di mangiare, con aumento graduale. L’aumento lento serve a limitare gli effetti gastrointestinali."
+  },
+  "key_points": [
+    "Agonista del recettore GLP-1, autorizzato in UE per diabete di tipo 2 e gestione del peso.",
+    "Negli studi STEP la perdita di peso media è stata intorno al 15% con la dose da 2,4 mg.",
+    "Lo studio SELECT ha mostrato meno eventi cardiovascolari in persone con malattia cardiovascolare e sovrappeso.",
+    "Serve una prescrizione e il peso tende a risalire dopo la sospensione."
+  ],
+  "mechanism": "La semaglutide imita il GLP-1, un ormone prodotto dall’intestino dopo i pasti. Stimola il rilascio di insulina quando la glicemia è alta, riduce il glucagone, rallenta lo svuotamento dello stomaco e agisce sui centri cerebrali che regolano fame e sazietà. Una modifica della struttura la rende resistente alla degradazione: per questo basta un’iniezione a settimana, o una compressa al giorno nella forma orale.",
+  "timeline": [
+    [
+      "2017",
+      "Approvata negli USA come Ozempic per il diabete di tipo 2."
+    ],
+    [
+      "2018",
+      "Autorizzata in UE (Ozempic)."
+    ],
+    [
+      "2021",
+      "Pubblicato lo studio STEP 1; negli USA viene approvato Wegovy per la gestione del peso."
+    ],
+    [
+      "2022",
+      "Wegovy viene autorizzato in UE."
+    ],
+    [
+      "2023",
+      "Lo studio SELECT mostra una riduzione degli eventi cardiovascolari."
+    ],
+    [
+      "2026",
+      "In UE arriva Wegovy in compresse."
+    ]
+  ],
+  "faq": [
+    [
+      "Ozempic e Wegovy sono la stessa cosa?",
+      "Contengono lo stesso principio attivo, ma sono medicinali diversi: Ozempic è autorizzato per il diabete di tipo 2, Wegovy per la gestione del peso, a dosi più alte."
+    ],
+    [
+      "Serve la ricetta?",
+      "Sì, è un medicinale soggetto a prescrizione medica."
+    ],
+    [
+      "Cosa succede se smetto?",
+      "Negli studi gran parte del peso perso è stata recuperata nell’anno successivo alla sospensione. Per questo il trattamento va inserito in un percorso di lungo periodo."
+    ],
+    [
+      "Si perde anche massa muscolare?",
+      "Sì, una parte del peso perso è massa magra. Proteine adeguate e allenamento di forza aiutano a limitarla."
+    ]
+  ],
   "sources": [
     {
       "label": "EMA — Wegovy (EPAR)",
@@ -71,12 +128,6 @@
       "type": "notizia"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "rcp",
-    "route": "Iniezione sottocutanea settimanale oppure compressa giornaliera.",
-    "text": "Wegovy (iniezione, gestione del peso): si parte da 0,25 mg una volta a settimana e si aumenta ogni 4 settimane (0,5 – 1 – 1,7 mg) fino al mantenimento di 2,4 mg; in UE è autorizzata anche una dose da 7,2 mg. Ozempic (diabete): 0,25 mg a settimana per 4 settimane, poi 0,5 mg, con possibili aumenti fino a 1 o 2 mg. Le compresse (Rybelsus, Wegovy compresse) si assumono una volta al giorno a stomaco vuoto, con poca acqua, almeno 30 minuti prima di mangiare, con aumento graduale. L’aumento lento serve a limitare gli effetti gastrointestinali."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

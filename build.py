@@ -9,6 +9,8 @@ from html import escape
 from urllib.parse import quote
 import json
 import unicodedata
+import hashlib
+import math
 import re
 import sys
 
@@ -89,6 +91,13 @@ def validate(p, fname):
         errors.append('dosing deve avere basis valido, route e text')
     if p['status'] in ('sperimentale', 'integratore', 'trial', 'ritirato') and dosing.get('basis') == 'rcp':
         errors.append('dosing.basis "rcp" ammesso solo per medicinali autorizzati')
+    if not all(isinstance(x, str) and x for x in p.get('key_points', [])):
+        errors.append('key_points deve essere una lista di frasi')
+    for k in ('faq', 'timeline'):
+        if not all(isinstance(x, list) and len(x) == 2 and all(x) for x in p.get(k, [])):
+            errors.append(f'{k} deve essere una lista di coppie [a, b]')
+    if 'mechanism' in p and not p['mechanism']:
+        errors.append('mechanism vuoto')
     if not p['sources']:
         errors.append('serve almeno una fonte specifica')
     for s in p['sources']:
@@ -154,7 +163,7 @@ def render_md(md):
         elif line.startswith('### '):
             flush(); html.append(f'<h3>{inline_md(line[4:])}</h3>')
         elif line.startswith('## '):
-            flush(); html.append(f'<h2>{inline_md(line[3:])}</h2>')
+            flush(); html.append(f'<h2 id="{slugify(line[3:])}">{inline_md(line[3:])}</h2>')
         elif line.startswith('- '):
             if para:
                 flush()
@@ -293,12 +302,78 @@ def status_badge(p):
     return f'<span class="status {cls}"><i></i>{escape(label)}</span>'
 
 
+CAT_COLORS = {'Recupero': '#6fb39b', 'Ormoni': '#d9a066', 'Massa muscolare': '#d9826b', 'Metabolismo': '#7fb4d3', 'Longevità': '#a99be0',
+              'Pelle': '#e3a9bf', 'Neuro': '#8ea6e8', 'Immunità': '#93c98c', 'Sessualità e fertilità': '#de94ad'}
+
+
+def molecule_svg(seed, color, dark=False, cls='mol-art'):
+    """Illustrazione molecolare astratta e deterministica: stessa sostanza, stesso disegno."""
+    h = hashlib.sha256(seed.encode()).digest()
+    r = lambda i: h[i % 32] / 255
+    n = 6 + h[0] % 4
+    pts, ang = [(0.0, 0.0)], r(1) * 360
+    for i in range(1, n):
+        ang += (60 if h[i] % 2 else -60) + (r(i + 7) - .5) * 24
+        d = 50 + r(i + 11) * 14
+        pts.append((pts[-1][0] + d * math.cos(math.radians(ang)), pts[-1][1] + d * math.sin(math.radians(ang))))
+    bonds = [(i - 1, i) for i in range(1, n)]
+    for k in range(2 + h[3] % 2):                       # ramificazioni
+        base = 1 + h[k + 20] % (n - 1)
+        a = r(k + 24) * 360
+        pts.append((pts[base][0] + 46 * math.cos(math.radians(a)), pts[base][1] + 46 * math.sin(math.radians(a))))
+        bonds.append((base, len(pts) - 1))
+    xs, ys = [x for x, _ in pts], [y for _, y in pts]
+    scale = min(300 / max(max(xs) - min(xs), 1), 300 / max(max(ys) - min(ys), 1), 1.6)
+    cx, cy = (max(xs) + min(xs)) / 2, (max(ys) + min(ys)) / 2
+    pts = [(200 + (x - cx) * scale, 200 + (y - cy) * scale) for x, y in pts]
+    line = '#ffffff40' if dark else '#9fb3b6'
+    gid = 'g' + h[:4].hex()
+    out = [f'<svg class="{cls}" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><defs><radialGradient id="{gid}" cx="35%" cy="35%"><stop offset="0" stop-color="#ffffff" stop-opacity=".9"/><stop offset=".45" stop-color="{color}"/><stop offset="1" stop-color="{color}" stop-opacity=".75"/></radialGradient></defs>']
+    out += [f'<line x1="{pts[a][0]:.1f}" y1="{pts[a][1]:.1f}" x2="{pts[b][0]:.1f}" y2="{pts[b][1]:.1f}" stroke="{line}" stroke-width="3" stroke-linecap="round"/>' for a, b in bonds]
+    core = h[5] % len(pts)
+    for i, (x, y) in enumerate(pts):
+        rad = 26 if i == core else 9 + h[(i + 13) % 32] % 9
+        if i == core or h[(i + 2) % 32] % 3:
+            out.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{rad}" fill="url(#{gid})"/>')
+        else:
+            out.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{rad}" fill="none" stroke="{color}" stroke-width="3"/>')
+    return ''.join(out) + '</svg>'
+
+
+_ICON = {
+    'Peptidi': '<circle cx="10" cy="34" r="5"/><circle cx="24" cy="24" r="5"/><circle cx="38" cy="14" r="5"/><path d="M14 31l6-4M28 21l6-4"/>',
+    'TRT': '<circle cx="20" cy="28" r="11"/><path d="M28 20l11-11M30 9h9v9"/>',
+    'GLP-1': '<path d="M24 6c7 9 12 15 12 22a12 12 0 0 1-24 0c0-7 5-13 12-22z"/><path d="M18 30c2 3 5 4 8 3"/>',
+    'Longevity & Performance': '<path d="M6 24c0-5 4-8 8-8 7 0 13 16 20 16 4 0 8-3 8-8s-4-8-8-8c-7 0-13 16-20 16-4 0-8-3-8-8z"/>',
+    'Capelli': '<path d="M14 40c-4-10 4-14 0-26M24 40c-4-10 4-14 0-26M34 40c-4-10 4-14 0-26"/>',
+    'Salute sessuale': '<path d="M24 40S8 30 8 19a8 8 0 0 1 16-3 8 8 0 0 1 16 3c0 11-16 21-16 21z"/>',
+    'Menopausa': '<path d="M30 8a16 16 0 1 0 10 26A13 13 0 0 1 30 8z"/>',
+    'Recupero e sport': '<path d="M27 5L11 27h12l-3 16 17-23H25z"/>',
+}
+
+
+def area_icon(name, cls='area-icon'):
+    return f'<svg class="{cls}" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">{_ICON[name]}</svg>' if name in _ICON else ''
+
+
+def evidence_pyramid():
+    tiers = [('Medicinale autorizzato', '#10191d', '#fff'), ('Studi clinici randomizzati', '#2c4a55', '#fff'), ('Studi osservazionali', '#5f8794', '#fff'),
+             ('Modelli animali', '#a9c3c8', '#10191d'), ('In vitro', '#dbe6e5', '#10191d')]
+    out = ['<svg class="pyramid" viewBox="0 0 700 360" role="img" aria-label="Piramide delle prove: dal basso in vitro, modelli animali, studi osservazionali, studi clinici randomizzati, medicinale autorizzato">']
+    for i, (label, fill, ink) in enumerate(tiers):
+        y0, y1 = 10 + i * 68, 72 + i * 68
+        w0, w1 = 230 + i * 92, 230 + i * 92 + 84
+        out.append(f'<polygon points="{350 - w0 / 2},{y0} {350 + w0 / 2},{y0} {350 + w1 / 2},{y1} {350 - w1 / 2},{y1}" fill="{fill}"/>'
+                   f'<text x="350" y="{(y0 + y1) / 2 + 6}" text-anchor="middle" fill="{ink}" font-size="17" font-weight="700" font-family="DM Sans, sans-serif">{label}</text>')
+    return ''.join(out) + '</svg>'
+
+
 def card(p, small=False):
     cls = 'peptide-card small' if small else 'peptide-card'
     cats = [p['category'], *p.get('extra_categories', [])]
     search = ' '.join([p['name'], p['focus'], *cats, *p['aliases']]).lower()
     return (f'''<a class="{cls}" href="{p['url']}" data-categories="{escape('|'.join(cats), quote=True)}" data-kind="{p['kind']}" data-status="{p['status']}" data-search="{escape(search, quote=True)}">'''
-            f'''<div class="pc-head"><span class="pc-tag">{escape(p['category'])}</span><span class="pc-arrow">↗</span></div>'''
+            f'''<div class="pc-head"><span class="pc-tag">{escape(p['category'])}</span><span class="pc-arrow">↗</span></div>{molecule_svg(p['slug'], CAT_COLORS[p['category']], cls='pc-art')}'''
             f'''<div class="pc-main"><div class="pc-molecule">{p['num']} / {escape(KINDS[p['kind']][0].upper())}</div><h3>{escape(p['name'])}</h3><p>{escape(p['focus'])}</p></div>'''
             f'''<div class="pc-bottom">{status_badge(p)}</div></a>''')
 
@@ -333,7 +408,7 @@ services = [
     ('Recupero e sport', 'Infortuni, dolori ricorrenti e recupero lento: un percorso basato sulle prove, senza scorciatoie.'),
 ]
 SERVICE_SLUGS = {'Peptidi': 'peptidi', 'TRT': 'trt', 'GLP-1': 'glp-1', 'Longevity & Performance': 'longevity-performance', 'Capelli': 'capelli', 'Salute sessuale': 'salute-sessuale', 'Menopausa': 'menopausa', 'Recupero e sport': 'recupero-sport'}
-service_html = ''.join(f'''<article class="service-card"><span class="service-number">{i:02d} / CONSULENZA</span><h3><a href="/consulenze/{SERVICE_SLUGS[name]}/">{escape(name)}</a></h3><p>{escape(desc)}</p><div class="service-actions"><a class="text-cta" href="/consulenze/{SERVICE_SLUGS[name]}/">Scopri la consulenza <span>→</span></a><a class="text-cta start-link" href="/inizia/?area={SERVICE_SLUGS[name]}" data-service="{escape(name, quote=True)}">Trova il tuo medico <span>↗</span></a></div></article>''' for i, (name, desc) in enumerate(services, 1))
+service_html = ''.join(f'''<article class="service-card">{area_icon(name)}<span class="service-number">{i:02d} / CONSULENZA</span><h3><a href="/consulenze/{SERVICE_SLUGS[name]}/">{escape(name)}</a></h3><p>{escape(desc)}</p><div class="service-actions"><a class="text-cta" href="/consulenze/{SERVICE_SLUGS[name]}/">Scopri la consulenza <span>→</span></a><a class="text-cta start-link" href="/inizia/?area={SERVICE_SLUGS[name]}" data-service="{escape(name, quote=True)}">Trova il tuo medico <span>↗</span></a></div></article>''' for i, (name, desc) in enumerate(services, 1))
 featured = [p for s in FEATURED for p in DATA if p['slug'] == s]
 
 home = f'''<section class="hero"><div class="wrap hero-grid"><div class="hero-content"><div class="eyebrow"><span class="pulse-dot"></span> MEDICINA EMERGENTE, SENZA HYPE.</div><h1>La medicina<br>di <em>domani.</em><br>Le risposte di oggi.</h1><p class="hero-lede">Peptidi, terapie innovative, longevità e performance. Un nuovo servizio per chi vuole capire davvero cosa sta cambiando nella medicina — e farsi seguire, in videoconsulenza, da medici esperti di terapie emergenti.</p><div class="hero-actions"><a class="btn btn-light start-link" href="/inizia/">Trova il tuo medico <span>↗</span></a><a class="link-light" href="/library/">Esplora la Library <span>→</span></a></div><p class="hero-footnote">Servizio in fase di avvio. Le consulenze non sono ancora prenotabili.</p></div><div class="hero-visual" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="molecule-core"><span class="core-a"></span><span class="core-b"></span><span class="core-c"></span></div><span class="visual-code visual-code-top">EMERGING<br>MEDICINE<br>— 2026</span><span class="visual-code visual-code-bottom">RESEARCH /<br>EVIDENCE /<br>CLARITY</span></div></div><div class="wrap hero-stats"><span>01 / LIBRARY: {N} SCHEDE</span><span>02 / VIDEOCONSULENZE CON MEDICI ESPERTI</span><span>03 / RICERCA & INNOVAZIONE</span></div></section>
@@ -404,8 +479,26 @@ for p in DATA:
     kind_label = KINDS[p['kind']][0]
     p_arts = [a for a in ARTICLES if p['slug'] in a['related']]
     arts_block = f'<section class="section-pad articles-related"><div class="wrap"><div class="section-row"><h2>Articoli su {escape(p["name"])}.</h2><a class="underlined-link" href="/articoli/">Tutti gli articoli ↗</a></div><div class="article-grid">{"".join(article_card(a) for a in p_arts[:3])}</div></div></section>' if p_arts else ''
-    body = f'''<section class="inner-hero peptide-hero"><div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/library/">Library</a> / <a href="/library/{slugify(p['category'])}/">{escape(p['category'])}</a> / {escape(p['name'])}</div><div class="section-label light-text">{escape(kind_label.upper())} / {escape(p['category'].upper())}</div><h1>{escape(p['name'])}<span class="little-star">✳</span></h1><p>{escape(p['tagline'])}</p>{status_badge(p)}</div></section><section class="section-pad profile-section"><div class="wrap profile-grid"><article class="profile-main"><div class="review-notice"><strong>Bozza informativa — revisione medica indipendente non ancora effettuata.</strong><br>Ultima verifica editoriale delle fonti: {checked}. Questa pagina non sostituisce il parere di un medico.</div><div class="section-label">01 / IN BREVE</div><h2>Che cos'è {escape(p['name'])}?</h2>{aliases}<p>{escape(p['what'])}</p><div class="section-label space-top">02 / LE PROVE</div><h2>A cosa serve {escape(p['name'])}? Cosa dicono gli studi</h2>{evidence_grid(p)}<h3 class="sub-heading">Cosa non sappiamo ancora</h3><p>{escape(p['unknown'])}</p><div class="section-label space-top">03 / COME SI ASSUME</div><h2>Come si assume {escape(p['name'])} e a quali dosi</h2><div class="dosing-box"><span class="dosing-basis">{escape(DOSING_BASIS[p['dosing']['basis']])}</span><p class="dosing-route"><strong>Via di somministrazione:</strong> {escape(p['dosing']['route'])}</p><p>{escape(p['dosing']['text'])}</p></div><div class="dosing-warning" role="note"><strong>Informazione, non indicazione.</strong> Le dosi riportate descrivono come la sostanza è usata nei medicinali approvati o negli studi clinici. Non sono consigli da seguire: ogni trattamento richiede una visita e l’approvazione di un medico, che valuta indicazione, controindicazioni ed esami. Non usare prodotti acquistati fuori dai canali autorizzati.</div><div class="section-label space-top">04 / RISCHI</div><h2>Effetti collaterali e rischi di {escape(p['name'])}</h2><p>{escape(p['risk'])}</p><div class="section-label space-top">05 / REGOLAMENTAZIONE</div><h2>{escape(p['name'])} è legale in Italia? Lo stato in Europa</h2><p>{escape(p['reg'])}</p><div class="section-label space-top">06 / LE FONTI</div><h2>Approfondisci la ricerca.</h2><div class="source-links">{refs_html}</div><p class="citation-note">Link a fonti ufficiali e studi per orientarsi. La bibliografia completa con grading delle prove sarà aggiunta con la revisione medico-scientifica. <a href="/metodo/">Il nostro metodo ↗</a></p></article><aside class="profile-aside"><div class="fact-box"><span class="mini-label">AREA DI RICERCA / APPLICAZIONE</span><strong>{escape(p['focus'])}</strong><hr><span class="mini-label">TIPO</span><strong>{escape(kind_label)}</strong><hr><span class="mini-label">QUALITÀ DELLE PROVE</span><strong>{escape(p['evidence_summary'])}</strong><hr><span class="mini-label">STATO REGOLATORIO</span><strong>{escape(STATUS[p['status']][0])}</strong><hr><span class="mini-label">REVISIONE MEDICA</span><strong>{escape(reviewer)}</strong><hr><span class="mini-label">ULTIMA VERIFICA FONTI</span><strong>{checked}</strong></div><div class="aside-cta"><span>THE HUMAN SIDE OF RESEARCH</span><h3>Vuoi parlarne con un medico?</h3><p>Rispondi a un breve questionario anonimo: ci aiuta ad abbinarti ai medici più adatti della nostra rete.</p><a class="btn btn-dark full start-link" href="/inizia/{'?area=' + SERVICE_SLUGS[p['service']] if p['service'] else ''}" data-service="{escape(p['service'] or 'generale', quote=True)}">Trova il tuo medico ↗</a><small>Servizio in avvio. La prescrizione è decisa dal medico e solo se appropriata.</small></div></aside></div></section>{arts_block}<section class="related-section"><div class="wrap"><div class="section-row"><h2>Continua a esplorare.</h2><a class="underlined-link" href="/library/">Tutte le schede ↗</a></div><div class="card-grid related-grid">{''.join(card(q, True) for q in related(p))}</div></div></section>'''
     name = p['name']
+    color = CAT_COLORS[p['category']]
+    dosing_html = (f'<div class="dosing-box"><span class="dosing-basis">{escape(DOSING_BASIS[p["dosing"]["basis"]])}</span><p class="dosing-route"><strong>Via di somministrazione:</strong> {escape(p["dosing"]["route"])}</p><p>{escape(p["dosing"]["text"])}</p></div>'
+                   '<div class="dosing-warning" role="note"><strong>Informazione, non indicazione.</strong> Le dosi riportate descrivono come la sostanza è usata nei medicinali approvati o negli studi clinici. Non sono consigli da seguire: ogni trattamento richiede una visita e l’approvazione di un medico, che valuta indicazione, controindicazioni ed esami. Non usare prodotti acquistati fuori dai canali autorizzati.</div>')
+    secs = [('in-breve', 'IN BREVE', f'Che cos’è {name}?', aliases + f'<p>{escape(p["what"])}</p>')]
+    if p.get('mechanism'):
+        secs.append(('come-funziona', 'COME FUNZIONA', f'Come funziona {name}', f'<p>{escape(p["mechanism"])}</p>'))
+    secs += [('prove', 'LE PROVE', f'A cosa serve {name}? Cosa dicono gli studi', evidence_grid(p) + f'<h3 class="sub-heading">Cosa non sappiamo ancora</h3><p>{escape(p["unknown"])}</p>'),
+             ('dosi', 'COME SI ASSUME', f'Come si assume {name} e a quali dosi', dosing_html),
+             ('rischi', 'RISCHI', f'Effetti collaterali e rischi di {name}', f'<p>{escape(p["risk"])}</p>'),
+             ('legale', 'REGOLAMENTAZIONE', f'{name} è legale in Italia? Lo stato in Europa', f'<p>{escape(p["reg"])}</p>')]
+    if p.get('timeline'):
+        secs.append(('storia', 'LA STORIA', 'Le tappe principali', '<ol class="timeline">' + ''.join(f'<li><span class="tl-year">{escape(y)}</span><p>{escape(t)}</p></li>' for y, t in p['timeline']) + '</ol>'))
+    if p.get('faq'):
+        secs.append(('faq', 'DOMANDE FREQUENTI', f'Domande frequenti su {name}', '<div class="faq">' + ''.join(f'<details class="faq-item"><summary>{escape(q)}</summary><p>{escape(a)}</p></details>' for q, a in p['faq']) + '</div>'))
+    secs.append(('fonti', 'LE FONTI', 'Approfondisci la ricerca.', f'<div class="source-links">{refs_html}</div><p class="citation-note">Link a fonti ufficiali e studi per orientarsi. La bibliografia completa con grading delle prove sarà aggiunta con la revisione medico-scientifica. <a href="/metodo/">Il nostro metodo ↗</a></p>'))
+    sections_html = ''.join(f'<section class="profile-section-block" id="{sid}" aria-labelledby="h-{sid}"><div class="section-label">{n:02d} / {label}</div><h2 id="h-{sid}">{escape(h2)}</h2>{html}</section>' for n, (sid, label, h2, html) in enumerate(secs, 1))
+    key_points = f'<div class="key-points" style="--accent:{color}"><span class="mini-label">IN SINTESI</span><ul>{"".join(f"<li>{escape(k)}</li>" for k in p["key_points"])}</ul></div>' if p.get('key_points') else ''
+    toc = '<nav class="toc" aria-label="In questa pagina"><span class="mini-label">IN QUESTA PAGINA</span>' + ''.join(f'<a href="#{sid}">{escape(label.capitalize())}</a>' for sid, label, _, _ in secs) + '</nav>'
+    body = f'''<section class="inner-hero peptide-hero" style="--accent:{color}"><div class="wrap hero-split"><div><div class="breadcrumbs"><a href="/">Home</a> / <a href="/library/">Library</a> / <a href="/library/{slugify(p['category'])}/">{escape(p['category'])}</a> / {escape(name)}</div><div class="section-label light-text">{escape(kind_label.upper())} / {escape(p['category'].upper())}</div><h1>{escape(name)}<span class="little-star">✳</span></h1><p>{escape(p['tagline'])}</p>{status_badge(p)}</div>{molecule_svg(p['slug'], color, dark=True, cls='hero-art')}</div></section><section class="section-pad profile-section"><div class="wrap profile-grid"><article class="profile-main"><div class="review-notice"><strong>Bozza informativa — revisione medica indipendente non ancora effettuata.</strong><br>Ultima verifica editoriale delle fonti: {checked}. Questa pagina non sostituisce il parere di un medico.</div>{key_points}{sections_html}</article><aside class="profile-aside"><div class="fact-box"><span class="mini-label">AREA DI RICERCA / APPLICAZIONE</span><strong>{escape(p['focus'])}</strong><hr><span class="mini-label">TIPO</span><strong>{escape(kind_label)}</strong><hr><span class="mini-label">QUALITÀ DELLE PROVE</span><strong>{escape(p['evidence_summary'])}</strong><hr><span class="mini-label">STATO REGOLATORIO</span><strong>{escape(STATUS[p['status']][0])}</strong><hr><span class="mini-label">REVISIONE MEDICA</span><strong>{escape(reviewer)}</strong><hr><span class="mini-label">ULTIMA VERIFICA FONTI</span><strong>{checked}</strong></div>{toc}<div class="aside-cta"><span>THE HUMAN SIDE OF RESEARCH</span><h3>Vuoi parlarne con un medico?</h3><p>Rispondi a un breve questionario anonimo: ci aiuta ad abbinarti ai medici più adatti della nostra rete.</p><a class="btn btn-dark full start-link" href="/inizia/{'?area=' + SERVICE_SLUGS[p['service']] if p['service'] else ''}" data-service="{escape(p['service'] or 'generale', quote=True)}">Trova il tuo medico ↗</a><small>Servizio in avvio. La prescrizione è decisa dal medico e solo se appropriata.</small></div></aside></div></section>{arts_block}<section class="related-section"><div class="wrap"><div class="section-row"><h2>Continua a esplorare.</h2><a class="underlined-link" href="/library/">Tutte le schede ↗</a></div><div class="card-grid related-grid">{''.join(card(q, True) for q in related(p))}</div></div></section>'''
     title = (f'{name}: cos’è, a cosa serve, effetti collaterali e dosi' if len(name) <= 14
              else f'{name}: cos’è, effetti e dosi' if len(name) > 26 else f'{name}: cos’è, studi, rischi e dosi')
     alias = f" ({', '.join(p['aliases'][:2])})" if p['aliases'] else ''
@@ -416,7 +509,7 @@ for p in DATA:
         about['alternateName'] = p['aliases']
     faq_pairs = [(f'Che cos’è {name}?', p['what']), (f'A cosa serve {name}? Cosa dicono gli studi', p['unknown']),
                  (f'Come si assume {name} e a quali dosi', p['dosing']['route'] + ' ' + p['dosing']['text']),
-                 (f'Effetti collaterali e rischi di {name}', p['risk']), (f'{name} è legale in Italia?', p['reg'])]
+                 (f'Effetti collaterali e rischi di {name}', p['risk']), (f'{name} è legale in Italia?', p['reg'])] + [tuple(x) for x in p.get('faq', [])]
     schema = [webpage_ld('MedicalWebPage', p['url'], title, desc, about=about, lastReviewed=review['checked'], dateModified=review['checked'], publisher={'@id': SITE_URL + '/#org'}),
               faq_ld(faq_pairs)]
     crumbs = [('Home', '/'), ('Library', '/library/'), (p['category'], f"/library/{slugify(p['category'])}/"), (name, p['url'])]
@@ -566,8 +659,9 @@ for c in CONSULENZE:
     arts = [a for a in ARTICLES if a['service'] == c['name']]
     articles_block = f'''<div class="section-row space-top"><h2>Articoli.</h2><a class="underlined-link" href="/articoli/">Tutti gli articoli ↗</a></div><div class="article-grid">{''.join(article_card(a) for a in arts[:3])}</div>''' if arts else ''
     others = ''.join(f'<a class="other-service" href="/consulenze/{SERVICE_SLUGS[o["name"]]}/">Consulenza {escape(o["name"])} <span>→</span></a>' for o in CONSULENZE if o is not c)
-    body = f'''<section class="inner-hero"><div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/consulenze/">Consulenze</a> / {escape(c['name'])}</div><div class="section-label light-text">CONSULENZA / {escape(c['name'].upper())}</div><h1>{c['title']}</h1><p>{escape(c['lede'])}</p><div class="hero-actions"><a class="btn btn-light start-link" href="/inizia/?area={slug}" data-service="{escape(c['name'], quote=True)}">Trova il tuo medico <span>↗</span></a><a class="link-light" href="#come-funziona">Come funziona <span>↓</span></a></div><div class="mini-notice">Servizio in fase di avvio: le videoconsulenze non sono ancora prenotabili. La prescrizione è decisa dal medico, solo per medicinali autorizzati e quando è appropriata.</div></div></section>
+    body = f'''<section class="inner-hero"><div class="wrap">{area_icon(c['name'], 'consult-art')}<div class="breadcrumbs"><a href="/">Home</a> / <a href="/consulenze/">Consulenze</a> / {escape(c['name'])}</div><div class="section-label light-text">{area_icon(c['name'], 'hero-icon')}CONSULENZA / {escape(c['name'].upper())}</div><h1>{c['title']}</h1><p>{escape(c['lede'])}</p><div class="hero-actions"><a class="btn btn-light start-link" href="/inizia/?area={slug}" data-service="{escape(c['name'], quote=True)}">Trova il tuo medico <span>↗</span></a><a class="link-light" href="#come-funziona">Come funziona <span>↓</span></a></div><div class="mini-notice">Servizio in fase di avvio: le videoconsulenze non sono ancora prenotabili. La prescrizione è decisa dal medico, solo per medicinali autorizzati e quando è appropriata.</div></div></section>
 <section class="section-pad"><div class="wrap service-grid"><div><div class="section-label">01 / PER CHI È</div><h2>È pensata per te se…</h2><ul class="check-list">{li(c['for_whom'])}</ul></div><div><div class="section-label">02 / COSA FA IL MEDICO</div><h2>In videoconsulenza.</h2><ol class="numbered-list">{li(c['doctor'])}</ol><div class="fact-box exams-box"><span class="mini-label">ESAMI</span><p>{escape(c['exams'])}</p></div></div></div></section>
+<section class="section-pad first-visit"><div class="wrap"><div class="section-label">LA PRIMA VIDEOCONSULENZA</div><h2>Come sarà, <em>passo per passo.</em></h2><div class="visit-grid"><div><span class="mini-label">PRIMA</span><h3>Prepara le tue domande</h3><p>Dopo il questionario scegli il medico. Tieni a portata di mano gli esami recenti e l’elenco di farmaci e integratori che usi.</p></div><div><span class="mini-label">DURANTE · 30–45 MINUTI</span><h3>Una conversazione vera</h3><p>Il medico ascolta la tua storia, chiarisce obiettivi e dubbi e valuta cosa serve per avere un quadro completo.</p></div><div><span class="mini-label">DOPO</span><h3>Un piano chiaro</h3><p>Ricevi le indicazioni, gli eventuali esami da fare e, se il medico lo ritiene appropriato, la prescrizione. Poi fissate insieme il prossimo controllo.</p></div></div></div></section>
 <section class="principles how-section section-pad" id="come-funziona"><div class="wrap"><div class="section-label">03 / COME FUNZIONA</div><h2>Un medico al tuo fianco,<br><em>passo dopo passo.</em></h2>{STEPS}</div></section>
 <section class="section-pad"><div class="wrap service-grid"><div><div class="section-label">04 / COSA NON FACCIAMO</div><h2>I limiti, <em>chiari.</em></h2><p class="limits-text">{escape(c['limits'])}</p></div><div><div class="section-label">05 / DOMANDE FREQUENTI</div><h2>FAQ.</h2><div class="faq">{faq}</div></div></div></section>
 <section class="related-section"><div class="wrap">{library_block}{articles_block}<div class="other-services"><span class="mini-label">ALTRE CONSULENZE</span>{others}</div></div></section>'''
@@ -597,8 +691,12 @@ for a in ARTICLES:
     rel = [p for s in a['related'] for p in DATA if p['slug'] == s]
     more = [b for b in ARTICLES if b is not a][:3]
     svc = a['service']
+    minutes = max(1, round(len(re.findall(r'\w+', a['body'])) / 200))
+    heads = [h[3:] for h in a['body'].splitlines() if h.startswith('## ')]
+    art_toc = ('<nav class="toc" aria-label="In questo articolo"><span class="mini-label">IN QUESTO ARTICOLO</span>' + ''.join(f'<a href="#{slugify(h)}">{escape(h)}</a>' for h in heads) + '</nav>') if heads else ''
+    art_color = CAT_COLORS[rel[0]['category']] if rel else '#7fb4d3'
     cta = f'''<div class="aside-cta"><span>LA CONSULENZA</span><h3>Vuoi parlarne con un medico?</h3><p>La nostra rete di medici sta per avviare le videoconsulenze.</p><a class="btn btn-dark full" href="/consulenze/{SERVICE_SLUGS[svc]}/">Consulenza {escape(svc)} ↗</a></div>''' if svc else ''
-    body = f'''<section class="inner-hero"><div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/articoli/">Articoli</a> / {escape(a['title'])}</div><div class="section-label light-text">{escape(a['type'].upper())} · {it_date(a['date'])}</div><h1 class="article-title">{escape(a['title'])}</h1><p>{escape(a['description'])}</p></div></section><section class="section-pad"><div class="wrap profile-grid"><article class="article-body">{render_md(a['body'])}<div class="dosing-warning" role="note"><strong>Contenuto informativo.</strong> Questo articolo non sostituisce il parere di un medico. Bozza editoriale in attesa di revisione medico-scientifica.</div></article><aside class="profile-aside">{cta}<div class="fact-box"><span class="mini-label">REDAZIONE</span><strong>AHEAD</strong><hr><span class="mini-label">PUBBLICATO</span><strong>{it_date(a['date'])}</strong></div></aside></div></section>'''
+    body = f'''<section class="inner-hero"><div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/articoli/">Articoli</a> / {escape(a['title'])}</div><div class="section-label light-text">{escape(a['type'].upper())} · {it_date(a['date'])} · {minutes} MIN DI LETTURA</div><h1 class="article-title">{escape(a['title'])}</h1><p>{escape(a['description'])}</p>{molecule_svg(a['slug'], art_color, dark=True, cls='hero-art article-art')}</div></section><section class="section-pad"><div class="wrap profile-grid"><article class="article-body">{render_md(a['body'])}<div class="dosing-warning" role="note"><strong>Contenuto informativo.</strong> Questo articolo non sostituisce il parere di un medico. Bozza editoriale in attesa di revisione medico-scientifica.</div></article><aside class="profile-aside">{art_toc}{cta}<div class="fact-box"><span class="mini-label">REDAZIONE</span><strong>AHEAD</strong><hr><span class="mini-label">PUBBLICATO</span><strong>{it_date(a['date'])}</strong></div></aside></div></section>'''
     if rel:
         body += f'''<section class="related-section"><div class="wrap"><div class="section-row"><h2>Le schede citate.</h2><a class="underlined-link" href="/library/">Tutta la Library ↗</a></div><div class="card-grid related-grid">{''.join(card(p, True) for p in rel[:6])}</div></div></section>'''
     if more:
@@ -685,7 +783,7 @@ write('inizia/index.html', page('Trova il medico giusto per te — questionario'
 grid_legend = ''.join(f'<li><strong>{escape(label)}</strong></li>' for _, label in EVIDENCE_ROWS)
 status_legend = ''.join(f'<li><span class="status {cls}"><i></i>{escape(label)}</span></li>' for label, cls in STATUS.values())
 metodo = f'''<section class="inner-hero"><div class="wrap"><div class="section-label light-text">DOCUMENTAZIONE / METODO</div><h1>Il nostro <em>metodo.</em></h1><p>Come scegliamo le fonti, come classifichiamo le prove e cosa non troverai mai nelle nostre schede.</p></div></section><section class="section-pad"><div class="wrap privacy-content"><div class="review-notice"><strong>Stato attuale:</strong> le schede sono bozze editoriali. La revisione medico-scientifica indipendente non è ancora stata effettuata: il nome del revisore e la data di revisione compariranno su ogni scheda quando sarà completata.</div>
-<h2>Da dove vengono le prove</h2><p>Ogni scheda indica per cinque livelli se esistono prove e di che qualità. I livelli non sono equivalenti: un risultato su cellule o su topi non dimostra un beneficio nelle persone.</p><ol class="method-list">{grid_legend}</ol><p>Per ogni livello usiamo tre gradi: <strong>Presenti</strong> (più studi coerenti), <strong>Limitate</strong> (pochi studi, piccoli, non replicati o con limiti importanti), <strong>Assenti</strong>. Per l’autorizzazione: <strong>Sì</strong> (medicinale autorizzato in UE), <strong>Parziale</strong> (autorizzato solo fuori UE o per un’altra indicazione), <strong>No</strong>.</p>
+<h2>Da dove vengono le prove</h2><p>Ogni scheda indica per cinque livelli se esistono prove e di che qualità. I livelli non sono equivalenti: un risultato su cellule o su topi non dimostra un beneficio nelle persone. Più si sale nella piramide, più le prove sono affidabili per decidere su una terapia.</p><figure class="pyramid-figure">{evidence_pyramid()}<figcaption>La piramide delle prove: alla base gli studi di laboratorio, al vertice i medicinali che hanno superato studi clinici e valutazione delle autorità.</figcaption></figure><ol class="method-list">{grid_legend}</ol><p>Per ogni livello usiamo tre gradi: <strong>Presenti</strong> (più studi coerenti), <strong>Limitate</strong> (pochi studi, piccoli, non replicati o con limiti importanti), <strong>Assenti</strong>. Per l’autorizzazione: <strong>Sì</strong> (medicinale autorizzato in UE), <strong>Parziale</strong> (autorizzato solo fuori UE o per un’altra indicazione), <strong>No</strong>.</p>
 <h2>Stato regolatorio</h2><ul class="method-status">{status_legend}</ul><p>Lo stato si riferisce all’Unione europea, salvo diversa indicazione. Le decisioni di autorità extra-UE (per esempio FDA) sono riportate nel testo, ma non rendono un prodotto autorizzato in Italia.</p>
 <h2>Gerarchia delle fonti</h2><p>Diamo priorità a: documenti delle autorità regolatorie (EMA, AIFA, FDA), studi clinici randomizzati pubblicati, revisioni sistematiche, studi osservazionali, studi su animali e in vitro. Comunicati aziendali e notizie sono indicati come tali e usati solo per aggiornamenti recenti non ancora pubblicati altrove.</p>
 <h2>Revisione e aggiornamento</h2><p>Ogni scheda riporta la data dell’ultima verifica delle fonti. Le schede vengono ricontrollate almeno ogni sei mesi e ogni volta che cambia lo stato regolatorio. Prima della pubblicazione definitiva ogni scheda dovrà essere approvata da un medico revisore indipendente.</p>

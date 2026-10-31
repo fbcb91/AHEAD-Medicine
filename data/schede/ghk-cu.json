@@ -37,6 +37,39 @@
       "note": "Non è un medicinale."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Uso cosmetico: applicazione sulla pelle.",
+    "text": "Nei cosmetici è contenuto in creme e sieri, a concentrazioni regolate dalla normativa cosmetica. Per le iniezioni non esiste alcuna dose studiata."
+  },
+  "key_points": [
+    "Tripeptide naturale legato al rame, presente nel plasma umano.",
+    "Usato in creme e sieri cosmetici; le prove sono soprattutto di laboratorio.",
+    "L’uso cosmetico sulla pelle non va confuso con le iniezioni.",
+    "Non è un medicinale."
+  ],
+  "mechanism": "In laboratorio il GHK-Cu stimola i fibroblasti a produrre collagene ed elastina, modula gli enzimi che rimodellano i tessuti e ha effetti antiossidanti. Il rame che trasporta è necessario ad alcuni di questi enzimi. Quanto questi effetti si traducano in benefici visibili sulla pelle dipende molto dalla formulazione.",
+  "timeline": [
+    [
+      "1973",
+      "Identificato nel plasma umano."
+    ]
+  ],
+  "faq": [
+    [
+      "Il GHK-Cu funziona sulle rughe?",
+      "Alcuni piccoli studi cosmetici riportano miglioramenti della pelle, ma sono spesso sponsorizzati e di breve durata."
+    ],
+    [
+      "Si può iniettare?",
+      "Non esistono studi sulla sicurezza delle iniezioni: le prove riguardano l’uso cosmetico sulla pelle."
+    ],
+    [
+      "Aiuta i capelli?",
+      "Le prove sulla caduta dei capelli sono di laboratorio; non ci sono studi clinici solidi."
+    ]
+  ],
   "sources": [
     {
       "label": "PubMed — GHK-Cu e pelle",
@@ -44,12 +77,6 @@
       "type": "studio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "studi",
-    "route": "Uso cosmetico: applicazione sulla pelle.",
-    "text": "Nei cosmetici è contenuto in creme e sieri, a concentrazioni regolate dalla normativa cosmetica. Per le iniezioni non esiste alcuna dose studiata."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

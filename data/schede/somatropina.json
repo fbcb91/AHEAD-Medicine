@@ -39,6 +39,45 @@
       "note": "Autorizzata in UE per indicazioni specifiche."
     }
   },
+  "dosing": {
+    "basis": "rcp",
+    "route": "Iniezione sottocutanea, di solito la sera.",
+    "text": "Negli adulti con deficit si parte da dosi basse (0,15–0,3 mg al giorno), aumentate gradualmente in base a IGF-1 e risposta clinica; nei bambini la dose si calcola sul peso o sulla superficie corporea. Esistono anche formulazioni settimanali."
+  },
+  "extra_categories": [
+    "Massa muscolare"
+  ],
+  "key_points": [
+    "Ormone della crescita ricombinante, autorizzato per il deficit di GH e altre condizioni specifiche.",
+    "Negli anziani sani non ha mostrato benefici funzionali chiari, ma più effetti indesiderati.",
+    "È vietato nello sport.",
+    "Richiede prescrizione specialistica e monitoraggio dell’IGF-1."
+  ],
+  "mechanism": "L’ormone della crescita (GH) agisce direttamente su diversi tessuti e stimola il fegato a produrre IGF-1, che media gran parte dei suoi effetti su crescita, muscoli e ossa. Aumenta la mobilizzazione dei grassi e riduce la sensibilità all’insulina: per questo un eccesso può alterare la glicemia.",
+  "timeline": [
+    [
+      "1985",
+      "Arriva il primo ormone della crescita prodotto con tecnologia ricombinante, che sostituisce quello estratto da ipofisi umane."
+    ],
+    [
+      "2007",
+      "Una revisione sistematica conclude che negli anziani sani i benefici sono minimi e gli effetti indesiderati frequenti."
+    ]
+  ],
+  "faq": [
+    [
+      "Il GH fa crescere i muscoli?",
+      "Negli adulti sani aumenta la massa magra, in parte per ritenzione di liquidi, ma senza miglioramenti chiari di forza o prestazioni negli studi controllati."
+    ],
+    [
+      "Serve la ricetta?",
+      "Sì, ed è prescritto da specialisti per indicazioni precise."
+    ],
+    [
+      "Il GH è doping?",
+      "Sì, è incluso nella lista delle sostanze proibite."
+    ]
+  ],
   "sources": [
     {
       "label": "Annals of Internal Medicine 2007 — GH negli anziani sani (revisione sistematica)",
@@ -51,18 +90,10 @@
       "type": "regolatorio"
     }
   ],
-  "dosing": {
-    "basis": "rcp",
-    "route": "Iniezione sottocutanea, di solito la sera.",
-    "text": "Negli adulti con deficit si parte da dosi basse (0,15–0,3 mg al giorno), aumentate gradualmente in base a IGF-1 e risposta clinica; nei bambini la dose si calcola sul peso o sulla superficie corporea. Esistono anche formulazioni settimanali."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,
     "checked": "2026-10-30",
     "next_check": "2027-04-30"
-  },
-  "extra_categories": [
-    "Massa muscolare"
-  ]
+  }
 }
