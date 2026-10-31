@@ -51,10 +51,10 @@ Finché lo storage non è configurato il questionario risponde "non ancora attiv
 
 Le domande si modificano nella lista `SURVEY` in `build.py`; il build rigenera la pagina e lo schema di validazione del server.
 
-## Immagini delle schede
-Ogni scheda ha un'immagine evocativa in testa. Di default è un'illustrazione SVG generata da `illustrazioni.py`, con un motivo per area (recupero, ormoni, massa muscolare, metabolismo, longevità, pelle, neuro, immunità, sessualità e fertilità) e variazioni per sostanza.
+## Foto delle intestazioni
+Schede e consulenze possono avere una foto a tutta larghezza dietro il titolo. Senza foto resta l'intestazione scura con l'illustrazione molecolare.
 
-Per usare foto vere vedi `img/LEGGIMI.md`: basta mettere `img/schede/<slug>.jpg` (o una foto per area in `img/aree/`) e lanciare `python3 build.py`.
+Si caricano direttamente da GitHub nella cartella `img/` con il nome indicato in `img/LEGGIMI.md` (elenco completo, aggiornato da `build.py`). Al commit su `main` una GitHub Action ottimizza la foto (WebP 1200 e 2400 px), rigenera le pagine e committa il risultato; Vercel pubblica da solo.
 
 ## SEO
 Tutto è generato da `build.py`:

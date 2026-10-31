@@ -166,7 +166,9 @@
 @media(max-width:1050px){.consult-art{display:none}}
 .consult-art~h1{max-width:calc(100% - 300px)}
 @media(max-width:1050px){.consult-art~h1{max-width:none}}
-/* Immagine evocativa delle schede */
-.cover-figure{margin:0 0 44px;max-width:760px;overflow:hidden;background:#10191d}
-.cover-figure img,.cover-art{display:block;width:100%;height:auto;aspect-ratio:3/1;object-fit:cover}
-@media(max-width:540px){.cover-figure img,.cover-art{aspect-ratio:2/1}}
+/* Foto a tutta larghezza nelle intestazioni */
+.has-photo{position:relative;overflow:hidden;isolation:isolate}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-2}
+.has-photo::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(16,25,29,.94) 0%,rgba(16,25,29,.78) 45%,rgba(16,25,29,.35) 100%)}
+.has-photo .wrap{position:relative}
+@media(max-width:800px){.has-photo::before{background:linear-gradient(180deg,rgba(16,25,29,.6) 0%,rgba(16,25,29,.92) 100%)}}
