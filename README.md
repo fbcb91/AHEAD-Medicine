@@ -51,6 +51,11 @@ Finché lo storage non è configurato il questionario risponde "non ancora attiv
 
 Le domande si modificano nella lista `SURVEY` in `build.py`; il build rigenera la pagina e lo schema di validazione del server.
 
+## Immagini delle schede
+Ogni scheda ha un'immagine evocativa in testa. Di default è un'illustrazione SVG generata da `illustrazioni.py`, con un motivo per area (recupero, ormoni, massa muscolare, metabolismo, longevità, pelle, neuro, immunità, sessualità e fertilità) e variazioni per sostanza.
+
+Per usare foto vere vedi `img/LEGGIMI.md`: basta mettere `img/schede/<slug>.jpg` (o una foto per area in `img/aree/`) e lanciare `python3 build.py`.
+
 ## SEO
 Tutto è generato da `build.py`:
 - `<title>`, meta description, canonical, Open Graph e Twitter card su ogni pagina; `robots` index/follow (`INDEXABLE` in `build.py`)
