@@ -9,6 +9,7 @@ from html import escape
 from urllib.parse import quote
 import json
 import unicodedata
+from illustrazioni import cover_svg
 import hashlib
 import math
 import re
@@ -356,6 +357,26 @@ def area_icon(name, cls='area-icon'):
     return f'<svg class="{cls}" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">{_ICON[name]}</svg>' if name in _ICON else ''
 
 
+def cover(p):
+    """Foto per la scheda (img/schede/<slug>.*) o per l'area (img/aree/<area>.*); altrimenti illustrazione SVG."""
+    alt = f"{p['name']}: {p['focus'].lower()}"
+    for folder, name in (('schede', p['slug']), ('aree', slugify(p['category']))):
+        for ext in ('.jpg', '.jpeg', '.png', '.webp'):
+            src = ROOT / 'img' / folder / (name + ext)
+            if not src.exists():
+                continue
+            digest = hashlib.sha256(src.read_bytes()).hexdigest()[:8]
+            out = ROOT / 'media' / folder / f'{name}-{digest}.webp'
+            if not out.exists():
+                from PIL import Image, ImageOps   # serve solo quando si aggiunge una foto nuova
+                out.parent.mkdir(parents=True, exist_ok=True)
+                for old in out.parent.glob(f'{name}-*.webp'):
+                    old.unlink()
+                ImageOps.fit(ImageOps.exif_transpose(Image.open(src)).convert('RGB'), (1200, 400)).save(out, 'WEBP', quality=80)
+            return f'<figure class="cover-figure"><img src="/media/{folder}/{out.name}" width="1200" height="400" alt="{escape(alt, quote=True)}" decoding="async"></figure>'
+    return f'<figure class="cover-figure">{cover_svg(p["slug"], p["category"], CAT_COLORS[p["category"]], escape(alt, quote=True))}</figure>'
+
+
 def evidence_pyramid():
     tiers = [('Medicinale autorizzato', '#10191d', '#fff'), ('Studi clinici randomizzati', '#2c4a55', '#fff'), ('Studi osservazionali', '#5f8794', '#fff'),
              ('Modelli animali', '#a9c3c8', '#10191d'), ('In vitro', '#dbe6e5', '#10191d')]
@@ -498,7 +519,7 @@ for p in DATA:
     sections_html = ''.join(f'<section class="profile-section-block" id="{sid}" aria-labelledby="h-{sid}"><div class="section-label">{n:02d} / {label}</div><h2 id="h-{sid}">{escape(h2)}</h2>{html}</section>' for n, (sid, label, h2, html) in enumerate(secs, 1))
     key_points = f'<div class="key-points" style="--accent:{color}"><span class="mini-label">IN SINTESI</span><ul>{"".join(f"<li>{escape(k)}</li>" for k in p["key_points"])}</ul></div>' if p.get('key_points') else ''
     toc = '<nav class="toc" aria-label="In questa pagina"><span class="mini-label">IN QUESTA PAGINA</span>' + ''.join(f'<a href="#{sid}">{escape(label.capitalize())}</a>' for sid, label, _, _ in secs) + '</nav>'
-    body = f'''<section class="inner-hero peptide-hero" style="--accent:{color}"><div class="wrap hero-split"><div><div class="breadcrumbs"><a href="/">Home</a> / <a href="/library/">Library</a> / <a href="/library/{slugify(p['category'])}/">{escape(p['category'])}</a> / {escape(name)}</div><div class="section-label light-text">{escape(kind_label.upper())} / {escape(p['category'].upper())}</div><h1>{escape(name)}<span class="little-star">✳</span></h1><p>{escape(p['tagline'])}</p>{status_badge(p)}</div>{molecule_svg(p['slug'], color, dark=True, cls='hero-art')}</div></section><section class="section-pad profile-section"><div class="wrap profile-grid"><article class="profile-main"><div class="review-notice"><strong>Bozza informativa — revisione medica indipendente non ancora effettuata.</strong><br>Ultima verifica editoriale delle fonti: {checked}. Questa pagina non sostituisce il parere di un medico.</div>{key_points}{sections_html}</article><aside class="profile-aside"><div class="fact-box"><span class="mini-label">AREA DI RICERCA / APPLICAZIONE</span><strong>{escape(p['focus'])}</strong><hr><span class="mini-label">TIPO</span><strong>{escape(kind_label)}</strong><hr><span class="mini-label">QUALITÀ DELLE PROVE</span><strong>{escape(p['evidence_summary'])}</strong><hr><span class="mini-label">STATO REGOLATORIO</span><strong>{escape(STATUS[p['status']][0])}</strong><hr><span class="mini-label">REVISIONE MEDICA</span><strong>{escape(reviewer)}</strong><hr><span class="mini-label">ULTIMA VERIFICA FONTI</span><strong>{checked}</strong></div>{toc}<div class="aside-cta"><span>THE HUMAN SIDE OF RESEARCH</span><h3>Vuoi parlarne con un medico?</h3><p>Rispondi a un breve questionario anonimo: ci aiuta ad abbinarti ai medici più adatti della nostra rete.</p><a class="btn btn-dark full start-link" href="/inizia/{'?area=' + SERVICE_SLUGS[p['service']] if p['service'] else ''}" data-service="{escape(p['service'] or 'generale', quote=True)}">Trova il tuo medico ↗</a><small>Servizio in avvio. La prescrizione è decisa dal medico e solo se appropriata.</small></div></aside></div></section>{arts_block}<section class="related-section"><div class="wrap"><div class="section-row"><h2>Continua a esplorare.</h2><a class="underlined-link" href="/library/">Tutte le schede ↗</a></div><div class="card-grid related-grid">{''.join(card(q, True) for q in related(p))}</div></div></section>'''
+    body = f'''<section class="inner-hero peptide-hero" style="--accent:{color}"><div class="wrap hero-split"><div><div class="breadcrumbs"><a href="/">Home</a> / <a href="/library/">Library</a> / <a href="/library/{slugify(p['category'])}/">{escape(p['category'])}</a> / {escape(name)}</div><div class="section-label light-text">{escape(kind_label.upper())} / {escape(p['category'].upper())}</div><h1>{escape(name)}<span class="little-star">✳</span></h1><p>{escape(p['tagline'])}</p>{status_badge(p)}</div>{molecule_svg(p['slug'], color, dark=True, cls='hero-art')}</div></section><section class="section-pad profile-section"><div class="wrap profile-grid"><article class="profile-main">{cover(p)}<div class="review-notice"><strong>Bozza informativa — revisione medica indipendente non ancora effettuata.</strong><br>Ultima verifica editoriale delle fonti: {checked}. Questa pagina non sostituisce il parere di un medico.</div>{key_points}{sections_html}</article><aside class="profile-aside"><div class="fact-box"><span class="mini-label">AREA DI RICERCA / APPLICAZIONE</span><strong>{escape(p['focus'])}</strong><hr><span class="mini-label">TIPO</span><strong>{escape(kind_label)}</strong><hr><span class="mini-label">QUALITÀ DELLE PROVE</span><strong>{escape(p['evidence_summary'])}</strong><hr><span class="mini-label">STATO REGOLATORIO</span><strong>{escape(STATUS[p['status']][0])}</strong><hr><span class="mini-label">REVISIONE MEDICA</span><strong>{escape(reviewer)}</strong><hr><span class="mini-label">ULTIMA VERIFICA FONTI</span><strong>{checked}</strong></div>{toc}<div class="aside-cta"><span>THE HUMAN SIDE OF RESEARCH</span><h3>Vuoi parlarne con un medico?</h3><p>Rispondi a un breve questionario anonimo: ci aiuta ad abbinarti ai medici più adatti della nostra rete.</p><a class="btn btn-dark full start-link" href="/inizia/{'?area=' + SERVICE_SLUGS[p['service']] if p['service'] else ''}" data-service="{escape(p['service'] or 'generale', quote=True)}">Trova il tuo medico ↗</a><small>Servizio in avvio. La prescrizione è decisa dal medico e solo se appropriata.</small></div></aside></div></section>{arts_block}<section class="related-section"><div class="wrap"><div class="section-row"><h2>Continua a esplorare.</h2><a class="underlined-link" href="/library/">Tutte le schede ↗</a></div><div class="card-grid related-grid">{''.join(card(q, True) for q in related(p))}</div></div></section>'''
     title = (f'{name}: cos’è, a cosa serve, effetti collaterali e dosi' if len(name) <= 14
              else f'{name}: cos’è, effetti e dosi' if len(name) > 26 else f'{name}: cos’è, studi, rischi e dosi')
     alias = f" ({', '.join(p['aliases'][:2])})" if p['aliases'] else ''
