@@ -9,6 +9,7 @@ Sito italiano di validazione del mercato per un futuro servizio medico sulle ter
 - Sezione dosi delle schede (`dosing`): riportare solo dosi da foglietto/RCP approvato (UE o extra-UE) o da studi clinici pubblicati, sempre con la fonte (`basis`). Se non esiste una dose studiata nell'uomo (`basis: nessuna`) non riportare le quantità che circolano online. Mai protocolli, cicli o "stack" fai-da-te.
 - Ogni nuova scheda medico-scientifica deve distinguere **studi in vitro, animali, osservazionali, RCT, e medicinali autorizzati**. Richiedere controllo medico indipendente prima della pubblicazione.
 - Non associare indirizzi email a categorie di interesse per patologie o sostanze. Misurare click di interesse in aggregato, non per persona. Mai raccogliere anamnesi in un form marketing.
+- Il questionario `/inizia/` è **anonimo**: mai aggiungere nome, email, telefono o altri identificativi, né salvare IP o user agent, né collegarlo all'iscrizione email. Un modulo identificato con dati sanitari richiede prima titolare del trattamento, informativa definitiva, consenso esplicito (art. 9 GDPR) e un archivio adatto: non usare MailerLite per questi dati.
 - Preferire modifiche semplici e mantenere la struttura statica veloce, indicizzabile e accessibile.
 - Indicizzazione attiva (`INDEXABLE = True` in `build.py`) per decisione del titolare, prima della revisione medica: mantenere le schede in stato "bozza" visibile finché la revisione non è completata. `INDEXABLE = False` rimette noindex ovunque.
 - SEO: ogni pagina passa da `page()` con path canonico; non scrivere HTML a mano fuori da `build.py`. Titoli ≤ ~70 caratteri, meta description ≤ ~158 (il build avvisa).
@@ -21,6 +22,8 @@ Sito italiano di validazione del mercato per un futuro servizio medico sulle ter
 - `sitemap.xml`, `robots.txt` e `og/pages.json` sono generati da `build.py`.
 - `styles.css` per estetica responsive.
 - `app.js` ricerca / filtri / CTA / modulo.
+- `SURVEY` in `build.py` definisce le domande del questionario e genera `inizia/index.html` e `api/_survey-schema.js` (non modificarlo a mano).
+- `api/survey.js` salva le risposte su Redis (Upstash); `api/survey-export.js` le esporta in CSV con `SURVEY_ADMIN_KEY`.
 - `api/interest.js` endpoint Vercel da attivare via variabili d'ambiente (honeypot e rate limit di base inclusi).
 - `vercel.json` header di sicurezza, inclusa la CSP: aggiornarla se si aggiungono script o domini esterni (es. analytics).
 

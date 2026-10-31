@@ -36,6 +36,21 @@ Apri `http://localhost:8000/` nel browser.
 
 API MailerLite: https://developers.mailerlite.com/api/subscribers
 
+## Questionario "Trova il tuo medico" (`/inizia/`)
+Questionario anonimo in 7 passi: aree, obiettivi, situazione di partenza, sostanze di interesse, fascia d'età e sesso, aspettative sul servizio (tempi, budget, abbonamento, lingua, canale) e una nota libera facoltativa. Tutti i pulsanti "Trova il tuo medico" del sito portano qui, con l'area già selezionata (`/inizia/?area=trt`).
+
+Non raccoglie nome, email o telefono e non salva IP: le risposte servono a capire la domanda in forma aggregata. L'iscrizione email resta separata e non è collegata alle risposte.
+
+Per attivarlo su Vercel:
+1. **Storage → Marketplace → Upstash for Redis** (piano gratuito) e collegalo al progetto: Vercel aggiunge da solo `KV_REST_API_URL` e `KV_REST_API_TOKEN`.
+2. Aggiungi la variabile `SURVEY_ADMIN_KEY` con una chiave lunga e casuale (almeno 16 caratteri).
+3. Rifai il deploy.
+
+Per scaricare le risposte in CSV (si apre con Excel o Google Sheets): `https://<sito>/api/survey-export?key=<SURVEY_ADMIN_KEY>`.
+Finché lo storage non è configurato il questionario risponde "non ancora attivo".
+
+Le domande si modificano nella lista `SURVEY` in `build.py`; il build rigenera la pagina e lo schema di validazione del server.
+
 ## SEO
 Tutto è generato da `build.py`:
 - `<title>`, meta description, canonical, Open Graph e Twitter card su ogni pagina; `robots` index/follow (`INDEXABLE` in `build.py`)
