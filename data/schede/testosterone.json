@@ -39,6 +39,45 @@
       "note": "Autorizzato in UE per l’ipogonadismo."
     }
   },
+  "dosing": {
+    "basis": "rcp",
+    "route": "Gel cutaneo quotidiano o iniezioni intramuscolari.",
+    "text": "Esistono gel o soluzioni da applicare sulla pelle ogni giorno, iniezioni intramuscolari a lunga durata (testosterone undecanoato, ogni 10–14 settimane) ed esteri a durata più breve (per esempio enantato, ogni 2–3 settimane). La dose viene regolata in base ai livelli di testosterone, all’ematocrito e alla risposta clinica, con controlli periodici."
+  },
+  "extra_categories": [
+    "Massa muscolare"
+  ],
+  "key_points": [
+    "È il principale ormone sessuale maschile; la terapia è autorizzata per l’ipogonadismo confermato.",
+    "La diagnosi richiede sintomi ed esami ripetuti al mattino.",
+    "Con livelli normali non ci sono benefici dimostrati.",
+    "Riduce la fertilità e richiede controlli periodici, per esempio dell’ematocrito."
+  ],
+  "mechanism": "Il testosterone si lega ai recettori degli androgeni presenti in muscoli, ossa, cervello, pelle e organi sessuali. Regola desiderio sessuale, massa muscolare, densità ossea, produzione di globuli rossi e distribuzione del grasso. Quando viene somministrato dall’esterno, il cervello riduce la produzione di LH e FSH: per questo diminuiscono la produzione naturale di testosterone e quella di spermatozoi.",
+  "timeline": [
+    [
+      "1935",
+      "Il testosterone viene isolato e sintetizzato per la prima volta."
+    ],
+    [
+      "2023",
+      "Lo studio TRAVERSE non mostra un aumento degli eventi cardiovascolari maggiori negli uomini con ipogonadismo trattati."
+    ]
+  ],
+  "faq": [
+    [
+      "Il testosterone fa ingrassare o dimagrire?",
+      "Negli uomini con ipogonadismo la terapia tende a ridurre il grasso e ad aumentare la massa magra, ma non sostituisce alimentazione e attività fisica."
+    ],
+    [
+      "Si può smettere la terapia?",
+      "Sì, ma va pianificato con il medico: la produzione naturale può impiegare mesi a riprendersi e in alcuni casi non torna ai livelli precedenti."
+    ],
+    [
+      "Il testosterone è doping?",
+      "Sì: gli androgeni sono vietati nello sport, salvo esenzione per uso terapeutico."
+    ]
+  ],
   "sources": [
     {
       "label": "NEJM 2023 — studio TRAVERSE",
@@ -51,18 +90,10 @@
       "type": "studio"
     }
   ],
-  "dosing": {
-    "basis": "rcp",
-    "route": "Gel cutaneo quotidiano o iniezioni intramuscolari.",
-    "text": "Esistono gel o soluzioni da applicare sulla pelle ogni giorno, iniezioni intramuscolari a lunga durata (testosterone undecanoato, ogni 10–14 settimane) ed esteri a durata più breve (per esempio enantato, ogni 2–3 settimane). La dose viene regolata in base ai livelli di testosterone, all’ematocrito e alla risposta clinica, con controlli periodici."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,
     "checked": "2026-10-30",
     "next_check": "2027-04-30"
-  },
-  "extra_categories": [
-    "Massa muscolare"
-  ]
+  }
 }

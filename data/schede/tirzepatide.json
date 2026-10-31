@@ -37,6 +37,47 @@
       "note": "Autorizzato in UE per indicazioni specifiche."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "rcp",
+    "route": "Iniezione sottocutanea settimanale.",
+    "text": "Si parte da 2,5 mg una volta a settimana per 4 settimane, poi 5 mg; la dose può essere aumentata di 2,5 mg dopo almeno 4 settimane, fino a un massimo di 15 mg. Nella gestione del peso le dosi di mantenimento sono 5, 10 o 15 mg."
+  },
+  "key_points": [
+    "Agisce su due recettori, GIP e GLP-1: è il primo farmaco autorizzato di questa classe.",
+    "Autorizzato in UE (Mounjaro) per diabete di tipo 2 e gestione del peso.",
+    "Nello studio SURMOUNT-1 la perdita di peso media con la dose più alta è stata di circa il 20%.",
+    "Effetti collaterali soprattutto gastrointestinali; servono prescrizione e monitoraggio."
+  ],
+  "mechanism": "La tirzepatide è un’unica molecola che attiva due recettori: quello del GLP-1 e quello del GIP, un altro ormone intestinale coinvolto nella regolazione dell’insulina e del tessuto adiposo. L’azione combinata migliora il controllo della glicemia e riduce l’appetito più di quanto ottenuto, in media, con i soli agonisti del GLP-1.",
+  "timeline": [
+    [
+      "2022",
+      "Approvata negli USA e in UE (Mounjaro) per il diabete di tipo 2; pubblicato lo studio SURMOUNT-1 sull’obesità."
+    ],
+    [
+      "2023–2024",
+      "Negli USA arriva Zepbound per la gestione del peso; in UE l’indicazione per il peso viene aggiunta a Mounjaro."
+    ],
+    [
+      "2025",
+      "In uno studio di confronto diretto produce una perdita di peso maggiore della semaglutide."
+    ]
+  ],
+  "faq": [
+    [
+      "Mounjaro è meglio di Ozempic?",
+      "Nel confronto diretto la tirzepatide ha prodotto in media una perdita di peso maggiore della semaglutide. La scelta però dipende dalla persona, dalle altre malattie e dalla tollerabilità: va fatta con il medico."
+    ],
+    [
+      "Serve la ricetta?",
+      "Sì, è un medicinale soggetto a prescrizione."
+    ],
+    [
+      "Quali sono gli effetti collaterali più comuni?",
+      "Nausea, diarrea, stitichezza e vomito, soprattutto nelle prime settimane e quando si aumenta la dose."
+    ]
+  ],
   "sources": [
     {
       "label": "EMA — Mounjaro (EPAR)",
@@ -54,12 +95,6 @@
       "type": "regolatorio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "rcp",
-    "route": "Iniezione sottocutanea settimanale.",
-    "text": "Si parte da 2,5 mg una volta a settimana per 4 settimane, poi 5 mg; la dose può essere aumentata di 2,5 mg dopo almeno 4 settimane, fino a un massimo di 15 mg. Nella gestione del peso le dosi di mantenimento sono 5, 10 o 15 mg."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

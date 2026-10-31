@@ -37,6 +37,43 @@
       "note": "Non autorizzato in UE né negli USA."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: iniezioni sottocutanee.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "key_points": [
+    "Frammento sintetico correlato alla timosina beta-4, una proteina naturale.",
+    "Prove quasi solo su cellule e animali; nessun beneficio dimostrato nell’uomo.",
+    "Non è autorizzato in UE né negli USA ed è vietato nello sport.",
+    "La qualità dei prodotti venduti online non è garantita."
+  ],
+  "mechanism": "La timosina beta-4 lega l’actina, una proteina dello “scheletro” della cellula, e partecipa alla migrazione delle cellule e alla formazione di nuovi vasi durante la riparazione dei tessuti. TB-500 riproduce solo una piccola parte della proteina: non è chiaro se ne conservi gli stessi effetti.",
+  "timeline": [
+    [
+      "Anni ’80",
+      "Viene identificata la timosina beta-4."
+    ],
+    [
+      "2026",
+      "Un comitato consultivo FDA vota (8–6) a favore del suo uso in galenica negli USA per la guarigione delle ferite; il voto non è vincolante."
+    ]
+  ],
+  "faq": [
+    [
+      "TB-500 e timosina beta-4 sono la stessa cosa?",
+      "No: TB-500 è un frammento sintetico. I pochi studi clinici esistenti riguardano la proteina intera in formulazioni specifiche, non il frammento."
+    ],
+    [
+      "TB-500 è doping?",
+      "Sì, è vietato dall’Agenzia mondiale antidoping."
+    ],
+    [
+      "Serve per tendiniti e strappi?",
+      "Non ci sono studi sull’uomo che lo dimostrino. Per gli infortuni esistono percorsi con prove di efficacia da valutare con un medico."
+    ]
+  ],
   "sources": [
     {
       "label": "FDA — sostanze per galenica con possibili rischi",
@@ -54,12 +91,6 @@
       "type": "notizia"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "nessuna",
-    "route": "Nel mercato non regolato: iniezioni sottocutanee.",
-    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

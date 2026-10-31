@@ -39,6 +39,46 @@
       "note": "Autorizzata in UE per altre indicazioni."
     }
   },
+  "dosing": {
+    "basis": "rcp",
+    "route": "Compresse o soluzione orale.",
+    "text": "Nel trapianto di rene (indicazione autorizzata) si assume una volta al giorno, con dose regolata sui livelli nel sangue. Negli studi sull’invecchiamento si sono usati invece schemi a basso dosaggio e intermittenti (per esempio settimanali), molto inferiori: nessuno è validato."
+  },
+  "key_points": [
+    "Immunosoppressore autorizzato per il trapianto di rene: inibisce la via mTOR.",
+    "Nei topi prolunga la vita in modo riproducibile, anche se iniziata in età avanzata.",
+    "Nell’uomo non ci sono prove che rallenti l’invecchiamento.",
+    "Ha effetti collaterali significativi: l’uso fuori indicazione richiede supervisione specialistica."
+  ],
+  "mechanism": "La rapamicina blocca mTOR, un “sensore” cellulare che decide se la cellula deve crescere o risparmiare energia. Inibendo mTOR, le cellule riducono la sintesi di proteine e aumentano l’autofagia, il processo con cui eliminano componenti danneggiati. Un meccanismo simile si attiva con la restrizione calorica: per questo la rapamicina è studiata per l’invecchiamento.",
+  "timeline": [
+    [
+      "Anni ’70",
+      "Scoperta in un batterio del suolo dell’Isola di Pasqua (Rapa Nui), da cui prende il nome."
+    ],
+    [
+      "1999",
+      "Approvata negli USA per prevenire il rigetto nel trapianto di rene."
+    ],
+    [
+      "2009",
+      "Uno studio su Nature mostra che prolunga la vita dei topi."
+    ]
+  ],
+  "faq": [
+    [
+      "La rapamicina allunga la vita?",
+      "Nei topi sì, in studi ripetuti. Nell’uomo non è stato dimostrato."
+    ],
+    [
+      "Che dose si usa per la longevità?",
+      "Non esiste una dose validata per la longevità. Negli studi si sono usati schemi a basso dosaggio e intermittenti, con risultati non conclusivi."
+    ],
+    [
+      "Si può avere con una prescrizione?",
+      "È un farmaco autorizzato per altre indicazioni: l’uso fuori indicazione è una decisione del medico, che deve valutare benefici, rischi ed esami."
+    ]
+  ],
   "sources": [
     {
       "label": "EMA — Rapamune (sirolimus) (EPAR)",
@@ -56,11 +96,6 @@
       "type": "studio"
     }
   ],
-  "dosing": {
-    "basis": "rcp",
-    "route": "Compresse o soluzione orale.",
-    "text": "Nel trapianto di rene (indicazione autorizzata) si assume una volta al giorno, con dose regolata sui livelli nel sangue. Negli studi sull’invecchiamento si sono usati invece schemi a basso dosaggio e intermittenti (per esempio settimanali), molto inferiori: nessuno è validato."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

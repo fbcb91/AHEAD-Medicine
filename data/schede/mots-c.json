@@ -36,6 +36,39 @@
       "note": "Non autorizzato."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "nessuna",
+    "route": "Nel mercato non regolato: iniezioni sottocutanee.",
+    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
+  },
+  "key_points": [
+    "Peptide codificato dal DNA mitocondriale, scoperto nel 2015.",
+    "Studiato su topi per metabolismo, resistenza insulinica e invecchiamento.",
+    "Nessuno studio clinico controllato sull’uomo.",
+    "Non è un medicinale autorizzato."
+  ],
+  "mechanism": "MOTS-c è prodotto dai mitocondri. Nelle cellule sotto stress metabolico può spostarsi nel nucleo e influenzare l’espressione di geni coinvolti nell’utilizzo del glucosio. Negli animali attiva AMPK, un regolatore dell’energia cellulare attivato anche dall’esercizio fisico.",
+  "timeline": [
+    [
+      "2015",
+      "Scoperto e descritto sulla rivista Cell Metabolism."
+    ],
+    [
+      "2026",
+      "Un comitato consultivo FDA vota a favore del suo uso in galenica negli USA, per obesità e osteoporosi; il voto non è vincolante."
+    ]
+  ],
+  "faq": [
+    [
+      "MOTS-c fa dimagrire?",
+      "Nei topi ha ridotto l’aumento di peso con diete ricche di grassi. Nell’uomo non ci sono studi che lo dimostrino."
+    ],
+    [
+      "È come fare esercizio?",
+      "Alcuni effetti nei topi ricordano quelli dell’esercizio, ma non esistono prove che possa sostituirlo nelle persone."
+    ]
+  ],
   "sources": [
     {
       "label": "FDA — comitato consultivo sulla galenica, 23–24 luglio 2026",
@@ -48,12 +81,6 @@
       "type": "notizia"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "nessuna",
-    "route": "Nel mercato non regolato: iniezioni sottocutanee.",
-    "text": "Non esiste una dose studiata e validata nell’uomo. Le quantità che circolano online sono ricavate da studi su animali o da pratiche non controllate e non hanno mai superato una valutazione clinica: per questo non le riportiamo."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,

@@ -37,6 +37,47 @@
       "note": "Non autorizzato."
     }
   },
+  "kind": "peptide",
+  "dosing": {
+    "basis": "studi",
+    "route": "Iniezione sottocutanea settimanale.",
+    "text": "Negli studi viene somministrato una volta a settimana con aumento graduale della dose; la dose più alta studiata è 12 mg a settimana. Non esiste una dose approvata."
+  },
+  "key_points": [
+    "Triplo agonista: agisce sui recettori di GIP, GLP-1 e glucagone.",
+    "Non è autorizzato in nessun Paese: è ancora in sperimentazione.",
+    "Nel 2026 il produttore ha annunciato risultati positivi di fase 3; la domanda negli USA è prevista per il 2027.",
+    "Quello venduto online non proviene da canali controllati."
+  ],
+  "mechanism": "Oltre ai recettori di GLP-1 e GIP, il retatrutide attiva quello del glucagone. Il glucagone aumenta il consumo di energia e la mobilizzazione dei grassi, in particolare nel fegato: per questo la molecola è studiata anche per la steatosi epatica. L’effetto complessivo osservato negli studi è una riduzione dell’appetito associata a un maggiore dispendio energetico.",
+  "timeline": [
+    [
+      "2023",
+      "Pubblicato sul New England Journal of Medicine lo studio di fase 2 sull’obesità."
+    ],
+    [
+      "2026",
+      "Il produttore annuncia che gli studi di fase 3 TRIUMPH-2 e TRIUMPH-3 hanno raggiunto l’obiettivo principale."
+    ],
+    [
+      "2027",
+      "Prevista la domanda di autorizzazione negli USA, secondo l’azienda."
+    ]
+  ],
+  "faq": [
+    [
+      "Il retatrutide si può comprare?",
+      "No. Non è autorizzato in nessun Paese: i prodotti venduti online con questo nome non provengono da canali controllati e possono contenere sostanze diverse o contaminate."
+    ],
+    [
+      "Quando sarà disponibile?",
+      "Dipende dalla valutazione delle autorità. Il produttore prevede di presentare domanda negli USA nel primo trimestre 2027; per l’Europa i tempi non sono ancora noti."
+    ],
+    [
+      "È più efficace della tirzepatide?",
+      "Negli studi ha prodotto perdite di peso molto elevate, ma non ci sono ancora confronti diretti pubblicati né la valutazione completa della sicurezza."
+    ]
+  ],
   "sources": [
     {
       "label": "NEJM 2023 — studio di fase 2",
@@ -54,12 +95,6 @@
       "type": "regolatorio"
     }
   ],
-  "kind": "peptide",
-  "dosing": {
-    "basis": "studi",
-    "route": "Iniezione sottocutanea settimanale.",
-    "text": "Negli studi viene somministrato una volta a settimana con aumento graduale della dose; la dose più alta studiata è 12 mg a settimana. Non esiste una dose approvata."
-  },
   "review": {
     "status": "bozza",
     "medical_reviewer": null,
