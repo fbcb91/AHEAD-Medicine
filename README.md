@@ -42,7 +42,7 @@ Questionario anonimo in 7 passi: aree, obiettivi, situazione di partenza, sostan
 Non raccoglie nome, email o telefono e non salva IP: le risposte servono a capire la domanda in forma aggregata. L'iscrizione email resta separata e non è collegata alle risposte.
 
 Per attivarlo su Vercel:
-1. **Storage → Marketplace → Upstash for Redis** (piano gratuito) e collegalo al progetto: Vercel aggiunge da solo `KV_REST_API_URL` e `KV_REST_API_TOKEN`.
+1. **Storage → Marketplace → Upstash for Redis** (piano gratuito) e collegalo al progetto: Vercel aggiunge da solo le variabili di connessione (`KV_REST_API_URL` e `KV_REST_API_TOKEN`, anche con un prefisso personalizzato).
 2. Aggiungi la variabile `SURVEY_ADMIN_KEY` con una chiave lunga e casuale (almeno 16 caratteri).
 3. Rifai il deploy.
 
