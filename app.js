@@ -39,6 +39,9 @@
       document.querySelector('#no-results').hidden = count > 0;
     };
     query.addEventListener('input', update);
+    // Supporta link del tipo /library/?q=bpc
+    const initial = new URLSearchParams(location.search).get('q');
+    if (initial) { query.value = initial; update(); }
     kindFilter?.addEventListener('change', update);
     statusFilter?.addEventListener('change', update);
     filters.forEach(f => f.addEventListener('click', () => {

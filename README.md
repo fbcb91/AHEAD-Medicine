@@ -36,6 +36,17 @@ Apri `http://localhost:8000/` nel browser.
 
 API MailerLite: https://developers.mailerlite.com/api/subscribers
 
+## SEO
+Tutto è generato da `build.py`:
+- `<title>`, meta description, canonical, Open Graph e Twitter card su ogni pagina; `robots` index/follow (`INDEXABLE` in `build.py`)
+- Dati strutturati JSON-LD: Organization e WebSite (home), MedicalWebPage + FAQPage (schede e consulenze), Article/NewsArticle (articoli), CollectionPage + ItemList (Library, aree, elenchi), BreadcrumbList ovunque
+- `sitemap.xml` e `robots.txt`
+- Pagine di atterraggio per area (`/library/<area>/`), per tipo (`/peptidi/`, `/sostanze/`) e per consulenze (`/consulenze/`)
+- Titoli H2 delle schede formulati sulle ricerche reali ("a cosa serve", "effetti collaterali", "dosi", "è legale in Italia")
+- Immagini social 1200×630 per ogni pagina in `og/`: dopo aver aggiunto schede, articoli o consulenze lancia `node scripts/og-images.js && python3 build.py`
+
+Per cambiare dominio modifica `SITE_URL` in `build.py`. Dopo la pubblicazione: verifica il sito in Google Search Console (metodo "prefisso URL"; se scegli il meta tag inserisci il codice in `GSC_VERIFICATION`) e invia `sitemap.xml`.
+
 ## Misura interesse
 Le CTA lanciano un evento aggregato `Consulenza: interesse` con proprietà `servizio`, **senza l'email**. L'evento viene registrato solo se è stato collegato uno strumento compatibile con la funzione `window.plausible` e solo nel rispetto delle regole privacy e cookie. Collega la piattaforma analytics configurandone la libreria di tracciamento: non è inclusa nella demo.
 

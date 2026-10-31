@@ -8,10 +8,22 @@ from pathlib import Path
 from html import escape
 from urllib.parse import quote
 import json
+import unicodedata
 import re
 import sys
 
 ROOT = Path(__file__).parent
+
+# --- SEO ---------------------------------------------------------------
+# Indirizzo pubblico del sito: usato per canonical, Open Graph, sitemap e dati
+# strutturati. Quando ci sarà il dominio definitivo basta cambiare questa riga
+# (e aggiungere un redirect 301 dal vecchio dominio su Vercel).
+SITE_URL = 'https://aheadmedicine.vercel.app'
+SITE_NAME = 'AHEAD Medicine'
+# False rimette "noindex" su tutte le pagine.
+INDEXABLE = True
+# Codice di verifica di Google Search Console (meta tag), se si sceglie quel metodo.
+GSC_VERIFICATION = ''
 DATA_DIR = ROOT / 'data' / 'schede'
 
 # Etichette dello stato regolatorio. La classe CSS colora il pallino del badge.
@@ -185,15 +197,82 @@ ARTICLES = load_articles()
 def article_card(a):
     return f'<a class="article-card" href="/articoli/{a["slug"]}/"><span class="article-meta">{escape(a["type"].upper())} · {it_date(a["date"])}</span><h3>{escape(a["title"])}</h3><p>{escape(a["description"])}</p><span class="article-more">Leggi ↗</span></a>'
 
-NAV = '''<a class="logo" href="/" aria-label="AHEAD — home"><span class="logo-mark">A<span class="logo-spark">✳</span></span><span class="logo-word">AHEAD<span class="logo-dot">.</span><small>MEDICINE / PROJECT</small></span></a><nav class="nav-links" aria-label="Navigazione principale"><a href="/library/">Library</a><a href="/#consulenze">Consulenze</a><a href="/articoli/">Articoli</a><a href="/metodo/">Metodo</a></nav><a href="/#interesse" class="nav-cta">Ricevi aggiornamenti <span>↗</span></a><button class="mobile-menu" type="button" aria-label="Apri menu" aria-expanded="false">☰</button>'''
-FOOTER = '''<footer class="footer"><div class="wrap footer-main"><div><a class="footer-logo" href="/">AHEAD<span>.</span></a><p>Medicina emergente, senza scorciatoie.</p><p class="muted">Nome e identità visiva provvisori.</p></div><div class="footer-links"><a href="/library/">Library</a><a href="/#consulenze">Consulenze</a><a href="/articoli/">Articoli</a><a href="/metodo/">Metodo editoriale</a><a href="/privacy/">Privacy</a></div></div><div class="wrap footer-bottom"><span>© 2026 AHEAD · Progetto in fase di esplorazione</span><span>Contenuti informativi. Nessun servizio sanitario attualmente erogato.</span></div></footer>'''
+NAV = '''<a class="logo" href="/" aria-label="AHEAD — home"><span class="logo-mark">A<span class="logo-spark">✳</span></span><span class="logo-word">AHEAD<span class="logo-dot">.</span><small>MEDICINE / PROJECT</small></span></a><nav class="nav-links" aria-label="Navigazione principale"><a href="/library/">Library</a><a href="/consulenze/">Consulenze</a><a href="/articoli/">Articoli</a><a href="/metodo/">Metodo</a></nav><a href="/#interesse" class="nav-cta">Ricevi aggiornamenti <span>↗</span></a><button class="mobile-menu" type="button" aria-label="Apri menu" aria-expanded="false">☰</button>'''
+FOOTER = '''<footer class="footer"><div class="wrap footer-main"><div><a class="footer-logo" href="/">AHEAD<span>.</span></a><p>Medicina emergente, senza scorciatoie.</p><p class="muted">Nome e identità visiva provvisori.</p></div><div class="footer-links"><a href="/library/">Library</a><a href="/peptidi/">Peptidi</a><a href="/sostanze/">Farmaci e sostanze</a><a href="/consulenze/">Consulenze</a><a href="/articoli/">Articoli</a><a href="/metodo/">Metodo editoriale</a><a href="/privacy/">Privacy</a></div></div><div class="wrap footer-bottom"><span>© 2026 AHEAD · Progetto in fase di esplorazione</span><span>Contenuti informativi. Nessun servizio sanitario attualmente erogato.</span></div></footer>'''
 MODAL = '''<div class="modal-backdrop" id="interest-modal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-description"><button type="button" class="modal-close" data-close-modal aria-label="Chiudi">×</button><div class="eyebrow dark-ink">MANIFESTAZIONE DI INTERESSE</div><h2 id="modal-title">Restiamo in contatto.</h2><p id="modal-description">Stiamo valutando questo servizio. Lascia la tua email per ricevere aggiornamenti sul progetto.</p><form id="interest-form"><label for="interest-email">La tua email</label><input type="email" id="interest-email" name="email" placeholder="nome@email.it" autocomplete="email" required maxlength="254"><div class="hp-field" aria-hidden="true"><label for="interest-website">Lascia vuoto questo campo</label><input type="text" id="interest-website" name="website" tabindex="-1" autocomplete="off"></div><label class="checkline"><input id="interest-consent" type="checkbox" required><span>Acconsento a ricevere comunicazioni email relative al progetto. Ho letto l'<a href="/privacy/" target="_blank">informativa privacy</a>.</span></label><button class="btn btn-dark full" type="submit" id="form-submit">Ricevi aggiornamenti <span>↗</span></button><p class="form-message" id="form-message" role="status" aria-live="polite"></p></form><p class="note">Non chiediamo informazioni sulla tua salute. Iscrizione gratuita, cancellazione possibile in ogni momento.</p></div></div>'''
-HEAD_META = '''<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10171b"><link rel="stylesheet" href="/styles.css"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><script defer src="/app.js"></script>'''
+HEAD_META = '''<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10171b"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"><link rel="stylesheet" href="/styles.css"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/og/apple-touch-icon.png"><script defer src="/app.js"></script>'''
 
 
-def page(title, desc, body, indexable=False):
-    robots = '' if indexable else '<meta name="robots" content="noindex,nofollow">'
-    return f'''<!doctype html><html lang="it"><head>{HEAD_META}<title>{escape(title)} | AHEAD Medicine</title><meta name="description" content="{escape(desc, quote=True)}">{robots}</head><body><div class="topbar">PROGETTO IN FASE DI SVILUPPO <span class="topbar-sep">/</span> SERVIZI NON ANCORA DISPONIBILI</div><header class="site-header"><div class="wrap header-inner">{NAV}</div></header><main>{body}</main>{FOOTER}{MODAL}</body></html>'''
+SITEMAP = []   # (path, lastmod)
+OG_JOBS = []   # immagini Open Graph da generare: vedi scripts/og-images.mjs
+BUILD_DATE = '2026-10-30'
+
+
+def slugify(text):
+    text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode().lower()
+    return re.sub(r'[^a-z0-9]+', '-', text).strip('-')
+
+
+def abs_url(path):
+    return SITE_URL + path
+
+
+def clip(text, n=158):
+    text = re.sub(r'\s+', ' ', text).strip()
+    if len(text) <= n:
+        return text
+    return text[:n].rsplit(' ', 1)[0].rstrip(',;:') + '…'
+
+
+def crumbs_ld(crumbs):
+    return {'@type': 'BreadcrumbList', 'itemListElement': [
+        {'@type': 'ListItem', 'position': i, 'name': name, 'item': abs_url(path)} for i, (name, path) in enumerate(crumbs, 1)]}
+
+
+def og_image(key, title, kicker):
+    """Registra un'immagine social per la pagina e restituisce il suo percorso (o quella generica)."""
+    OG_JOBS.append({'file': f'og/{key}.jpg', 'title': title, 'kicker': kicker})
+    return f'/og/{key}.jpg' if (ROOT / 'og' / f'{key}.jpg').exists() else '/og/default.jpg'
+
+
+def page(title, desc, body, path, *, schema=(), crumbs=None, image='/og/default.jpg', og_type='website', indexable=True, lastmod=BUILD_DATE):
+    full_title = title if SITE_NAME in title or 'AHEAD' in title else f'{title} | AHEAD'
+    indexable = indexable and INDEXABLE
+    robots = '<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">' if indexable else '<meta name="robots" content="noindex,nofollow">'
+    graph = list(schema) + ([crumbs_ld(crumbs)] if crumbs else [])
+    ld = ''
+    if graph:
+        data = json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+        ld = f'<script type="application/ld+json">{data}</script>'
+    verify = f'<meta name="google-site-verification" content="{GSC_VERIFICATION}">' if GSC_VERIFICATION else ''
+    url = abs_url(path)
+    meta = (f'<title>{escape(full_title)}</title><meta name="description" content="{escape(desc, quote=True)}">{robots}'
+            f'<link rel="canonical" href="{url}">'
+            f'<meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{SITE_NAME}"><meta property="og:locale" content="it_IT">'
+            f'<meta property="og:title" content="{escape(title, quote=True)}"><meta property="og:description" content="{escape(desc, quote=True)}">'
+            f'<meta property="og:url" content="{url}"><meta property="og:image" content="{abs_url(image)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
+            f'<meta name="twitter:card" content="summary_large_image">{verify}{ld}')
+    if indexable:
+        SITEMAP.append((path, lastmod))
+    return f'''<!doctype html><html lang="it"><head>{HEAD_META}{meta}</head><body><a class="skip-link" href="#main">Vai al contenuto</a><div class="topbar">PROGETTO IN FASE DI SVILUPPO <span class="topbar-sep">/</span> SERVIZI NON ANCORA DISPONIBILI</div><header class="site-header"><div class="wrap header-inner">{NAV}</div></header><main id="main">{body}</main>{FOOTER}{MODAL}</body></html>'''
+
+
+ORG_LD = {'@type': 'Organization', '@id': SITE_URL + '/#org', 'name': SITE_NAME, 'url': SITE_URL + '/', 'logo': SITE_URL + '/og/logo.png',
+          'description': 'Informazione scientifica su peptidi, GLP-1, ormoni e longevità e una rete di medici esperti in videoconsulenza (servizio in avvio).'}
+WEBSITE_LD = {'@type': 'WebSite', '@id': SITE_URL + '/#website', 'name': SITE_NAME, 'url': SITE_URL + '/', 'inLanguage': 'it-IT', 'publisher': {'@id': SITE_URL + '/#org'}}
+
+
+def webpage_ld(kind, path, name, desc, **extra):
+    return {'@type': kind, '@id': abs_url(path) + '#page', 'url': abs_url(path), 'name': name, 'description': desc, 'inLanguage': 'it-IT',
+            'isPartOf': {'@id': SITE_URL + '/#website'}, **extra}
+
+
+def itemlist_ld(items):
+    return {'@type': 'ItemList', 'itemListElement': [{'@type': 'ListItem', 'position': i, 'url': abs_url(u), 'name': n} for i, (n, u) in enumerate(items, 1)]}
+
+
+def faq_ld(pairs):
+    return {'@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in pairs]}
 
 
 def write(rel, html):
@@ -258,7 +337,9 @@ home = f'''<section class="hero"><div class="wrap hero-grid"><div class="hero-co
 <section class="principles how-section section-pad" id="come-funziona"><div class="wrap"><div class="section-label">04 / COME FUNZIONA</div><h2>Un medico al tuo fianco,<br><em>passo dopo passo.</em></h2>{STEPS}</div></section>
 <section class="principles section-pad"><div class="wrap"><div class="section-label">05 / OUR STANDARD</div><h2>Curiosità radicale.<br><em>Rigore assoluto.</em></h2><div class="principles-grid"><div><span>01</span><h3>Prove, non promesse</h3><p>Per ogni sostanza distinguiamo studi in vitro, su animali, osservazionali, clinici randomizzati e medicinali autorizzati.</p></div><div><span>02</span><h3>Domande intelligenti</h3><p>Non celebriamo né demonizziamo una molecola: valutiamo cosa dicono i dati disponibili.</p></div><div><span>03</span><h3>Medicina responsabile</h3><p>Le dosi nelle schede sono quelle dei foglietti approvati o degli studi, mai consigli fai-da-te. Le decisioni cliniche spettano ai medici, nel rispetto di indicazioni, autorizzazioni e sicurezza.</p></div></div></div></section>
 <section class="signup-section section-pad" id="interesse"><div class="wrap signup-grid"><div><div class="section-label">06 / STAY AHEAD</div><h2>La prossima<br>frontiera? <em>Seguici.</em></h2><p>Stiamo organizzando l’avvio delle videoconsulenze e ampliando la Library. Lasciaci la tua email per sapere quando partiamo.</p></div><div class="signup-panel"><div class="panel-icon">↗</div><h3>Entra nella lista di aggiornamento.</h3><p>Le consulenze non sono ancora prenotabili. Ti scriveremo solo per aggiornarti sul lancio.</p><button type="button" class="btn btn-dark full interest-trigger" data-service="generale">Ricevi aggiornamenti <span>↗</span></button><span class="note">Non raccogliamo dati sanitari. Puoi cancellarti quando vuoi.</span></div></div></section>'''
-write('index.html', page('Peptidi, longevità e medicina emergente', 'Library su peptidi e terapie emergenti e futuro progetto di consulenza medica su longevità, metabolismo e performance.', home))
+HOME_DESC = 'Peptidi, GLP-1, testosterone e longevità: cosa dicono davvero gli studi, rischi e dosi in oltre 40 schede. E una rete di medici esperti in videoconsulenza.'
+write('index.html', page('AHEAD Medicine — Peptidi, GLP-1, TRT e longevità, senza hype', HOME_DESC, home, '/',
+      schema=[ORG_LD, WEBSITE_LD, webpage_ld('WebPage', '/', SITE_NAME, HOME_DESC)], image=og_image('home', 'La medicina di domani. Le risposte di oggi.', 'AHEAD MEDICINE')))
 
 # ------------------------------------------------------------------ library
 used_categories = [c for c in CATEGORIES if any(c == p['category'] or c in p.get('extra_categories', []) for p in DATA)]
@@ -266,8 +347,43 @@ used_status = [s for s in STATUS if any(p['status'] == s for p in DATA)]
 chips = ''.join(f'<button type="button" class="filter{" active" if c == "Tutti" else ""}" data-filter="{escape(c, quote=True)}" aria-pressed="{"true" if c == "Tutti" else "false"}">{escape(c)}</button>' for c in ['Tutti'] + used_categories)
 kind_opts = '<option value="">Tutti i tipi</option>' + ''.join(f'<option value="{k}">{escape(v[0])}</option>' for k, v in KINDS.items())
 status_opts = '<option value="">Tutti gli stati</option>' + ''.join(f'<option value="{s}">{escape(STATUS[s][0])}</option>' for s in used_status)
-library = f'''<section class="inner-hero"><div class="wrap"><div class="section-label light-text">RESEARCH / LIBRARY</div><h1>La <em>Library.</em></h1><p>{N} schede su peptidi, farmaci e molecole emergenti. Per ognuna: livelli di evidenza, rischi e stato autorizzativo. Senza confondere ricerca e terapia.</p><div class="mini-notice">Le schede sono bozze editoriali in attesa di revisione medico-scientifica indipendente e non rappresentano consigli terapeutici. <a href="/metodo/">Come lavoriamo ↗</a></div></div></section><section class="section-pad library-page"><div class="wrap"><div class="library-controls"><label class="search-label"><span aria-hidden="true">⌕</span><input id="peptide-search" type="search" placeholder="Cerca per nome, area o sinonimo…" aria-label="Cerca nella Library"></label><div class="selects"><label class="select-label"><span class="visually-hidden">Tipo</span><select id="kind-filter" aria-label="Filtra per tipo">{kind_opts}</select></label><label class="select-label"><span class="visually-hidden">Stato regolatorio</span><select id="status-filter" aria-label="Filtra per stato regolatorio">{status_opts}</select></label></div></div><div class="filters" role="group" aria-label="Filtra per area">{chips}</div><p class="results-count" id="results-count" aria-live="polite">{N} risultati</p><div class="card-grid library-results">{''.join(card(p, True) for p in DATA)}</div><p id="no-results" class="empty-results" hidden>Nessuna scheda corrisponde alla ricerca.</p></div></section>'''
-write('library/index.html', page('Library — peptidi e terapie emergenti', f'{N} schede su peptidi, GLP-1, ormoni e molecole per la longevità: livelli di evidenza, rischi e stato autorizzativo in Europa.', library))
+library = f'''<section class="inner-hero"><div class="wrap"><div class="section-label light-text">RESEARCH / LIBRARY</div><h1>La <em>Library.</em></h1><p>{N} schede su peptidi, farmaci e molecole emergenti. Per ognuna: livelli di evidenza, rischi e stato autorizzativo. Senza confondere ricerca e terapia.</p><div class="mini-notice">Le schede sono bozze editoriali in attesa di revisione medico-scientifica indipendente e non rappresentano consigli terapeutici. <a href="/metodo/">Come lavoriamo ↗</a></div></div></section><section class="section-pad library-page"><div class="wrap"><div class="library-controls"><label class="search-label"><span aria-hidden="true">⌕</span><input id="peptide-search" type="search" placeholder="Cerca per nome, area o sinonimo…" aria-label="Cerca nella Library"></label><div class="selects"><label class="select-label"><span class="visually-hidden">Tipo</span><select id="kind-filter" aria-label="Filtra per tipo">{kind_opts}</select></label><label class="select-label"><span class="visually-hidden">Stato regolatorio</span><select id="status-filter" aria-label="Filtra per stato regolatorio">{status_opts}</select></label></div></div><div class="filters" role="group" aria-label="Filtra per area">{chips}</div><nav class="area-nav" aria-label="Pagine per area"><span class="mini-label">PAGINE PER AREA</span>{''.join(f'<a href="/library/{slugify(c)}/">{escape(c)}</a>' for c in used_categories)}<a href="/peptidi/">Tutti i peptidi</a><a href="/sostanze/">Farmaci e sostanze</a></nav><p class="results-count" id="results-count" aria-live="polite">{N} risultati</p><div class="card-grid library-results">{''.join(card(p, True) for p in DATA)}</div><p id="no-results" class="empty-results" hidden>Nessuna scheda corrisponde alla ricerca.</p></div></section>'''
+LIB_DESC = f'{N} schede su peptidi, GLP-1, ormoni e sostanze per la longevità: cosa dicono gli studi, effetti collaterali, dosi e stato legale in Italia.'
+write('library/index.html', page('Library: peptidi, GLP-1, ormoni e longevità — schede scientifiche', LIB_DESC, library, '/library/',
+      schema=[webpage_ld('CollectionPage', '/library/', 'Library', LIB_DESC), itemlist_ld([(p['name'], p['url']) for p in DATA])],
+      crumbs=[('Home', '/'), ('Library', '/library/')], image=og_image('library', f'{N} schede su peptidi e terapie emergenti', 'LIBRARY')))
+
+CAT_INTRO = {
+    'Recupero': ('Peptidi per il recupero e gli infortuni', 'BPC-157, TB-500, KPV e le altre sostanze proposte per tendini, muscoli e infiammazione. Per ognuna: cosa dicono davvero gli studi, quali rischi comporta e se è autorizzata in Italia.'),
+    'Ormoni': ('Ormoni e secretagoghi del GH', 'Testosterone, ormone della crescita, hCG e i peptidi che stimolano il rilascio di GH: indicazioni autorizzate, prove scientifiche e rischi di un uso fuori controllo.'),
+    'Massa muscolare': ('Peptidi e sostanze per la massa muscolare', 'Dai farmaci autorizzati come testosterone e somatropina ai peptidi venduti online come follistatina, IGF-1 LR3 e GHRP-6: cosa è dimostrato, cosa no e quali rischi comportano, anche per chi fa sport.'),
+    'Metabolismo': ('GLP-1, peptidi e farmaci per peso e metabolismo', 'Semaglutide, tirzepatide, retatrutide e le nuove molecole per obesità e diabete, insieme alle sostanze proposte online per dimagrire: stato autorizzativo, prove e sicurezza.'),
+    'Longevità': ('Longevità: peptidi, farmaci e integratori anti-aging', 'Rapamicina, metformina, NAD+, MOTS-c, epitalon e senolitici: cosa sappiamo davvero sulle strategie per vivere più a lungo, dagli studi sugli animali a quelli sull’uomo.'),
+    'Pelle': ('Peptidi per pelle e capelli', 'GHK-Cu, AHK-Cu, melanotan e gli altri peptidi usati in cosmetica o venduti per pelle, capelli e abbronzatura: differenze tra uso cosmetico e iniettabile, prove e rischi.'),
+    'Neuro': ('Peptidi per cervello, sonno e ansia', 'Semax, Selank e DSIP: peptidi registrati in Russia o studiati per cognizione, ansia e sonno. Cosa dicono gli studi e perché in Europa non sono medicinali.'),
+    'Immunità': ('Peptidi per il sistema immunitario', 'Timosina alfa-1, timalina e LL-37: immunomodulanti e peptidi antimicrobici tra uso clinico extra-UE e ricerca. Prove, limiti e stato regolatorio.'),
+    'Sessualità e fertilità': ('Peptidi e ormoni per sessualità e fertilità', 'Bremelanotide (PT-141), kisspeptina e hCG: cosa è autorizzato, per quali indicazioni, e cosa invece resta sperimentale.'),
+}
+CAT_URL = {c: f'/library/{slugify(c)}/' for c in CATEGORIES}
+
+
+def listing_page(path, label, h1, intro, items, crumbs, og_key):
+    desc = clip(intro)
+    links = ''.join(f'<a class="filter" href="{CAT_URL[c]}"{" aria-current=\"page\"" if CAT_URL[c] == path else ""}>{escape(c)}</a>' for c in used_categories)
+    body = f'''<section class="inner-hero"><div class="wrap"><div class="breadcrumbs">{' / '.join(f'<a href="{u}">{escape(n)}</a>' for n, u in crumbs[:-1])} / {escape(crumbs[-1][0])}</div><div class="section-label light-text">{escape(label)}</div><h1>{escape(h1)}</h1><p>{escape(intro)}</p></div></section><section class="section-pad"><div class="wrap"><nav class="filters area-links" aria-label="Aree della Library">{links}</nav><p class="results-count">{len(items)} schede</p><div class="card-grid">{''.join(card(q, True) for q in items)}</div></div></section>'''
+    write(path.strip('/') + '/index.html', page(h1, desc, body, path, schema=[webpage_ld('CollectionPage', path, h1, desc), itemlist_ld([(q['name'], q['url']) for q in items])],
+                                                 crumbs=crumbs, image=og_image(og_key, h1, label)))
+
+
+for c in used_categories:
+    h1, intro = CAT_INTRO[c]
+    items = [q for q in DATA if q['category'] == c or c in q.get('extra_categories', [])]
+    listing_page(CAT_URL[c], f'LIBRARY / {c.upper()}', h1, intro, items, [('Home', '/'), ('Library', '/library/'), (c, CAT_URL[c])], 'cat-' + slugify(c))
+
+listing_page('/peptidi/', 'LIBRARY / PEPTIDI', 'Peptidi: elenco completo e schede scientifiche', 'Tutti i peptidi della Library, dai medicinali autorizzati come semaglutide e tirzepatide ai peptidi “da ricerca” come BPC-157, TB-500 e MOTS-c. Per ognuno: prove, effetti collaterali, dosi e stato legale in Italia.',
+             [q for q in DATA if q['kind'] == 'peptide'], [('Home', '/'), ('Peptidi', '/peptidi/')], 'peptidi')
+listing_page('/sostanze/', 'LIBRARY / FARMACI E SOSTANZE', 'Farmaci, ormoni e altre sostanze', 'Testosterone, ormone della crescita, rapamicina, metformina, orforglipron, NAD+ e le altre molecole non peptidiche della Library: indicazioni autorizzate, prove scientifiche, rischi e dosi.',
+             [q for q in DATA if q['kind'] == 'sostanza'], [('Home', '/'), ('Farmaci e sostanze', '/sostanze/')], 'sostanze')
 
 # ------------------------------------------------------------------ schede
 for p in DATA:
@@ -279,8 +395,26 @@ for p in DATA:
     refs_html = ''.join(f'<a href="{escape(url, quote=True)}" target="_blank" rel="noopener noreferrer"><span><small class="src-type">{escape(t)}</small>{escape(label)}</span> <span aria-hidden="true">↗</span></a>' for label, url, t in refs)
     aliases = f'<p class="aliases">Noto anche come: {escape(", ".join(p["aliases"]))}</p>' if p['aliases'] else ''
     kind_label = KINDS[p['kind']][0]
-    body = f'''<section class="inner-hero peptide-hero"><div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/library/">Library</a> / {escape(p['name'])}</div><div class="section-label light-text">{escape(kind_label.upper())} / {escape(p['category'].upper())}</div><h1>{escape(p['name'])}<span class="little-star">✳</span></h1><p>{escape(p['tagline'])}</p>{status_badge(p)}</div></section><section class="section-pad profile-section"><div class="wrap profile-grid"><article class="profile-main"><div class="review-notice"><strong>Bozza informativa — revisione medica indipendente non ancora effettuata.</strong><br>Ultima verifica editoriale delle fonti: {checked}. Questa pagina non sostituisce il parere di un medico.</div><div class="section-label">01 / IN BREVE</div><h2>Che cos'è {escape(p['name'])}?</h2>{aliases}<p>{escape(p['what'])}</p><div class="section-label space-top">02 / LE PROVE</div><h2>Da dove vengono le prove.</h2>{evidence_grid(p)}<h3 class="sub-heading">Cosa non sappiamo ancora</h3><p>{escape(p['unknown'])}</p><div class="section-label space-top">03 / COME SI ASSUME</div><h2>Modalità d’uso e dosi.</h2><div class="dosing-box"><span class="dosing-basis">{escape(DOSING_BASIS[p['dosing']['basis']])}</span><p class="dosing-route"><strong>Via di somministrazione:</strong> {escape(p['dosing']['route'])}</p><p>{escape(p['dosing']['text'])}</p></div><div class="dosing-warning" role="note"><strong>Informazione, non indicazione.</strong> Le dosi riportate descrivono come la sostanza è usata nei medicinali approvati o negli studi clinici. Non sono consigli da seguire: ogni trattamento richiede una visita e l’approvazione di un medico, che valuta indicazione, controindicazioni ed esami. Non usare prodotti acquistati fuori dai canali autorizzati.</div><div class="section-label space-top">04 / RISCHI</div><h2>Sicurezza e limiti.</h2><p>{escape(p['risk'])}</p><div class="section-label space-top">05 / REGOLAMENTAZIONE</div><h2>È autorizzato in Europa?</h2><p>{escape(p['reg'])}</p><div class="section-label space-top">06 / LE FONTI</div><h2>Approfondisci la ricerca.</h2><div class="source-links">{refs_html}</div><p class="citation-note">Link a fonti ufficiali e studi per orientarsi. La bibliografia completa con grading delle prove sarà aggiunta con la revisione medico-scientifica. <a href="/metodo/">Il nostro metodo ↗</a></p></article><aside class="profile-aside"><div class="fact-box"><span class="mini-label">AREA DI RICERCA / APPLICAZIONE</span><strong>{escape(p['focus'])}</strong><hr><span class="mini-label">TIPO</span><strong>{escape(kind_label)}</strong><hr><span class="mini-label">QUALITÀ DELLE PROVE</span><strong>{escape(p['evidence_summary'])}</strong><hr><span class="mini-label">STATO REGOLATORIO</span><strong>{escape(STATUS[p['status']][0])}</strong><hr><span class="mini-label">REVISIONE MEDICA</span><strong>{escape(reviewer)}</strong><hr><span class="mini-label">ULTIMA VERIFICA FONTI</span><strong>{checked}</strong></div><div class="aside-cta"><span>THE HUMAN SIDE OF RESEARCH</span><h3>Vuoi parlarne con un medico?</h3><p>La nostra rete di medici sta per avviare le videoconsulenze. Lascia la tua email per sapere quando partiamo.</p><button type="button" class="btn btn-dark full interest-trigger" data-service="{escape(p['service'] or 'generale', quote=True)}">Sono interessato ↗</button><small>Servizio in avvio. La prescrizione è decisa dal medico e solo se appropriata.</small></div></aside></div></section><section class="related-section"><div class="wrap"><div class="section-row"><h2>Continua a esplorare.</h2><a class="underlined-link" href="/library/">Tutte le schede ↗</a></div><div class="card-grid related-grid">{''.join(card(q, True) for q in related(p))}</div></div></section>'''
-    write(p['url'].strip('/') + '/index.html', page(f'{p["name"]}: evidenze, rischi e stato in Europa', f'{p["name"]}: cosa dice la ricerca, dal laboratorio agli studi clinici, quali sono i rischi e qual è lo stato autorizzativo europeo.', body))
+    p_arts = [a for a in ARTICLES if p['slug'] in a['related']]
+    arts_block = f'<section class="section-pad articles-related"><div class="wrap"><div class="section-row"><h2>Articoli su {escape(p["name"])}.</h2><a class="underlined-link" href="/articoli/">Tutti gli articoli ↗</a></div><div class="article-grid">{"".join(article_card(a) for a in p_arts[:3])}</div></div></section>' if p_arts else ''
+    body = f'''<section class="inner-hero peptide-hero"><div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/library/">Library</a> / <a href="/library/{slugify(p['category'])}/">{escape(p['category'])}</a> / {escape(p['name'])}</div><div class="section-label light-text">{escape(kind_label.upper())} / {escape(p['category'].upper())}</div><h1>{escape(p['name'])}<span class="little-star">✳</span></h1><p>{escape(p['tagline'])}</p>{status_badge(p)}</div></section><section class="section-pad profile-section"><div class="wrap profile-grid"><article class="profile-main"><div class="review-notice"><strong>Bozza informativa — revisione medica indipendente non ancora effettuata.</strong><br>Ultima verifica editoriale delle fonti: {checked}. Questa pagina non sostituisce il parere di un medico.</div><div class="section-label">01 / IN BREVE</div><h2>Che cos'è {escape(p['name'])}?</h2>{aliases}<p>{escape(p['what'])}</p><div class="section-label space-top">02 / LE PROVE</div><h2>A cosa serve {escape(p['name'])}? Cosa dicono gli studi</h2>{evidence_grid(p)}<h3 class="sub-heading">Cosa non sappiamo ancora</h3><p>{escape(p['unknown'])}</p><div class="section-label space-top">03 / COME SI ASSUME</div><h2>Come si assume {escape(p['name'])} e a quali dosi</h2><div class="dosing-box"><span class="dosing-basis">{escape(DOSING_BASIS[p['dosing']['basis']])}</span><p class="dosing-route"><strong>Via di somministrazione:</strong> {escape(p['dosing']['route'])}</p><p>{escape(p['dosing']['text'])}</p></div><div class="dosing-warning" role="note"><strong>Informazione, non indicazione.</strong> Le dosi riportate descrivono come la sostanza è usata nei medicinali approvati o negli studi clinici. Non sono consigli da seguire: ogni trattamento richiede una visita e l’approvazione di un medico, che valuta indicazione, controindicazioni ed esami. Non usare prodotti acquistati fuori dai canali autorizzati.</div><div class="section-label space-top">04 / RISCHI</div><h2>Effetti collaterali e rischi di {escape(p['name'])}</h2><p>{escape(p['risk'])}</p><div class="section-label space-top">05 / REGOLAMENTAZIONE</div><h2>{escape(p['name'])} è legale in Italia? Lo stato in Europa</h2><p>{escape(p['reg'])}</p><div class="section-label space-top">06 / LE FONTI</div><h2>Approfondisci la ricerca.</h2><div class="source-links">{refs_html}</div><p class="citation-note">Link a fonti ufficiali e studi per orientarsi. La bibliografia completa con grading delle prove sarà aggiunta con la revisione medico-scientifica. <a href="/metodo/">Il nostro metodo ↗</a></p></article><aside class="profile-aside"><div class="fact-box"><span class="mini-label">AREA DI RICERCA / APPLICAZIONE</span><strong>{escape(p['focus'])}</strong><hr><span class="mini-label">TIPO</span><strong>{escape(kind_label)}</strong><hr><span class="mini-label">QUALITÀ DELLE PROVE</span><strong>{escape(p['evidence_summary'])}</strong><hr><span class="mini-label">STATO REGOLATORIO</span><strong>{escape(STATUS[p['status']][0])}</strong><hr><span class="mini-label">REVISIONE MEDICA</span><strong>{escape(reviewer)}</strong><hr><span class="mini-label">ULTIMA VERIFICA FONTI</span><strong>{checked}</strong></div><div class="aside-cta"><span>THE HUMAN SIDE OF RESEARCH</span><h3>Vuoi parlarne con un medico?</h3><p>La nostra rete di medici sta per avviare le videoconsulenze. Lascia la tua email per sapere quando partiamo.</p><button type="button" class="btn btn-dark full interest-trigger" data-service="{escape(p['service'] or 'generale', quote=True)}">Sono interessato ↗</button><small>Servizio in avvio. La prescrizione è decisa dal medico e solo se appropriata.</small></div></aside></div></section>{arts_block}<section class="related-section"><div class="wrap"><div class="section-row"><h2>Continua a esplorare.</h2><a class="underlined-link" href="/library/">Tutte le schede ↗</a></div><div class="card-grid related-grid">{''.join(card(q, True) for q in related(p))}</div></div></section>'''
+    name = p['name']
+    title = (f'{name}: cos’è, a cosa serve, effetti collaterali e dosi' if len(name) <= 14
+             else f'{name}: cos’è, effetti e dosi' if len(name) > 26 else f'{name}: cos’è, studi, rischi e dosi')
+    alias = f" ({', '.join(p['aliases'][:2])})" if p['aliases'] else ''
+    desc = clip(f"{name}{alias}: {p['what'].split('. ')[0].rstrip('.')}. Studi, effetti collaterali, dosi e stato legale in Italia.")
+    drug_like = p['status'] in ('ue', 'extra_ue', 'trial', 'ritirato')
+    about = {'@type': 'Drug' if drug_like else 'Substance', 'name': name}
+    if p['aliases']:
+        about['alternateName'] = p['aliases']
+    faq_pairs = [(f'Che cos’è {name}?', p['what']), (f'A cosa serve {name}? Cosa dicono gli studi', p['unknown']),
+                 (f'Come si assume {name} e a quali dosi', p['dosing']['route'] + ' ' + p['dosing']['text']),
+                 (f'Effetti collaterali e rischi di {name}', p['risk']), (f'{name} è legale in Italia?', p['reg'])]
+    schema = [webpage_ld('MedicalWebPage', p['url'], title, desc, about=about, lastReviewed=review['checked'], dateModified=review['checked'], publisher={'@id': SITE_URL + '/#org'}),
+              faq_ld(faq_pairs)]
+    crumbs = [('Home', '/'), ('Library', '/library/'), (p['category'], f"/library/{slugify(p['category'])}/"), (name, p['url'])]
+    write(p['url'].strip('/') + '/index.html', page(title, desc, body, p['url'], schema=schema, crumbs=crumbs, lastmod=review['checked'],
+                                                    image=og_image('scheda-' + p['slug'], name, f"{KINDS[p['kind']][0].upper()} / {p['category'].upper()}")))
 
 # ------------------------------------------------------------------ consulenze
 CONSULENZE = [
@@ -425,30 +559,52 @@ for c in CONSULENZE:
     arts = [a for a in ARTICLES if a['service'] == c['name']]
     articles_block = f'''<div class="section-row space-top"><h2>Articoli.</h2><a class="underlined-link" href="/articoli/">Tutti gli articoli ↗</a></div><div class="article-grid">{''.join(article_card(a) for a in arts[:3])}</div>''' if arts else ''
     others = ''.join(f'<a class="other-service" href="/consulenze/{SERVICE_SLUGS[o["name"]]}/">Consulenza {escape(o["name"])} <span>→</span></a>' for o in CONSULENZE if o is not c)
-    body = f'''<section class="inner-hero"><div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/#consulenze">Consulenze</a> / {escape(c['name'])}</div><div class="section-label light-text">CONSULENZA / {escape(c['name'].upper())}</div><h1>{c['title']}</h1><p>{escape(c['lede'])}</p><div class="hero-actions"><button type="button" class="btn btn-light interest-trigger" data-service="{escape(c['name'], quote=True)}">Sono interessato <span>↗</span></button><a class="link-light" href="#come-funziona">Come funziona <span>↓</span></a></div><div class="mini-notice">Servizio in fase di avvio: le videoconsulenze non sono ancora prenotabili. La prescrizione è decisa dal medico, solo per medicinali autorizzati e quando è appropriata.</div></div></section>
+    body = f'''<section class="inner-hero"><div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/consulenze/">Consulenze</a> / {escape(c['name'])}</div><div class="section-label light-text">CONSULENZA / {escape(c['name'].upper())}</div><h1>{c['title']}</h1><p>{escape(c['lede'])}</p><div class="hero-actions"><button type="button" class="btn btn-light interest-trigger" data-service="{escape(c['name'], quote=True)}">Sono interessato <span>↗</span></button><a class="link-light" href="#come-funziona">Come funziona <span>↓</span></a></div><div class="mini-notice">Servizio in fase di avvio: le videoconsulenze non sono ancora prenotabili. La prescrizione è decisa dal medico, solo per medicinali autorizzati e quando è appropriata.</div></div></section>
 <section class="section-pad"><div class="wrap service-grid"><div><div class="section-label">01 / PER CHI È</div><h2>È pensata per te se…</h2><ul class="check-list">{li(c['for_whom'])}</ul></div><div><div class="section-label">02 / COSA FA IL MEDICO</div><h2>In videoconsulenza.</h2><ol class="numbered-list">{li(c['doctor'])}</ol><div class="fact-box exams-box"><span class="mini-label">ESAMI</span><p>{escape(c['exams'])}</p></div></div></div></section>
 <section class="principles how-section section-pad" id="come-funziona"><div class="wrap"><div class="section-label">03 / COME FUNZIONA</div><h2>Un medico al tuo fianco,<br><em>passo dopo passo.</em></h2>{STEPS}</div></section>
 <section class="section-pad"><div class="wrap service-grid"><div><div class="section-label">04 / COSA NON FACCIAMO</div><h2>I limiti, <em>chiari.</em></h2><p class="limits-text">{escape(c['limits'])}</p></div><div><div class="section-label">05 / DOMANDE FREQUENTI</div><h2>FAQ.</h2><div class="faq">{faq}</div></div></div></section>
 <section class="related-section"><div class="wrap">{library_block}{articles_block}<div class="other-services"><span class="mini-label">ALTRE CONSULENZE</span>{others}</div></div></section>'''
-    write(f'consulenze/{slug}/index.html', page(f'Consulenza {c["name"]}', re.sub('<[^>]+>', '', c['lede'])[:155], body))
+    path = f'/consulenze/{slug}/'
+    title = f"Consulenza {c['name']} online con medici esperti" if len(c['name']) < 16 else f"Consulenza {c['name']} online"
+    desc = clip(c['lede'])
+    write(f'consulenze/{slug}/index.html', page(title, desc, body, path,
+          schema=[webpage_ld('MedicalWebPage', path, title, desc, publisher={'@id': SITE_URL + '/#org'}), faq_ld(c['faq'])],
+          crumbs=[('Home', '/'), ('Consulenze', '/consulenze/'), (c['name'], path)], image=og_image('consulenza-' + slug, f"Consulenza {c['name']}", 'VIDEOCONSULENZA')))
+
+CONS_DESC = 'Videoconsulenze con medici esperti di peptidi, GLP-1, TRT, longevità, capelli, salute sessuale, menopausa e sport. Racconti il tuo obiettivo, scegli il tuo medico.'
+consulenze_hub = f'''<section class="inner-hero"><div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / Consulenze</div><div class="section-label light-text">CONSULENZE / RETE DI MEDICI</div><h1>Consulenze online <em>con medici esperti.</em></h1><p>Una rete di medici esperti di terapie emergenti. Ci racconti il tuo obiettivo, ti proponiamo i medici più adatti e scegli tu con chi iniziare, in videochiamata.</p><div class="mini-notice">Servizio in fase di avvio: le videoconsulenze non sono ancora prenotabili. Lascia la tua email per sapere quando partiamo.</div></div></section><section class="services-section section-pad"><div class="wrap"><div class="services-grid">{service_html}</div></div></section><section class="principles how-section section-pad"><div class="wrap"><div class="section-label">COME FUNZIONA</div><h2>Un medico al tuo fianco,<br><em>passo dopo passo.</em></h2>{STEPS}</div></section>'''
+write('consulenze/index.html', page('Consulenze mediche online: peptidi, GLP-1, TRT e longevità', CONS_DESC, consulenze_hub, '/consulenze/',
+      schema=[webpage_ld('CollectionPage', '/consulenze/', 'Consulenze', CONS_DESC), itemlist_ld([(f"Consulenza {c['name']}", f"/consulenze/{SERVICE_SLUGS[c['name']]}/") for c in CONSULENZE])],
+      crumbs=[('Home', '/'), ('Consulenze', '/consulenze/')], image=og_image('consulenze', 'Consulenze online con medici esperti', 'CONSULENZE')))
 
 # ------------------------------------------------------------------ articoli
 type_chips = ''.join(f'<button type="button" class="filter{" active" if t == "Tutti" else ""}" data-type="{t}" aria-pressed="{"true" if t == "Tutti" else "false"}">{t}</button>' for t in ['Tutti', 'Guida', 'News'])
 article_items = ''.join(article_card(a).replace('<a class="article-card"', '<a class="article-card" data-type="' + a['type'] + '"', 1) for a in ARTICLES)
 articoli = f'''<section class="inner-hero"><div class="wrap"><div class="section-label light-text">ARTICOLI / GUIDE E NEWS</div><h1>Articoli <em>e news.</em></h1><p>Guide per orientarsi e notizie dal mondo delle terapie emergenti, spiegate senza hype.</p></div></section><section class="section-pad"><div class="wrap"><div class="filters article-filters" role="group" aria-label="Filtra per tipo">{type_chips}</div><div class="article-grid article-list">{article_items}</div></div></section>'''
-write('articoli/index.html', page('Articoli e news su peptidi, GLP-1 e longevità', 'Guide e notizie su peptidi, farmaci GLP-1, ormoni e longevità: cosa dicono gli studi e cosa cambia per chi vive in Italia.', articoli))
+ART_DESC = 'Guide e notizie su peptidi, farmaci GLP-1, testosterone e longevità: cosa dicono gli studi e cosa cambia per chi vive in Italia.'
+write('articoli/index.html', page('Articoli e news su peptidi, GLP-1, TRT e longevità', ART_DESC, articoli, '/articoli/',
+      schema=[webpage_ld('CollectionPage', '/articoli/', 'Articoli', ART_DESC), itemlist_ld([(a['title'], f"/articoli/{a['slug']}/") for a in ARTICLES])],
+      crumbs=[('Home', '/'), ('Articoli', '/articoli/')], image=og_image('articoli', 'Articoli e news', 'GUIDE E NEWS')))
 
 for a in ARTICLES:
     rel = [p for s in a['related'] for p in DATA if p['slug'] == s]
     more = [b for b in ARTICLES if b is not a][:3]
     svc = a['service']
     cta = f'''<div class="aside-cta"><span>LA CONSULENZA</span><h3>Vuoi parlarne con un medico?</h3><p>La nostra rete di medici sta per avviare le videoconsulenze.</p><a class="btn btn-dark full" href="/consulenze/{SERVICE_SLUGS[svc]}/">Consulenza {escape(svc)} ↗</a></div>''' if svc else ''
-    body = f'''<section class="inner-hero"><div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/articoli/">Articoli</a></div><div class="section-label light-text">{escape(a['type'].upper())} · {it_date(a['date'])}</div><h1 class="article-title">{escape(a['title'])}</h1><p>{escape(a['description'])}</p></div></section><section class="section-pad"><div class="wrap profile-grid"><article class="article-body">{render_md(a['body'])}<div class="dosing-warning" role="note"><strong>Contenuto informativo.</strong> Questo articolo non sostituisce il parere di un medico. Bozza editoriale in attesa di revisione medico-scientifica.</div></article><aside class="profile-aside">{cta}<div class="fact-box"><span class="mini-label">REDAZIONE</span><strong>AHEAD</strong><hr><span class="mini-label">PUBBLICATO</span><strong>{it_date(a['date'])}</strong></div></aside></div></section>'''
+    body = f'''<section class="inner-hero"><div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/articoli/">Articoli</a> / {escape(a['title'])}</div><div class="section-label light-text">{escape(a['type'].upper())} · {it_date(a['date'])}</div><h1 class="article-title">{escape(a['title'])}</h1><p>{escape(a['description'])}</p></div></section><section class="section-pad"><div class="wrap profile-grid"><article class="article-body">{render_md(a['body'])}<div class="dosing-warning" role="note"><strong>Contenuto informativo.</strong> Questo articolo non sostituisce il parere di un medico. Bozza editoriale in attesa di revisione medico-scientifica.</div></article><aside class="profile-aside">{cta}<div class="fact-box"><span class="mini-label">REDAZIONE</span><strong>AHEAD</strong><hr><span class="mini-label">PUBBLICATO</span><strong>{it_date(a['date'])}</strong></div></aside></div></section>'''
     if rel:
         body += f'''<section class="related-section"><div class="wrap"><div class="section-row"><h2>Le schede citate.</h2><a class="underlined-link" href="/library/">Tutta la Library ↗</a></div><div class="card-grid related-grid">{''.join(card(p, True) for p in rel[:6])}</div></div></section>'''
     if more:
         body += f'''<section class="section-pad"><div class="wrap"><div class="section-row"><h2>Leggi anche.</h2><a class="underlined-link" href="/articoli/">Tutti gli articoli ↗</a></div><div class="article-grid">{''.join(article_card(b) for b in more)}</div></div></section>'''
-    write(f'articoli/{a["slug"]}/index.html', page(a['title'], a['description'], body))
+    path = f"/articoli/{a['slug']}/"
+    img = og_image('articolo-' + a['slug'], a['title'], a['type'].upper())
+    art_ld = {'@type': 'NewsArticle' if a['type'] == 'News' else 'Article', 'headline': a['title'], 'description': clip(a['description']),
+              'datePublished': a['date'], 'dateModified': a.get('updated', a['date']), 'inLanguage': 'it-IT', 'image': abs_url(img),
+              'author': {'@id': SITE_URL + '/#org'}, 'publisher': {'@id': SITE_URL + '/#org'}, 'mainEntityOfPage': abs_url(path)}
+    if rel:
+        art_ld['about'] = [{'@type': 'Thing', 'name': q['name'], 'url': abs_url(q['url'])} for q in rel]
+    write(f'articoli/{a["slug"]}/index.html', page(a.get('seo_title', a['title']), clip(a['description']), body, path, schema=[ORG_LD, art_ld],
+          crumbs=[('Home', '/'), ('Articoli', '/articoli/'), (a['title'], path)], og_type='article', image=img, lastmod=a.get('updated', a['date'])))
 
 # ------------------------------------------------------------------ metodo
 grid_legend = ''.join(f'<li><strong>{escape(label)}</strong></li>' for _, label in EVIDENCE_ROWS)
@@ -461,15 +617,27 @@ metodo = f'''<section class="inner-hero"><div class="wrap"><div class="section-l
 <h2>Dosi e modalità d’uso</h2><p>Ogni scheda indica come la sostanza viene assunta e da dove provengono le dosi riportate: il foglietto illustrativo approvato in UE, un foglietto approvato fuori UE, gli studi clinici pubblicati, oppure nessuna fonte affidabile. Quando non esiste una dose studiata nell’uomo non riportiamo le quantità che circolano online. Le dosi sono informazioni, non indicazioni: ogni trattamento richiede una visita e l’approvazione di un medico.</p>
 <h2>Cosa non facciamo</h2><p>Non indichiamo fornitori né prodotti “per uso di ricerca”. Non promettiamo prescrizioni: il medico prescrive solo medicinali autorizzati, quando li ritiene appropriati. Le schede non contengono link di affiliazione né contenuti sponsorizzati.</p>
 <h2>Segnalare un errore</h2><p>Un indirizzo dedicato alle segnalazioni sarà pubblicato al lancio. Ogni correzione sostanziale sarà indicata nella scheda.</p></div></section>'''
-write('metodo/index.html', page('Metodo editoriale', 'Come AHEAD seleziona le fonti, classifica le prove scientifiche e aggiorna le schede della Library.', metodo))
+write('metodo/index.html', page('Metodo editoriale: come valutiamo le prove scientifiche', 'Come AHEAD seleziona le fonti, classifica le prove scientifiche (in vitro, animali, osservazionali, RCT) e aggiorna le schede della Library.', metodo, '/metodo/',
+      crumbs=[('Home', '/'), ('Metodo', '/metodo/')]))
 
 # ------------------------------------------------------------------ privacy
 privacy = '''<section class="inner-hero"><div class="wrap"><div class="section-label light-text">DOCUMENTAZIONE</div><h1>Privacy <em>e trasparenza.</em></h1><p>Informativa provvisoria. Da completare prima di attivare la raccolta di indirizzi email.</p></div></section><section class="section-pad"><div class="wrap privacy-content"><div class="review-notice"><strong>Prima della pubblicazione:</strong> inserire titolare effettivo del trattamento, contatti, base giuridica, tempi di conservazione, fornitori, trasferimenti, diritti e istruzioni aggiornate. Non attivare il modulo in produzione senza l’informativa definitiva.</div><h2>Perché raccogliere email?</h2><p>L’unico scopo previsto è inviare aggiornamenti sul progetto a chi ne fa richiesta con consenso esplicito. Non chiediamo informazioni su diagnosi, terapie o condizioni di salute.</p><h2>Quali strumenti useremo?</h2><p>MailerLite per l’invio di email e, previo assetto privacy adeguato, uno strumento di analytics per contare gli interessi in forma aggregata. Le integrazioni non sono ancora attive nella demo.</p><h2>Ricerca nella Library</h2><p>La ricerca e i filtri funzionano interamente nel tuo browser: i termini cercati non vengono inviati a nessun server.</p><h2>Servizi sanitari</h2><p>Il progetto non è una struttura sanitaria operativa e non offre visite, prescrizioni o terapie.</p></div></section>'''
-write('privacy/index.html', page('Privacy — informativa provvisoria', 'Informazioni sulla gestione dei dati per il progetto AHEAD.', privacy))
+write('privacy/index.html', page('Privacy — informativa provvisoria', 'Informazioni sulla gestione dei dati per il progetto AHEAD.', privacy, '/privacy/'))
 
 # ------------------------------------------------------------------ 404
 not_found = '''<section class="inner-hero"><div class="wrap"><div class="section-label light-text">ERRORE 404</div><h1>Pagina <em>non trovata.</em></h1><p>La pagina che cerchi non esiste o è stata spostata.</p><div class="hero-actions"><a class="btn btn-light" href="/library/">Vai alla Library <span>↗</span></a><a class="link-light" href="/">Torna alla home</a></div></div></section>'''
-write('404.html', page('Pagina non trovata', 'Pagina non trovata.', not_found))
+write('404.html', page('Pagina non trovata', 'Pagina non trovata.', not_found, '/404', indexable=False))
 
 write('favicon.svg', '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="15" fill="#111a1d"/><path d="M14 47 29 16h7l15 31h-9l-4-9H26l-4 9zm15-16h7l-4-10z" fill="#b8d9f5"/><circle cx="53" cy="13" r="5" fill="#e8e89a"/></svg>''')
+# ------------------------------------------------------------------ sitemap / robots
+urls = ''.join(f'<url><loc>{abs_url(path)}</loc><lastmod>{mod}</lastmod></url>' for path, mod in SITEMAP)
+write('sitemap.xml', f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
+write('robots.txt', (f'User-agent: *\nAllow: /\nDisallow: /api/\n\nSitemap: {SITE_URL}/sitemap.xml\n' if INDEXABLE else 'User-agent: *\nDisallow: /\n'))
+write('og/pages.json', json.dumps(OG_JOBS, ensure_ascii=False, indent=1) + '\n')
+missing = [j['file'] for j in OG_JOBS if not (ROOT / j['file']).exists()]
+if missing:
+    print(f'Attenzione: {len(missing)} immagini social mancanti. Lancia: node scripts/og-images.js && python3 build.py')
+long_titles = [t for t in re.findall(r'<title>(.*?)</title>', ''.join((ROOT / (path.strip('/') + '/index.html' if path != '/' else 'index.html')).read_text() for path, _ in SITEMAP)) if len(t.replace('&amp;', '&')) > 75]
+if long_titles:
+    print('Titoli lunghi (>75 caratteri):', *long_titles, sep='\n  ')
 print(f'Generate {N} schede + {len(ARTICLES)} articoli + {len(CONSULENZE)} consulenze + homepage + library + metodo + privacy + 404')
