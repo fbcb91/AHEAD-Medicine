@@ -86,7 +86,7 @@ service: Peptidi           # consulenza collegata (facoltativo)
 ---
 ```
 
-Il corpo supporta titoli `##` e `###`, elenchi con `- `, **grassetto** e [link](/library/). Poi lancia `python3 build.py`.
+Il corpo supporta titoli `##` e `###`, elenchi con `- `, **grassetto**, *corsivo*, [link](/library/) e `---` per una riga divisoria. Campi facoltativi del front-matter: `seo_title` (titolo per Google, ≤ ~65 caratteri) e `updated` (data dell'ultimo aggiornamento). Poi lancia `python3 build.py`.
 
 ## Aggiornare o aggiungere schede
 Ogni scheda è un file in `data/schede/<slug>.json`. Per aggiungerne una copia un file esistente, modifica i campi e lancia `python3 build.py`: il build si ferma con un errore se mancano campi, se lo stato o i livelli di evidenza non sono validi o se non c'è almeno una fonte specifica.

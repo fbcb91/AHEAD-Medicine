@@ -13,7 +13,7 @@
   "what": "MOTS-c è un peptide codificato dal DNA mitocondriale, studiato per il suo possibile ruolo nella regolazione del metabolismo e nella fisiologia muscolare.",
   "unknown": "Non esistono evidenze cliniche solide di benefici su longevità, peso o performance nell’uomo. Gli studi umani misurano i livelli naturali del peptide, non gli effetti di una somministrazione.",
   "risk": "I dati sulla sicurezza della somministrazione nell’uomo sono insufficienti; la FDA ha segnalato un possibile rischio di immunogenicità.",
-  "reg": "Non è un medicinale autorizzato dall’EMA né dalla FDA. Nel luglio 2026 un comitato consultivo della FDA ha votato a favore del suo inserimento nell’elenco delle sostanze utilizzabili in galenica negli Stati Uniti. Il voto non è vincolante, non equivale all’approvazione di un farmaco e non ha effetti in Europa.",
+  "reg": "Non è un medicinale autorizzato dall’EMA né dalla FDA. Nel luglio 2026 un comitato consultivo della FDA ha votato a favore del suo inserimento nell’elenco delle sostanze utilizzabili in galenica negli Stati Uniti. Il voto non è vincolante, non equivale all’approvazione di un farmaco e non ha effetti in Europa. Il 30 ottobre 2026 il Dipartimento della Salute statunitense (HHS) ha pubblicato una politica provvisoria di tolleranza (“enforcement discretion”) sulla sua preparazione galenica, a condizioni precise: non è un’approvazione come farmaco e non ha effetti in Italia o in Europa.",
   "evidence": {
     "in_vitro": {
       "level": "si",
@@ -57,6 +57,10 @@
     [
       "2026",
       "Un comitato consultivo FDA vota a favore del suo uso in galenica negli USA, per obesità e osteoporosi; il voto non è vincolante."
+    ],
+    [
+      "2026",
+      "A ottobre l’HHS statunitense annuncia una politica provvisoria di tolleranza sulla preparazione galenica; non è un’approvazione come farmaco."
     ]
   ],
   "faq": [
@@ -79,12 +83,17 @@
       "label": "McDermott Will & Emery — sintesi dei voti PCAC (luglio 2026)",
       "url": "https://www.mcdermottlaw.com/insights/bulk-list-bound-pcac-backs-majority-of-peptides-in-two-day-public-meeting/",
       "type": "notizia"
+    },
+    {
+      "label": "HHS — politica provvisoria sulla galenica di alcuni peptidi (Federal Register, 30 ottobre 2026)",
+      "url": "https://www.federalregister.gov/d/2026-22192",
+      "type": "regolatorio"
     }
   ],
   "review": {
     "status": "bozza",
     "medical_reviewer": null,
-    "checked": "2026-10-30",
+    "checked": "2026-11-02",
     "next_check": "2027-04-30"
   }
 }

@@ -5,7 +5,10 @@ date: 2026-10-30
 description: Un comitato consultivo della FDA ha votato a favore dell’uso in galenica di sei peptidi, tra cui BPC-157 e TB-500. Cosa significa negli Stati Uniti e perché in Italia non cambia nulla.
 related: bpc-157, tb-500, mots-c, kpv, epitalon, semax, dsip
 service: Peptidi
+updated: 2026-11-02
 ---
+**Aggiornamento del 2 novembre 2026:** il 30 ottobre il Dipartimento della Salute statunitense (HHS) ha pubblicato una politica provvisoria di tolleranza sulla preparazione galenica di sei di questi peptidi (BPC-157, TB-500, KPV, MOTS-c, Semax ed Epitalon), in attesa della procedura formale della FDA. Non è un’approvazione come farmaco e non cambia nulla in Italia. Ne parliamo anche in [questo articolo](/articoli/david-sinclair-peptidi-anti-aging/).
+
 Il 23 e 24 luglio 2026 il comitato consultivo della FDA sulla galenica (Pharmacy Compounding Advisory Committee) ha discusso sette peptidi molto popolari online. Per sei di questi il voto è stato favorevole all’inserimento nell’elenco delle sostanze utilizzabili dalle farmacie galeniche statunitensi.
 
 ## Com’è andato il voto

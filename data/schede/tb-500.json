@@ -14,7 +14,7 @@
   "what": "Il nome TB-500 indica un frammento sintetico correlato alla timosina beta-4, una proteina naturale coinvolta nell’organizzazione del citoscheletro e studiata in ambito preclinico per i processi di riparazione.",
   "unknown": "I dati disponibili non consentono di concludere che TB-500 favorisca il recupero da infortuni nell’essere umano. I pochi studi clinici riguardano la timosina beta-4 in formulazioni specifiche (per esempio colliri), non il frammento venduto nel mercato non regolato.",
   "risk": "La FDA segnala la mancanza di informazioni affidabili sulla sicurezza nell’uomo per il frammento noto come TB-500 e possibili problemi di impurità.",
-  "reg": "Non è un medicinale autorizzato dall’EMA né dalla FDA. Nel luglio 2026 un comitato consultivo della FDA ha votato a favore del suo inserimento nell’elenco delle sostanze utilizzabili in galenica negli Stati Uniti. Il voto non è vincolante, non equivale all’approvazione di un farmaco e non ha effetti in Europa.",
+  "reg": "Non è un medicinale autorizzato dall’EMA né dalla FDA. Nel luglio 2026 un comitato consultivo della FDA ha votato a favore del suo inserimento nell’elenco delle sostanze utilizzabili in galenica negli Stati Uniti. Il voto non è vincolante, non equivale all’approvazione di un farmaco e non ha effetti in Europa. Il 30 ottobre 2026 il Dipartimento della Salute statunitense (HHS) ha pubblicato una politica provvisoria di tolleranza (“enforcement discretion”) sulla sua preparazione galenica, a condizioni precise: non è un’approvazione come farmaco e non ha effetti in Italia o in Europa.",
   "evidence": {
     "in_vitro": {
       "level": "si",
@@ -58,6 +58,10 @@
     [
       "2026",
       "Un comitato consultivo FDA vota (8–6) a favore del suo uso in galenica negli USA per la guarigione delle ferite; il voto non è vincolante."
+    ],
+    [
+      "2026",
+      "A ottobre l’HHS statunitense annuncia una politica provvisoria di tolleranza sulla preparazione galenica; non è un’approvazione come farmaco."
     ]
   ],
   "faq": [
@@ -89,12 +93,17 @@
       "label": "McDermott Will & Emery — sintesi dei voti PCAC (luglio 2026)",
       "url": "https://www.mcdermottlaw.com/insights/bulk-list-bound-pcac-backs-majority-of-peptides-in-two-day-public-meeting/",
       "type": "notizia"
+    },
+    {
+      "label": "HHS — politica provvisoria sulla galenica di alcuni peptidi (Federal Register, 30 ottobre 2026)",
+      "url": "https://www.federalregister.gov/d/2026-22192",
+      "type": "regolatorio"
     }
   ],
   "review": {
     "status": "bozza",
     "medical_reviewer": null,
-    "checked": "2026-10-30",
+    "checked": "2026-11-02",
     "next_check": "2027-04-30"
   }
 }

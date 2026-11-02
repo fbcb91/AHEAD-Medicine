@@ -14,7 +14,7 @@
   "what": "KPV è un tripeptide (lisina-prolina-valina) che corrisponde alla parte terminale dell’ormone alfa-MSH. È studiato in laboratorio e su animali per possibili effetti antinfiammatori, in particolare a livello intestinale e cutaneo.",
   "unknown": "Non ci sono studi clinici controllati nell’uomo. I risultati su modelli animali di colite non sono stati confermati in pazienti.",
   "risk": "Profilo di sicurezza nell’uomo non caratterizzato. Qualità e purezza dei prodotti non regolati sono incerte.",
-  "reg": "Non è un medicinale autorizzato dall’EMA né dalla FDA. Nel luglio 2026 un comitato consultivo della FDA ha votato a favore del suo inserimento nell’elenco delle sostanze utilizzabili in galenica negli Stati Uniti. Il voto non è vincolante, non equivale all’approvazione di un farmaco e non ha effetti in Europa.",
+  "reg": "Non è un medicinale autorizzato dall’EMA né dalla FDA. Nel luglio 2026 un comitato consultivo della FDA ha votato a favore del suo inserimento nell’elenco delle sostanze utilizzabili in galenica negli Stati Uniti. Il voto non è vincolante, non equivale all’approvazione di un farmaco e non ha effetti in Europa. Il 30 ottobre 2026 il Dipartimento della Salute statunitense (HHS) ha pubblicato una politica provvisoria di tolleranza (“enforcement discretion”) sulla sua preparazione galenica, a condizioni precise: non è un’approvazione come farmaco e non ha effetti in Italia o in Europa.",
   "evidence": {
     "in_vitro": {
       "level": "si",
@@ -54,6 +54,10 @@
     [
       "2026",
       "Un comitato consultivo FDA vota (8–6) a favore del suo uso in galenica negli USA; il voto non è vincolante."
+    ],
+    [
+      "2026",
+      "A ottobre l’HHS statunitense annuncia una politica provvisoria di tolleranza sulla preparazione galenica; non è un’approvazione come farmaco."
     ]
   ],
   "faq": [
@@ -81,12 +85,17 @@
       "label": "PubMed — KPV e infiammazione intestinale",
       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=KPV+tripeptide+colitis",
       "type": "studio"
+    },
+    {
+      "label": "HHS — politica provvisoria sulla galenica di alcuni peptidi (Federal Register, 30 ottobre 2026)",
+      "url": "https://www.federalregister.gov/d/2026-22192",
+      "type": "regolatorio"
     }
   ],
   "review": {
     "status": "bozza",
     "medical_reviewer": null,
-    "checked": "2026-10-30",
+    "checked": "2026-11-02",
     "next_check": "2027-04-30"
   }
 }
