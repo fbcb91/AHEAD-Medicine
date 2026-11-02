@@ -141,6 +141,7 @@ ART_DIR = ROOT / 'data' / 'articoli'
 def inline_md(text):
     text = escape(text)
     text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
+    text = re.sub(r'(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])', r'<em>\1</em>', text)
     def link(m):
         label, url = m.group(1), m.group(2)
         ext = '' if url.startswith('/') else ' target="_blank" rel="noopener noreferrer"'
@@ -149,7 +150,7 @@ def inline_md(text):
 
 
 def render_md(md):
-    """Markdown minimo: ## / ### titoli, elenchi con "- ", paragrafi, **grassetto**, [link](url)."""
+    """Markdown minimo: ## / ### titoli, elenchi con "- ", paragrafi, **grassetto**, *corsivo*, [link](url), --- (riga divisoria)."""
     html, para, items = [], [], []
     def flush():
         if para:
@@ -160,6 +161,8 @@ def render_md(md):
         line = line.rstrip()
         if not line:
             flush()
+        elif line.strip() == '---':
+            flush(); html.append('<hr>')
         elif line.startswith('### '):
             flush(); html.append(f'<h3>{inline_md(line[4:])}</h3>')
         elif line.startswith('## '):

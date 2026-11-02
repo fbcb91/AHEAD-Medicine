@@ -14,7 +14,7 @@
   "what": "Il BPC-157 è una sequenza sintetica di 15 aminoacidi derivata da una proteina del succo gastrico. È stato studiato soprattutto in modelli animali per i processi di riparazione dei tessuti e di infiammazione.",
   "unknown": "Non esistono prove cliniche solide che dimostrino un beneficio per la guarigione di tendini, muscoli o lesioni nell’essere umano. Gran parte della letteratura proviene da pochi gruppi di ricerca e mancano dati adeguati su efficacia, qualità e sicurezza a lungo termine.",
   "risk": "La FDA segnala incertezze su immunogenicità, impurità e caratterizzazione del principio attivo nelle preparazioni contenenti BPC-157. I prodotti venduti online come “uso di ricerca” non hanno controlli di qualità farmaceutici. Le miscele vendute insieme ad altri peptidi (per esempio con TB-500, GHK-Cu o KPV) non sono mai state studiate come combinazione.",
-  "reg": "Non è un medicinale autorizzato dall’EMA né dalla FDA. Nel luglio 2026 un comitato consultivo della FDA ha votato a favore del suo inserimento nell’elenco delle sostanze utilizzabili in galenica negli Stati Uniti. Il voto non è vincolante, non equivale all’approvazione di un farmaco e non ha effetti in Europa.",
+  "reg": "Non è un medicinale autorizzato dall’EMA né dalla FDA. Nel luglio 2026 un comitato consultivo della FDA ha votato a favore del suo inserimento nell’elenco delle sostanze utilizzabili in galenica negli Stati Uniti. Il voto non è vincolante, non equivale all’approvazione di un farmaco e non ha effetti in Europa. Il 30 ottobre 2026 il Dipartimento della Salute statunitense (HHS) ha pubblicato una politica provvisoria di tolleranza (“enforcement discretion”) sulla sua preparazione galenica, a condizioni precise: non è un’approvazione come farmaco e non ha effetti in Italia o in Europa.",
   "evidence": {
     "in_vitro": {
       "level": "limitato",
@@ -66,6 +66,10 @@
     [
       "2026",
       "Un comitato consultivo FDA vota (8–6) a favore del suo uso in galenica negli USA; il voto non è vincolante."
+    ],
+    [
+      "2026",
+      "A ottobre l’HHS statunitense annuncia una politica provvisoria di tolleranza sulla preparazione galenica; non è un’approvazione come farmaco."
     ]
   ],
   "faq": [
@@ -101,12 +105,17 @@
       "label": "McDermott Will & Emery — sintesi dei voti PCAC (luglio 2026)",
       "url": "https://www.mcdermottlaw.com/insights/bulk-list-bound-pcac-backs-majority-of-peptides-in-two-day-public-meeting/",
       "type": "notizia"
+    },
+    {
+      "label": "HHS — politica provvisoria sulla galenica di alcuni peptidi (Federal Register, 30 ottobre 2026)",
+      "url": "https://www.federalregister.gov/d/2026-22192",
+      "type": "regolatorio"
     }
   ],
   "review": {
     "status": "bozza",
     "medical_reviewer": null,
-    "checked": "2026-10-30",
+    "checked": "2026-11-02",
     "next_check": "2027-04-30"
   }
 }

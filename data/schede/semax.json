@@ -14,7 +14,7 @@
   "what": "Semax è un peptide sintetico derivato da un frammento dell’ormone ACTH. In Russia è registrato come farmaco per alcune condizioni neurologiche; altrove è venduto come “nootropo”.",
   "unknown": "Le prove derivano soprattutto da studi russi di piccole dimensioni, con limiti metodologici e scarsa replicazione indipendente. Non ci sono prove di miglioramento cognitivo in persone sane.",
   "risk": "Profilo di sicurezza poco documentato secondo gli standard europei; qualità dei prodotti non regolati incerta.",
-  "reg": "Non autorizzato in UE né negli USA. Nel luglio 2026 un comitato consultivo della FDA ha votato a favore del suo inserimento nell’elenco delle sostanze utilizzabili in galenica negli Stati Uniti. Il voto non è vincolante, non equivale all’approvazione di un farmaco e non ha effetti in Europa.",
+  "reg": "Non autorizzato in UE né negli USA. Nel luglio 2026 un comitato consultivo della FDA ha votato a favore del suo inserimento nell’elenco delle sostanze utilizzabili in galenica negli Stati Uniti. Il voto non è vincolante, non equivale all’approvazione di un farmaco e non ha effetti in Europa. Il 30 ottobre 2026 il Dipartimento della Salute statunitense (HHS) ha pubblicato una politica provvisoria di tolleranza (“enforcement discretion”) sulla sua preparazione galenica, a condizioni precise: non è un’approvazione come farmaco e non ha effetti in Italia o in Europa.",
   "evidence": {
     "in_vitro": {
       "level": "limitato",
@@ -54,6 +54,10 @@
     [
       "2026",
       "Un comitato consultivo FDA vota (8–5) a favore del suo uso in galenica negli USA; il voto non è vincolante."
+    ],
+    [
+      "2026",
+      "A ottobre l’HHS statunitense annuncia una politica provvisoria di tolleranza sulla preparazione galenica; non è un’approvazione come farmaco."
     ]
   ],
   "faq": [
@@ -81,12 +85,17 @@
       "label": "PubMed — Semax",
       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Semax+peptide",
       "type": "studio"
+    },
+    {
+      "label": "HHS — politica provvisoria sulla galenica di alcuni peptidi (Federal Register, 30 ottobre 2026)",
+      "url": "https://www.federalregister.gov/d/2026-22192",
+      "type": "regolatorio"
     }
   ],
   "review": {
     "status": "bozza",
     "medical_reviewer": null,
-    "checked": "2026-10-30",
+    "checked": "2026-11-02",
     "next_check": "2027-04-30"
   }
 }
