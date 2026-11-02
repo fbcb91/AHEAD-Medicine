@@ -18,7 +18,8 @@ Sito italiano di validazione del mercato per un futuro servizio medico sulle ter
 - `data/articoli/<slug>.md` articoli (guide e news) in Markdown con front-matter, validati da `build.py`.
 - `data/schede/<slug>.json` è la sorgente unica delle schede della Library (una per sostanza). Lo schema (stato regolatorio, griglia delle prove, fonti, revisione) è validato da `build.py`.
 - `build.py` genera tutte le pagine HTML dai JSON. Modificare questo per pagine/struttura; dopo ogni modifica rilanciare `python3 build.py` e committare anche l'HTML generato (la CI lo verifica).
-- `illustrazioni.py` disegna l'immagine evocativa SVG di ogni scheda (un motivo per area). Le foto vere vanno in `img/schede/<slug>.*` o `img/aree/<area>.*`: `build.py` le converte in `media/` (serve Pillow) e le preferisce all'illustrazione. Usare solo immagini con licenza adatta.
+- Foto delle intestazioni: `img/schede/<slug>.*`, `img/aree/<area>.*`, `img/consulenze/<slug>.*` (elenco dei nomi in `img/LEGGIMI.md`, generato). `build.py` le converte in WebP in `media/` (serve Pillow) e le mette a tutta larghezza dietro il titolo. Usare solo immagini con licenza adatta.
+- `.github/workflows/build.yml`: su `main` rigenera il sito e committa le pagine aggiornate (così le foto caricate da GitHub vengono pubblicate); sulle PR verifica che l'HTML sia aggiornato.
 - `scripts/og-images.js` genera le immagini social in `og/` (Playwright): `node scripts/og-images.js && python3 build.py` dopo aver aggiunto pagine.
 - `sitemap.xml`, `robots.txt` e `og/pages.json` sono generati da `build.py`.
 - `styles.css` per estetica responsive.

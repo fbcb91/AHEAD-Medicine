@@ -9,7 +9,6 @@ from html import escape
 from urllib.parse import quote
 import json
 import unicodedata
-from illustrazioni import cover_svg
 import hashlib
 import math
 import re
@@ -357,24 +356,42 @@ def area_icon(name, cls='area-icon'):
     return f'<svg class="{cls}" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">{_ICON[name]}</svg>' if name in _ICON else ''
 
 
-def cover(p):
-    """Foto per la scheda (img/schede/<slug>.*) o per l'area (img/aree/<area>.*); altrimenti illustrazione SVG."""
-    alt = f"{p['name']}: {p['focus'].lower()}"
-    for folder, name in (('schede', p['slug']), ('aree', slugify(p['category']))):
-        for ext in ('.jpg', '.jpeg', '.png', '.webp'):
-            src = ROOT / 'img' / folder / (name + ext)
-            if not src.exists():
-                continue
-            digest = hashlib.sha256(src.read_bytes()).hexdigest()[:8]
-            out = ROOT / 'media' / folder / f'{name}-{digest}.webp'
-            if not out.exists():
-                from PIL import Image, ImageOps   # serve solo quando si aggiunge una foto nuova
-                out.parent.mkdir(parents=True, exist_ok=True)
-                for old in out.parent.glob(f'{name}-*.webp'):
-                    old.unlink()
-                ImageOps.fit(ImageOps.exif_transpose(Image.open(src)).convert('RGB'), (1200, 400)).save(out, 'WEBP', quality=80)
-            return f'<figure class="cover-figure"><img src="/media/{folder}/{out.name}" width="1200" height="400" alt="{escape(alt, quote=True)}" decoding="async"></figure>'
-    return f'<figure class="cover-figure">{cover_svg(p["slug"], p["category"], CAT_COLORS[p["category"]], escape(alt, quote=True))}</figure>'
+PHOTO_EXT = ('.jpg', '.jpeg', '.png', '.webp')
+
+
+def find_photo(folder, name):
+    """Cerca img/<folder>/<name>.<ext> senza badare a maiuscole o spazi nel nome del file."""
+    base = ROOT / 'img' / folder
+    if base.is_dir():
+        for f in sorted(base.iterdir()):
+            if f.suffix.lower() in PHOTO_EXT and slugify(f.stem) == name:
+                return f
+    return None
+
+
+def hero_photo(*candidates):
+    """Foto a tutta larghezza per l'intestazione: la prima trovata tra (cartella, nome).
+    Viene ridimensionata in WebP (1200 e 2400 px) in media/; il nome contiene l'hash
+    della foto, quindi Pillow serve solo quando se ne aggiunge o cambia una."""
+    for folder, name in candidates:
+        src = find_photo(folder, name)
+        if not src:
+            continue
+        digest = hashlib.sha256(src.read_bytes()).hexdigest()[:8]
+        outs = {w: ROOT / 'media' / folder / f'{name}-{digest}-{w}.webp' for w in (1200, 2400)}
+        if not all(o.exists() for o in outs.values()):
+            from PIL import Image, ImageOps
+            outs[1200].parent.mkdir(parents=True, exist_ok=True)
+            for old in outs[1200].parent.glob(f'{name}-*.webp'):
+                old.unlink()
+            img = ImageOps.exif_transpose(Image.open(src)).convert('RGB')
+            for w, out in outs.items():
+                copy = img.copy()
+                copy.thumbnail((w, w * 2))
+                copy.save(out, 'WEBP', quality=78)
+        srcset = ', '.join(f'/media/{folder}/{o.name} {w}w' for w, o in outs.items())
+        return f'<img class="hero-photo" src="/media/{folder}/{outs[1200].name}" srcset="{srcset}" sizes="100vw" alt="" fetchpriority="high" decoding="async">'
+    return ''
 
 
 def evidence_pyramid():
@@ -519,7 +536,8 @@ for p in DATA:
     sections_html = ''.join(f'<section class="profile-section-block" id="{sid}" aria-labelledby="h-{sid}"><div class="section-label">{n:02d} / {label}</div><h2 id="h-{sid}">{escape(h2)}</h2>{html}</section>' for n, (sid, label, h2, html) in enumerate(secs, 1))
     key_points = f'<div class="key-points" style="--accent:{color}"><span class="mini-label">IN SINTESI</span><ul>{"".join(f"<li>{escape(k)}</li>" for k in p["key_points"])}</ul></div>' if p.get('key_points') else ''
     toc = '<nav class="toc" aria-label="In questa pagina"><span class="mini-label">IN QUESTA PAGINA</span>' + ''.join(f'<a href="#{sid}">{escape(label.capitalize())}</a>' for sid, label, _, _ in secs) + '</nav>'
-    body = f'''<section class="inner-hero peptide-hero" style="--accent:{color}"><div class="wrap hero-split"><div><div class="breadcrumbs"><a href="/">Home</a> / <a href="/library/">Library</a> / <a href="/library/{slugify(p['category'])}/">{escape(p['category'])}</a> / {escape(name)}</div><div class="section-label light-text">{escape(kind_label.upper())} / {escape(p['category'].upper())}</div><h1>{escape(name)}<span class="little-star">✳</span></h1><p>{escape(p['tagline'])}</p>{status_badge(p)}</div>{molecule_svg(p['slug'], color, dark=True, cls='hero-art')}</div></section><section class="section-pad profile-section"><div class="wrap profile-grid"><article class="profile-main">{cover(p)}<div class="review-notice"><strong>Bozza informativa — revisione medica indipendente non ancora effettuata.</strong><br>Ultima verifica editoriale delle fonti: {checked}. Questa pagina non sostituisce il parere di un medico.</div>{key_points}{sections_html}</article><aside class="profile-aside"><div class="fact-box"><span class="mini-label">AREA DI RICERCA / APPLICAZIONE</span><strong>{escape(p['focus'])}</strong><hr><span class="mini-label">TIPO</span><strong>{escape(kind_label)}</strong><hr><span class="mini-label">QUALITÀ DELLE PROVE</span><strong>{escape(p['evidence_summary'])}</strong><hr><span class="mini-label">STATO REGOLATORIO</span><strong>{escape(STATUS[p['status']][0])}</strong><hr><span class="mini-label">REVISIONE MEDICA</span><strong>{escape(reviewer)}</strong><hr><span class="mini-label">ULTIMA VERIFICA FONTI</span><strong>{checked}</strong></div>{toc}<div class="aside-cta"><span>THE HUMAN SIDE OF RESEARCH</span><h3>Vuoi parlarne con un medico?</h3><p>Rispondi a un breve questionario anonimo: ci aiuta ad abbinarti ai medici più adatti della nostra rete.</p><a class="btn btn-dark full start-link" href="/inizia/{'?area=' + SERVICE_SLUGS[p['service']] if p['service'] else ''}" data-service="{escape(p['service'] or 'generale', quote=True)}">Trova il tuo medico ↗</a><small>Servizio in avvio. La prescrizione è decisa dal medico e solo se appropriata.</small></div></aside></div></section>{arts_block}<section class="related-section"><div class="wrap"><div class="section-row"><h2>Continua a esplorare.</h2><a class="underlined-link" href="/library/">Tutte le schede ↗</a></div><div class="card-grid related-grid">{''.join(card(q, True) for q in related(p))}</div></div></section>'''
+    photo = hero_photo(('schede', p['slug']), ('aree', slugify(p['category'])))
+    body = f'''<section class="inner-hero peptide-hero{' has-photo' if photo else ''}" style="--accent:{color}">{photo}<div class="wrap hero-split"><div><div class="breadcrumbs"><a href="/">Home</a> / <a href="/library/">Library</a> / <a href="/library/{slugify(p['category'])}/">{escape(p['category'])}</a> / {escape(name)}</div><div class="section-label light-text">{escape(kind_label.upper())} / {escape(p['category'].upper())}</div><h1>{escape(name)}<span class="little-star">✳</span></h1><p>{escape(p['tagline'])}</p>{status_badge(p)}</div>{'' if photo else molecule_svg(p['slug'], color, dark=True, cls='hero-art')}</div></section><section class="section-pad profile-section"><div class="wrap profile-grid"><article class="profile-main"><div class="review-notice"><strong>Bozza informativa — revisione medica indipendente non ancora effettuata.</strong><br>Ultima verifica editoriale delle fonti: {checked}. Questa pagina non sostituisce il parere di un medico.</div>{key_points}{sections_html}</article><aside class="profile-aside"><div class="fact-box"><span class="mini-label">AREA DI RICERCA / APPLICAZIONE</span><strong>{escape(p['focus'])}</strong><hr><span class="mini-label">TIPO</span><strong>{escape(kind_label)}</strong><hr><span class="mini-label">QUALITÀ DELLE PROVE</span><strong>{escape(p['evidence_summary'])}</strong><hr><span class="mini-label">STATO REGOLATORIO</span><strong>{escape(STATUS[p['status']][0])}</strong><hr><span class="mini-label">REVISIONE MEDICA</span><strong>{escape(reviewer)}</strong><hr><span class="mini-label">ULTIMA VERIFICA FONTI</span><strong>{checked}</strong></div>{toc}<div class="aside-cta"><span>THE HUMAN SIDE OF RESEARCH</span><h3>Vuoi parlarne con un medico?</h3><p>Rispondi a un breve questionario anonimo: ci aiuta ad abbinarti ai medici più adatti della nostra rete.</p><a class="btn btn-dark full start-link" href="/inizia/{'?area=' + SERVICE_SLUGS[p['service']] if p['service'] else ''}" data-service="{escape(p['service'] or 'generale', quote=True)}">Trova il tuo medico ↗</a><small>Servizio in avvio. La prescrizione è decisa dal medico e solo se appropriata.</small></div></aside></div></section>{arts_block}<section class="related-section"><div class="wrap"><div class="section-row"><h2>Continua a esplorare.</h2><a class="underlined-link" href="/library/">Tutte le schede ↗</a></div><div class="card-grid related-grid">{''.join(card(q, True) for q in related(p))}</div></div></section>'''
     title = (f'{name}: cos’è, a cosa serve, effetti collaterali e dosi' if len(name) <= 14
              else f'{name}: cos’è, effetti e dosi' if len(name) > 26 else f'{name}: cos’è, studi, rischi e dosi')
     alias = f" ({', '.join(p['aliases'][:2])})" if p['aliases'] else ''
@@ -680,7 +698,8 @@ for c in CONSULENZE:
     arts = [a for a in ARTICLES if a['service'] == c['name']]
     articles_block = f'''<div class="section-row space-top"><h2>Articoli.</h2><a class="underlined-link" href="/articoli/">Tutti gli articoli ↗</a></div><div class="article-grid">{''.join(article_card(a) for a in arts[:3])}</div>''' if arts else ''
     others = ''.join(f'<a class="other-service" href="/consulenze/{SERVICE_SLUGS[o["name"]]}/">Consulenza {escape(o["name"])} <span>→</span></a>' for o in CONSULENZE if o is not c)
-    body = f'''<section class="inner-hero"><div class="wrap">{area_icon(c['name'], 'consult-art')}<div class="breadcrumbs"><a href="/">Home</a> / <a href="/consulenze/">Consulenze</a> / {escape(c['name'])}</div><div class="section-label light-text">{area_icon(c['name'], 'hero-icon')}CONSULENZA / {escape(c['name'].upper())}</div><h1>{c['title']}</h1><p>{escape(c['lede'])}</p><div class="hero-actions"><a class="btn btn-light start-link" href="/inizia/?area={slug}" data-service="{escape(c['name'], quote=True)}">Trova il tuo medico <span>↗</span></a><a class="link-light" href="#come-funziona">Come funziona <span>↓</span></a></div><div class="mini-notice">Servizio in fase di avvio: le videoconsulenze non sono ancora prenotabili. La prescrizione è decisa dal medico, solo per medicinali autorizzati e quando è appropriata.</div></div></section>
+    photo = hero_photo(('consulenze', slug))
+    body = f'''<section class="inner-hero{' has-photo' if photo else ''}">{photo}<div class="wrap">{'' if photo else area_icon(c['name'], 'consult-art')}<div class="breadcrumbs"><a href="/">Home</a> / <a href="/consulenze/">Consulenze</a> / {escape(c['name'])}</div><div class="section-label light-text">{area_icon(c['name'], 'hero-icon')}CONSULENZA / {escape(c['name'].upper())}</div><h1>{c['title']}</h1><p>{escape(c['lede'])}</p><div class="hero-actions"><a class="btn btn-light start-link" href="/inizia/?area={slug}" data-service="{escape(c['name'], quote=True)}">Trova il tuo medico <span>↗</span></a><a class="link-light" href="#come-funziona">Come funziona <span>↓</span></a></div><div class="mini-notice">Servizio in fase di avvio: le videoconsulenze non sono ancora prenotabili. La prescrizione è decisa dal medico, solo per medicinali autorizzati e quando è appropriata.</div></div></section>
 <section class="section-pad"><div class="wrap service-grid"><div><div class="section-label">01 / PER CHI È</div><h2>È pensata per te se…</h2><ul class="check-list">{li(c['for_whom'])}</ul></div><div><div class="section-label">02 / COSA FA IL MEDICO</div><h2>In videoconsulenza.</h2><ol class="numbered-list">{li(c['doctor'])}</ol><div class="fact-box exams-box"><span class="mini-label">ESAMI</span><p>{escape(c['exams'])}</p></div></div></div></section>
 <section class="section-pad first-visit"><div class="wrap"><div class="section-label">LA PRIMA VIDEOCONSULENZA</div><h2>Come sarà, <em>passo per passo.</em></h2><div class="visit-grid"><div><span class="mini-label">PRIMA</span><h3>Prepara le tue domande</h3><p>Dopo il questionario scegli il medico. Tieni a portata di mano gli esami recenti e l’elenco di farmaci e integratori che usi.</p></div><div><span class="mini-label">DURANTE · 30–45 MINUTI</span><h3>Una conversazione vera</h3><p>Il medico ascolta la tua storia, chiarisce obiettivi e dubbi e valuta cosa serve per avere un quadro completo.</p></div><div><span class="mini-label">DOPO</span><h3>Un piano chiaro</h3><p>Ricevi le indicazioni, gli eventuali esami da fare e, se il medico lo ritiene appropriato, la prescrizione. Poi fissate insieme il prossimo controllo.</p></div></div></div></section>
 <section class="principles how-section section-pad" id="come-funziona"><div class="wrap"><div class="section-label">03 / COME FUNZIONA</div><h2>Un medico al tuo fianco,<br><em>passo dopo passo.</em></h2>{STEPS}</div></section>
@@ -823,6 +842,41 @@ not_found = '''<section class="inner-hero"><div class="wrap"><div class="section
 write('404.html', page('Pagina non trovata', 'Pagina non trovata.', not_found, '/404', indexable=False))
 
 write('favicon.svg', '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="15" fill="#111a1d"/><path d="M14 47 29 16h7l15 31h-9l-4-9H26l-4 9zm15-16h7l-4-10z" fill="#b8d9f5"/><circle cx="53" cy="13" r="5" fill="#e8e89a"/></svg>''')
+# ------------------------------------------------------------------ elenco nomi per le foto
+photo_list = '\n'.join(f'| `{q["slug"]}` | {q["name"]} |' for q in sorted(DATA, key=lambda q: q['slug']))
+area_list = '\n'.join(f'| `{slugify(c)}` | {c} |' for c in used_categories)
+cons_list = '\n'.join(f'| `{SERVICE_SLUGS[c["name"]]}` | {c["name"]} |' for c in CONSULENZE)
+write('img/LEGGIMI.md', f"""# Foto delle intestazioni
+
+Le foto vanno a tutta larghezza come sfondo dell'intestazione, dietro titolo e testo.
+Carica il file nella cartella giusta con il **nome indicato qui sotto** (maiuscole e spazi non contano: `Semaglutide.JPG` va bene).
+Su GitHub: apri la cartella → **Add file → Upload files** → **Commit changes** su `main`.
+Entro un paio di minuti GitHub rigenera il sito e Vercel lo pubblica.
+
+- `img/schede/<nome>.jpg` → foto di una scheda
+- `img/aree/<nome>.jpg` → foto usata da tutte le schede di un'area che non hanno una foto propria
+- `img/consulenze/<nome>.jpg` → foto dell'intestazione di una consulenza
+
+Consigli: foto orizzontali, almeno 2400 px di larghezza, soggetto sulla destra (a sinistra c'è il testo). Formati jpg, png o webp.
+Usa solo immagini con licenza adatta (tue, Unsplash, Pexels, Adobe Stock…).
+Per sostituire una foto basta caricarne un'altra con lo stesso nome; per toglierla, eliminarla.
+
+## Schede (`img/schede/`)
+| Nome file | Scheda |
+|---|---|
+{photo_list}
+
+## Aree (`img/aree/`)
+| Nome file | Area |
+|---|---|
+{area_list}
+
+## Consulenze (`img/consulenze/`)
+| Nome file | Consulenza |
+|---|---|
+{cons_list}
+""")
+
 # ------------------------------------------------------------------ sitemap / robots
 urls = ''.join(f'<url><loc>{abs_url(path)}</loc><lastmod>{mod}</lastmod></url>' for path, mod in SITEMAP)
 write('sitemap.xml', f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')

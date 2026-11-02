@@ -1,13 +1,35 @@
-name: Build check
-on: [push, pull_request]
+name: Build
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installa Pillow (serve per ottimizzare le foto)
+        run: pip install --quiet pillow
       - name: Rigenera il sito dai dati
         run: python3 build.py
-      - name: Verifica che l'HTML committato sia aggiornato
-        run: git status --porcelain && test -z "$(git status --porcelain)"
       - name: Controllo sintassi JavaScript
-        run: node --check app.js && node --check --input-type=module < api/interest.js
+        run: node --check app.js && for f in api/*.js; do node --check --input-type=module < "$f"; done
+      # Su main: se qualcuno ha caricato foto o modificato dati da GitHub, salva le pagine rigenerate.
+      - name: Pubblica le pagine rigenerate
+        if: github.event_name == 'push'
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Rigenera il sito (foto o dati aggiornati)"
+            git push
+          fi
+      - name: Verifica che l'HTML committato sia aggiornato
+        if: github.event_name == 'pull_request'
+        run: git status --porcelain && test -z "$(git status --porcelain)"
