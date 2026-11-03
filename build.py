@@ -207,7 +207,9 @@ ARTICLES = load_articles()
 
 
 def article_card(a):
-    return f'<a class="article-card" href="/articoli/{a["slug"]}/"><span class="article-meta">{escape(a["type"].upper())} · {it_date(a["date"])}</span><h3>{escape(a["title"])}</h3><p>{escape(a["description"])}</p><span class="article-more">Leggi ↗</span></a>'
+    outs = photo_variants('articoli', a['slug'])
+    thumb = f'<span class="article-thumb"><img src="/media/articoli/{outs[1200].name}" alt="" loading="lazy" decoding="async"></span>' if outs else ''
+    return f'<a class="article-card{" has-thumb" if outs else ""}" href="/articoli/{a["slug"]}/">{thumb}<span class="article-meta">{escape(a["type"].upper())} · {it_date(a["date"])}</span><h3>{escape(a["title"])}</h3><p>{escape(a["description"])}</p><span class="article-more">Leggi ↗</span></a>'
 
 NAV = '''<a class="logo" href="/" aria-label="AHEAD — home"><span class="logo-mark">A<span class="logo-spark">✳</span></span><span class="logo-word">AHEAD<span class="logo-dot">.</span><small>MEDICINE / PROJECT</small></span></a><nav class="nav-links" aria-label="Navigazione principale"><a href="/library/">Library</a><a href="/consulenze/">Consulenze</a><a href="/articoli/">Articoli</a><a href="/metodo/">Metodo</a></nav><a href="/inizia/" class="nav-cta start-link">Trova il tuo medico <span>↗</span></a><button class="mobile-menu" type="button" aria-label="Apri menu" aria-expanded="false">☰</button>'''
 FOOTER = '''<footer class="footer"><div class="wrap footer-main"><div><a class="footer-logo" href="/">AHEAD<span>.</span></a><p>Medicina emergente, senza scorciatoie.</p><p class="muted">Nome e identità visiva provvisori.</p></div><div class="footer-links"><a href="/library/">Library</a><a href="/peptidi/">Peptidi</a><a href="/sostanze/">Farmaci e sostanze</a><a href="/consulenze/">Consulenze</a><a href="/articoli/">Articoli</a><a href="/metodo/">Metodo editoriale</a><a href="/privacy/">Privacy</a></div></div><div class="wrap footer-bottom"><span>© 2026 AHEAD · Progetto in fase di esplorazione</span><span>Contenuti informativi. Nessun servizio sanitario attualmente erogato.</span></div></footer>'''
@@ -372,28 +374,34 @@ def find_photo(folder, name):
     return None
 
 
+def photo_variants(folder, name):
+    """Se esiste img/<folder>/<name>.*, restituisce {1200: path, 2400: path} delle versioni WebP in media/.
+    Il nome contiene l'hash della foto, quindi Pillow serve solo quando se ne aggiunge o cambia una."""
+    src = find_photo(folder, name)
+    if not src:
+        return None
+    digest = hashlib.sha256(src.read_bytes()).hexdigest()[:8]
+    outs = {w: ROOT / 'media' / folder / f'{name}-{digest}-{w}.webp' for w in (1200, 2400)}
+    if not all(o.exists() for o in outs.values()):
+        from PIL import Image, ImageOps
+        outs[1200].parent.mkdir(parents=True, exist_ok=True)
+        for old in outs[1200].parent.glob(f'{name}-*.webp'):
+            old.unlink()
+        img = ImageOps.exif_transpose(Image.open(src)).convert('RGB')
+        for w, out in outs.items():
+            copy = img.copy()
+            copy.thumbnail((w, w * 2))
+            copy.save(out, 'WEBP', quality=78)
+    return outs
+
+
 def hero_photo(*candidates):
-    """Foto a tutta larghezza per l'intestazione: la prima trovata tra (cartella, nome).
-    Viene ridimensionata in WebP (1200 e 2400 px) in media/; il nome contiene l'hash
-    della foto, quindi Pillow serve solo quando se ne aggiunge o cambia una."""
+    """Foto a tutta larghezza per l'intestazione: la prima trovata tra (cartella, nome)."""
     for folder, name in candidates:
-        src = find_photo(folder, name)
-        if not src:
-            continue
-        digest = hashlib.sha256(src.read_bytes()).hexdigest()[:8]
-        outs = {w: ROOT / 'media' / folder / f'{name}-{digest}-{w}.webp' for w in (1200, 2400)}
-        if not all(o.exists() for o in outs.values()):
-            from PIL import Image, ImageOps
-            outs[1200].parent.mkdir(parents=True, exist_ok=True)
-            for old in outs[1200].parent.glob(f'{name}-*.webp'):
-                old.unlink()
-            img = ImageOps.exif_transpose(Image.open(src)).convert('RGB')
-            for w, out in outs.items():
-                copy = img.copy()
-                copy.thumbnail((w, w * 2))
-                copy.save(out, 'WEBP', quality=78)
-        srcset = ', '.join(f'/media/{folder}/{o.name} {w}w' for w, o in outs.items())
-        return f'<img class="hero-photo" src="/media/{folder}/{outs[1200].name}" srcset="{srcset}" sizes="100vw" alt="" fetchpriority="high" decoding="async">'
+        outs = photo_variants(folder, name)
+        if outs:
+            srcset = ', '.join(f'/media/{folder}/{o.name} {w}w' for w, o in outs.items())
+            return f'<img class="hero-photo" src="/media/{folder}/{outs[1200].name}" srcset="{srcset}" sizes="100vw" alt="" fetchpriority="high" decoding="async">'
     return ''
 
 
@@ -739,7 +747,8 @@ for a in ARTICLES:
     art_toc = ('<nav class="toc" aria-label="In questo articolo"><span class="mini-label">IN QUESTO ARTICOLO</span>' + ''.join(f'<a href="#{slugify(h)}">{escape(h)}</a>' for h in heads) + '</nav>') if heads else ''
     art_color = CAT_COLORS[rel[0]['category']] if rel else '#7fb4d3'
     cta = f'''<div class="aside-cta"><span>LA CONSULENZA</span><h3>Vuoi parlarne con un medico?</h3><p>La nostra rete di medici sta per avviare le videoconsulenze.</p><a class="btn btn-dark full" href="/consulenze/{SERVICE_SLUGS[svc]}/">Consulenza {escape(svc)} ↗</a></div>''' if svc else ''
-    body = f'''<section class="inner-hero"><div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/articoli/">Articoli</a> / {escape(a['title'])}</div><div class="section-label light-text">{escape(a['type'].upper())} · {it_date(a['date'])} · {minutes} MIN DI LETTURA</div><h1 class="article-title">{escape(a['title'])}</h1><p>{escape(a['description'])}</p>{molecule_svg(a['slug'], art_color, dark=True, cls='hero-art article-art')}</div></section><section class="section-pad"><div class="wrap profile-grid"><article class="article-body">{render_md(a['body'])}<div class="dosing-warning" role="note"><strong>Contenuto informativo.</strong> Questo articolo non sostituisce il parere di un medico. Bozza editoriale in attesa di revisione medico-scientifica.</div></article><aside class="profile-aside">{art_toc}{cta}<div class="fact-box"><span class="mini-label">REDAZIONE</span><strong>AHEAD</strong><hr><span class="mini-label">PUBBLICATO</span><strong>{it_date(a['date'])}</strong></div></aside></div></section>'''
+    photo = hero_photo(('articoli', a['slug']))
+    body = f'''<section class="inner-hero{' has-photo' if photo else ''}">{photo}<div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/articoli/">Articoli</a> / {escape(a['title'])}</div><div class="section-label light-text">{escape(a['type'].upper())} · {it_date(a['date'])} · {minutes} MIN DI LETTURA</div><h1 class="article-title">{escape(a['title'])}</h1><p>{escape(a['description'])}</p>{'' if photo else molecule_svg(a['slug'], art_color, dark=True, cls='hero-art article-art')}</div></section><section class="section-pad"><div class="wrap profile-grid"><article class="article-body">{render_md(a['body'])}<div class="dosing-warning" role="note"><strong>Contenuto informativo.</strong> Questo articolo non sostituisce il parere di un medico. Bozza editoriale in attesa di revisione medico-scientifica.</div></article><aside class="profile-aside">{art_toc}{cta}<div class="fact-box"><span class="mini-label">REDAZIONE</span><strong>AHEAD</strong><hr><span class="mini-label">PUBBLICATO</span><strong>{it_date(a['date'])}</strong></div></aside></div></section>'''
     if rel:
         body += f'''<section class="related-section"><div class="wrap"><div class="section-row"><h2>Le schede citate.</h2><a class="underlined-link" href="/library/">Tutta la Library ↗</a></div><div class="card-grid related-grid">{''.join(card(p, True) for p in rel[:6])}</div></div></section>'''
     if more:
@@ -848,6 +857,7 @@ write('favicon.svg', '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 
 # ------------------------------------------------------------------ elenco nomi per le foto
 photo_list = '\n'.join(f'| `{q["slug"]}` | {q["name"]} |' for q in sorted(DATA, key=lambda q: q['slug']))
 area_list = '\n'.join(f'| `{slugify(c)}` | {c} |' for c in used_categories)
+art_list = '\n'.join(f'| `{a["slug"]}` | {a["title"]} |' for a in sorted(ARTICLES, key=lambda a: a['slug']))
 cons_list = '\n'.join(f'| `{SERVICE_SLUGS[c["name"]]}` | {c["name"]} |' for c in CONSULENZE)
 write('img/LEGGIMI.md', f"""# Foto delle intestazioni
 
@@ -859,6 +869,7 @@ Entro un paio di minuti GitHub rigenera il sito e Vercel lo pubblica.
 - `img/schede/<nome>.jpg` → foto di una scheda
 - `img/aree/<nome>.jpg` → foto usata da tutte le schede di un'area che non hanno una foto propria
 - `img/consulenze/<nome>.jpg` → foto dell'intestazione di una consulenza
+- `img/articoli/<nome>.jpg` → foto dell'intestazione di un articolo (compare anche come anteprima nelle card degli articoli)
 
 Consigli: foto orizzontali, almeno 2400 px di larghezza, soggetto sulla destra (a sinistra c'è il testo). Formati jpg, png o webp.
 Usa solo immagini con licenza adatta (tue, Unsplash, Pexels, Adobe Stock…).
@@ -873,6 +884,13 @@ Per sostituire una foto basta caricarne un'altra con lo stesso nome; per toglier
 | Nome file | Area |
 |---|---|
 {area_list}
+
+## Articoli (`img/articoli/`)
+Il nome è l'indirizzo dell'articolo, cioè il nome del suo file in `data/articoli/` senza `.md`.
+
+| Nome file | Articolo |
+|---|---|
+{art_list}
 
 ## Consulenze (`img/consulenze/`)
 | Nome file | Consulenza |

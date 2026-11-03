@@ -8,6 +8,7 @@ Entro un paio di minuti GitHub rigenera il sito e Vercel lo pubblica.
 - `img/schede/<nome>.jpg` → foto di una scheda
 - `img/aree/<nome>.jpg` → foto usata da tutte le schede di un'area che non hanno una foto propria
 - `img/consulenze/<nome>.jpg` → foto dell'intestazione di una consulenza
+- `img/articoli/<nome>.jpg` → foto dell'intestazione di un articolo (compare anche come anteprima nelle card degli articoli)
 
 Consigli: foto orizzontali, almeno 2400 px di larghezza, soggetto sulla destra (a sinistra c'è il testo). Formati jpg, png o webp.
 Usa solo immagini con licenza adatta (tue, Unsplash, Pexels, Adobe Stock…).
@@ -75,6 +76,22 @@ Per sostituire una foto basta caricarne un'altra con lo stesso nome; per toglier
 | `neuro` | Neuro |
 | `immunita` | Immunità |
 | `sessualita-e-fertilita` | Sessualità e fertilità |
+
+## Articoli (`img/articoli/`)
+Il nome è l'indirizzo dell'articolo, cioè il nome del suo file in `data/articoli/` senza `.md`.
+
+| Nome file | Articolo |
+|---|---|
+| `bpc-157-cosa-sappiamo` | BPC-157: cosa sappiamo davvero (e cosa no) |
+| `caduta-capelli-cosa-funziona` | Caduta dei capelli: cosa funziona davvero |
+| `david-sinclair-peptidi-anti-aging` | David Sinclair e i peptidi anti-aging: GHK-Cu, Epitalon e apelina funzionano davvero? |
+| `glp-1-differenze-semaglutide-tirzepatide-retatrutide` | Semaglutide, tirzepatide, retatrutide: le differenze spiegate |
+| `minoxidil-orale` | Minoxidil orale per i capelli: come funziona e per chi è |
+| `ozempic-per-dimagrire` | Ozempic per dimagrire: cosa dice davvero l’indicazione |
+| `peptidi-da-ricerca-cosa-sono` | Peptidi “da ricerca”: cosa sono e perché non sono farmaci |
+| `rapamicina-longevita` | Rapamicina e longevità: a che punto siamo |
+| `testosterone-basso-sintomi-esami` | Testosterone basso: sintomi, esami e quando curarlo |
+| `voto-fda-peptidi-luglio-2026` | Peptidi, il voto della FDA di luglio 2026: cosa cambia (e cosa no) |
 
 ## Consulenze (`img/consulenze/`)
 | Nome file | Consulenza |
