@@ -93,6 +93,13 @@ Il nome è l'indirizzo dell'articolo, cioè il nome del suo file in `data/artico
 | `testosterone-basso-sintomi-esami` | Testosterone basso: sintomi, esami e quando curarlo |
 | `voto-fda-peptidi-luglio-2026` | Peptidi, il voto della FDA di luglio 2026: cosa cambia (e cosa no) |
 
+## Pagine indice (`img/pagine/`)
+| Nome file | Pagina |
+|---|---|
+| `library` | Library |
+| `consulenze` | Consulenze |
+| `metodo` | Metodo |
+
 ## Consulenze (`img/consulenze/`)
 | Nome file | Consulenza |
 |---|---|
