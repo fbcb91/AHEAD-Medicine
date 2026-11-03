@@ -444,6 +444,24 @@ def related(p):
     return (same + other)[:3]
 
 
+# ------------------------------------------------------------------ componenti delle pagine indice
+def stats_row(items):
+    return '<div class="hero-stats-row">' + ''.join(f'<div><strong>{escape(str(n))}</strong><span>{escape(label)}</span></div>' for n, label in items) + '</div>'
+
+
+def page_hero(name, label, h1, lede, extra='', crumbs_html=''):
+    """Intestazione delle pagine indice, con foto facoltativa in img/pagine/<name>.*"""
+    photo = hero_photo(('pagine', name))
+    return f'<section class="inner-hero{" has-photo" if photo else ""}">{photo}<div class="wrap">{crumbs_html}<div class="section-label light-text">{label}</div><h1>{h1}</h1><p>{lede}</p>{extra}</div></section>'
+
+
+CTA_BAND = ('<section class="cta-band"><div class="wrap cta-band-inner"><div><span class="mini-label">IL PROSSIMO PASSO</span><h2>Hai un obiettivo di salute? <em>Parliamone.</em></h2>'
+            '<p>Rispondi a un questionario anonimo di 2 minuti: ci aiuta ad abbinarti ai medici più adatti della nostra rete quando apriremo le prenotazioni.</p></div>'
+            '<div class="cta-band-actions"><a class="btn btn-light start-link" href="/inizia/">Trova il tuo medico <span>↗</span></a><a class="link-light" href="/articoli/">Leggi gli articoli <span>→</span></a></div></div></section>')
+
+FIRST_VISIT = """<section class="section-pad first-visit"><div class="wrap"><div class="section-label">LA PRIMA VIDEOCONSULENZA</div><h2>Come sarà, <em>passo per passo.</em></h2><div class="visit-grid"><div><span class="mini-label">PRIMA</span><h3>Prepara le tue domande</h3><p>Dopo il questionario scegli il medico. Tieni a portata di mano gli esami recenti e l’elenco di farmaci e integratori che usi.</p></div><div><span class="mini-label">DURANTE · 30–45 MINUTI</span><h3>Una conversazione vera</h3><p>Il medico ascolta la tua storia, chiarisce obiettivi e dubbi e valuta cosa serve per avere un quadro completo.</p></div><div><span class="mini-label">DOPO</span><h3>Un piano chiaro</h3><p>Ricevi le indicazioni, gli eventuali esami da fare e, se il medico lo ritiene appropriato, la prescrizione. Poi fissate insieme il prossimo controllo.</p></div></div></div></section>"""
+
+
 # ------------------------------------------------------------------ homepage
 STEPS = '''<div class="principles-grid steps-grid"><div><span>01</span><h3>Racconta il tuo obiettivo</h3><p>Rispondi a poche domande su cosa vuoi ottenere e sulla tua situazione.</p></div><div><span>02</span><h3>Scegli il tuo medico</h3><p>Ti proponiamo uno o più medici della nostra rete, esperti proprio nella tua area. Scegli tu con chi parlare.</p></div><div><span>03</span><h3>Videoconsulenza</h3><p>Il medico valuta la tua storia e, se serve, ti chiede esami mirati. Se lo ritiene appropriato, prescrive i trattamenti indicati per il tuo caso.</p></div><div><span>04</span><h3>Ti segue nel tempo</h3><p>Controlli periodici per valutare risultati, effetti indesiderati ed eventuali aggiustamenti.</p></div></div>'''
 services = [
@@ -478,11 +496,6 @@ used_status = [s for s in STATUS if any(p['status'] == s for p in DATA)]
 chips = ''.join(f'<button type="button" class="filter{" active" if c == "Tutti" else ""}" data-filter="{escape(c, quote=True)}" aria-pressed="{"true" if c == "Tutti" else "false"}">{escape(c)}</button>' for c in ['Tutti'] + used_categories)
 kind_opts = '<option value="">Tutti i tipi</option>' + ''.join(f'<option value="{k}">{escape(v[0])}</option>' for k, v in KINDS.items())
 status_opts = '<option value="">Tutti gli stati</option>' + ''.join(f'<option value="{s}">{escape(STATUS[s][0])}</option>' for s in used_status)
-library = f'''<section class="inner-hero"><div class="wrap"><div class="section-label light-text">RESEARCH / LIBRARY</div><h1>La <em>Library.</em></h1><p>{N} schede su peptidi, farmaci e molecole emergenti. Per ognuna: livelli di evidenza, rischi e stato autorizzativo. Senza confondere ricerca e terapia.</p><div class="mini-notice">Le schede sono bozze editoriali in attesa di revisione medico-scientifica indipendente e non rappresentano consigli terapeutici. <a href="/metodo/">Come lavoriamo ↗</a></div></div></section><section class="section-pad library-page"><div class="wrap"><div class="library-controls"><label class="search-label"><span aria-hidden="true">⌕</span><input id="peptide-search" type="search" placeholder="Cerca per nome, area o sinonimo…" aria-label="Cerca nella Library"></label><div class="selects"><label class="select-label"><span class="visually-hidden">Tipo</span><select id="kind-filter" aria-label="Filtra per tipo">{kind_opts}</select></label><label class="select-label"><span class="visually-hidden">Stato regolatorio</span><select id="status-filter" aria-label="Filtra per stato regolatorio">{status_opts}</select></label></div></div><div class="filters" role="group" aria-label="Filtra per area">{chips}</div><nav class="area-nav" aria-label="Pagine per area"><span class="mini-label">PAGINE PER AREA</span>{''.join(f'<a href="/library/{slugify(c)}/">{escape(c)}</a>' for c in used_categories)}<a href="/peptidi/">Tutti i peptidi</a><a href="/sostanze/">Farmaci e sostanze</a></nav><p class="results-count" id="results-count" aria-live="polite">{N} risultati</p><div class="card-grid library-results">{''.join(card(p, True) for p in DATA)}</div><p id="no-results" class="empty-results" hidden>Nessuna scheda corrisponde alla ricerca.</p></div></section>'''
-LIB_DESC = f'{N} schede su peptidi, GLP-1, ormoni e sostanze per la longevità: cosa dicono gli studi, effetti collaterali, dosi e stato legale in Italia.'
-write('library/index.html', page('Library: peptidi, GLP-1, ormoni e longevità — schede scientifiche', LIB_DESC, library, '/library/',
-      schema=[webpage_ld('CollectionPage', '/library/', 'Library', LIB_DESC), itemlist_ld([(p['name'], p['url']) for p in DATA])],
-      crumbs=[('Home', '/'), ('Library', '/library/')], image=og_image('library', f'{N} schede su peptidi e terapie emergenti', 'LIBRARY')))
 
 CAT_INTRO = {
     'Recupero': ('Peptidi per il recupero e gli infortuni', 'BPC-157, TB-500, KPV e le altre sostanze proposte per tendini, muscoli e infiammazione. Per ognuna: cosa dicono davvero gli studi, quali rischi comporta e se è autorizzata in Italia.'),
@@ -496,6 +509,31 @@ CAT_INTRO = {
     'Sessualità e fertilità': ('Peptidi e ormoni per sessualità e fertilità', 'Bremelanotide (PT-141), kisspeptina e hCG: cosa è autorizzato, per quali indicazioni, e cosa invece resta sperimentale.'),
 }
 CAT_URL = {c: f'/library/{slugify(c)}/' for c in CATEGORIES}
+
+n_ue = sum(p['status'] == 'ue' for p in DATA)
+n_exp = sum(p['status'] in ('sperimentale', 'trial') for p in DATA)
+area_tiles = ''
+for c in used_categories:
+    items = [q for q in DATA if q['category'] == c or c in q.get('extra_categories', [])]
+    examples = ', '.join(q['name'] for q in items[:3])
+    area_tiles += (f'<a class="area-tile" href="{CAT_URL[c]}" style="--accent:{CAT_COLORS[c]}"><span class="area-count">{len(items)} schede</span>'
+                   f'<h3>{escape(c)}</h3><p>{escape(CAT_INTRO[c][1].split(": ")[0].split(". ")[0])}.</p><span class="area-examples">{escape(examples)}…</span><span class="area-go">Esplora ↗</span></a>')
+status_help = ''.join(f'<li><span class="status {STATUS[k][1]}"><i></i>{escape(STATUS[k][0])}</span><p>{t}</p></li>' for k, t in [
+    ('ue', 'Medicinale autorizzato in Europa per indicazioni precise.'), ('extra_ue', 'Approvato solo fuori dall’UE (per esempio negli USA o in Russia).'),
+    ('trial', 'In sperimentazione clinica: non ancora autorizzato.'), ('sperimentale', 'Studiato soprattutto in laboratorio o sugli animali.'),
+    ('integratore', 'Integratore o ingrediente cosmetico, non un medicinale.'), ('ritirato', 'Era un medicinale, oggi non più in commercio.')])
+library = (page_hero('library', 'RESEARCH / LIBRARY', 'La <em>Library.</em>', f'{N} schede su peptidi, farmaci e molecole emergenti. Per ognuna: cosa dicono gli studi, livello per livello, rischi, dosi e stato autorizzativo. Senza confondere ricerca e terapia.',
+                     stats_row([(N, 'schede'), (len(used_categories), 'aree'), (n_ue, 'autorizzate in UE'), (n_exp, 'sperimentali o in studio')])
+                     + '<div class="mini-notice">Le schede sono bozze editoriali in attesa di revisione medico-scientifica indipendente e non rappresentano consigli terapeutici. <a href="/metodo/">Come lavoriamo ↗</a></div>')
+           + f'<section class="section-pad areas-section"><div class="wrap"><div class="section-label">01 / ESPLORA PER AREA</div><div class="section-row"><div><h2>Da dove <em>vuoi partire?</em></h2><p class="section-subtitle">Ogni area raccoglie farmaci autorizzati, molecole in studio e le sostanze di cui si parla online.</p></div><a class="outlined-link" href="/peptidi/">Tutti i peptidi ↗</a></div><div class="area-grid">{area_tiles}</div></div></section>'
+           + f'''<section class="section-pad library-page" id="catalogo"><div class="wrap"><div class="section-label">02 / IL CATALOGO COMPLETO</div><h2 class="catalog-title">Cerca una <em>sostanza.</em></h2><div class="library-controls"><label class="search-label"><span aria-hidden="true">⌕</span><input id="peptide-search" type="search" placeholder="Cerca per nome, area o sinonimo…" aria-label="Cerca nella Library"></label><div class="selects"><label class="select-label"><span class="visually-hidden">Tipo</span><select id="kind-filter" aria-label="Filtra per tipo">{kind_opts}</select></label><label class="select-label"><span class="visually-hidden">Stato regolatorio</span><select id="status-filter" aria-label="Filtra per stato regolatorio">{status_opts}</select></label></div></div><div class="filters" role="group" aria-label="Filtra per area">{chips}</div><p class="results-count" id="results-count" aria-live="polite">{N} risultati</p><div class="card-grid library-results">{''.join(card(p, True) for p in DATA)}</div><p id="no-results" class="empty-results" hidden>Nessuna scheda corrisponde alla ricerca.</p></div></section>'''
+           + f'<section class="section-pad legend-section"><div class="wrap legend-grid"><div><div class="section-label">03 / COME LEGGERE LE SCHEDE</div><h2>Il bollino <em>dice molto.</em></h2><p class="section-subtitle">Ogni scheda mostra lo stato regolatorio in Europa e, al suo interno, i cinque livelli di prova: dal laboratorio fino al medicinale autorizzato.</p><a class="underlined-link" href="/metodo/">Il nostro metodo, nel dettaglio ↗</a></div><ul class="status-help">{status_help}</ul></div></section>'
+           + CTA_BAND)
+LIB_DESC = f'{N} schede su peptidi, GLP-1, ormoni e sostanze per la longevità: cosa dicono gli studi, effetti collaterali, dosi e stato legale in Italia.'
+write('library/index.html', page('Library: peptidi, GLP-1, ormoni e longevità — schede scientifiche', LIB_DESC, library, '/library/',
+      schema=[webpage_ld('CollectionPage', '/library/', 'Library', LIB_DESC), itemlist_ld([(p['name'], p['url']) for p in DATA])],
+      crumbs=[('Home', '/'), ('Library', '/library/')], image=og_image('library', f'{N} schede su peptidi e terapie emergenti', 'LIBRARY')))
+
 
 
 def listing_page(path, label, h1, intro, items, crumbs, og_key):
@@ -712,7 +750,7 @@ for c in CONSULENZE:
     photo = hero_photo(('consulenze', slug))
     body = f'''<section class="inner-hero{' has-photo' if photo else ''}">{photo}<div class="wrap">{'' if photo else area_icon(c['name'], 'consult-art')}<div class="breadcrumbs"><a href="/">Home</a> / <a href="/consulenze/">Consulenze</a> / {escape(c['name'])}</div><div class="section-label light-text">{area_icon(c['name'], 'hero-icon')}CONSULENZA / {escape(c['name'].upper())}</div><h1>{c['title']}</h1><p>{escape(c['lede'])}</p><div class="hero-actions"><a class="btn btn-light start-link" href="/inizia/?area={slug}" data-service="{escape(c['name'], quote=True)}">Trova il tuo medico <span>↗</span></a><a class="link-light" href="#come-funziona">Come funziona <span>↓</span></a></div><div class="mini-notice">Servizio in fase di avvio: le videoconsulenze non sono ancora prenotabili. La prescrizione è decisa dal medico, solo per medicinali autorizzati e quando è appropriata.</div></div></section>
 <section class="section-pad"><div class="wrap service-grid"><div><div class="section-label">01 / PER CHI È</div><h2>È pensata per te se…</h2><ul class="check-list">{li(c['for_whom'])}</ul></div><div><div class="section-label">02 / COSA FA IL MEDICO</div><h2>In videoconsulenza.</h2><ol class="numbered-list">{li(c['doctor'])}</ol><div class="fact-box exams-box"><span class="mini-label">ESAMI</span><p>{escape(c['exams'])}</p></div></div></div></section>
-<section class="section-pad first-visit"><div class="wrap"><div class="section-label">LA PRIMA VIDEOCONSULENZA</div><h2>Come sarà, <em>passo per passo.</em></h2><div class="visit-grid"><div><span class="mini-label">PRIMA</span><h3>Prepara le tue domande</h3><p>Dopo il questionario scegli il medico. Tieni a portata di mano gli esami recenti e l’elenco di farmaci e integratori che usi.</p></div><div><span class="mini-label">DURANTE · 30–45 MINUTI</span><h3>Una conversazione vera</h3><p>Il medico ascolta la tua storia, chiarisce obiettivi e dubbi e valuta cosa serve per avere un quadro completo.</p></div><div><span class="mini-label">DOPO</span><h3>Un piano chiaro</h3><p>Ricevi le indicazioni, gli eventuali esami da fare e, se il medico lo ritiene appropriato, la prescrizione. Poi fissate insieme il prossimo controllo.</p></div></div></div></section>
+{FIRST_VISIT}
 <section class="principles how-section section-pad" id="come-funziona"><div class="wrap"><div class="section-label">03 / COME FUNZIONA</div><h2>Un medico al tuo fianco,<br><em>passo dopo passo.</em></h2>{STEPS}</div></section>
 <section class="section-pad"><div class="wrap service-grid"><div><div class="section-label">04 / COSA NON FACCIAMO</div><h2>I limiti, <em>chiari.</em></h2><p class="limits-text">{escape(c['limits'])}</p></div><div><div class="section-label">05 / DOMANDE FREQUENTI</div><h2>FAQ.</h2><div class="faq">{faq}</div></div></div></section>
 <section class="related-section"><div class="wrap">{library_block}{articles_block}<div class="other-services"><span class="mini-label">ALTRE CONSULENZE</span>{others}</div></div></section>'''
@@ -724,9 +762,44 @@ for c in CONSULENZE:
           crumbs=[('Home', '/'), ('Consulenze', '/consulenze/'), (c['name'], path)], image=og_image('consulenza-' + slug, f"Consulenza {c['name']}", 'VIDEOCONSULENZA')))
 
 CONS_DESC = 'Videoconsulenze con medici esperti di peptidi, GLP-1, TRT, longevità, capelli, salute sessuale, menopausa e sport. Racconti il tuo obiettivo, scegli il tuo medico.'
-consulenze_hub = f'''<section class="inner-hero"><div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / Consulenze</div><div class="section-label light-text">CONSULENZE / RETE DI MEDICI</div><h1>Consulenze online <em>con medici esperti.</em></h1><p>Una rete di medici esperti di terapie emergenti. Ci racconti il tuo obiettivo, ti proponiamo i medici più adatti e scegli tu con chi iniziare, in videochiamata.</p><div class="mini-notice">Servizio in fase di avvio: le videoconsulenze non sono ancora prenotabili. Lascia la tua email per sapere quando partiamo.</div></div></section><section class="services-section section-pad"><div class="wrap"><div class="services-grid">{service_html}</div></div></section><section class="principles how-section section-pad"><div class="wrap"><div class="section-label">COME FUNZIONA</div><h2>Un medico al tuo fianco,<br><em>passo dopo passo.</em></h2>{STEPS}</div></section>'''
+HUB_FAQ = [
+    ('Quanto costa una consulenza?', 'Le tariffe saranno comunicate al lancio del servizio. Nel questionario puoi indicarci quanto saresti disposto a spendere: ci aiuta a definirle.'),
+    ('Quando potrò prenotare?', 'Stiamo completando la rete di medici e l’organizzazione del servizio. Lascia la tua email per ricevere un avviso quando apriremo le prenotazioni.'),
+    ('Posso scegliere il medico?', 'Sì. In base al tuo obiettivo ti proponiamo uno o più medici della rete con esperienza nella tua area, e scegli tu con chi iniziare.'),
+    ('Il medico mi prescriverà quello che chiedo?', 'No: la prescrizione è sempre una decisione del medico, dopo una valutazione, e riguarda solo medicinali autorizzati quando sono appropriati.'),
+    ('Posso parlare di sostanze che ho già comprato online?', 'Sì, ed è importante farlo. Il medico ti aiuta a valutare rischi e alternative, senza giudicarti.'),
+    ('La videoconsulenza sostituisce il mio medico di base?', 'No. È un parere specialistico su temi specifici. Con il tuo consenso il medico può indicarti cosa condividere con il tuo medico curante.'),
+    ('I miei dati sono al sicuro?', 'Il questionario attuale è anonimo. Quando il servizio partirà, i dati sanitari saranno trattati secondo il GDPR, con informativa e consenso specifici.'),
+    ('Serve qualcosa per la videochiamata?', 'Basta uno smartphone o un computer con videocamera e una connessione stabile.'),
+]
+values = [('Medici per area', 'Non un medico generico per tutto: ogni area ha medici con esperienza specifica su quelle terapie.'),
+          ('Basata sulle prove', 'Ogni proposta parte da cosa dicono gli studi, come facciamo nella Library, e dalla tua situazione.'),
+          ('Un percorso, non una visita', 'Il medico ti segue nel tempo, con controlli per valutare risultati ed effetti indesiderati.'),
+          ('Da casa tua', 'Videochiamata da smartphone o computer, senza spostamenti né liste d’attesa.')]
+values_html = ''.join(f'<div><span>{i:02d}</span><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for i, (t, d) in enumerate(values, 1))
+can = ['Valutare obiettivi, sintomi e storia clinica', 'Indicarti gli esami utili e interpretarli', 'Prescrivere medicinali autorizzati, quando appropriati', 'Discutere con te le prove su peptidi e sostanze emergenti', 'Seguirti nel tempo con controlli periodici']
+cannot = ['Prescrivere sostanze non autorizzate o “per uso di ricerca”', 'Indicare fornitori o canali di acquisto', 'Darti protocolli o cicli fai-da-te', 'Sostituire il pronto soccorso: per un’urgenza chiama il 112', 'Garantire una prescrizione prima della visita']
+criteria = [('Abilitazione verificata', 'Iscrizione all’albo professionale e specializzazione coerente con l’area.'), ('Esperienza sul campo', 'Pratica clinica documentata sulle terapie di cui si occupa.'),
+            ('Aggiornamento continuo', 'Conoscenza della ricerca recente su farmaci e molecole emergenti.'), ('Approccio prudente', 'Rispetto delle indicazioni autorizzate e trasparenza su benefici e rischi.')]
+consulenze_hub = (page_hero('consulenze', 'CONSULENZE / RETE DI MEDICI', 'Consulenze online <em>con medici esperti.</em>',
+                            'Una rete di medici esperti di terapie emergenti. Ci racconti il tuo obiettivo, ti proponiamo i medici più adatti e scegli tu con chi iniziare, in videochiamata.',
+                            stats_row([(len(CONSULENZE), 'aree di consulenza'), ('30–45′', 'prima videoconsulenza'), ('1+', 'medici proposti per te')])
+                            + '<div class="hero-actions"><a class="btn btn-light start-link" href="/inizia/">Trova il tuo medico <span>↗</span></a><a class="link-light" href="#aree">Scopri le aree <span>↓</span></a></div><div class="mini-notice">Servizio in fase di avvio: le videoconsulenze non sono ancora prenotabili.</div>',
+                            '<div class="breadcrumbs"><a href="/">Home</a> / Consulenze</div>')
+                  + f'<section class="services-section section-pad" id="aree"><div class="wrap"><div class="section-label light-text">01 / LE AREE</div><div class="section-row"><div><h2>Scegli <em>da dove partire.</em></h2><p class="section-subtitle">Otto aree, ognuna con medici dedicati. Non sai quale fa per te? Il questionario ti aiuta a capirlo.</p></div></div><div class="services-grid">{service_html}</div></div></section>'
+                  + f'<section class="principles section-pad"><div class="wrap"><div class="section-label">02 / PERCHÉ UNA RETE</div><h2>Il medico giusto, <em>non il primo disponibile.</em></h2><div class="principles-grid steps-grid">{values_html}</div></div></section>'
+                  + f'<section class="principles how-section section-pad"><div class="wrap"><div class="section-label">03 / COME FUNZIONA</div><h2>Un medico al tuo fianco,<br><em>passo dopo passo.</em></h2>{STEPS}</div></section>'
+                  + FIRST_VISIT
+                  + '<section class="section-pad"><div class="wrap"><div class="section-label">04 / CON CHIAREZZA</div><h2>Cosa possiamo fare, <em>e cosa no.</em></h2><div class="can-grid">'
+                  + '<div class="can-box yes"><span class="mini-label">IL MEDICO PUÒ</span><ul>' + ''.join(f'<li>{escape(x)}</li>' for x in can) + '</ul></div>'
+                  + '<div class="can-box no"><span class="mini-label">IL MEDICO NON PUÒ</span><ul>' + ''.join(f'<li>{escape(x)}</li>' for x in cannot) + '</ul></div></div></div></section>'
+                  + '<section class="section-pad criteria-section"><div class="wrap service-grid"><div><div class="section-label">05 / LA RETE</div><h2>Come selezioniamo <em>i medici.</em></h2><p class="limits-text">Stiamo costruendo la rete con criteri precisi. Al lancio ogni medico avrà un profilo con specializzazione, aree di competenza e iscrizione all’albo.</p></div>'
+                  + '<dl class="criteria">' + ''.join(f'<div><dt>{escape(t)}</dt><dd>{escape(d)}</dd></div>' for t, d in criteria) + '</dl></div></section>'
+                  + '<section class="section-pad"><div class="wrap service-grid"><div><div class="section-label">06 / DOMANDE FREQUENTI</div><h2>Tutto quello <em>che ci chiedete.</em></h2><p class="section-subtitle">Non trovi la tua domanda? Scrivila nel questionario: la leggeremo.</p></div><div class="faq">'
+                  + ''.join(f'<details class="faq-item"><summary>{escape(q)}</summary><p>{escape(a)}</p></details>' for q, a in HUB_FAQ) + '</div></div></section>'
+                  + CTA_BAND)
 write('consulenze/index.html', page('Consulenze mediche online: peptidi, GLP-1, TRT e longevità', CONS_DESC, consulenze_hub, '/consulenze/',
-      schema=[webpage_ld('CollectionPage', '/consulenze/', 'Consulenze', CONS_DESC), itemlist_ld([(f"Consulenza {c['name']}", f"/consulenze/{SERVICE_SLUGS[c['name']]}/") for c in CONSULENZE])],
+      schema=[webpage_ld('CollectionPage', '/consulenze/', 'Consulenze', CONS_DESC), itemlist_ld([(f"Consulenza {c['name']}", f"/consulenze/{SERVICE_SLUGS[c['name']]}/") for c in CONSULENZE]), faq_ld(HUB_FAQ)],
       crumbs=[('Home', '/'), ('Consulenze', '/consulenze/')], image=og_image('consulenze', 'Consulenze online con medici esperti', 'CONSULENZE')))
 
 # ------------------------------------------------------------------ articoli
@@ -834,16 +907,46 @@ write('inizia/index.html', page('Trova il medico giusto per te — questionario'
 # ------------------------------------------------------------------ metodo
 grid_legend = ''.join(f'<li><strong>{escape(label)}</strong></li>' for _, label in EVIDENCE_ROWS)
 status_legend = ''.join(f'<li><span class="status {cls}"><i></i>{escape(label)}</span></li>' for label, cls in STATUS.values())
-metodo = f'''<section class="inner-hero"><div class="wrap"><div class="section-label light-text">DOCUMENTAZIONE / METODO</div><h1>Il nostro <em>metodo.</em></h1><p>Come scegliamo le fonti, come classifichiamo le prove e cosa non troverai mai nelle nostre schede.</p></div></section><section class="section-pad"><div class="wrap privacy-content"><div class="review-notice"><strong>Stato attuale:</strong> le schede sono bozze editoriali. La revisione medico-scientifica indipendente non è ancora stata effettuata: il nome del revisore e la data di revisione compariranno su ogni scheda quando sarà completata.</div>
-<h2>Da dove vengono le prove</h2><p>Ogni scheda indica per cinque livelli se esistono prove e di che qualità. I livelli non sono equivalenti: un risultato su cellule o su topi non dimostra un beneficio nelle persone. Più si sale nella piramide, più le prove sono affidabili per decidere su una terapia.</p><figure class="pyramid-figure">{evidence_pyramid()}<figcaption>La piramide delle prove: alla base gli studi di laboratorio, al vertice i medicinali che hanno superato studi clinici e valutazione delle autorità.</figcaption></figure><ol class="method-list">{grid_legend}</ol><p>Per ogni livello usiamo tre gradi: <strong>Presenti</strong> (più studi coerenti), <strong>Limitate</strong> (pochi studi, piccoli, non replicati o con limiti importanti), <strong>Assenti</strong>. Per l’autorizzazione: <strong>Sì</strong> (medicinale autorizzato in UE), <strong>Parziale</strong> (autorizzato solo fuori UE o per un’altra indicazione), <strong>No</strong>.</p>
-<h2>Stato regolatorio</h2><ul class="method-status">{status_legend}</ul><p>Lo stato si riferisce all’Unione europea, salvo diversa indicazione. Le decisioni di autorità extra-UE (per esempio FDA) sono riportate nel testo, ma non rendono un prodotto autorizzato in Italia.</p>
-<h2>Gerarchia delle fonti</h2><p>Diamo priorità a: documenti delle autorità regolatorie (EMA, AIFA, FDA), studi clinici randomizzati pubblicati, revisioni sistematiche, studi osservazionali, studi su animali e in vitro. Comunicati aziendali e notizie sono indicati come tali e usati solo per aggiornamenti recenti non ancora pubblicati altrove.</p>
-<h2>Revisione e aggiornamento</h2><p>Ogni scheda riporta la data dell’ultima verifica delle fonti. Le schede vengono ricontrollate almeno ogni sei mesi e ogni volta che cambia lo stato regolatorio. Prima della pubblicazione definitiva ogni scheda dovrà essere approvata da un medico revisore indipendente.</p>
-<h2>Dosi e modalità d’uso</h2><p>Ogni scheda indica come la sostanza viene assunta e da dove provengono le dosi riportate: il foglietto illustrativo approvato in UE, un foglietto approvato fuori UE, gli studi clinici pubblicati, oppure nessuna fonte affidabile. Quando non esiste una dose studiata nell’uomo non riportiamo le quantità che circolano online. Le dosi sono informazioni, non indicazioni: ogni trattamento richiede una visita e l’approvazione di un medico.</p>
-<h2>Cosa non facciamo</h2><p>Non indichiamo fornitori né prodotti “per uso di ricerca”. Non promettiamo prescrizioni: il medico prescrive solo medicinali autorizzati, quando li ritiene appropriati. Le schede non contengono link di affiliazione né contenuti sponsorizzati.</p>
-<h2>Segnalare un errore</h2><p>Un indirizzo dedicato alle segnalazioni sarà pubblicato al lancio. Ogni correzione sostanziale sarà indicata nella scheda.</p></div></section>'''
+read_steps = [('In sintesi', 'I punti chiave in quattro frasi, per chi ha poco tempo.'), ('Come funziona', 'Il meccanismo d’azione spiegato in modo semplice.'),
+              ('Le prove', 'I cinque livelli, dal laboratorio al medicinale autorizzato, con una nota per ciascuno.'), ('Come si assume', 'Via di somministrazione e dosi, sempre con la loro fonte.'),
+              ('Rischi', 'Effetti indesiderati noti e ciò che non sappiamo ancora.'), ('Regolamentazione', 'Lo stato in Italia ed Europa, con le novità da altri Paesi.'),
+              ('Le tappe principali', 'Le date che contano: scoperte, studi chiave, approvazioni.'), ('Le fonti', 'Documenti delle autorità e studi, con il tipo di fonte indicato.')]
+red_flags = ['La dicitura “solo per uso di ricerca” su un prodotto pensato per essere usato da persone.', 'Studi su topi o cellule presentati come prova di un beneficio nell’uomo.',
+             'Dosi e “protocolli” per sostanze mai studiate nell’uomo.', 'Foto prima/dopo e testimonianze al posto degli studi.',
+             'Promesse assolute: “rigenera”, “ringiovanisce”, “senza effetti collaterali”.', 'Chi vende il prodotto è anche chi scrive l’articolo che lo consiglia.']
+sources = [('EMA', 'Agenzia europea per i medicinali', 'https://www.ema.europa.eu/'), ('AIFA', 'Agenzia italiana del farmaco', 'https://www.aifa.gov.it/'),
+           ('FDA', 'Agenzia statunitense per alimenti e farmaci', 'https://www.fda.gov/'), ('PubMed', 'Archivio degli studi biomedici', 'https://pubmed.ncbi.nlm.nih.gov/'),
+           ('ClinicalTrials.gov', 'Registro dei trial clinici', 'https://clinicaltrials.gov/'), ('CTIS', 'Registro europeo dei trial clinici', 'https://euclinicaltrials.eu/'),
+           ('Cochrane', 'Revisioni sistematiche indipendenti', 'https://www.cochranelibrary.com/')]
+glossary = [('In vitro', 'Esperimento su cellule o tessuti in laboratorio, fuori da un organismo vivo.'), ('Modello animale', 'Studio su animali, di solito roditori, per capire meccanismi e sicurezza prima dell’uomo.'),
+            ('Studio osservazionale', 'Si osserva cosa succede a gruppi di persone senza assegnare un trattamento: mostra associazioni, non cause.'),
+            ('RCT', 'Studio clinico randomizzato: i partecipanti sono assegnati a caso al trattamento o al controllo. È il test più affidabile di efficacia.'),
+            ('Placebo', 'Trattamento inattivo usato come confronto, per separare l’effetto reale dalle aspettative.'),
+            ('Revisione sistematica e meta-analisi', 'Analisi che riunisce tutti gli studi su una domanda, con metodi espliciti.'),
+            ('Esito surrogato', 'Un valore misurabile (per esempio un livello nel sangue) usato al posto di un esito clinico come malattia o sopravvivenza.'),
+            ('Off-label', 'Uso di un medicinale autorizzato fuori dalle indicazioni approvate, sotto responsabilità del medico.'),
+            ('Galenica', 'Preparazione di un medicinale in farmacia, su prescrizione, a partire da sostanze consentite.'),
+            ('“Uso di ricerca”', 'Etichetta che esclude l’uso umano: il prodotto non ha i controlli di qualità dei medicinali.')]
+m_secs = [
+    ('prove', 'Da dove vengono le prove', f'<p>Ogni scheda indica per cinque livelli se esistono prove e di che qualità. I livelli non sono equivalenti: un risultato su cellule o su topi non dimostra un beneficio nelle persone. Più si sale nella piramide, più le prove sono affidabili per decidere su una terapia.</p><figure class="pyramid-figure">{evidence_pyramid()}<figcaption>La piramide delle prove: alla base gli studi di laboratorio, al vertice i medicinali che hanno superato studi clinici e valutazione delle autorità.</figcaption></figure><p>Per ogni livello usiamo tre gradi: <strong>Presenti</strong> (più studi coerenti), <strong>Limitate</strong> (pochi studi, piccoli, non replicati o con limiti importanti), <strong>Assenti</strong>. Per l’autorizzazione: <strong>Sì</strong> (medicinale autorizzato in UE), <strong>Parziale</strong> (autorizzato solo fuori UE o per un’altra indicazione), <strong>No</strong>.</p>'),
+    ('leggere', 'Come leggere una scheda', '<p>Tutte le schede hanno la stessa struttura, così puoi confrontare sostanze diverse e trovare subito ciò che ti interessa.</p><ol class="read-steps">' + ''.join(f'<li><strong>{escape(t)}</strong><span>{escape(d)}</span></li>' for t, d in read_steps) + '</ol>'),
+    ('stato', 'Stato regolatorio', f'<ul class="method-status">{status_legend}</ul><p>Lo stato si riferisce all’Unione europea, salvo diversa indicazione. Le decisioni di autorità extra-UE (per esempio FDA) sono riportate nel testo, ma non rendono un prodotto autorizzato in Italia.</p>'),
+    ('fonti', 'Le fonti che usiamo', '<p>Diamo priorità ai documenti delle autorità regolatorie, poi agli studi clinici randomizzati pubblicati, alle revisioni sistematiche, agli studi osservazionali e infine a quelli su animali e in vitro. Comunicati aziendali e notizie sono indicati come tali e usati solo per aggiornamenti recenti.</p><div class="source-grid">' + ''.join(f'<a href="{u}" target="_blank" rel="noopener noreferrer"><strong>{n}</strong><span>{escape(d)}</span></a>' for n, d, u in sources) + '</div>'),
+    ('affidabile', 'Come riconoscere un’informazione inaffidabile', '<p>Che tu legga un sito, un video o un post, questi sono i segnali che ci fanno drizzare le antenne.</p><ul class="red-flags">' + ''.join(f'<li>{escape(x)}</li>' for x in red_flags) + '</ul>'),
+    ('glossario', 'Piccolo glossario', '<dl class="glossary">' + ''.join(f'<div><dt>{escape(t)}</dt><dd>{escape(d)}</dd></div>' for t, d in glossary) + '</dl>'),
+    ('aggiornamento', 'Revisione e aggiornamento', '<p>Ogni scheda riporta la data dell’ultima verifica delle fonti. Le schede vengono ricontrollate almeno ogni sei mesi e ogni volta che cambia lo stato regolatorio. Prima della pubblicazione definitiva ogni scheda dovrà essere approvata da un medico revisore indipendente: il suo nome e la data compariranno sulla scheda.</p>'),
+    ('dosi', 'Dosi e modalità d’uso', '<p>Ogni scheda indica come la sostanza viene assunta e da dove provengono le dosi riportate: il foglietto illustrativo approvato in UE, un foglietto approvato fuori UE, gli studi clinici pubblicati, oppure nessuna fonte affidabile. Quando non esiste una dose studiata nell’uomo non riportiamo le quantità che circolano online. Le dosi sono informazioni, non indicazioni: ogni trattamento richiede una visita e l’approvazione di un medico.</p>'),
+    ('non-facciamo', 'Cosa non facciamo', '<p>Non indichiamo fornitori né prodotti “per uso di ricerca”. Non promettiamo prescrizioni: il medico prescrive solo medicinali autorizzati, quando li ritiene appropriati. Le schede non contengono link di affiliazione né contenuti sponsorizzati.</p>'),
+    ('errori', 'Segnalare un errore', '<p>Un indirizzo dedicato alle segnalazioni sarà pubblicato al lancio. Ogni correzione sostanziale sarà indicata nella scheda.</p>'),
+]
+m_toc = '<nav class="toc" aria-label="In questa pagina"><span class="mini-label">IN QUESTA PAGINA</span>' + ''.join(f'<a href="#{sid}">{escape(t)}</a>' for sid, t, _ in m_secs) + '</nav>'
+m_body = ''.join(f'<section class="profile-section-block method-block" id="{sid}"><div class="section-label">{n:02d}</div><h2>{escape(t)}</h2>{html}</section>' for n, (sid, t, html) in enumerate(m_secs, 1))
+metodo = (page_hero('metodo', 'DOCUMENTAZIONE / METODO', 'Il nostro <em>metodo.</em>', 'Come scegliamo le fonti, come classifichiamo le prove e cosa non troverai mai nelle nostre schede.',
+                    stats_row([(5, 'livelli di prova'), (3, 'gradi per livello'), ('6 mesi', 'al massimo tra due verifiche'), (0, 'contenuti sponsorizzati')]))
+          + f'<section class="section-pad"><div class="wrap profile-grid"><article class="profile-main method-main"><div class="review-notice"><strong>Stato attuale:</strong> le schede sono bozze editoriali. La revisione medico-scientifica indipendente non è ancora stata effettuata: il nome del revisore e la data di revisione compariranno su ogni scheda quando sarà completata.</div>{m_body}</article><aside class="profile-aside">{m_toc}</aside></div></section>'
+          + CTA_BAND)
 write('metodo/index.html', page('Metodo editoriale: come valutiamo le prove scientifiche', 'Come AHEAD seleziona le fonti, classifica le prove scientifiche (in vitro, animali, osservazionali, RCT) e aggiorna le schede della Library.', metodo, '/metodo/',
-      crumbs=[('Home', '/'), ('Metodo', '/metodo/')]))
+      crumbs=[('Home', '/'), ('Metodo', '/metodo/')], schema=[webpage_ld('WebPage', '/metodo/', 'Metodo editoriale', 'Come AHEAD valuta le prove scientifiche'), {'@type': 'DefinedTermSet', 'name': 'Glossario AHEAD', 'hasDefinedTerm': [{'@type': 'DefinedTerm', 'name': t, 'description': d} for t, d in glossary]}]))
 
 # ------------------------------------------------------------------ privacy
 privacy = '''<section class="inner-hero"><div class="wrap"><div class="section-label light-text">DOCUMENTAZIONE</div><h1>Privacy <em>e trasparenza.</em></h1><p>Informativa provvisoria. Da completare prima di attivare la raccolta di indirizzi email.</p></div></section><section class="section-pad"><div class="wrap privacy-content"><div class="review-notice"><strong>Prima della pubblicazione:</strong> inserire titolare effettivo del trattamento, contatti, base giuridica, tempi di conservazione, fornitori, trasferimenti, diritti e istruzioni aggiornate. Non attivare il modulo in produzione senza l’informativa definitiva.</div><h2>Perché raccogliere email?</h2><p>L’unico scopo previsto è inviare aggiornamenti sul progetto a chi ne fa richiesta con consenso esplicito. Non chiediamo informazioni su diagnosi, terapie o condizioni di salute.</p><h2>Quali strumenti useremo?</h2><p>MailerLite per l’invio di email e, previo assetto privacy adeguato, uno strumento di analytics per contare gli interessi in forma aggregata. Le integrazioni non sono ancora attive nella demo.</p><h2>Questionario “Trova il tuo medico”</h2><p>Il questionario è anonimo: non chiede nome, email, telefono o altri dati identificativi, e non registriamo indirizzo IP né informazioni sul dispositivo. Salviamo solo le risposte scelte e la data, per capire in forma aggregata quali servizi e quali medici sono più richiesti. Ti chiediamo di non inserire dati che possano identificarti nel campo di testo libero. L’eventuale iscrizione via email è separata e non viene collegata alle risposte.</p><h2>Ricerca nella Library</h2><p>La ricerca e i filtri funzionano interamente nel tuo browser: i termini cercati non vengono inviati a nessun server.</p><h2>Servizi sanitari</h2><p>Il progetto non è una struttura sanitaria operativa e non offre visite, prescrizioni o terapie.</p></div></section>'''
@@ -891,6 +994,13 @@ Il nome è l'indirizzo dell'articolo, cioè il nome del suo file in `data/artico
 | Nome file | Articolo |
 |---|---|
 {art_list}
+
+## Pagine indice (`img/pagine/`)
+| Nome file | Pagina |
+|---|---|
+| `library` | Library |
+| `consulenze` | Consulenze |
+| `metodo` | Metodo |
 
 ## Consulenze (`img/consulenze/`)
 | Nome file | Consulenza |

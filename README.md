@@ -52,7 +52,7 @@ Finché lo storage non è configurato il questionario risponde "non ancora attiv
 Le domande si modificano nella lista `SURVEY` in `build.py`; il build rigenera la pagina e lo schema di validazione del server.
 
 ## Foto delle intestazioni
-Schede, consulenze e articoli possono avere una foto a tutta larghezza dietro il titolo; per gli articoli la foto compare anche come anteprima nelle card. Senza foto resta l'intestazione scura con l'illustrazione molecolare.
+Schede, consulenze, articoli e le pagine Library, Consulenze e Metodo possono avere una foto a tutta larghezza dietro il titolo; per gli articoli la foto compare anche come anteprima nelle card. Senza foto resta l'intestazione scura con l'illustrazione molecolare.
 
 Si caricano direttamente da GitHub nella cartella `img/` con il nome indicato in `img/LEGGIMI.md` (elenco completo, aggiornato da `build.py`). Al commit su `main` una GitHub Action ottimizza la foto (WebP 1200 e 2400 px), rigenera le pagine e committa il risultato; Vercel pubblica da solo.
 
