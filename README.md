@@ -1,6 +1,6 @@
-# AHEAD Medicine — sito demo deploy-ready
+# Areyon Med — sito demo deploy-ready
 
-> **AHEAD è un nome provvisorio. Il sito è un prototipo**, non una clinica e non offre servizi sanitari. Le schede sono bozze da sottoporre a revisione clinico-scientifica prima della messa online definitiva.
+> **Areyon Med** (*areté* + *aion*: eccellenza e tempo della vita). **Il sito è un prototipo**, non una clinica e non offre servizi sanitari. Le schede sono bozze da sottoporre a revisione clinico-scientifica prima della messa online definitiva.
 
 ## Cosa contiene
 - Homepage premium e responsive
