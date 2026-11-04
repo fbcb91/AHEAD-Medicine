@@ -1,7 +1,7 @@
-# AHEAD Medicine — istruzioni per Codex
+# Areyon Med — istruzioni per Codex
 
 ## Scopo
-Sito italiano di validazione del mercato per un futuro servizio medico sulle terapie emergenti. Il brand AHEAD è provvisorio. Il primo MVP include homepage, quattro consulenze come **servizi futuri senza prezzi**, directory di dieci peptidi, ricerca/filtri e raccolta di email attivabile via MailerLite.
+Sito italiano di validazione del mercato per un futuro servizio medico sulle terapie emergenti. Il brand è **Areyon Med** ("Emerging Medicine", payoff "Eccellenza, nel tempo."): il nome unisce *areté* (eccellenza) e *aion* (il tempo della vita) ed è un’interpretazione creativa, non una parola greca autentica: non presentarlo come tale. Il primo MVP include homepage, quattro consulenze come **servizi futuri senza prezzi**, directory di dieci peptidi, ricerca/filtri e raccolta di email attivabile via MailerLite.
 
 ## Vincoli importanti
 - Il servizio è una rete di medici esperti: la persona racconta il suo obiettivo, le vengono proposti uno o più medici adatti, sceglie e prenota una videoconsulenza; il medico la segue nel tempo e, se lo ritiene appropriato, prescrive. Fase attuale: validazione dell'interesse. Finché il servizio non è prenotabile non presentarlo come già attivo.
@@ -22,6 +22,7 @@ Sito italiano di validazione del mercato per un futuro servizio medico sulle ter
 - `.github/workflows/build.yml`: su `main` rigenera il sito e committa le pagine aggiornate (così le foto caricate da GitHub vengono pubblicate); sulle PR verifica che l'HTML sia aggiornato.
 - `scripts/og-images.js` genera le immagini social in `og/` (Playwright): `node scripts/og-images.js && python3 build.py` dopo aver aggiunto pagine.
 - `sitemap.xml`, `robots.txt` e `og/pages.json` sono generati da `build.py`.
+- `fonts/` contiene i font del sito (Cinzel per il marchio, DM Sans e Manrope per i testi), ospitati in locale: niente Google Fonts (privacy e CSP).
 - `styles.css` per estetica responsive.
 - `app.js` ricerca / filtri / CTA / modulo.
 - `SURVEY` in `build.py` definisce le domande del questionario e genera `inizia/index.html` e `api/_survey-schema.js` (non modificarlo a mano).

@@ -38,7 +38,7 @@ Una revisione pubblicata nel 2025 ha inoltre osservato che, nonostante l’uso d
 
 **Il punto pratico:** un siero cosmetico al GHK-Cu e una preparazione iniettabile venduta come peptide anti-aging non sono prodotti intercambiabili. Cambiano via di somministrazione, esposizione, rischi e livello di controllo. Gli studi cosmetici non giustificano l’autoiniezione per finalità di longevità.
 
-Approfondisci nella [scheda GHK-Cu della AHEAD Library](/peptidi/ghk-cu/).
+Approfondisci nella [scheda GHK-Cu della Library di Areyon](/peptidi/ghk-cu/).
 
 ## 2. Epitalon: allungare i telomeri significa rallentare l’invecchiamento?
 
@@ -54,7 +54,7 @@ C’è anche un motivo per non banalizzare il tema: la telomerasi ha ruoli compl
 
 **Il punto pratico:** oggi non abbiamo prove affidabili che Epitalon allunghi la vita o migliori l’invecchiamento in persone sane. Un risultato sui telomeri non può essere usato come promessa di ringiovanimento, né come ragione per acquistare preparazioni non autorizzate.
 
-Approfondisci nella [scheda Epitalon della AHEAD Library](/peptidi/epitalon/).
+Approfondisci nella [scheda Epitalon della Library di Areyon](/peptidi/epitalon/).
 
 ## 3. Apelina: un possibile collegamento fra esercizio fisico e salute muscolare
 
@@ -90,7 +90,7 @@ Nell’episodio si parla della discussione americana sull’uso di peptidi speri
 
 È una distinzione essenziale per chi vede titoli che annunciano «peptidi finalmente approvati»: prima di trarre conclusioni, bisogna chiedersi *approvati per quale uso, da chi e in quale Paese?*
 
-## AHEAD Practical — Cosa puoi fare oggi, davvero?
+## In pratica — Cosa puoi fare oggi, davvero?
 
 Se segui la ricerca sulla longevità o hai scoperto uno di questi peptidi, il passo utile non è cercare subito dove acquistarlo. È trasformare la curiosità in domande verificabili.
 
@@ -112,7 +112,7 @@ La ricerca sui peptidi è un campo reale e potenzialmente importante. L’insuli
 
 La domanda da porsi non è «qual è il prossimo peptide da provare?», ma **«quali problemi di salute voglio affrontare, e quali prove servono per scegliere bene?»**
 
-**Vuoi confrontarti con un medico che conosce la ricerca sui peptidi?** AHEAD sta sviluppando un servizio di [Consulenza Peptidi](/consulenze/peptidi/) per discutere evidenze, rischi e possibilità cliniche realmente appropriate. Il servizio è in fase di sviluppo e **non è ancora prenotabile**: puoi consultare la pagina e manifestare interesse per gli aggiornamenti. La consulenza non garantirebbe prescrizioni né accesso a sostanze sperimentali.
+**Vuoi confrontarti con un medico che conosce la ricerca sui peptidi?** Areyon sta sviluppando un servizio di [Consulenza Peptidi](/consulenze/peptidi/) per discutere evidenze, rischi e possibilità cliniche realmente appropriate. Il servizio è in fase di sviluppo e **non è ancora prenotabile**: puoi consultare la pagina e manifestare interesse per gli aggiornamenti. La consulenza non garantirebbe prescrizioni né accesso a sostanze sperimentali.
 
 ---
 
