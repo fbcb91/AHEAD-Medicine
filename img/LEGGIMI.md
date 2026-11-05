@@ -99,6 +99,7 @@ Il nome è l'indirizzo dell'articolo, cioè il nome del suo file in `data/artico
 | `library` | Library |
 | `consulenze` | Consulenze |
 | `metodo` | Metodo |
+| `chi-siamo` | Chi siamo |
 
 ## Consulenze (`img/consulenze/`)
 | Nome file | Consulenza |
