@@ -258,3 +258,10 @@
 @media(max-width:800px){.name-grid{grid-template-columns:1fr}.name-words{flex-direction:row;align-items:baseline;gap:16px}.logo-word{font-size:21px}.logo-med{font-size:11px;letter-spacing:.3em}}
 .logo-word{padding-left:13px}.logo-arc{left:0}
 .footer-logo .logo-word{padding-left:17px}.footer-logo .logo-arc{left:0}
+/* Chi siamo */
+.pillar-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:36px}
+.pillar{display:flex;flex-direction:column;gap:12px;background:#fff;border:1px solid #d7ddda;padding:30px}
+.pillar>span{font-size:12px;font-weight:800;letter-spacing:.12em;color:#89b9d1}
+.pillar h3{font-size:clamp(24px,2vw,30px);margin:0}
+.pillar p{margin:0;color:#50656a;flex:1}
+@media(max-width:800px){.pillar-grid{grid-template-columns:1fr}}
