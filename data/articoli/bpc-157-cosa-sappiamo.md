@@ -6,6 +6,7 @@ date: 2026-10-30
 description: Il peptide più discusso per tendini e recupero: da dove nasce, cosa mostrano gli studi sugli animali, perché mancano quelli sull’uomo e qual è il suo stato legale in Italia.
 related: bpc-157, tb-500, kpv, ara-290
 service: Recupero e sport
+reviewed: 2026-11-10
 ---
 Il BPC-157 è probabilmente il peptide più famoso del mondo del recupero. Se ne parla per tendini, muscoli, articolazioni, intestino. Ma la distanza tra quello che si legge online e quello che dicono gli studi è enorme.
 

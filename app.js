@@ -1,5 +1,9 @@
 (() => {
   'use strict';
+  // Contatore aggregato (api/event.js): invia solo il nome dell'evento e l'area, nessun dato sulla persona.
+  function count(e, v) {
+    try { navigator.sendBeacon('/api/event', new Blob([JSON.stringify({ e, v })], { type: 'application/json' })); } catch (_) {}
+  }
   const menuButton = document.querySelector('.mobile-menu');
   const nav = document.querySelector('.nav-links');
   if (menuButton && nav) {
@@ -137,9 +141,7 @@
         let body = {};
         try { body = await res.json(); } catch (_) {}
         if (!res.ok) throw new Error(body.error || 'Impossibile inviare le risposte, riprova più tardi.');
-        if (typeof window.plausible === 'function') {
-          (data.aree || []).forEach(a => window.plausible('Questionario completato', { props: { area: a } }));
-        }
+        (data.aree || []).forEach(a => count('questionario', a));
         survey.hidden = true;
         document.querySelector('.survey-progress').hidden = true;
         const done = document.querySelector('#survey-done');
@@ -156,9 +158,7 @@
 
   // Click sui pulsanti che portano al questionario: conteggio aggregato per area.
   document.querySelectorAll('.start-link').forEach(link => link.addEventListener('click', () => {
-    if (typeof window.plausible === 'function') {
-      window.plausible('Consulenza: interesse', { props: { servizio: link.dataset.service || 'generale' } });
-    }
+    count('interesse', link.dataset.service || 'generale');
   }));
 
   const modal = document.querySelector('#interest-modal');
@@ -168,9 +168,7 @@
   let previousFocus = null;
   // Event analytics are anonymous by design: only category, no email or medical history.
   function trackInterest(service) {
-    if (typeof window.plausible === 'function') {
-      window.plausible('Consulenza: interesse', { props: { servizio: service } });
-    }
+    count('interesse', service);
   }
   function openModal(service) {
     previousFocus = document.activeElement;

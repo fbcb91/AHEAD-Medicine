@@ -5,6 +5,7 @@ date: 2026-10-30
 description: Calvizie androgenetica, caduta dopo stress o dimagrimento, peptidi al rame: quali trattamenti hanno prove solide e quali no.
 related: ghk-cu, ahk-cu
 service: Capelli
+reviewed: 2026-11-10
 ---
 La caduta dei capelli è una delle preoccupazioni più comuni, per uomini e donne. Il mercato offre di tutto: lozioni, integratori, peptidi, trattamenti in studio. Ecco cosa dicono le prove.
 

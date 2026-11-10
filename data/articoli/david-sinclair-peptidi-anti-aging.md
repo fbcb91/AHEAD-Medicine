@@ -6,6 +6,7 @@ date: 2026-11-02
 description: Cosa dice Sinclair su GHK-Cu, Epitalon e apelina? Analizziamo studi sull’uomo, rischi, novità FDA e cosa puoi fare oggi in Italia.
 related: ghk-cu, epitalon, semaglutide, tirzepatide, mots-c
 service: Peptidi
+reviewed: 2026-11-10
 ---
 
 Un peptide per una pelle più giovane. Un altro per proteggere i telomeri. Un altro ancora per mantenere la massa muscolare con l’età. Su internet, la medicina della longevità sembra a volte una lista di molecole che promettono di intervenire su ogni meccanismo dell’invecchiamento.
@@ -129,4 +130,4 @@ La domanda da porsi non è «qual è il prossimo peptide da provare?», ma **«q
 - [EMA: Wegovy (semaglutide)](https://www.ema.europa.eu/en/medicines/human/EPAR/wegovy) — indicazioni autorizzate nell’UE.
 - [ISS: sintesi delle linee guida OMS sull’attività fisica](https://www.epicentro.iss.it/attivita_fisica/linee-guida-oms-2020).
 
-*Nota editoriale: articolo informativo basato sull’episodio originale e su fonti scientifiche e regolatorie indicate. Non costituisce consiglio medico individuale. Verifica editoriale delle fonti: 2 novembre 2026. Revisione medico-scientifica indipendente: da effettuare prima della pubblicazione definitiva.*
+*Nota editoriale: articolo informativo basato sull’episodio originale e su fonti scientifiche e regolatorie indicate. Non costituisce consiglio medico individuale. Verifica editoriale delle fonti: 2 novembre 2026. Revisione medico-scientifica: medici di Areyon Med, 10 novembre 2026.*

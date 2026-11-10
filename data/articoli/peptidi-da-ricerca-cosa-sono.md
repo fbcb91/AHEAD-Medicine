@@ -5,6 +5,7 @@ date: 2026-10-30
 description: BPC-157, TB-500, MOTS-c e gli altri peptidi venduti online “solo per uso di ricerca”: cosa significa questa etichetta, cosa dicono gli studi e quali rischi comporta.
 related: bpc-157, tb-500, mots-c, retatrutide
 service: Peptidi
+reviewed: 2026-11-10
 ---
 Basta una ricerca online per trovare decine di siti che vendono peptidi in fiale: BPC-157, TB-500, MOTS-c, perfino molecole ancora in sperimentazione come il retatrutide. Quasi sempre con la stessa dicitura: “solo per uso di ricerca, non per consumo umano”. Ma che cosa significa davvero?
 
