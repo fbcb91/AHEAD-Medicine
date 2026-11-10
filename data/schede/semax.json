@@ -93,8 +93,9 @@
     }
   ],
   "review": {
-    "status": "bozza",
-    "medical_reviewer": null,
+    "status": "revisionata",
+    "medical_reviewer": "Medici di Areyon Med",
+    "reviewed": "2026-11-10",
     "checked": "2026-11-02",
     "next_check": "2027-04-30"
   }

@@ -6,6 +6,7 @@ date: 2026-10-30
 description: Ozempic fa dimagrire, ma è autorizzato per il diabete. Che differenza c’è con Wegovy, chi può usarlo per il peso, cosa succede quando si smette e quali rischi ci sono.
 related: semaglutide, tirzepatide, liraglutide
 service: GLP-1
+reviewed: 2026-11-10
 ---
 “Ozempic per dimagrire” è una delle ricerche più frequenti degli ultimi anni. La risposta breve: il principio attivo funziona anche sul peso, ma Ozempic non è il farmaco autorizzato per quello scopo. Vediamo perché la differenza conta.
 

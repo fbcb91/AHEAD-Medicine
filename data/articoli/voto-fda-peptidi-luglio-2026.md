@@ -6,6 +6,7 @@ description: Un comitato consultivo della FDA ha votato a favore dell’uso in g
 related: bpc-157, tb-500, mots-c, kpv, epitalon, semax, dsip
 service: Peptidi
 updated: 2026-11-02
+reviewed: 2026-11-10
 ---
 **Aggiornamento del 2 novembre 2026:** il 30 ottobre il Dipartimento della Salute statunitense (HHS) ha pubblicato una politica provvisoria di tolleranza sulla preparazione galenica di sei di questi peptidi (BPC-157, TB-500, KPV, MOTS-c, Semax ed Epitalon), in attesa della procedura formale della FDA. Non è un’approvazione come farmaco e non cambia nulla in Italia. Ne parliamo anche in [questo articolo](/articoli/david-sinclair-peptidi-anti-aging/).
 

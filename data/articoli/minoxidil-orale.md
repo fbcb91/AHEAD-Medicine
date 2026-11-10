@@ -6,6 +6,7 @@ date: 2026-10-30
 description: Il minoxidil in compresse a basso dosaggio è sempre più usato contro la caduta dei capelli. Cosa dicono gli studi, come si confronta con la lozione e quali effetti collaterali controllare.
 related: ghk-cu, ahk-cu
 service: Capelli
+reviewed: 2026-11-10
 ---
 Il minoxidil è nato come farmaco per la pressione alta. Il suo effetto collaterale più evidente, la crescita dei peli, lo ha trasformato in uno dei trattamenti più usati contro la caduta dei capelli. Negli ultimi anni sempre più dermatologi lo prescrivono anche in compresse, a dosi basse.
 

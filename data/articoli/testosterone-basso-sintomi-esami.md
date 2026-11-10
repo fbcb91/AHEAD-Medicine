@@ -5,6 +5,7 @@ date: 2026-10-30
 description: Stanchezza, calo del desiderio, meno massa muscolare: quando pensare a un testosterone basso, quali esami fare, quali sono le cause e quando la terapia sostitutiva (TRT) è davvero indicata.
 related: testosterone, clomifene, hcg
 service: TRT
+reviewed: 2026-11-10
 ---
 Il testosterone basso, o ipogonadismo maschile, è una condizione reale e trattabile. Ma molti sintomi che gli vengono attribuiti sono comuni e hanno spesso altre cause. Ecco come si arriva a una diagnosi corretta.
 

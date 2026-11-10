@@ -5,6 +5,7 @@ date: 2026-10-30
 description: Come funzionano i farmaci della famiglia GLP-1, cosa li distingue e qual è il loro stato di autorizzazione in Europa nel 2026.
 related: semaglutide, tirzepatide, retatrutide, orforglipron, liraglutide
 service: GLP-1
+reviewed: 2026-11-10
 ---
 In pochi anni i farmaci della famiglia GLP-1 sono diventati tra i più discussi al mondo. I nomi si moltiplicano e non è facile capire cosa cambia tra una molecola e l’altra. Ecco una guida essenziale.
 

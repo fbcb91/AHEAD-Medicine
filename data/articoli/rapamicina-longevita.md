@@ -6,6 +6,7 @@ date: 2026-10-30
 description: La rapamicina allunga la vita dei topi ed è diventata il simbolo della medicina anti-aging. Cosa sappiamo davvero sull’uomo, quali sono i rischi e perché la prudenza è d’obbligo.
 related: rapamicina, metformina, senolitici, nad-precursori
 service: Longevity & Performance
+reviewed: 2026-11-10
 ---
 Tra tutte le molecole proposte per rallentare l’invecchiamento, la rapamicina è quella con le prove più solide negli animali. È anche una di quelle con più domande aperte nelle persone.
 

@@ -265,3 +265,19 @@
 .pillar h3{font-size:clamp(24px,2vw,30px);margin:0}
 .pillar p{margin:0;color:#50656a;flex:1}
 @media(max-width:800px){.pillar-grid{grid-template-columns:1fr}}
+/* Lancio: revisione, barra in alto, pagine legali e contatti */
+.review-notice.reviewed{background:#e6f1ea;border-left-color:#5e997e;color:#2f5a43}
+.topbar a{color:inherit;text-decoration:none}
+.topbar a:hover{text-decoration:underline;text-underline-offset:3px}
+.legal-updated{font-size:13px!important;color:#9fb7bc!important;margin-top:18px}
+.legal-main ul{padding-left:20px;color:#50656a}
+.legal-main li{margin-bottom:8px;line-height:1.6}
+.legal-block{padding-top:34px}
+.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.contact-card{background:#fff;border:1px solid #d7ddda;padding:30px;display:flex;flex-direction:column;gap:10px}
+.contact-card h3{font-size:clamp(22px,2vw,28px);margin:0}
+.contact-card p{margin:0;color:#50656a}
+.contact-card.urgent{border-top:4px solid #c0705a}
+.contact-email{font-family:'Manrope',sans-serif;font-size:clamp(22px,2.4vw,32px);font-weight:600;color:#24363b;letter-spacing:-.03em}
+.muted-email{font-size:18px!important;color:#7a9196!important}
+@media(max-width:700px){.contact-grid{grid-template-columns:1fr}}
