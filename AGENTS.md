@@ -30,6 +30,7 @@ Sito italiano di validazione del mercato per un futuro servizio medico sulle ter
 - `api/survey.js` salva le risposte su Redis (Upstash); `api/survey-export.js` le esporta in CSV con `SURVEY_ADMIN_KEY`.
 - `api/event.js` conta in forma aggregata clic di interesse e questionari per area (nessun dato sulla persona); `api/stats.js` mostra i totali con `SURVEY_ADMIN_KEY`. Statistiche di visita: Vercel Web Analytics (senza cookie), da attivare nel pannello Vercel.
 - `api/interest.js` iscrizione email: con `MAILERLITE_API_TOKEN` e `MAILERLITE_GROUP_ID` usa MailerLite, altrimenti salva nella lista d'attesa su Upstash (`waitlist:emails`, solo email e data del consenso), esportabile in CSV con `/api/waitlist-export?key=` (`SURVEY_ADMIN_KEY`). Honeypot e rate limit inclusi.
+- La CSP vieta gli stili inline: niente attributi `style="…"` nell'HTML. Per il colore d'area usare le classi `cat-<slug>` di `styles.css` (da aggiornare se si aggiunge un'area a `CAT_COLORS`).
 - `vercel.json` header di sicurezza, inclusa la CSP: aggiornarla se si aggiungono script o domini esterni (es. analytics).
 
 ## Prossime funzioni desiderate
