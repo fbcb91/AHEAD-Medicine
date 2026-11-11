@@ -44,8 +44,12 @@
     };
     query.addEventListener('input', update);
     // Supporta link del tipo /library/?q=bpc
-    const initial = new URLSearchParams(location.search).get('q');
+    // e la ricerca dalla home, /library/#cerca=bpc: il frammento non arriva al server.
+    let fromHome = '';
+    try { if (location.hash.startsWith('#cerca=')) fromHome = decodeURIComponent(location.hash.slice(7)); } catch (_) {}
+    const initial = fromHome || new URLSearchParams(location.search).get('q');
     if (initial) { query.value = initial; update(); }
+    if (fromHome) document.querySelector('#catalogo')?.scrollIntoView();
     kindFilter?.addEventListener('change', update);
     statusFilter?.addEventListener('change', update);
     filters.forEach(f => f.addEventListener('click', () => {
@@ -57,6 +61,14 @@
       update();
     }));
   }
+
+  // Ricerca in home: porta alla Library mettendo il termine nel frammento dell'URL (resta nel browser).
+  const homeSearch = document.querySelector('.home-search');
+  homeSearch?.addEventListener('submit', event => {
+    event.preventDefault();
+    const term = homeSearch.querySelector('input').value.trim();
+    location.href = '/library/' + (term ? '#cerca=' + encodeURIComponent(term) : '#catalogo');
+  });
 
   // Article list: filter by type (Guida / News).
   const typeFilters = [...document.querySelectorAll('.article-filters .filter')];
@@ -269,7 +281,7 @@
   if (!reduce && 'IntersectionObserver' in window) {
     const sel = ['main section:not(.hero):not(.inner-hero):not(.marquee) .section-label', 'main section:not(.hero):not(.inner-hero) h2',
       '.section-subtitle', '.service-card', '.peptide-card', '.article-card', '.principles-grid > div', '.library-bottom',
-      '.signup-panel', '.area-tile', '.services-foot', '.signup-grid > div > p', '.fact-box', '.aside-cta'].join(',');
+      '.signup-panel', '.area-tile', '.area-photo', '.home-search', '.quick-links', '.services-foot', '.signup-grid > div > p', '.fact-box', '.aside-cta'].join(',');
     const els = [...document.querySelectorAll(sel)].filter(el => el.getBoundingClientRect().top > innerHeight * 0.9);
     const io = new IntersectionObserver(entries => entries.forEach(en => {
       if (!en.isIntersecting) return;
@@ -318,6 +330,147 @@
       card.style.setProperty('--my', (e.clientY - r.top) + 'px');
     }, { passive: true });
   }
+
+  // Card che si inclinano verso il cursore
+  if (finePointer && !reduce) {
+    let tilted = null;
+    const untilt = () => { if (tilted) { tilted.style.transform = ''; tilted = null; } };
+    document.addEventListener('pointermove', e => {
+      const el = e.target.closest?.('.area-photo, .peptide-card');
+      if (el !== tilted) untilt();
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+      el.style.transform = `perspective(1000px) rotateX(${(-py * 5).toFixed(2)}deg) rotateY(${(px * 6).toFixed(2)}deg) translateY(-6px)`;
+      tilted = el;
+    }, { passive: true });
+    document.documentElement.addEventListener('pointerleave', untilt);
+  }
+
+  // Elica peptidica 3D nella hero: ruota da sola, segue il cursore, si trascina.
+  const visual = document.querySelector('.hero-visual');
+  if (visual && window.HTMLCanvasElement) (() => {
+    const cv = document.createElement('canvas');
+    const ctx = cv.getContext('2d');
+    if (!ctx) return;
+    cv.className = 'helix';
+    visual.append(cv);
+    visual.classList.add('has-helix');
+
+    // sfere e aloni disegnati una volta sola, poi riusati a ogni fotogramma
+    const ball = (r, g, b) => {
+      const s = 48, c = document.createElement('canvas'); c.width = c.height = s * 2;
+      const x = c.getContext('2d'), gr = x.createRadialGradient(s * 0.7, s * 0.62, s * 0.04, s, s, s);
+      gr.addColorStop(0, '#fff'); gr.addColorStop(0.28, `rgb(${r},${g},${b})`);
+      gr.addColorStop(1, `rgb(${r * 0.22 | 0},${g * 0.28 | 0},${b * 0.36 | 0})`);
+      x.fillStyle = gr; x.beginPath(); x.arc(s, s, s - 1, 0, Math.PI * 2); x.fill();
+      return c;
+    };
+    const halo = (r, g, b) => {
+      const s = 48, c = document.createElement('canvas'); c.width = c.height = s * 2;
+      const x = c.getContext('2d'), gr = x.createRadialGradient(s, s, 0, s, s, s);
+      gr.addColorStop(0, `rgba(${r},${g},${b},.55)`); gr.addColorStop(1, `rgba(${r},${g},${b},0)`);
+      x.fillStyle = gr; x.fillRect(0, 0, s * 2, s * 2);
+      return c;
+    };
+    const PAL = [[137, 185, 209], [190, 215, 237], [224, 232, 167], [108, 195, 207], [169, 155, 224], [217, 160, 102], [222, 148, 173], [111, 179, 155]]
+      .map(c => ({ ball: ball(...c), halo: halo(...c) }));
+
+    const N = 44, R = 92, RISE = 10.5, STEP = 0.7;
+    const atoms = [], bonds = [];
+    for (let i = 0; i < N; i++) {
+      atoms.push({ a: i * STEP, y: (i - (N - 1) / 2) * RISE, rad: R, size: 9 + (i * 7 % 5), c: i % 6 === 3 ? 2 : i % 2, k: i });
+      if (i) bonds.push([atoms.length - 1 - (i % 2 === 1 ? 2 : 1), atoms.length - 1]);
+      if (i % 2 === 0) {
+        atoms.push({ a: i * STEP + 0.22, y: (i - (N - 1) / 2) * RISE + 5, rad: R * (1.45 + (i * 13 % 7) * 0.035), size: 5 + (i * 5 % 4), c: 3 + (i / 2 % 5), k: i });
+        bonds.push([atoms.length - 2, atoms.length - 1]);
+      }
+    }
+    let w = 0, h = 0, unit = 1, tiltZ = 0.4, rot = 0.6, vel = 0.004, tiltX = 0, tiltXTarget = 0;
+    let dragging = false, lastX = 0, visible = true, raf = 0;
+    const P = atoms.map(() => ({ x: 0, y: 0, z: 0, s: 1 }));
+
+    const resize = () => {
+      const r = visual.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = r.width; h = r.height;
+      cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const wide = w > h * 1.05;               // su telefono l'elica si corica
+      tiltZ = wide ? 1.22 : 0.4;
+      unit = wide ? Math.min(w / 500, h / 310) : Math.min(w / 430, h / 590);
+      if (reduce) draw(0);
+    };
+    const draw = t => {
+      ctx.clearRect(0, 0, w, h);
+      const cz = Math.cos(tiltZ), sz = Math.sin(tiltZ), cx = Math.cos(tiltX), sx = Math.sin(tiltX), FOV = 900;
+      atoms.forEach((m, i) => {
+        const rad = m.rad + Math.sin(t / 1400 + m.k * 0.35) * 5, a = m.a + rot;
+        let x = Math.cos(a) * rad, y = m.y, z = Math.sin(a) * rad;
+        const y1 = y * cx - z * sx; z = y * sx + z * cx; y = y1;      // inclinazione dal cursore
+        const x1 = x * cz - y * sz; y = x * sz + y * cz; x = x1;      // asse inclinato
+        const s = FOV / (FOV - z), p = P[i];
+        p.x = w / 2 + x * s * unit; p.y = h / 2 + y * s * unit; p.z = z; p.s = s * unit;
+      });
+      const items = atoms.map((m, i) => ({ z: P[i].z, i, m }));
+      bonds.forEach(b => items.push({ z: (P[b[0]].z + P[b[1]].z) / 2 - 0.5, b }));
+      items.sort((p, q) => p.z - q.z);
+      for (const it of items) {
+        const depth = Math.min(1, Math.max(0, (it.z + 150) / 300));
+        if (it.b) {
+          const p = P[it.b[0]], q = P[it.b[1]];
+          ctx.strokeStyle = `rgba(190,215,237,${0.1 + depth * 0.42})`;
+          ctx.lineWidth = (1 + depth * 1.6) * p.s;
+          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+          continue;
+        }
+        const p = P[it.i], size = it.m.size * p.s, pal = PAL[it.m.c];
+        if (depth > 0.45) {
+          ctx.globalCompositeOperation = 'lighter';
+          ctx.globalAlpha = (depth - 0.45) * 0.55;
+          ctx.drawImage(pal.halo, p.x - size * 3.2, p.y - size * 3.2, size * 6.4, size * 6.4);
+          ctx.globalCompositeOperation = 'source-over';
+        }
+        ctx.globalAlpha = 0.28 + depth * 0.72;
+        ctx.drawImage(pal.ball, p.x - size, p.y - size, size * 2, size * 2);
+        ctx.globalAlpha = 1;
+      }
+    };
+    const loop = t => {
+      if (!dragging) vel += (0.004 - vel) * 0.03;
+      rot += vel;
+      tiltX += (tiltXTarget - tiltX) * 0.06;
+      draw(t);
+      raf = visible && !document.hidden ? requestAnimationFrame(loop) : 0;
+    };
+    const start = () => { if (!reduce && !raf && visible && !document.hidden) raf = requestAnimationFrame(loop); };
+
+    resize();
+    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(visual);
+    requestAnimationFrame(() => cv.classList.add('is-ready'));
+    if (reduce) return;
+    new IntersectionObserver(([en]) => { visible = en.isIntersecting; start(); }).observe(visual);
+    document.addEventListener('visibilitychange', start);
+    start();
+
+    const hint = document.createElement('span');
+    hint.className = 'helix-hint';
+    hint.textContent = '↻ TRASCINA PER RUOTARE';
+    visual.append(hint);
+    cv.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; cv.setPointerCapture(e.pointerId); cv.classList.add('is-dragging'); hint.classList.add('is-used'); });
+    cv.addEventListener('pointermove', e => { if (!dragging) return; vel = (e.clientX - lastX) * 0.009; lastX = e.clientX; });
+    const release = () => { dragging = false; cv.classList.remove('is-dragging'); };
+    cv.addEventListener('pointerup', release);
+    cv.addEventListener('pointercancel', release);
+    if (finePointer) {
+      const hero = visual.closest('.hero');
+      hero.addEventListener('pointermove', e => {
+        const r = hero.getBoundingClientRect();
+        tiltXTarget = ((e.clientY - r.top) / r.height - 0.5) * 0.7;
+        if (!dragging) vel += ((e.clientX - r.left) / r.width - 0.5) * 0.0006;
+      }, { passive: true });
+      hero.addEventListener('pointerleave', () => { tiltXTarget = 0; });
+    }
+  })();
 
   // Campo molecolare animato nelle intestazioni scure
   const heroes = [...document.querySelectorAll('.hero, .inner-hero:not(.has-photo)')];
