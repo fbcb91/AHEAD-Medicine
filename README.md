@@ -31,7 +31,6 @@ Apri `http://localhost:8000/` nel browser.
 5. Quando vuoi attivare la raccolta email crea una lista/gruppo dedicato in MailerLite e configura su Vercel **Environment Variables**:
    - `MAILERLITE_API_TOKEN` = token API segreto, **mai nel browser**.
    - `MAILERLITE_GROUP_ID` = ID gruppo MailerLite per contatti generici.
-   - `SITE_FORMS_ENABLED` = `true` **solo dopo** privacy definitiva, verifica GDPR, consenso e conferma iscrizione.
 6. Verifica con test end-to-end, preferendo il **double opt-in** configurato con MailerLite.
 
 API MailerLite: https://developers.mailerlite.com/api/subscribers
@@ -66,6 +65,9 @@ Tutto è generato da `build.py`:
 - Immagini social 1200×630 per ogni pagina in `og/`: dopo aver aggiunto schede, articoli o consulenze lancia `node scripts/og-images.js && python3 build.py`
 
 Per cambiare dominio modifica `SITE_URL` in `build.py`. Dopo la pubblicazione: verifica il sito in Google Search Console (metodo "prefisso URL"; se scegli il meta tag inserisci il codice in `GSC_VERIFICATION`) e invia `sitemap.xml`.
+
+## Iscrizione email
+Il modulo "Ricevi aggiornamenti" funziona subito: finché MailerLite non è configurato, le email (solo indirizzo e data del consenso) finiscono nella lista d'attesa su Upstash. Per scaricarla in CSV: `/api/waitlist-export?key=<SURVEY_ADMIN_KEY>`. Quando su Vercel ci sono `MAILERLITE_API_TOKEN` e `MAILERLITE_GROUP_ID`, le nuove iscrizioni vanno direttamente su MailerLite (attiva il double opt-in per le iscrizioni via API); importa lì il CSV della lista d'attesa.
 
 ## Misura interesse
 Le CTA lanciano un evento aggregato `Consulenza: interesse` con proprietà `servizio`, **senza l'email**. L'evento viene registrato solo se è stato collegato uno strumento compatibile con la funzione `window.plausible` e solo nel rispetto delle regole privacy e cookie. Collega la piattaforma analytics configurandone la libreria di tracciamento: non è inclusa nella demo.
