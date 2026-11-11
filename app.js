@@ -240,3 +240,182 @@
     }
   });
 })();
+
+// Effetti visivi: solo decorazione, nessun dato inviato. Rispettano prefers-reduced-motion.
+(() => {
+  'use strict';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // Header compatto e barra di avanzamento
+  const header = document.querySelector('.site-header');
+  const bar = document.querySelector('.scroll-progress');
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      header?.classList.toggle('is-scrolled', y > 40);
+      const max = document.documentElement.scrollHeight - innerHeight;
+      bar?.style.setProperty('--progress', max > 0 ? Math.min(1, y / max).toFixed(4) : '0');
+      ticking = false;
+    });
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Comparsa allo scroll, con ritardo a cascata dentro le griglie
+  if (!reduce && 'IntersectionObserver' in window) {
+    const sel = ['main section:not(.hero):not(.inner-hero):not(.marquee) .section-label', 'main section:not(.hero):not(.inner-hero) h2',
+      '.section-subtitle', '.service-card', '.peptide-card', '.article-card', '.principles-grid > div', '.library-bottom',
+      '.signup-panel', '.area-tile', '.services-foot', '.signup-grid > div > p', '.fact-box', '.aside-cta'].join(',');
+    const els = [...document.querySelectorAll(sel)].filter(el => el.getBoundingClientRect().top > innerHeight * 0.9);
+    const io = new IntersectionObserver(entries => entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      en.target.classList.add('is-in');
+      io.unobserve(en.target);
+    }), { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => {
+      const parent = el.parentElement;
+      const siblings = parent ? [...parent.children].filter(c => els.includes(c)) : [];
+      const i = Math.max(0, siblings.indexOf(el));
+      el.style.setProperty('--d', (Math.min(i, 7) * 0.08) + 's');
+      el.classList.add('reveal');
+      io.observe(el);
+    });
+    document.querySelectorAll('.steps-grid').forEach(g => {
+      [...g.children].forEach((c, i) => c.style.setProperty('--d', (i * 0.25) + 's'));
+      io.observe(g);
+    });
+  } else {
+    document.documentElement.classList.add('no-reveal');
+  }
+
+  // Numeri che contano fino al valore finale (il testo nell'HTML resta quello vero)
+  if (!reduce) {
+    document.querySelectorAll('.hero-stats-row strong').forEach((el, k) => {
+      const m = el.textContent.trim().match(/^(\d+)(.*)$/);
+      if (!m) return;
+      const end = +m[1], rest = m[2], t0 = performance.now() + 300 + k * 120, dur = 1400;
+      const step = now => {
+        const p = Math.min(1, Math.max(0, (now - t0) / dur));
+        el.textContent = Math.round(end * (1 - Math.pow(1 - p, 4))) + rest;
+        if (p < 1) requestAnimationFrame(step);
+      };
+      el.textContent = '0' + rest;
+      requestAnimationFrame(step);
+    });
+  }
+
+  // Luce che segue il cursore sulle card
+  if (finePointer) {
+    document.addEventListener('pointermove', e => {
+      const card = e.target.closest?.('.service-card, .peptide-card, .article-card, .area-tile');
+      if (!card) return;
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    }, { passive: true });
+  }
+
+  // Campo molecolare animato nelle intestazioni scure
+  const heroes = [...document.querySelectorAll('.hero, .inner-hero:not(.has-photo)')];
+  if (reduce || !heroes.length || !window.HTMLCanvasElement) return;
+  heroes.forEach(hero => {
+    const canvas = document.createElement('canvas');
+    canvas.className = 'hero-canvas';
+    canvas.setAttribute('aria-hidden', 'true');
+    const spot = document.createElement('div');
+    spot.className = 'hero-spot';
+    spot.setAttribute('aria-hidden', 'true');
+    hero.prepend(canvas, spot);
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const isHome = hero.classList.contains('hero');
+    const colors = ['137,185,209', '190,215,237', '224,232,167'];
+    let w = 0, h = 0, dpr = 1, nodes = [], visible = true, raf = 0;
+    const mouse = { x: -9999, y: -9999 };
+
+    const resize = () => {
+      const r = hero.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = r.width; h = r.height;
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const target = Math.round(Math.min(isHome ? 95 : 55, (w * h) / (isHome ? 14000 : 20000)));
+      nodes = Array.from({ length: target }, () => ({
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
+        r: Math.random() * 1.6 + 0.6, c: colors[Math.random() < 0.15 ? 2 : Math.random() < 0.5 ? 1 : 0],
+        p: Math.random() * Math.PI * 2,
+      }));
+    };
+
+    const LINK = 130;
+    const draw = t => {
+      ctx.clearRect(0, 0, w, h);
+      for (const n of nodes) {
+        const dx = mouse.x - n.x, dy = mouse.y - n.y, d2 = dx * dx + dy * dy;
+        if (d2 < 40000) { n.vx += dx * 0.000025; n.vy += dy * 0.000025; }
+        n.vx *= 0.995; n.vy *= 0.995;
+        n.vx += (Math.random() - 0.5) * 0.008; n.vy += (Math.random() - 0.5) * 0.008;
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < -20) n.x = w + 20; else if (n.x > w + 20) n.x = -20;
+        if (n.y < -20) n.y = h + 20; else if (n.y > h + 20) n.y = -20;
+      }
+      ctx.lineWidth = 0.7;
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j], dx = a.x - b.x, dy = a.y - b.y, d = Math.hypot(dx, dy);
+          if (d < LINK) {
+            ctx.strokeStyle = `rgba(${a.c},${(1 - d / LINK) * 0.22})`;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+        const md = Math.hypot(mouse.x - a.x, mouse.y - a.y);
+        if (md < 170) {
+          ctx.strokeStyle = `rgba(224,232,167,${(1 - md / 170) * 0.35})`;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+        }
+      }
+      for (const n of nodes) {
+        const tw = 0.55 + 0.45 * Math.sin(t / 900 + n.p);
+        ctx.fillStyle = `rgba(${n.c},${0.35 + tw * 0.5})`;
+        ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
+        if (n.r > 1.8) {
+          ctx.fillStyle = `rgba(${n.c},${0.06 * tw})`;
+          ctx.beginPath(); ctx.arc(n.x, n.y, n.r * 6, 0, Math.PI * 2); ctx.fill();
+        }
+      }
+    };
+    const loop = t => { draw(t); raf = visible && !document.hidden ? requestAnimationFrame(loop) : 0; };
+    const start = () => { if (!raf && visible && !document.hidden) raf = requestAnimationFrame(loop); };
+
+    resize();
+    let rt;
+    addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(resize, 150); }, { passive: true });
+    new IntersectionObserver(([en]) => { visible = en.isIntersecting; start(); }).observe(hero);
+    document.addEventListener('visibilitychange', start);
+    requestAnimationFrame(() => canvas.classList.add('is-ready'));
+    start();
+
+    if (finePointer) {
+      const layers = isHome ? [...hero.querySelectorAll('.molecule-core, .core-halo, .orbit, .visual-code')] : [];
+      layers.forEach(l => l.classList.add('parallax'));
+      hero.addEventListener('pointermove', e => {
+        const r = hero.getBoundingClientRect();
+        mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+        spot.style.setProperty('--sx', mouse.x + 'px');
+        spot.style.setProperty('--sy', mouse.y + 'px');
+        const px = (mouse.x / r.width - 0.5), py = (mouse.y / r.height - 0.5);
+        layers.forEach((l, i) => {
+          const depth = l.classList.contains('molecule-core') ? 28 : l.classList.contains('visual-code') ? -14 : 10 + i * 4;
+          l.style.translate = `${(px * depth).toFixed(1)}px ${(py * depth).toFixed(1)}px`;
+        });
+      }, { passive: true });
+      hero.addEventListener('pointerleave', () => { mouse.x = mouse.y = -9999; layers.forEach(l => { l.style.translate = ''; }); });
+    }
+  });
+})();
