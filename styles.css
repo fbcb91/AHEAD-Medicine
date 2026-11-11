@@ -281,3 +281,9 @@
 .contact-email{font-family:'Manrope',sans-serif;font-size:clamp(22px,2.4vw,32px);font-weight:600;color:#24363b;letter-spacing:-.03em}
 .muted-email{font-size:18px!important;color:#7a9196!important}
 @media(max-width:700px){.contact-grid{grid-template-columns:1fr}}
+/* Modulo email: messaggi ben visibili */
+.form-message.is-error{background:#fbeeea;border-left:3px solid #c0705a;color:#7a3a2a;padding:10px 14px;font-size:14px}
+.form-success{text-align:left;padding:10px 0 4px;outline:none}
+.form-success .success-check{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#e6f1ea;color:#3f7a5e;font-size:22px;font-weight:800;margin-bottom:14px}
+.form-success h3{font-size:28px;margin:0 0 8px}
+.form-success p{color:#50656a;margin:0}

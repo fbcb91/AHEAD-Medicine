@@ -173,6 +173,9 @@
   function openModal(service) {
     previousFocus = document.activeElement;
     message.textContent = '';
+    message.className = 'form-message';
+    form.hidden = false;
+    document.querySelector('#form-success').hidden = true;
     document.querySelector('#modal-description').textContent = service === 'generale'
       ? 'Lascia la tua email per ricevere aggiornamenti sul progetto.'
       : 'Hai selezionato «Consulenza ' + service + '». Le videoconsulenze sono in fase di avvio. Lascia la tua email per ricevere aggiornamenti generali sul lancio.';
@@ -200,13 +203,14 @@
       else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
     }
   });
-  // Do not silently pretend signups worked. The API returns 503 until MailerLite is configured.
+  // Non fingere un'iscrizione riuscita: il messaggio dipende dalla risposta del server.
   form?.addEventListener('submit', async event => {
     event.preventDefault();
     if (!form.reportValidity()) return;
     submit.disabled = true;
     submit.textContent = 'Invio in corso…';
     message.textContent = '';
+    message.className = 'form-message';
     try {
       const res = await fetch('/api/interest', {
         method: 'POST', headers: {'Content-Type':'application/json'},
@@ -218,11 +222,18 @@
       });
       let data = {};
       try { data = await res.json(); } catch (_) {}
-      if (!res.ok) throw new Error(data.error || 'Modulo non ancora attivo.');
-      message.textContent = 'Richiesta ricevuta. Controlla la posta per eventuali passaggi di conferma.';
+      if (!res.ok) throw new Error(data.error || 'Impossibile inviare la richiesta, riprova più tardi.');
+      const success = document.querySelector('#form-success');
+      success.querySelector('p').textContent = data.mode === 'mailerlite'
+        ? 'Ti abbiamo inviato un’email: clicca sul link per confermare l’iscrizione. Se non la trovi, controlla nello spam.'
+        : 'Ti scriveremo quando apriremo le prenotazioni delle videoconsulenze. Puoi cancellarti in qualsiasi momento.';
       form.reset();
+      form.hidden = true;
+      success.hidden = false;
+      success.focus();
     } catch (error) {
       message.textContent = error.message || 'Impossibile inviare la richiesta, riprova più tardi.';
+      message.className = 'form-message is-error';
     } finally {
       submit.disabled = false;
       submit.innerHTML = 'Ricevi aggiornamenti <span>↗</span>';
