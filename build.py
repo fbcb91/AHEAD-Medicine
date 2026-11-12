@@ -528,8 +528,8 @@ home = f'''<section class="hero"><div class="wrap hero-grid"><div class="hero-co
 <section class="principles standard-section section-pad"><div class="wrap"><div class="section-label">05 / OUR STANDARD</div><h2>Curiosità radicale.<br><em>Rigore assoluto.</em></h2><div class="principles-grid"><div><span>01</span><h3>Prove, non promesse</h3><p>Per ogni sostanza distinguiamo studi in vitro, su animali, osservazionali, clinici randomizzati e medicinali autorizzati.</p></div><div><span>02</span><h3>Domande intelligenti</h3><p>Non celebriamo né demonizziamo una molecola: valutiamo cosa dicono i dati disponibili.</p></div><div><span>03</span><h3>Medicina responsabile</h3><p>Le dosi nelle schede sono quelle dei foglietti approvati o degli studi, mai consigli fai-da-te. Le decisioni cliniche spettano ai medici, nel rispetto di indicazioni, autorizzazioni e sicurezza.</p></div></div></div></section>
 <section class="section-pad articles-home"><div class="wrap"><div class="section-label">06 / ARTICOLI</div><div class="section-row"><div><h2>Capire, <em>prima di scegliere.</em></h2><p class="section-subtitle">Guide e notizie su peptidi, farmaci e longevità.</p></div><a class="outlined-link" href="/articoli/">Tutti gli articoli ↗</a></div><div class="article-grid">{''.join(article_card(a) for a in ARTICLES[:3])}</div></div></section>
 <section class="signup-section section-pad" id="interesse"><div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div><div class="wrap signup-grid"><div><div class="section-label">07 / RESTIAMO IN CONTATTO</div><h2>La prossima<br>frontiera? <em>Seguici.</em></h2><p>Stiamo organizzando l’avvio delle videoconsulenze e ampliando la Library. Lasciaci la tua email per sapere quando partiamo.</p></div><div class="signup-panel"><div class="panel-icon">↗</div><h3>Entra nella lista di aggiornamento.</h3><p>Le consulenze non sono ancora prenotabili. Ti scriveremo solo per aggiornarti sul lancio.</p><button type="button" class="btn btn-dark full interest-trigger" data-service="generale">Ricevi aggiornamenti <span>↗</span></button><span class="note">Non raccogliamo dati sanitari. Puoi cancellarti quando vuoi.</span></div></div></section>'''
-HOME_DESC = 'Peptidi, GLP-1, testosterone e longevità: cosa dicono davvero gli studi, rischi e dosi in oltre 40 schede. E una rete di medici esperti in videoconsulenza.'
-write('index.html', page('Areyon Med — Peptidi, GLP-1, TRT e longevità, senza hype', HOME_DESC, home, '/',
+HOME_DESC = 'BPC-157, TB-500, GHK-Cu, semaglutide e altri peptidi: studi, rischi, dosi e legalità in Italia. Schede revisionate da medici, videoconsulenze in arrivo.'
+write('index.html', page('Areyon Med — Peptidi e terapie emergenti, con medici esperti', HOME_DESC, home, '/',
       schema=[ORG_LD, WEBSITE_LD, webpage_ld('WebPage', '/', SITE_NAME, HOME_DESC)], image=og_image('home', 'La medicina di domani. Le risposte di oggi.', 'AREYON MED')))
 
 # ------------------------------------------------------------------ library
@@ -572,8 +572,8 @@ write('library/index.html', page('Library: peptidi, GLP-1, ormoni e longevità �
 
 
 
-def listing_page(path, label, h1, intro, items, crumbs, og_key):
-    desc = clip(intro)
+def listing_page(path, label, h1, intro, items, crumbs, og_key, desc=None):
+    desc = desc or clip(intro)
     links = ''.join(f'<a class="filter" href="{CAT_URL[c]}"{" aria-current=\"page\"" if CAT_URL[c] == path else ""}>{escape(c)}</a>' for c in used_categories)
     body = f'''<section class="inner-hero"><div class="wrap"><div class="breadcrumbs">{' / '.join(f'<a href="{u}">{escape(n)}</a>' for n, u in crumbs[:-1])} / {escape(crumbs[-1][0])}</div><div class="section-label light-text">{escape(label)}</div><h1>{escape(h1)}</h1><p>{escape(intro)}</p></div></section><section class="section-pad"><div class="wrap"><nav class="filters area-links" aria-label="Aree della Library">{links}</nav><p class="results-count">{len(items)} schede</p><div class="card-grid">{''.join(card(q, True) for q in items)}</div></div></section>'''
     write(path.strip('/') + '/index.html', page(h1, desc, body, path, schema=[webpage_ld('CollectionPage', path, h1, desc), itemlist_ld([(q['name'], q['url']) for q in items])],
@@ -585,8 +585,9 @@ for c in used_categories:
     items = [q for q in DATA if q['category'] == c or c in q.get('extra_categories', [])]
     listing_page(CAT_URL[c], f'LIBRARY / {c.upper()}', h1, intro, items, [('Home', '/'), ('Library', '/library/'), (c, CAT_URL[c])], 'cat-' + slugify(c))
 
-listing_page('/peptidi/', 'LIBRARY / PEPTIDI', 'Peptidi: elenco completo e schede scientifiche', 'Tutti i peptidi della Library, dai medicinali autorizzati come semaglutide e tirzepatide ai peptidi “da ricerca” come BPC-157, TB-500 e MOTS-c. Per ognuno: prove, effetti collaterali, dosi e stato legale in Italia.',
-             [q for q in DATA if q['kind'] == 'peptide'], [('Home', '/'), ('Peptidi', '/peptidi/')], 'peptidi')
+listing_page('/peptidi/', 'LIBRARY / PEPTIDI', 'Peptidi: cosa sono, studi, rischi e dosi', 'I peptidi sono brevi catene di aminoacidi: alcuni sono medicinali autorizzati, come semaglutide e tirzepatide, altri sono venduti online “per uso di ricerca”, come BPC-157, TB-500 e MOTS-c, senza prove solide nell’uomo. Per ognuno trovi cosa dicono gli studi, livello per livello, rischi, dosi e stato legale in Italia.',
+             [q for q in DATA if q['kind'] == 'peptide'], [('Home', '/'), ('Peptidi', '/peptidi/')], 'peptidi',
+             desc='Elenco completo dei peptidi: BPC-157, TB-500, GHK-Cu, MOTS-c, semaglutide e altri. Cosa sono, cosa dicono gli studi, rischi, dosi e stato legale in Italia.')
 listing_page('/sostanze/', 'LIBRARY / FARMACI E SOSTANZE', 'Farmaci, ormoni e altre sostanze', 'Testosterone, ormone della crescita, rapamicina, metformina, orforglipron, NAD+ e le altre molecole non peptidiche della Library: indicazioni autorizzate, prove scientifiche, rischi e dosi.',
              [q for q in DATA if q['kind'] == 'sostanza'], [('Home', '/'), ('Farmaci e sostanze', '/sostanze/')], 'sostanze')
 
