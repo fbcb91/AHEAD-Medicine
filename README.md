@@ -64,7 +64,7 @@ Tutto è generato da `build.py`:
 - Titoli H2 delle schede formulati sulle ricerche reali ("a cosa serve", "effetti collaterali", "dosi", "è legale in Italia")
 - Immagini social 1200×630 per ogni pagina in `og/`: dopo aver aggiunto schede, articoli o consulenze lancia `node scripts/og-images.js && python3 build.py`
 
-Per cambiare dominio modifica `SITE_URL` in `build.py`. Dopo la pubblicazione: verifica il sito in Google Search Console (metodo "prefisso URL"; se scegli il meta tag inserisci il codice in `GSC_VERIFICATION`) e invia `sitemap.xml`.
+Il dominio è `https://www.areyonmed.com` (`SITE_URL` in `build.py`); `vercel.json` reindirizza con un 301 il vecchio indirizzo vercel.app e il dominio senza www. Dopo la pubblicazione: verifica il sito in Google Search Console (metodo "prefisso URL"; se scegli il meta tag inserisci il codice in `GSC_VERIFICATION`) e invia `sitemap.xml`.
 
 ## Iscrizione email
 Il modulo "Ricevi aggiornamenti" funziona subito: finché MailerLite non è configurato, le email (solo indirizzo e data del consenso) finiscono nella lista d'attesa su Upstash. Per scaricarla in CSV: `/api/waitlist-export?key=<SURVEY_ADMIN_KEY>`. Quando su Vercel ci sono `MAILERLITE_API_TOKEN` e `MAILERLITE_GROUP_ID`, le nuove iscrizioni vanno direttamente su MailerLite (attiva il double opt-in per le iscrizioni via API); importa lì il CSV della lista d'attesa.
