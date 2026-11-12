@@ -31,10 +31,10 @@ Sito italiano di validazione del mercato per un futuro servizio medico sulle ter
 - `api/event.js` conta in forma aggregata clic di interesse e questionari per area (nessun dato sulla persona); `api/stats.js` mostra i totali con `SURVEY_ADMIN_KEY`. Statistiche di visita: Vercel Web Analytics (senza cookie), da attivare nel pannello Vercel.
 - `api/interest.js` iscrizione email: con `MAILERLITE_API_TOKEN` e `MAILERLITE_GROUP_ID` usa MailerLite, altrimenti salva nella lista d'attesa su Upstash (`waitlist:emails`, solo email e data del consenso), esportabile in CSV con `/api/waitlist-export?key=` (`SURVEY_ADMIN_KEY`). Honeypot e rate limit inclusi.
 - La CSP vieta gli stili inline: niente attributi `style="…"` nell'HTML. Per il colore d'area usare le classi `cat-<slug>` di `styles.css` (da aggiornare se si aggiunge un'area a `CAT_COLORS`).
+- Dominio: `https://www.areyonmed.com` (`SITE_URL` in `build.py`). `vercel.json` reindirizza in modo permanente (301) `aheadmedicine.vercel.app` e `areyonmed.com` verso `www.areyonmed.com`.
 - `vercel.json` header di sicurezza, inclusa la CSP: aggiornarla se si aggiungono script o domini esterni (es. analytics).
 
 ## Prossime funzioni desiderate
 - Sostituire build.py con template modulari o Astro se il catalogo cresce molto.
-- Dominio definitivo: cambiare `SITE_URL` in `build.py`, rigenerare, aggiungere redirect 301 dal dominio vercel.app e reinviare la sitemap in Search Console.
 - Definire revisore scientifico, bibliografia per scheda e date di verifica; aggiungere studi originali con grading standard.
 - Attivare MailerLite (double opt-in) e importare la lista d'attesa.

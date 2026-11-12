@@ -20,7 +20,7 @@ ROOT = Path(__file__).parent
 # Indirizzo pubblico del sito: usato per canonical, Open Graph, sitemap e dati
 # strutturati. Quando ci sarà il dominio definitivo basta cambiare questa riga
 # (e aggiungere un redirect 301 dal vecchio dominio su Vercel).
-SITE_URL = 'https://aheadmedicine.vercel.app'
+SITE_URL = 'https://www.areyonmed.com'
 SITE_NAME = 'Areyon Med'
 # False rimette "noindex" su tutte le pagine.
 INDEXABLE = True
