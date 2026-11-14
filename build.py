@@ -227,7 +227,7 @@ def asset_version(name):
 
 
 CSS_V, JS_V = asset_version('styles.css'), asset_version('app.js')
-HEAD_META = f'''<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10171b"><link rel="preload" href="/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/styles.css?v={CSS_V}"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/og/apple-touch-icon.png"><script defer src="/app.js?v={JS_V}"></script><script defer src="/_vercel/insights/script.js"></script>'''
+HEAD_META = f'''<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10171b"><link rel="preload" href="/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/styles.css?v={CSS_V}"><link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/og/icon-192.png" type="image/png" sizes="192x192"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/og/apple-touch-icon.png"><script defer src="/app.js?v={JS_V}"></script><script defer src="/_vercel/insights/script.js"></script>'''
 
 
 SITEMAP = []   # (path, lastmod)
@@ -284,9 +284,9 @@ def page(title, desc, body, path, *, schema=(), crumbs=None, image='/og/default.
     return f'''<!doctype html><html lang="it"><head>{HEAD_META}{meta}</head><body><div class="scroll-progress" aria-hidden="true"></div><a class="skip-link" href="#main">Vai al contenuto</a><div class="topbar"><a class="start-link" href="/inizia/" data-service="generale">VIDEOCONSULENZE IN ARRIVO <span class="topbar-sep">/</span> RISPONDI AL QUESTIONARIO PER ESSERE TRA I PRIMI ↗</a></div><header class="site-header"><div class="wrap header-inner">{NAV}</div></header><main id="main">{body}</main>{FOOTER}{MODAL}</body></html>'''
 
 
-ORG_LD = {'@type': 'Organization', '@id': SITE_URL + '/#org', 'name': SITE_NAME, 'url': SITE_URL + '/', 'logo': SITE_URL + '/og/logo.png',
+ORG_LD = {'@type': 'Organization', '@id': SITE_URL + '/#org', 'name': SITE_NAME, 'alternateName': 'Areyon', 'url': SITE_URL + '/', 'logo': SITE_URL + '/og/logo.png',
           'description': 'Informazione scientifica su peptidi, GLP-1, ormoni e longevità e una rete di medici esperti in videoconsulenza (servizio in avvio).'}
-WEBSITE_LD = {'@type': 'WebSite', '@id': SITE_URL + '/#website', 'name': SITE_NAME, 'url': SITE_URL + '/', 'inLanguage': 'it-IT', 'publisher': {'@id': SITE_URL + '/#org'}}
+WEBSITE_LD = {'@type': 'WebSite', '@id': SITE_URL + '/#website', 'name': SITE_NAME, 'alternateName': ['Areyon', 'areyonmed.com'], 'url': SITE_URL + '/', 'inLanguage': 'it-IT', 'publisher': {'@id': SITE_URL + '/#org'}}
 
 
 def webpage_ld(kind, path, name, desc, **extra):
@@ -1069,6 +1069,9 @@ write('contatti/index.html', page('Contatti — Areyon Med', 'Contatta Areyon Me
 not_found = '''<section class="inner-hero"><div class="wrap"><div class="section-label light-text">ERRORE 404</div><h1>Pagina <em>non trovata.</em></h1><p>La pagina che cerchi non esiste o è stata spostata.</p><div class="hero-actions"><a class="btn btn-light" href="/library/">Vai alla Library <span>↗</span></a><a class="link-light" href="/">Torna alla home</a></div></div></section>'''
 write('404.html', page('Pagina non trovata', 'Pagina non trovata.', not_found, '/404', indexable=False))
 
+if not (ROOT / 'favicon.ico').exists() and (ROOT / 'og' / 'icon-192.png').exists():
+    from PIL import Image
+    Image.open(ROOT / 'og' / 'icon-192.png').convert('RGBA').save(ROOT / 'favicon.ico', sizes=[(16, 16), (32, 32), (48, 48)])
 write('favicon.svg', '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#10191d"/><text x="32" y="47" text-anchor="middle" font-family="Cinzel, Georgia, 'Times New Roman', serif" font-size="40" fill="#f3efe7">A</text><path d="M9 44C20 29 36 22 56 22" fill="none" stroke="#6cc3cf" stroke-width="2.4" stroke-linecap="round"/></svg>''')
 # ------------------------------------------------------------------ elenco nomi per le foto
 photo_list = '\n'.join(f'| `{q["slug"]}` | {q["name"]} |' for q in sorted(DATA, key=lambda q: q['slug']))
