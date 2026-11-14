@@ -45,7 +45,7 @@ span{font-family:Cinzel,serif;font-weight:500;color:#f3efe7;font-size:${Math.rou
     await page.screenshot({ path: out, type: 'jpeg', quality: 82 });
     made++;
   }
-  for (const [file, size] of [['og/logo.png', 512], ['og/apple-touch-icon.png', 180]]) {
+  for (const [file, size] of [['og/logo.png', 512], ['og/apple-touch-icon.png', 180], ['og/icon-192.png', 192], ['og/icon-48.png', 48]]) {
     const out = path.join(ROOT, file);
     if (!force && fs.existsSync(out)) continue;
     await page.setViewportSize({ width: size, height: size });
