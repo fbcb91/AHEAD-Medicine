@@ -632,8 +632,8 @@ for p in DATA:
              else f'{name}: cos’è, effetti e dosi' if len(name) > 26 else f'{name}: cos’è, studi, rischi e dosi')
     alias = f" ({', '.join(p['aliases'][:2])})" if p['aliases'] else ''
     desc = clip(f"{name}{alias}: {p['what'].split('. ')[0].rstrip('.')}. Studi, effetti collaterali, dosi e stato legale in Italia.")
-    drug_like = p['status'] in ('ue', 'extra_ue', 'trial', 'ritirato')
-    about = {'@type': 'Drug' if drug_like else 'Substance', 'name': name}
+    # Non usare "Drug": in schema.org è anche un Product e Google lo valuta come prodotto in vendita.
+    about = {'@type': 'Substance', 'name': name}
     if p['aliases']:
         about['alternateName'] = p['aliases']
     faq_pairs = [(f'Che cos’è {name}?', p['what']), (f'A cosa serve {name}? Cosa dicono gli studi', p['unknown']),
