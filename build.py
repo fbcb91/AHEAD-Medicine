@@ -155,16 +155,32 @@ def inline_md(text):
     return re.sub(r'\[(.+?)\]\((\S+?)\)', link, text)
 
 
+def render_table(rows):
+    cells = [[c.strip() for c in r.strip().strip('|').split('|')] for r in rows]
+    head, body = cells[0], [r for r in cells[1:] if not all(set(c) <= set(':- ') for c in r)]
+    right = [False] * len(head)
+    if len(cells) > 1 and all(set(c) <= set(':- ') for c in cells[1]):
+        right = [c.endswith(':') and not c.startswith(':') for c in cells[1]] + [False] * len(head)
+    th = ''.join(f'<th{" class=\"num\"" if right[k] else ""}>{inline_md(c)}</th>' for k, c in enumerate(head))
+    trs = ''.join('<tr>' + ''.join(f'<td{" class=\"num\"" if right[k] else ""}>{inline_md(c)}</td>' for k, c in enumerate(r)) + '</tr>' for r in body)
+    return f'<div class="table-wrap"><table><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>'
+
+
 def render_md(md):
-    """Markdown minimo: ## / ### titoli, elenchi con "- ", paragrafi, **grassetto**, *corsivo*, [link](url), --- (riga divisoria)."""
-    html, para, items = [], [], []
+    """Markdown minimo: ## / ### titoli, elenchi "- " e "1. ", tabelle con |, paragrafi,
+    **grassetto**, *corsivo*, [link](url), --- (riga divisoria)."""
+    html, para, items, table = [], [], [], []
+    kind = ['ul']
     def flush():
         if para:
             html.append(f'<p>{inline_md(" ".join(para))}</p>'); para.clear()
         if items:
-            html.append('<ul>' + ''.join(f'<li>{inline_md(i)}</li>' for i in items) + '</ul>'); items.clear()
+            html.append(f'<{kind[0]}>' + ''.join(f'<li>{inline_md(i)}</li>' for i in items) + f'</{kind[0]}>'); items.clear()
+        if table:
+            html.append(render_table(table)); table.clear()
     for line in md.splitlines():
         line = line.rstrip()
+        ordered = re.match(r'^\d+\.\s+(.*)', line)
         if not line:
             flush()
         elif line.strip() == '---':
@@ -173,10 +189,16 @@ def render_md(md):
             flush(); html.append(f'<h3>{inline_md(line[4:])}</h3>')
         elif line.startswith('## '):
             flush(); html.append(f'<h2 id="{slugify(line[3:])}">{inline_md(line[3:])}</h2>')
-        elif line.startswith('- '):
-            if para:
+        elif line.lstrip().startswith('|'):
+            if para or items:
                 flush()
-            items.append(line[2:])
+            table.append(line)
+        elif line.startswith('- ') or ordered:
+            new_kind = 'ol' if ordered else 'ul'
+            if para or table or (items and kind[0] != new_kind):
+                flush()
+            kind[0] = new_kind
+            items.append(ordered.group(1) if ordered else line[2:])
         else:
             para.append(line)
     flush()
@@ -192,6 +214,8 @@ def load_articles():
         if not m:
             problems.append(f'{f.name}: manca il front-matter'); continue
         meta = dict(line.split(': ', 1) for line in m.group(1).splitlines() if ': ' in line)
+        # Valori anche tra virgolette, come in YAML: title: "..."
+        meta = {k.strip(): (v.strip()[1:-1] if len(v.strip()) > 1 and v.strip()[0] == v.strip()[-1] and v.strip()[0] in '"\'' else v.strip()) for k, v in meta.items()}
         a = {'slug': f.stem, 'body': m.group(2), **meta}
         for k in ('title', 'type', 'date', 'description'):
             if not a.get(k):

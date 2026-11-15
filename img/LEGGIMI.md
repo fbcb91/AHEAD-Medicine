@@ -90,6 +90,7 @@ Il nome è l'indirizzo dell'articolo, cioè il nome del suo file in `data/artico
 | `ozempic-per-dimagrire` | Ozempic per dimagrire: cosa dice davvero l’indicazione |
 | `peptidi-da-ricerca-cosa-sono` | Peptidi “da ricerca”: cosa sono e perché non sono farmaci |
 | `rapamicina-longevita` | Rapamicina e longevità: a che punto siamo |
+| `retatrutide-artrosi-ginocchio` | Retatrutide non fa solo dimagrire: i nuovi studi sul dolore articolare e cosa cambia davvero |
 | `testosterone-basso-sintomi-esami` | Testosterone basso: sintomi, esami e quando curarlo |
 | `voto-fda-peptidi-luglio-2026` | Peptidi, il voto della FDA di luglio 2026: cosa cambia (e cosa no) |
 
