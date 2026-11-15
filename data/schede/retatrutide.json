@@ -12,7 +12,7 @@
   "tagline": "Il triplo agonista metabolico in studio clinico.",
   "evidence_summary": "RCT di fase 3 in corso di pubblicazione",
   "what": "Retatrutide è una molecola sperimentale che agisce sui recettori GIP, GLP-1 e glucagone, studiata soprattutto per l’obesità e altre condizioni metaboliche.",
-  "unknown": "Nel luglio 2026 il produttore ha annunciato che due studi di fase 3 (TRIUMPH-2 e TRIUMPH-3) hanno raggiunto l’obiettivo principale sul peso. I dati completi non sono ancora stati pubblicati e la valutazione delle autorità non è iniziata.",
+  "unknown": "Nel luglio 2026 il produttore ha annunciato che due studi di fase 3 (TRIUMPH-2 e TRIUMPH-3) hanno raggiunto l’obiettivo principale sul peso. A novembre 2026 il New England Journal of Medicine ha pubblicato i primi risultati completi di fase 3, su dolore al ginocchio e peso in persone con artrosi (TRIUMPH-4 e TRIUMPH-1-OA). Gli effetti sulla progressione dell’artrosi e il profilo di sicurezza completo restano da definire, e la valutazione delle autorità non è ancora iniziata.",
   "risk": "Negli studi sono descritti effetti gastrointestinali e interruzioni per eventi avversi più frequenti rispetto al placebo. Il profilo di sicurezza completo sarà chiaro solo dopo la pubblicazione e la revisione regolatoria. Il prodotto venduto online come “retatrutide” non proviene da canali autorizzati.",
   "reg": "Non è autorizzato in nessun Paese. Il produttore dichiara di voler presentare domanda negli USA nel primo trimestre 2027.",
   "evidence": {
@@ -56,8 +56,16 @@
       "Pubblicato sul New England Journal of Medicine lo studio di fase 2 sull’obesità."
     ],
     [
+      "2025",
+      "A dicembre Lilly annuncia i primi risultati di fase 3, nello studio TRIUMPH-4 sull’artrosi del ginocchio."
+    ],
+    [
       "2026",
       "Il produttore annuncia che gli studi di fase 3 TRIUMPH-2 e TRIUMPH-3 hanno raggiunto l’obiettivo principale."
+    ],
+    [
+      "2026",
+      "A novembre il New England Journal of Medicine pubblica gli studi TRIUMPH-4 e TRIUMPH-1-OA su dolore al ginocchio e peso."
     ],
     [
       "2027",
@@ -85,6 +93,11 @@
       "type": "studio"
     },
     {
+      "label": "NEJM 2026 — retatrutide e artrosi del ginocchio (TRIUMPH-4 e TRIUMPH-1-OA)",
+      "url": "https://doi.org/10.1056/NEJMoa2610676",
+      "type": "studio"
+    },
+    {
       "label": "Lilly — risultati TRIUMPH-2 e TRIUMPH-3 (luglio 2026)",
       "url": "https://www.biospace.com/press-releases/lillys-triple-agonist-retatrutide-successful-in-two-additional-phase-3-obesity-trials-delivering-significant-improvements-in-weight-and-a1c",
       "type": "azienda"
@@ -99,7 +112,7 @@
     "status": "revisionata",
     "medical_reviewer": "Medici di Areyon Med",
     "reviewed": "2026-11-10",
-    "checked": "2026-10-30",
+    "checked": "2026-11-15",
     "next_check": "2027-04-30"
   }
 }
