@@ -82,6 +82,45 @@
     });
   }));
 
+  // Profilo dopo il questionario: calcolato nel browser dalle risposte appena date.
+  // Non salva né invia nulla in più rispetto al questionario anonimo.
+  function renderProfile(data) {
+    const box = document.querySelector('#survey-profile');
+    const src = document.querySelector('#survey-reco');
+    if (!box || !src) return;
+    let reco;
+    try { reco = JSON.parse(src.textContent); } catch (_) { return; }
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const services = [];
+    const add = s => { if (s && reco.services[s] && !services.includes(s)) services.push(s); };
+    (data.aree || []).forEach(add);
+    (data.obiettivi || []).forEach(o => add(reco.goalService[o]));
+    if (data.sesso === 'Donna' && services[0] === 'TRT' && (data.obiettivi || []).includes('Gestire i sintomi della menopausa')) services.unshift('Menopausa');
+    if (!services.length) add('Longevity & Performance');
+    const top = services.slice(0, 2);
+    // Schede: prima le sostanze indicate, poi quelle collegate alla consulenza principale.
+    const schede = [];
+    (data.sostanze || []).forEach(n => { if (reco.schede[n] && !schede.includes(n)) schede.push(n); });
+    Object.keys(reco.schede).sort((a, b) => reco.schede[a].rank - reco.schede[b].rank)
+      .forEach(n => { if (schede.length < 4 && reco.schede[n].service === top[0] && !schede.includes(n)) schede.push(n); });
+    const articles = reco.articles.filter(a => top.includes(a.service)).slice(0, 2);
+    const usedOnline = (data.gia_usato || []).includes('Peptidi o sostanze acquistati online');
+    let html = '<span class="step-kicker">IL TUO PROFILO</span><h3>Da dove partire.</h3>';
+    html += '<div class="profile-services">' + top.map((s, i) => `<a class="profile-service${i ? '' : ' main'}" href="${reco.services[s].url}"><span class="mini-label">${i ? 'ANCHE' : 'CONSULENZA CONSIGLIATA'}</span><strong>Consulenza ${esc(s)}</strong><span>${esc(reco.services[s].blurb)}</span><em>Scopri la consulenza →</em></a>`).join('') + '</div>';
+    if (usedOnline) {
+      html += `<p class="profile-alert">Hai indicato di aver usato prodotti acquistati online: parlane con il medico durante la consulenza. Intanto leggi <a href="${reco.researchArticle}">cosa sono i peptidi “da ricerca” e perché non sono farmaci</a>.</p>`;
+    }
+    if (schede.length) {
+      html += '<span class="mini-label">LE SCHEDE PER TE</span><div class="profile-links">' + schede.map(n => `<a href="${reco.schede[n].url}"><strong>${esc(n)}</strong><span>${esc(reco.schede[n].focus)}</span></a>`).join('') + '</div>';
+    }
+    if (articles.length) {
+      html += '<span class="mini-label">DA LEGGERE</span><div class="profile-links">' + articles.map(a => `<a href="${a.url}"><strong>${esc(a.title)}</strong></a>`).join('') + '</div>';
+    }
+    html += '<p class="profile-note">Questo riepilogo è calcolato sul tuo dispositivo: non viene salvato e non è un parere medico.</p>';
+    box.innerHTML = html;
+    box.hidden = false;
+  }
+
   // Questionario anonimo (/inizia/): un passo alla volta, invio a /api/survey.
   const survey = document.querySelector('#survey-form');
   if (survey) {
@@ -154,6 +193,7 @@
         try { body = await res.json(); } catch (_) {}
         if (!res.ok) throw new Error(body.error || 'Impossibile inviare le risposte, riprova più tardi.');
         (data.aree || []).forEach(a => count('questionario', a));
+        renderProfile(data);
         survey.hidden = true;
         document.querySelector('.survey-progress').hidden = true;
         const done = document.querySelector('#survey-done');
