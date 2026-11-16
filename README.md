@@ -48,7 +48,7 @@ Per attivarlo su Vercel:
 Per scaricare le risposte in CSV (si apre con Excel o Google Sheets): `https://<sito>/api/survey-export?key=<SURVEY_ADMIN_KEY>`.
 Finché lo storage non è configurato il questionario risponde "non ancora attivo".
 
-Le domande si modificano nella lista `SURVEY` in `build.py`; il build rigenera la pagina e lo schema di validazione del server.
+Dopo l'invio, la pagina mostra un profilo (consulenza consigliata, schede e articoli) calcolato nel browser dalle risposte, senza salvare nulla in più: le regole sono in `SURVEY_GOAL_SERVICE` e `SERVICE_BLURB` in `build.py`. Le domande si modificano nella lista `SURVEY` in `build.py`; il build rigenera la pagina e lo schema di validazione del server.
 
 ## Foto delle intestazioni
 Schede, consulenze, articoli e le pagine Library, Consulenze e Metodo possono avere una foto a tutta larghezza dietro il titolo; per gli articoli la foto compare anche come anteprima nelle card. Senza foto resta l'intestazione scura con l'illustrazione molecolare.

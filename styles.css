@@ -583,3 +583,38 @@
 .contact-direct{font-size:14px!important;margin-top:8px!important}
 @media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
 @media(max-width:600px){.contact-row{grid-template-columns:1fr}}
+/* Homepage: "Cosa vuoi migliorare?" */
+.goal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:36px}
+.goal-card{display:flex;align-items:center;gap:18px;background:#fff;border:1px solid #d7ddda;padding:22px 24px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.goal-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px #182b2b12;border-color:#89b9d1}
+.goal-icon{width:40px;height:40px;flex-shrink:0;color:#5f8794}
+.goal-text{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
+.goal-text strong{font-family:'Manrope',sans-serif;font-size:19px;letter-spacing:-.02em;color:#17252a}
+.goal-text span{font-size:14px;color:#5d7075}
+.goal-go{font-size:20px;color:#89b9d1;transition:transform .2s}
+.goal-card:hover .goal-go{transform:translateX(4px)}
+@media(max-width:1000px){.goal-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.goal-grid{grid-template-columns:1fr}}
+/* Questionario: profilo finale */
+.survey-profile{margin:28px 0 34px;padding:28px;background:#fff;border:1px solid #d7ddda;border-top:4px solid #89b9d1}
+.survey-profile h3{font-size:clamp(26px,2.6vw,34px);margin:6px 0 20px}
+.survey-profile .mini-label{display:block;margin:24px 0 10px}
+.profile-services{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.profile-service{display:flex;flex-direction:column;gap:6px;border:1px solid #d7ddda;padding:20px;background:#f8f9f6;transition:border-color .2s}
+.profile-service.main{background:#10191d;border-color:#10191d}
+.profile-service.main strong,.profile-service.main em{color:#fff}
+.profile-service.main span{color:#b8cbd0}
+.profile-service .mini-label{margin:0!important}
+.profile-service.main .mini-label{color:#89b9d1}
+.profile-service strong{font-family:'Manrope',sans-serif;font-size:20px;color:#17252a}
+.profile-service span{font-size:14px;color:#50656a;line-height:1.5}
+.profile-service em{font-style:normal;font-weight:700;font-size:13px;color:#3e6675;margin-top:auto}
+.profile-service:hover{border-color:#89b9d1}
+.profile-links{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.profile-links a{display:flex;flex-direction:column;gap:2px;border-bottom:1px solid #e6ece9;padding:10px 0}
+.profile-links strong{color:#24363b;font-size:15px}
+.profile-links span{color:#6a7d81;font-size:13px}
+.profile-alert{margin:18px 0 0;background:#f6f1df;border-left:3px solid #bba16f;padding:12px 16px;color:#5b5236;font-size:14px}
+.profile-alert a{text-decoration:underline;text-underline-offset:3px}
+.profile-note{font-size:12px!important;color:#7a9196!important;margin:22px 0 0}
+@media(max-width:640px){.profile-services,.profile-links{grid-template-columns:1fr}}
