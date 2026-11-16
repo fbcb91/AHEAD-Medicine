@@ -15,12 +15,13 @@ export default async function handler(req, res) {
   if (!authorized(req.query?.key || req.headers['x-admin-key'])) return res.status(401).json({ error: 'Non autorizzato.' });
   if (!storeConfigured()) return res.status(503).json({ error: 'Archivio non configurato.' });
   const month = new Date().toISOString().slice(0, 7);
-  const [interesse, interesseMese, questionari, questionariMese, risposte] = await Promise.all([
+  const [interesse, interesseMese, questionari, questionariMese, risposte, messaggi] = await Promise.all([
     redis('HGETALL', 'events:interesse'), redis('HGETALL', `events:interesse:${month}`),
-    redis('HGETALL', 'events:questionario'), redis('HGETALL', `events:questionario:${month}`), redis('LLEN', LIST_KEY)]);
+    redis('HGETALL', 'events:questionario'), redis('HGETALL', `events:questionario:${month}`), redis('LLEN', LIST_KEY), redis('LLEN', 'contact:messages')]);
   res.setHeader('Cache-Control', 'no-store');
   return res.status(200).json({
     questionari_completati: risposte,
+    messaggi_contatto: messaggi,
     clic_interesse_per_area: { totale: toObject(interesse), [month]: toObject(interesseMese) },
     questionari_per_area: { totale: toObject(questionari), [month]: toObject(questionariMese) },
   });

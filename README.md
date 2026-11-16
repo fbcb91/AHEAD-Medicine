@@ -69,6 +69,9 @@ Il dominio è `https://www.areyonmed.com` (`SITE_URL` in `build.py`); `vercel.js
 ## Iscrizione email
 Il modulo "Ricevi aggiornamenti" funziona subito: finché MailerLite non è configurato, le email (solo indirizzo e data del consenso) finiscono nella lista d'attesa su Upstash. Per scaricarla in CSV: `/api/waitlist-export?key=<SURVEY_ADMIN_KEY>`. Quando su Vercel ci sono `MAILERLITE_API_TOKEN` e `MAILERLITE_GROUP_ID`, le nuove iscrizioni vanno direttamente su MailerLite (attiva il double opt-in per le iscrizioni via API); importa lì il CSV della lista d'attesa.
 
+## Modulo di contatto
+La pagina `/contatti/` ha un modulo (argomento, messaggio, email per la risposta). I messaggi si scaricano in CSV da `/api/contact-export?key=<SURVEY_ADMIN_KEY>`; il loro numero compare anche in `/api/stats`.
+
 ## Misura interesse
 Le CTA lanciano un evento aggregato `Consulenza: interesse` con proprietà `servizio`, **senza l'email**. L'evento viene registrato solo se è stato collegato uno strumento compatibile con la funzione `window.plausible` e solo nel rispetto delle regole privacy e cookie. Collega la piattaforma analytics configurandone la libreria di tracciamento: non è inclusa nella demo.
 
