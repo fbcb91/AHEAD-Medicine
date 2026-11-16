@@ -173,6 +173,38 @@
     count('interesse', link.dataset.service || 'generale');
   }));
 
+  // Modulo di contatto (/contatti/).
+  const contact = document.querySelector('#contact-form');
+  if (contact) {
+    const msg = document.querySelector('#contact-message');
+    const btn = document.querySelector('#contact-submit');
+    contact.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (!contact.reportValidity()) return;
+      const data = Object.fromEntries(new FormData(contact));
+      data.consent = contact.querySelector('[name="consent"]').checked;
+      btn.disabled = true;
+      msg.textContent = '';
+      msg.className = 'form-message';
+      try {
+        const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        let body = {};
+        try { body = await res.json(); } catch (_) {}
+        if (!res.ok) throw new Error(body.error || 'Impossibile inviare il messaggio, riprova più tardi.');
+        contact.reset();
+        contact.hidden = true;
+        const ok = document.querySelector('#contact-success');
+        ok.hidden = false;
+        ok.focus();
+      } catch (err) {
+        msg.textContent = err.message;
+        msg.className = 'form-message is-error';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  }
+
   const modal = document.querySelector('#interest-modal');
   const form = document.querySelector('#interest-form');
   const message = document.querySelector('#form-message');

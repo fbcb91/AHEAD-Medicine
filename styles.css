@@ -568,3 +568,18 @@
 .profile-grid>*{min-width:0}
 .article-body th.num{white-space:normal}
 @media(max-width:600px){.article-body table{font-size:14px}.article-body th,.article-body td{padding:10px 12px}.article-body th{letter-spacing:.02em;text-transform:none;font-size:12px}}
+/* Modulo di contatto */
+.contact-grid{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:start}
+.contact-side{display:grid;gap:14px}
+.contact-form{display:grid;gap:16px;margin-top:10px}
+.contact-form[hidden]{display:none}
+.contact-form label{display:grid;gap:6px;font-weight:700;font-size:14px;color:#24363b}
+.contact-form input[type=text],.contact-form input[type=email],.contact-form select,.contact-form textarea{font:inherit;font-weight:400;font-size:15px;border:1px solid #cbd6d4;background:#fff;padding:13px 14px;color:#24363b;width:100%}
+.contact-form textarea{resize:vertical}
+.contact-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.contact-form .checkline{display:flex;gap:10px;align-items:flex-start;font-weight:400;color:#50656a}
+.contact-form .q-warning{margin:0;background:#f6f1df;border-left:3px solid #bba16f;padding:10px 14px;color:#5b5236;font-size:13px}
+.contact-form .btn{justify-self:start}
+.contact-direct{font-size:14px!important;margin-top:8px!important}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.contact-row{grid-template-columns:1fr}}
