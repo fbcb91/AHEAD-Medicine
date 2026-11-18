@@ -121,6 +121,11 @@
     box.hidden = false;
   }
 
+
+  // Video dell'intestazione: niente video per chi ha ridotto le animazioni
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.hero-video').forEach(v => { v.pause(); v.remove(); });
+  }
   // Questionario anonimo (/inizia/): un passo alla volta, invio a /api/survey.
   const survey = document.querySelector('#survey-form');
   if (survey) {
