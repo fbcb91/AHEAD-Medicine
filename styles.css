@@ -702,3 +702,8 @@
 .home-photo .hero-stats{border-top-color:#ffffff30}
 @media(max-width:1000px){.home-photo .hero-visual{display:none}.home-photo .hero-glass{margin-top:0}}
 @media(max-width:800px){.home-photo::before{background:linear-gradient(180deg,rgba(16,25,29,.72) 0%,rgba(16,25,29,.86) 60%,rgba(16,25,29,.7) 100%)}}
+/* Homepage: la foto "respira" (zoom lentissimo); il video, se c'è, copre la foto */
+@keyframes heroDrift{from{transform:scale(1.03) translate3d(0,0,0)}to{transform:scale(1.12) translate3d(-1.8%,1.2%,0)}}
+.home-photo img.hero-photo{animation:heroDrift 38s ease-in-out infinite alternate;will-change:transform}
+.home-photo .hero-video{z-index:-2}
+@media(prefers-reduced-motion:reduce){.home-photo img.hero-photo{animation:none}.hero-video{display:none}}

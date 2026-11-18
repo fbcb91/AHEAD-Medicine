@@ -442,6 +442,29 @@ def hero_photo(*candidates):
     return photo_img(candidates, 'hero-photo')
 
 
+VIDEO_EXT = {'.mp4': 'video/mp4', '.webm': 'video/webm'}
+
+
+def hero_video(folder, name):
+    """Video in loop facoltativo (img/<folder>/<name>.mp4|webm): copiato in media/ con l'hash nel nome."""
+    base = ROOT / 'img' / folder
+    src = next((f for f in sorted(base.iterdir()) if f.suffix.lower() in VIDEO_EXT and slugify(f.stem) == name), None) if base.is_dir() else None
+    if not src:
+        return ''
+    data = src.read_bytes()
+    if len(data) > 15 * 1024 * 1024:
+        print(f'ATTENZIONE: {src.name} pesa {len(data) // 1024 // 1024} MB: meglio restare sotto i 10 MB')
+    ext = src.suffix.lower()
+    out = ROOT / 'media' / folder / f'{name}-{hashlib.sha256(data).hexdigest()[:8]}{ext}'
+    if not out.exists():
+        out.parent.mkdir(parents=True, exist_ok=True)
+        for old in out.parent.glob(f'{name}-*'):
+            if old.suffix.lower() in VIDEO_EXT:
+                old.unlink()
+        out.write_bytes(data)
+    return f'<video class="hero-photo hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1"><source src="/media/{folder}/{out.name}" type="{VIDEO_EXT[ext]}"></video>'
+
+
 def evidence_pyramid():
     tiers = [('Medicinale autorizzato', '#10191d', '#fff'), ('Studi clinici randomizzati', '#2c4a55', '#fff'), ('Studi osservazionali', '#5f8794', '#fff'),
              ('Modelli animali', '#a9c3c8', '#10191d'), ('In vitro', '#dbe6e5', '#10191d')]
@@ -628,7 +651,7 @@ TRUST_BAR = '<section class="trust-bar" aria-label="I nostri impegni"><div class
 HERO_GLASS = ('<div class="hero-glass"><a class="glass-tag tag-a" href="/peptidi/bpc-157/">Cosa dicono gli studi su BPC-157?</a><a class="glass-tag tag-b" href="/peptidi/semaglutide/">Semaglutide: per chi è indicata?</a>'
               '<nav class="glass-panel" aria-label="Cosa stai cercando"><strong>Cosa stai cercando?</strong><div class="glass-pills">' + ''.join(
                   f'<a href="/consulenze/{SERVICE_SLUGS[s]}/">{t}</a>' for t, s in [('Peptidi', 'Peptidi'), ('Perdere peso', 'GLP-1'), ('Testosterone', 'TRT'), ('Capelli', 'Capelli'), ('Longevità', 'Longevity & Performance'), ('Recupero', 'Recupero e sport')]) + '</div></nav></div>')
-HOME_PHOTO = hero_photo(('pagine', 'home'))
+HOME_PHOTO = hero_photo(('pagine', 'home')) + hero_video('pagine', 'home')
 home = f'''<section class="hero{' has-photo home-photo' if HOME_PHOTO else ''}">{HOME_PHOTO}<div class="wrap hero-grid"><div class="hero-content"><div class="eyebrow"><span class="pulse-dot"></span> MEDICINA EMERGENTE, SENZA HYPE.</div><h1 class="hero-title"><span class="ln"><span>La medicina</span></span> <span class="ln"><span>di <em>domani.</em></span></span> <span class="ln"><span>Le risposte di oggi.</span></span></h1><p class="hero-lede">Peptidi, terapie innovative, longevità e performance. Un nuovo servizio per chi vuole capire davvero cosa sta cambiando nella medicina — e farsi seguire, in videoconsulenza, da medici esperti di terapie emergenti.</p><div class="hero-actions"><a class="btn btn-light start-link" href="/inizia/">Trova il tuo medico <span>↗</span></a><a class="link-light" href="/library/">Esplora la Library <span>→</span></a></div><p class="hero-footnote">Servizio in fase di avvio. Le consulenze non sono ancora prenotabili.</p></div><div class="hero-side"><div class="hero-visual" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="molecule-core"><span class="core-a"></span><span class="core-b"></span><span class="core-c"></span></div><span class="core-halo"></span><span class="visual-code visual-code-top">EMERGING<br>MEDICINE<br>— 2026</span><span class="visual-code visual-code-bottom">RESEARCH /<br>EVIDENCE /<br>CLARITY</span></div>{HERO_GLASS}</div></div><div class="wrap hero-stats"><span>01 / LIBRARY: {N} SCHEDE</span><span>02 / VIDEOCONSULENZE CON MEDICI ESPERTI</span><span>03 / RICERCA & INNOVAZIONE</span></div></section>
 {MARQUEE}
 {TRUST_BAR}
@@ -1238,7 +1261,7 @@ Il nome è l'indirizzo dell'articolo, cioè il nome del suo file in `data/artico
 ## Pagine indice (`img/pagine/`)
 | Nome file | Pagina |
 |---|---|
-| `home` | Homepage (dietro il titolo; senza foto resta l'animazione) |
+| `home` | Homepage (dietro il titolo; senza foto resta l'animazione). Si può aggiungere anche un video in loop `home.mp4`: la foto resta come anteprima e per chi ha disattivato le animazioni |
 | `library` | Library |
 | `consulenze` | Consulenze |
 | `metodo` | Metodo |

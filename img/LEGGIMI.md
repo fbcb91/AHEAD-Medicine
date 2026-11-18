@@ -97,7 +97,7 @@ Il nome è l'indirizzo dell'articolo, cioè il nome del suo file in `data/artico
 ## Pagine indice (`img/pagine/`)
 | Nome file | Pagina |
 |---|---|
-| `home` | Homepage (dietro il titolo; senza foto resta l'animazione) |
+| `home` | Homepage (dietro il titolo; senza foto resta l'animazione). Si può aggiungere anche un video in loop `home.mp4`: la foto resta come anteprima e per chi ha disattivato le animazioni |
 | `library` | Library |
 | `consulenze` | Consulenze |
 | `metodo` | Metodo |
