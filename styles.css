@@ -698,7 +698,7 @@
 .steps-grid>div{padding-top:68px}.step-illo{margin-top:0}
 /* Foto nell'intestazione della homepage (img/pagine/home.*) */
 .home-photo .hero-visual{visibility:hidden}
-.home-photo::before{background:linear-gradient(90deg,rgba(16,25,29,.9) 0%,rgba(16,25,29,.62) 42%,rgba(16,25,29,.12) 100%)}
+.home-photo::before{background:linear-gradient(90deg,rgba(16,25,29,.92) 0%,rgba(16,25,29,.8) 40%,rgba(16,25,29,.25) 75%,rgba(16,25,29,.1) 100%)}
 .home-photo .hero-stats{border-top-color:#ffffff30}
 @media(max-width:1000px){.home-photo .hero-visual{display:none}.home-photo .hero-glass{margin-top:0}}
-@media(max-width:800px){.home-photo::before{background:linear-gradient(180deg,rgba(16,25,29,.55) 0%,rgba(16,25,29,.85) 100%)}}
+@media(max-width:800px){.home-photo::before{background:linear-gradient(180deg,rgba(16,25,29,.72) 0%,rgba(16,25,29,.86) 60%,rgba(16,25,29,.7) 100%)}}
