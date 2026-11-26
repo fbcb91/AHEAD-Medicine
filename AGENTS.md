@@ -26,7 +26,7 @@ Sito italiano di validazione del mercato per un futuro servizio medico sulle ter
 - `fonts/` contiene i font del sito (Cinzel per il marchio, DM Sans e Manrope per i testi), ospitati in locale: niente Google Fonts (privacy e CSP).
 - `styles.css` per estetica responsive.
 - `app.js` ricerca / filtri / CTA / modulo.
-- `SURVEY` in `build.py` definisce le domande del questionario e genera `inizia/index.html` e `api/_survey-schema.js` (non modificarlo a mano).
+- `SURVEY` in `build.py` definisce le domande del questionario e genera `inizia/index.html` e `api/_survey-schema.js` (non modificarlo a mano). Una domanda per schermata; le domande con `show_if` compaiono solo se si è scelta quell'area (approfondimenti su obiettivi e preferenze, mai anamnesi). Il questionario clinico pre-visita per il medico sarà un modulo identificato nel servizio vero, con le garanzie art. 9 GDPR: non va costruito su questo questionario.
 - `api/survey.js` salva le risposte su Redis (Upstash); `api/survey-export.js` le esporta in CSV con `SURVEY_ADMIN_KEY`.
 - `api/event.js` conta in forma aggregata clic di interesse e questionari per area (nessun dato sulla persona); `api/stats.js` mostra i totali con `SURVEY_ADMIN_KEY`. Statistiche di visita: Vercel Web Analytics (senza cookie), da attivare nel pannello Vercel.
 - `api/contact.js` modulo della pagina Contatti (nome facoltativo, email, argomento da `CONTACT_TOPICS` in `build.py`, messaggio): salva in `contact:messages` su Upstash; esportazione CSV con `/api/contact-export?key=` (`SURVEY_ADMIN_KEY`). Il modulo invita a non inserire dati sanitari e rimanda al questionario anonimo.
