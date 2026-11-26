@@ -707,3 +707,10 @@
 .home-photo img.hero-photo{animation:heroDrift 38s ease-in-out infinite alternate;will-change:transform}
 .home-photo .hero-video{z-index:-2}
 @media(prefers-reduced-motion:reduce){.home-photo img.hero-photo{animation:none}.hero-video{display:none}}
+/* Questionario: una domanda per schermata */
+.survey-step h2{max-width:820px}
+.q-hint{margin:-14px 0 18px;color:#6c8189;font-size:14px}
+.profile-exams{margin:4px 0 22px;padding:18px 20px;border-radius:12px;background:var(--mist,#dfe5e8)}
+.profile-exams p{margin:6px 0 8px;font-size:15px}
+.profile-exams small{color:#4f636a;font-size:13px}
+.survey-form{scroll-margin-top:120px}

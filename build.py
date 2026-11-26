@@ -523,7 +523,7 @@ def page_hero(name, label, h1, lede, extra='', crumbs_html=''):
 
 
 CTA_BAND = ('<section class="cta-band"><div class="wrap cta-band-inner"><div><span class="mini-label">IL PROSSIMO PASSO</span><h2>Hai un obiettivo di salute? <em>Parliamone.</em></h2>'
-            '<p>Rispondi a un questionario anonimo di 2 minuti: ci aiuta ad abbinarti ai medici più adatti della nostra rete quando apriremo le prenotazioni.</p></div>'
+            '<p>Rispondi a un questionario anonimo di 3 minuti: ci aiuta ad abbinarti ai medici più adatti della nostra rete quando apriremo le prenotazioni.</p></div>'
             '<div class="cta-band-actions"><a class="btn btn-light start-link" href="/inizia/">Trova il tuo medico <span>↗</span></a><a class="link-light" href="/articoli/">Leggi gli articoli <span>→</span></a></div></div></section>')
 
 FIRST_VISIT = """<section class="section-pad first-visit"><div class="wrap"><div class="section-label">LA PRIMA VIDEOCONSULENZA</div><h2>Come sarà, <em>passo per passo.</em></h2><div class="visit-grid"><div><span class="mini-label">PRIMA</span><h3>Prepara le tue domande</h3><p>Dopo il questionario scegli il medico. Tieni a portata di mano gli esami recenti e l’elenco di farmaci e integratori che usi.</p></div><div><span class="mini-label">DURANTE · 30–45 MINUTI</span><h3>Una conversazione vera</h3><p>Il medico ascolta la tua storia, chiarisce obiettivi e dubbi e valuta cosa serve per avere un quadro completo.</p></div><div><span class="mini-label">DOPO</span><h3>Un piano chiaro</h3><p>Ricevi le indicazioni, gli eventuali esami da fare e, se il medico lo ritiene appropriato, la prescrizione. Poi fissate insieme il prossimo controllo.</p></div></div></div></section>"""
@@ -1021,19 +1021,45 @@ SURVEY_SUBSTANCES = ['Semaglutide', 'Tirzepatide', 'Retatrutide', 'Testosterone'
 assert all(any(p['name'] == n for p in DATA) for n in SURVEY_SUBSTANCES), 'SURVEY_SUBSTANCES: nome non presente nella Library'
 SURVEY = [
     ('La tua area', 'Di cosa vorresti parlare con un medico?', [
-        dict(id='aree', type='multi', required=True, label='Scegli una o più aree', options=SERVICES + ['Non lo so ancora'])]),
+        dict(id='aree', type='multi', required=True, label='Di cosa vorresti parlare con un medico?', options=SERVICES + ['Non lo so ancora'])]),
     ('I tuoi obiettivi', 'Cosa vorresti ottenere?', [
-        dict(id='obiettivi', type='multi', required=True, max=3, label='Scegli fino a 3 obiettivi', options=[
+        dict(id='obiettivi', type='multi', required=True, max=3, label='Cosa vorresti ottenere?', options=[
             'Perdere peso', 'Più energia e meno stanchezza', 'Aumentare massa muscolare e forza', 'Recuperare da un infortunio o un dolore',
             'Migliorare la salute ormonale', 'Fermare la caduta dei capelli', 'Migliorare la vita sessuale', 'Gestire i sintomi della menopausa',
             'Prevenzione e longevità', 'Capire se una sostanza fa per me'])]),
+    # Approfondimenti: compaiono solo se si è scelta l'area (show_if). Domande su obiettivi e
+    # preferenze, non anamnesi: la storia clinica si raccoglie solo nel servizio, con il consenso.
+    ('La tua area', 'Peso e metabolismo', [
+        dict(id='focus_glp1', type='single', required=False, show_if='GLP-1', label='Cosa vorresti capire con il medico?', options=[
+            'Se un farmaco GLP-1 è adatto a me', 'Come gestire un trattamento che sto già facendo', 'Come mantenere il peso dopo la terapia', 'Alternative ai farmaci'])]),
+    ('La tua area', 'Salute ormonale maschile', [
+        dict(id='focus_trt', type='single', required=False, show_if='TRT', label='Cosa vorresti capire con il medico?', options=[
+            'Se ho il testosterone basso', 'Se una terapia è adatta a me', 'Come seguire meglio una terapia in corso', 'Testosterone e fertilità'])]),
+    ('La tua area', 'Capelli', [
+        dict(id='focus_capelli', type='multi', required=False, show_if='Capelli', label='Cosa hai già provato?', options=[
+            'Minoxidil', 'Finasteride o dutasteride', 'Integratori', 'Trattamenti in clinica (PRP, laser…)', 'Niente finora'])]),
+    ('La tua area', 'Menopausa', [
+        dict(id='focus_menopausa', type='single', required=False, show_if='Menopausa', label='Cosa vorresti capire con il medico?', options=[
+            'Benefici e rischi della terapia ormonale', 'Alternative non ormonali', 'Prevenzione per ossa, cuore e metabolismo', 'Come gestire sintomi specifici'])]),
+    ('La tua area', 'Peptidi', [
+        dict(id='focus_peptidi', type='single', required=False, show_if='Peptidi', label='Cosa vorresti dal medico?', options=[
+            'Un parere su sostanze che sto già usando', 'Capire prove e rischi prima di decidere', 'Sapere se esistono alternative autorizzate'])]),
+    ('La tua area', 'Recupero e sport', [
+        dict(id='focus_recupero', type='single', required=False, show_if='Recupero e sport', label='Che tipo di problema hai?', options=[
+            'Infortunio recente', 'Dolore che dura da mesi', 'Recupero dopo un intervento', 'Voglio migliorare la preparazione'])]),
+    ('La tua area', 'Longevità e performance', [
+        dict(id='focus_longevity', type='multi', required=False, max=2, show_if='Longevity & Performance', label='Cosa ti interessa di più?', options=[
+            'Check-up ed esami mirati', 'Un piano di prevenzione', 'Farmaci e sostanze per la longevità', 'Performance fisica e mentale'])]),
+    ('La tua area', 'Salute sessuale', [
+        dict(id='focus_sessuale', type='single', required=False, show_if='Salute sessuale', label='Di cosa vorresti parlare?', options=[
+            'Desiderio', 'Erezione', 'Fertilità', 'Altro'])]),
     ('La tua situazione', 'Da dove parti?', [
         dict(id='gia_usato', type='multi', required=True, label='Per questi obiettivi hai già usato…', options=[
             'Farmaci prescritti da un medico', 'Peptidi o sostanze acquistati online', 'Integratori', 'Niente di tutto questo']),
         dict(id='seguito', type='single', required=True, label='Sei seguito da un medico per questo?', options=['Sì', 'No', 'In passato']),
         dict(id='esami', type='single', required=True, label='Hai esami del sangue recenti (ultimi 6 mesi)?', options=['Sì', 'No', 'Non ricordo'])]),
     ('Le sostanze', 'Ce n’è qualcuna su cui vorresti un parere?', [
-        dict(id='sostanze', type='multi', required=False, label='Facoltativo: scegli quelle che ti interessano', options=SURVEY_SUBSTANCES + ['Altre', 'Nessuna in particolare'])]),
+        dict(id='sostanze', type='multi', required=False, label='C’è una sostanza su cui vorresti un parere?', options=SURVEY_SUBSTANCES + ['Altre', 'Nessuna in particolare'])]),
     ('Su di te', 'Qualche informazione generale', [
         dict(id='eta', type='single', required=True, label='Fascia d’età', options=['18–29', '30–39', '40–49', '50–59', '60 o più']),
         dict(id='sesso', type='single', required=True, label='Sesso', options=['Uomo', 'Donna', 'Preferisco non dirlo']),
@@ -1041,11 +1067,20 @@ SURVEY = [
     ('Il servizio', 'Come lo immagini', [
         dict(id='urgenza', type='single', required=True, label='Quando vorresti iniziare?', options=['Il prima possibile', 'Entro 3 mesi', 'Sto solo esplorando']),
         dict(id='budget', type='single', required=True, label='Quanto spenderesti per una prima videoconsulenza di 30–45 minuti?', options=['Meno di 50 €', '50–100 €', '100–150 €', 'Più di 150 €']),
-        dict(id='percorso', type='single', required=True, label='Ti interesserebbe un percorso con controlli periodici (abbonamento mensile)?', options=['Sì', 'Forse', 'No']),
+        dict(id='percorso', type='single', required=True, label='Ti interesserebbe un percorso con controlli periodici, in abbonamento mensile?', options=['Sì', 'Forse', 'No']),
         dict(id='lingua', type='single', required=False, label='Il medico deve parlare italiano?', options=['Sì, necessariamente', 'Va bene anche in inglese']),
         dict(id='fonte', type='single', required=False, label='Come ci hai conosciuto?', options=['Google', 'Instagram o TikTok', 'YouTube o podcast', 'Passaparola', 'Altro'])]),
+    ('Il servizio', 'Prima della videoconsulenza', [
+        dict(id='questionario_medico', type='single', required=True, label='Prima della videoconsulenza compileresti un questionario più dettagliato per il medico (circa 10 minuti)?', options=['Sì, così la visita è più utile', 'Forse', 'No, preferisco raccontare tutto in visita'])]),
+    ('Il servizio', 'Prima della videoconsulenza', [
+        dict(id='esami_prima', type='single', required=True, label='Se ti indicassimo gli esami del sangue utili, li faresti prima della visita, in un laboratorio vicino a te?', options=['Sì', 'Sì, se il costo è contenuto', 'Preferisco parlarne prima con il medico'])]),
+    ('Il servizio', 'Tra una visita e l’altra', [
+        dict(id='chat', type='single', required=True, label='Ti sarebbe utile scrivere al medico in chat tra un controllo e l’altro?', options=['Sì, molto', 'Forse', 'No, mi bastano le videoconsulenze'])]),
+    ('Il servizio', 'La fiducia', [
+        dict(id='fiducia', type='multi', required=True, max=2, label='Cosa ti darebbe più fiducia nel servizio?', options=[
+            'Profili dei medici con esperienza e titoli', 'Recensioni di altri pazienti', 'Prezzi chiari fin dall’inizio', 'Poter cambiare medico', 'Indipendenza da chi vende prodotti'])]),
     ('In due parole', 'C’è altro che vorresti dirci?', [
-        dict(id='note', type='text', required=False, max=500, label='Facoltativo: cosa vorresti chiedere al medico?')]),
+        dict(id='note', type='text', required=False, max=500, label='C’è altro che vorresti chiedere al medico?')]),
 ]
 SURVEY_FIELDS = [q for _, _, qs in SURVEY for q in qs]
 write('api/_survey-schema.js', '// Generato da build.py: non modificare a mano.\nexport default ' + json.dumps(
@@ -1053,30 +1088,44 @@ write('api/_survey-schema.js', '// Generato da build.py: non modificare a mano.\
 
 
 def survey_question(q):
-    hint = f'<span class="q-hint">Massimo {q["max"]}</span>' if q['type'] == 'multi' and q.get('max') else ''
-    req = '' if q['required'] else '<span class="q-optional">facoltativo</span>'
+    """Una domanda: il titolo visibile è l'h2 del passo, la legend resta per i lettori di schermo."""
+    notes = ('Puoi sceglierne più di una' + (f' (massimo {q["max"]})' if q.get('max') else '')) if q['type'] == 'multi' else ''
+    if not q['required'] and not q.get('show_if'):
+        notes = (notes + ' · ' if notes else '') + 'Facoltativa'
+    hint = f'<p class="q-hint">{notes}</p>' if notes else ''
     if q['type'] == 'text':
-        return (f'<div class="q-block"><label class="q-label" for="q-{q["id"]}">{escape(q["label"])}</label>'
+        return (f'<div class="q-block"><label class="visually-hidden" for="q-{q["id"]}">{escape(q["label"])}</label>{hint}'
                 f'<textarea id="q-{q["id"]}" name="{q["id"]}" maxlength="{q["max"]}" rows="4" placeholder="Per esempio: vorrei capire se la terapia che sto facendo è adatta a me."></textarea>'
                 f'<p class="q-warning">Non scrivere il tuo nome, la tua email o altri dati che possano identificarti.</p></div>')
     kind = 'checkbox' if q['type'] == 'multi' else 'radio'
     opts = ''.join(f'<label class="choice"><input type="{kind}" name="{q["id"]}" value="{escape(o, quote=True)}"'
                    f'{f" data-slug={chr(34)}{SERVICE_SLUGS[o]}{chr(34)}" if q["id"] == "aree" and o in SERVICE_SLUGS else ""}><span>{escape(o)}</span></label>' for o in q['options'])
-    attrs = f' data-required="{str(q["required"]).lower()}"' + (f' data-max="{q["max"]}"' if q.get('max') else '')
-    return f'<fieldset class="q-block" data-q="{q["id"]}"{attrs}><legend class="q-label">{escape(q["label"])} {req}{hint}</legend><div class="choices">{opts}</div></fieldset>'
+    # le domande di approfondimento sono obbligatorie solo quando compaiono (il server le accetta vuote)
+    attrs = f' data-required="{str(q["required"] or bool(q.get("show_if"))).lower()}"' + (f' data-max="{q["max"]}"' if q.get('max') else '')
+    return f'<fieldset class="q-block" data-q="{q["id"]}"{attrs}><legend class="visually-hidden">{escape(q["label"])}</legend>{hint}<div class="choices">{opts}</div></fieldset>'
 
 
-steps_html = ''.join(
-    f'<section class="survey-step" data-step="{i}"{"" if i == 1 else " hidden"} aria-labelledby="step-title-{i}"><span class="step-kicker">{i} / {len(SURVEY)} · {escape(kicker.upper())}</span>'
-    f'<h2 id="step-title-{i}" tabindex="-1">{escape(title)}</h2>{"".join(survey_question(q) for q in qs)}</section>'
-    for i, (kicker, title, qs) in enumerate(SURVEY, 1))
-survey = f'''<section class="inner-hero survey-hero"><div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / Trova il tuo medico</div><div class="section-label light-text">QUESTIONARIO / 2 MINUTI</div><h1>Trova il medico <em>giusto per te.</em></h1><p>Raccontaci cosa vorresti ottenere: useremo le risposte per costruire il servizio e abbinarti ai medici più adatti della nostra rete.</p><div class="mini-notice">Il questionario è <strong>anonimo</strong>: non chiediamo nome, email o telefono. Le videoconsulenze non sono ancora prenotabili.</div></div></section>
+SURVEY_STEPS = [(kicker, q) for kicker, _, qs in SURVEY for q in qs]
+
+
+def survey_step(i, kicker, q):
+    show_if = f' data-show-if="{escape(q["show_if"], quote=True)}"' if q.get('show_if') else ''
+    return (f'<section class="survey-step" data-step="{i}"{show_if}{"" if i == 1 else " hidden"} aria-labelledby="step-title-{i}">'
+            f'<span class="step-kicker"><span class="step-count">{i} / {len(SURVEY_STEPS)}</span> · {escape(kicker.upper())}</span>'
+            f'<h2 id="step-title-{i}" tabindex="-1">{escape(q["label"])}</h2>{survey_question(q)}</section>')
+
+
+steps_html = ''.join(survey_step(i, kicker, q) for i, (kicker, q) in enumerate(SURVEY_STEPS, 1))
+# Esami indicativi per area (dalle pagine consulenza, già revisionate) per il profilo finale
+_reco['exams'] = {c['name']: c['exams'] for c in CONSULENZE}
+SURVEY_RECO_JSON = '<script type="application/json" id="survey-reco">' + json.dumps(_reco, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/') + '</script>'
+survey = f'''<section class="inner-hero survey-hero"><div class="wrap"><div class="breadcrumbs"><a href="/">Home</a> / Trova il tuo medico</div><div class="section-label light-text">QUESTIONARIO / 3 MINUTI</div><h1>Trova il medico <em>giusto per te.</em></h1><p>Raccontaci cosa vorresti ottenere: useremo le risposte per costruire il servizio e abbinarti ai medici più adatti della nostra rete.</p><div class="mini-notice">Il questionario è <strong>anonimo</strong>: non chiediamo nome, email o telefono. Le videoconsulenze non sono ancora prenotabili.</div></div></section>
 <section class="section-pad"><div class="wrap survey-wrap"><div class="survey-progress" aria-hidden="true"><span id="survey-bar"></span></div>
 <form id="survey-form" class="survey-form" novalidate><div class="hp-field" aria-hidden="true"><label for="survey-website">Lascia vuoto questo campo</label><input type="text" id="survey-website" name="website" tabindex="-1" autocomplete="off"></div>{steps_html}
 <p class="survey-error" id="survey-error" role="alert"></p><div class="survey-nav"><button type="button" class="btn btn-ghost" id="survey-back" hidden>← Indietro</button><button type="button" class="btn btn-dark" id="survey-next">Avanti <span>→</span></button><button type="submit" class="btn btn-dark" id="survey-submit" hidden>Invia le risposte <span>↗</span></button></div></form>
 <div class="survey-done" id="survey-done" hidden tabindex="-1"><span class="step-kicker">GRAZIE</span><h2>Risposte ricevute.</h2><p>Ci aiutano a capire di cosa hanno bisogno le persone e quali medici coinvolgere per primi.</p><div class="survey-profile" id="survey-profile" hidden></div><p>Vuoi sapere quando apriamo le prenotazioni? Lascia la tua email: l’iscrizione è separata dal questionario e non viene collegata alle tue risposte.</p><button type="button" class="btn btn-dark interest-trigger" data-service="generale">Avvisami al lancio <span>↗</span></button><p><a class="underlined-link" href="/library/">Intanto esplora la Library ↗</a></p></div>
 <noscript><p class="survey-error">Per compilare il questionario serve JavaScript attivo.</p></noscript>{SURVEY_RECO_JSON}</div></section>'''
-SURVEY_DESC = 'Un questionario anonimo di 2 minuti: raccontaci obiettivi e interessi e ti abbiniamo ai medici esperti più adatti della nostra rete.'
+SURVEY_DESC = 'Un questionario anonimo di 3 minuti: raccontaci obiettivi e interessi e ti abbiniamo ai medici esperti più adatti della nostra rete.'
 write('inizia/index.html', page('Trova il medico giusto per te — questionario', SURVEY_DESC, survey, '/inizia/',
       crumbs=[('Home', '/'), ('Trova il tuo medico', '/inizia/')], image=og_image('inizia', 'Trova il medico giusto per te', 'QUESTIONARIO')))
 

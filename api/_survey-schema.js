@@ -32,6 +32,87 @@ export default {
   ],
   "max": 3
  },
+ "focus_glp1": {
+  "type": "single",
+  "required": false,
+  "options": [
+   "Se un farmaco GLP-1 è adatto a me",
+   "Come gestire un trattamento che sto già facendo",
+   "Come mantenere il peso dopo la terapia",
+   "Alternative ai farmaci"
+  ]
+ },
+ "focus_trt": {
+  "type": "single",
+  "required": false,
+  "options": [
+   "Se ho il testosterone basso",
+   "Se una terapia è adatta a me",
+   "Come seguire meglio una terapia in corso",
+   "Testosterone e fertilità"
+  ]
+ },
+ "focus_capelli": {
+  "type": "multi",
+  "required": false,
+  "options": [
+   "Minoxidil",
+   "Finasteride o dutasteride",
+   "Integratori",
+   "Trattamenti in clinica (PRP, laser…)",
+   "Niente finora"
+  ]
+ },
+ "focus_menopausa": {
+  "type": "single",
+  "required": false,
+  "options": [
+   "Benefici e rischi della terapia ormonale",
+   "Alternative non ormonali",
+   "Prevenzione per ossa, cuore e metabolismo",
+   "Come gestire sintomi specifici"
+  ]
+ },
+ "focus_peptidi": {
+  "type": "single",
+  "required": false,
+  "options": [
+   "Un parere su sostanze che sto già usando",
+   "Capire prove e rischi prima di decidere",
+   "Sapere se esistono alternative autorizzate"
+  ]
+ },
+ "focus_recupero": {
+  "type": "single",
+  "required": false,
+  "options": [
+   "Infortunio recente",
+   "Dolore che dura da mesi",
+   "Recupero dopo un intervento",
+   "Voglio migliorare la preparazione"
+  ]
+ },
+ "focus_longevity": {
+  "type": "multi",
+  "required": false,
+  "options": [
+   "Check-up ed esami mirati",
+   "Un piano di prevenzione",
+   "Farmaci e sostanze per la longevità",
+   "Performance fisica e mentale"
+  ],
+  "max": 2
+ },
+ "focus_sessuale": {
+  "type": "single",
+  "required": false,
+  "options": [
+   "Desiderio",
+   "Erezione",
+   "Fertilità",
+   "Altro"
+  ]
+ },
  "gia_usato": {
   "type": "multi",
   "required": true,
@@ -160,6 +241,45 @@ export default {
    "Passaparola",
    "Altro"
   ]
+ },
+ "questionario_medico": {
+  "type": "single",
+  "required": true,
+  "options": [
+   "Sì, così la visita è più utile",
+   "Forse",
+   "No, preferisco raccontare tutto in visita"
+  ]
+ },
+ "esami_prima": {
+  "type": "single",
+  "required": true,
+  "options": [
+   "Sì",
+   "Sì, se il costo è contenuto",
+   "Preferisco parlarne prima con il medico"
+  ]
+ },
+ "chat": {
+  "type": "single",
+  "required": true,
+  "options": [
+   "Sì, molto",
+   "Forse",
+   "No, mi bastano le videoconsulenze"
+  ]
+ },
+ "fiducia": {
+  "type": "multi",
+  "required": true,
+  "options": [
+   "Profili dei medici con esperienza e titoli",
+   "Recensioni di altri pazienti",
+   "Prezzi chiari fin dall’inizio",
+   "Poter cambiare medico",
+   "Indipendenza da chi vende prodotti"
+  ],
+  "max": 2
  },
  "note": {
   "type": "text",

@@ -110,6 +110,10 @@
     if (usedOnline) {
       html += `<p class="profile-alert">Hai indicato di aver usato prodotti acquistati online: parlane con il medico durante la consulenza. Intanto leggi <a href="${reco.researchArticle}">cosa sono i peptidi “da ricerca” e perché non sono farmaci</a>.</p>`;
     }
+    const exams = reco.exams && reco.exams[top[0]];
+    if (exams) {
+      html += `<div class="profile-exams"><span class="mini-label">ESAMI CHE IL MEDICO POTREBBE CHIEDERTI</span><p>${esc(exams)}</p><small>${data.esami === 'Sì' ? 'Hai esami recenti: tienili a portata di mano per la videoconsulenza.' : 'Non serve farli ora: sarà il medico a indicarti quali sono utili nel tuo caso.'}</small></div>`;
+    }
     if (schede.length) {
       html += '<span class="mini-label">LE SCHEDE PER TE</span><div class="profile-links">' + schede.map(n => `<a href="${reco.schede[n].url}"><strong>${esc(n)}</strong><span>${esc(reco.schede[n].focus)}</span></a>`).join('') + '</div>';
     }
@@ -142,29 +146,40 @@
     const preset = area && survey.querySelector(`input[name="aree"][data-slug="${CSS.escape(area)}"]`);
     if (preset) preset.checked = true;
 
-    const show = (i, initial = false) => {
-      steps.forEach((s, n) => { s.hidden = n !== i; });
-      current = i;
-      back.hidden = i === 0;
-      next.hidden = i === steps.length - 1;
-      send.hidden = i !== steps.length - 1;
-      bar.style.width = ((i + 1) / steps.length * 100) + '%';
+    // Le domande di approfondimento (data-show-if) compaiono solo se si è scelta la loro area.
+    const chosenAreas = () => [...survey.querySelectorAll('input[name="aree"]:checked')].map(i => i.value);
+    const active = () => {
+      const areas = chosenAreas();
+      return steps.filter(s => !s.dataset.showIf || areas.includes(s.dataset.showIf));
+    };
+    const show = (step, initial = false) => {
+      const list = active();
+      const pos = list.indexOf(step);
+      steps.forEach(s => { s.hidden = s !== step; });
+      current = steps.indexOf(step);
+      back.hidden = pos === 0;
+      next.hidden = pos === list.length - 1;
+      send.hidden = pos !== list.length - 1;
+      bar.style.width = ((pos + 1) / list.length * 100) + '%';
+      list.forEach((s, n) => { const c = s.querySelector('.step-count'); if (c) c.textContent = (n + 1) + ' / ' + list.length; });
       error.textContent = '';
       if (initial) return;
-      steps[i].querySelector('h2').focus({ preventScroll: true });
-      survey.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      step.querySelector('h2').focus({ preventScroll: true });
+      if (survey.getBoundingClientRect().top < 0) survey.scrollIntoView({ block: 'start', behavior: 'smooth' });
     };
     const checkStep = i => {
       for (const block of steps[i].querySelectorAll('fieldset[data-q]')) {
         const chosen = block.querySelectorAll('input:checked').length;
         const max = Number(block.dataset.max || 0);
-        if (block.dataset.required === 'true' && !chosen) {
-          block.scrollIntoView({ block: 'center', behavior: 'smooth' });
-          return 'Seleziona almeno una risposta per continuare: «' + block.querySelector('legend').firstChild.textContent.trim() + '».';
-        }
+        if (block.dataset.required === 'true' && !chosen) return 'Scegli almeno una risposta per continuare.';
         if (max && chosen > max) return 'Puoi scegliere al massimo ' + max + ' opzioni.';
       }
       return '';
+    };
+    const move = dir => {
+      const list = active();
+      const target = list[list.indexOf(steps[current]) + dir];
+      if (target) show(target);
     };
     // Limite di scelte: disattiva le altre opzioni quando si raggiunge il massimo.
     survey.querySelectorAll('fieldset[data-max]').forEach(block => block.addEventListener('change', () => {
@@ -174,16 +189,31 @@
       boxes.forEach(b => { if (!b.checked) b.disabled = full; });
     }));
     survey.addEventListener('change', () => { error.textContent = ''; });
+    // Risposta singola scelta con un tocco: si passa da soli alla domanda dopo.
+    // Solo con mouse o dito: con la tastiera le frecce cambiano scelta e non devono far avanzare.
+    let pointerAt = 0;
+    survey.addEventListener('pointerdown', () => { pointerAt = Date.now(); });
+    survey.addEventListener('click', e => {
+      if (e.target.type !== 'radio' || Date.now() - pointerAt > 1000) return;
+      const step = steps[current];
+      if (!next.hidden && step.contains(e.target)) setTimeout(() => { if (steps[current] === step && !checkStep(current)) move(1); }, 320);
+    });
     next.addEventListener('click', () => {
       const problem = checkStep(current);
       if (problem) { error.textContent = problem; return; }
-      show(current + 1);
+      move(1);
     });
-    back.addEventListener('click', () => show(current - 1));
+    back.addEventListener('click', () => move(-1));
+    // Prima dell'invio si svuotano le domande delle aree non scelte.
+    const clearSkipped = () => {
+      const list = active();
+      steps.filter(s => !list.includes(s)).forEach(s => s.querySelectorAll('input').forEach(i => { i.checked = false; i.disabled = false; }));
+    };
     survey.addEventListener('submit', async event => {
       event.preventDefault();
       const problem = checkStep(current);
       if (problem) { error.textContent = problem; return; }
+      clearSkipped();
       const data = {};
       new FormData(survey).forEach((value, key) => {
         const multi = survey.querySelector(`input[type="checkbox"][name="${key}"]`);
@@ -210,7 +240,7 @@
         send.disabled = false;
       }
     });
-    show(0, true);
+    show(steps[0], true);
   }
 
   // Click sui pulsanti che portano al questionario: conteggio aggregato per area.
