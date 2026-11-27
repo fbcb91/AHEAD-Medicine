@@ -86,6 +86,7 @@ Il nome è l'indirizzo dell'articolo, cioè il nome del suo file in `data/artico
 | `caduta-capelli-cosa-funziona` | Caduta dei capelli: cosa funziona davvero |
 | `david-sinclair-peptidi-anti-aging` | David Sinclair e i peptidi anti-aging: GHK-Cu, Epitalon e apelina funzionano davvero? |
 | `glp-1-differenze-semaglutide-tirzepatide-retatrutide` | Semaglutide, tirzepatide, retatrutide: le differenze spiegate |
+| `hims-testosterone-regno-unito` | Hims porta la cura del testosterone nel Regno Unito: cosa cambia davvero |
 | `minoxidil-orale` | Minoxidil orale per i capelli: come funziona e per chi è |
 | `ozempic-per-dimagrire` | Ozempic per dimagrire: cosa dice davvero l’indicazione |
 | `peptidi-da-ricerca-cosa-sono` | Peptidi “da ricerca”: cosa sono e perché non sono farmaci |
